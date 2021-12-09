@@ -1,0 +1,19 @@
+# malware-samples
+A collection of malware samples caught by several honeypots i handle worldwide
+
+ATTENTION: This repository contains actual malware, do not execute any of these files on your pc unless you know exactly what you are doing.
+
+All of the malware samples contained in this repository has been collected by several honeypots installed on different locations all over the world.
+This is the result of a distributed honeypot project i am developing with the help of all of those who want to collaborate.
+Malware with a generic name such as MD5 value or smbxxx.tmp were not detected as malware by virustotal at the moment of the upload, but this does not mean it's not malware.
+please feel free to download, analyze and reverse all the samples in this repository but please let me know the results of your investigation.
+All 7z and zip files are password protected and the password is "infected" (without quotes).
+
+Thanks for you interest.
+
+Fabrizio Monaco
+
+
+twitter: @fabrimagic
+
+

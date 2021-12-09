@@ -1,0 +1,109 @@
+Installation
+
+Make a folder in the admin: chmod 777 *-R
+Go: http://host_admin/install/
+
+Step 1: Choose a language
+
+  Just select your language admin
+
+
+
+2 Step: Check software
+  
+  Version of PHP: If red, the old version for the admin
+  
+  WebServer - Module mod_xsendfile:
+    If the red:
+      Not installed (not running) - here everything is clear
+
+      Installed (not running) - This means that the module is installed but not working properly
+
+        Types of solutions:
+          Set in httpd.conf "XSendFilePath path_for_admin" (without the quotes)
+
+          Set in the cache directory permissions 777 and all folders and subfolders, and files and files in folders
+
+Perhaps with your server admin can not be downloaded.
+Try to load on the server admin http://host_admin/accounts/check_download.html (eg with wget)
+If the file is empty and / or long is the connection and then breaking it means the firewall or through the domain your server does not see himself.
+
+  PHP - The module GeoIP Country:
+      If the red:
+        Not installed - This means that as GeoIP module is not installed and access to the portable version of the no.
+
+  PHP - MySQLi module
+      If the red:
+        Is not set - no proper MySQLi module in php
+
+  PHP - Module Zip:
+      If the red:
+        Is not set - no proper module in php Zip
+
+  PHP - Module Pcntl:
+      If the red:
+        Is not set - no module required Pcntl in php
+Check it over SSH, but not in phpinfo.
+
+  May still be errors red:
+      PHP - Function "name_function": no - this means that no php function desired. How to fix by Google in each case.
+
+
+
+
+3 step: Checking write permission
+
+  dir / file - no write access, it is not. - Means that there is no access to the file.
+To be sure, and the speed is most easily done in the admin directory chmod 777 *-R
+          Those who do not want and paranoia,
+          can put all the admin user and group under which the web server and php
+          and to give full write permissions for this user and group.
+          The main thing is to understand the 777 is not required, be sure to have write access to their own files and folders.
+
+
+
+4 step: MySQL
+  Possible errors are:
+    I can not connect to MySQL server - access to the database is invalid
+
+    I can not create a procedure / function - you can not create the desired procedure / function.
+      The code of the procedure / function appears above teksbokse, you need to copy and execute in the correct database!
+      And then press F5 in your browser, or in any other way to update the page
+      if the error is repeated so as it is not added to the procedure / function.
+
+    The user does not have permission to write to the file. - For a given user has no permission to write to a file.
+      Give your users rights to write to a file.
+      Specific rights MySQL: FILE, GRANT (possibly)
+      And then press F5 in your browser, or in any other way to update the page
+      if the error is repeated so as something wrong and not what you do.
+      If you do not like does not work there is a button "Skip", it threatens those that download data from the section "Filter" you will not be possible!
+
+
+
+
+5 step: New jobs in cron
+    Error:
+     Can not add crowns job. - Add jobs in the crowns.
+     It is very easy:
+       Run through the shell: crontab-u root path_for_adm / cron_job (this command will be written in full browser)
+       Then run through the shell: crontab-u root-l and if the answer is four lines with scripts admin area so everything is OK.
+       Click the browser "Skip"
+     
+     If for some reason set in the crown is not to add it would entail,
+     not working "import filters"
+     auto start jabber client
+     Auto Launch "in the search logs FG"
+     auto optimization DB
+     Not properly working unit / section "Plugins"
+
+
+
+6 step: Complete
+     Mistakes here can not be.
+     Just click "Log in"
+
+
+
+P.S.:
+  If the admin panel with cabs, make install cabextract
+  (Yum install cabextract or apt-get install cabextract)

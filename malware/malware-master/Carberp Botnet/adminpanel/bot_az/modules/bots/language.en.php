@@ -1,0 +1,159 @@
+<?php
+//$lang[''] = '';
+
+$lang['abot'] = 'All bots';
+$lang['poibot'] = 'Search bot';
+$lang['config'] = 'Configs';
+$lang['gall'] = 'Diagram "All"';
+$lang['glive'] = 'Diagram "Live"';
+$lang['gos'] = 'Diagram "OS"';
+$lang['gab'] = 'Diagram "AV"';
+$lang['gri'] = 'Diagram "Rights"';
+$lang['pref'] = 'Prefix';
+$lang['sortco'] = 'Arrangement on the page';
+$lang['stan'] = 'Standard';
+$lang['poimsv'] = 'By country (ascending)';
+$lang['poimsy'] = 'By country (descending)';
+$lang['pkvbv'] = 'By count of all bots (ascending)';
+$lang['pkvby'] = 'By count of all bots (descending)';
+$lang['pkjbv'] = 'By count of live bots (ascending)';
+$lang['pkjy'] = 'By count of live bots (descending)';
+$lang['upda'] = 'Refresh';
+$lang['msns'] = 'Maximum countries on the page';
+$lang['vcou'] = 'Total number of countries';
+$lang['country'] = 'Country';
+$lang['kolbot'] = 'Number of live bots';
+$lang['livebot'] = 'Live bots';
+$lang['dyvbs'] = 'Really remove all the bots in the country ';
+$lang['delet'] = 'Delete';
+$lang['evbs'] = 'Delete all boats of the country';
+$lang['vsycbys'] = 'Total (on this page / on all pages)';
+$lang['tasks'] = 'Tasks';
+$lang['blc'] = 'List of countries';
+
+$lang['maip'] = 'IP mask';
+$lang['mikci'] = 'You can search as well as IP and mask. \nFor example: 127.0.0.1 or 127.0.0.';
+$lang['jbot'] = 'The life of a bot from (in minutes)';
+$lang['jbotv'] = 'The life of a bot from the current time';
+$lang['jbdo'] = 'The life of a bot to (in minutes)';
+$lang['jbdtv'] = 'The life of a bot to the current time';
+$lang['dpjb'] = 'Date for the fields "Life of a bot"';
+$lang['kdydpjb'] = 'What date in mind for the fields "Life of a bot"';
+$lang['posl'] = 'Last';
+$lang['perv'] = 'First';
+$lang['sort'] = 'Arrangement';
+$lang['pkpv'] = 'Last connect ascending';
+$lang['pkvy'] = 'Last connect descending';
+$lang['pekpv'] = 'First connect ascending';
+$lang['pekvy'] = 'First connect descending';
+$lang['mbns'] = 'Maximum bots on the page';
+$lang['vsbo'] = 'Total number of bots';
+$lang['ip'] = 'IP';
+$lang['posken'] = 'Last connect';
+$lang['dyb'] = 'Really delete bot';
+$lang['nksc'] = 'Back to the countries';
+$lang['allcountr'] = 'All countries';
+
+$lang['mambcs'] = 'Count of pages in this mode isn\\\'t conducted, bots can be more than is shown';
+$lang['mapref'] = 'Prefix mask';
+$lang['mpmstbla'] = 'Prefix mask may contain only letters.';
+$lang['mamb'] = 'Multisearch';
+$lang['mambs'] = 'Standard search';
+$lang['mambl'] = 'Multisearch. Every string is full bot\\\'s UID with prefix.';
+$lang['mauid'] = 'UID mask';
+$lang['mymsblaic'] = 'UID mask may contain letters and numbers.';
+$lang['mapro'] = 'Process mask';
+$lang['sleje'] = 'Track';
+$lang['neyc'] = 'Ignore';
+$lang['vikl'] = 'Disabled';
+$lang['vkl'] = 'Enabled';
+$lang['typoi'] = 'Search type';
+$lang['dlk'] = 'Give a personal command';
+$lang['ipsisplk'] = 'Use a field of link or make a blank personal command';
+$lang['poluid'] = 'Full UID';
+$lang['tyor'] = 'AND';
+$lang['tyand'] = 'OR';
+
+$lang['fnbz'] = 'File could not be loaded!';
+$lang['file'] = 'File';
+$lang['add'] = 'Add';
+$lang['nazvfi'] = 'File name';
+$lang['razmer'] = 'Size';
+$lang['datasoz'] = 'Creation date';
+$lang['nichenn'] = 'Nothing was found';
+
+$lang['botnotfound'] = 'Bot is not found.';
+$lang['nbsdpre'] = 'Found a bot with a different prefix but with same UID.';
+$lang['posmtr'] = 'View';
+$lang['uid'] = 'UID';
+$lang['os'] = 'OS';
+$lang['perots'] = 'First connect';
+$lang['poslot'] = 'Last connect';
+$lang['minvmo'] = 'Minimum time between connections';
+$lang['maxvmo'] = 'Maximum time between connections';
+$lang['vjib'] = 'Lifetime of bot';
+$lang['hunter'] = 'Hunter';
+$lang['comment'] = 'Comment';
+$lang['edit'] = 'Edit';
+$lang['lickom'] = 'Personal command';
+$lang['listip'] = 'List of IP';
+$lang['data'] = 'Date';
+$lang['listcab'] = 'List of cab-files';
+$lang['listkeylog'] = 'List of keylog-files';
+$lang['type'] = 'Type';
+$lang['files'] = 'Files';
+$lang['svdds'] = 'Download all data of this string';
+$lang['download'] = 'Download';
+$lang['listlog'] = 'List of logs';
+$lang['slheap'] = 'List of logs "Heap"';
+$lang['listscreen'] = 'List of screenshots';
+$lang['listproc'] = 'List of processes';
+
+$lang['dobzada'] = 'Add task';
+$lang['links'] = 'Links';
+$lang['edvszad'] = 'Delete all tasks';
+$lang['status'] = 'Status';
+$lang['cmd'] = 'Command';
+$lang['fulfilled'] = 'Done';
+$lang['vkluc'] = 'Enable';
+$lang['vikluc'] = 'Disable';
+$lang['novim'] = 'New';
+$lang['zareg'] = 'Reg.';
+
+$lang['cmdtype'] = 'Type of task';
+$lang['vibtyz'] = 'Please select a type of task';
+$lang['dlolauf'] = 'Download and run the file';
+$lang['dlolaufm'] = 'Download and run files (Multi)';
+$lang['updates'] = 'Update';
+$lang['sb'] = 'sb ip:port';
+$lang['bc'] = 'bc ip:port';
+$lang['upcfg'] = 'Update config';
+$lang['delcoo'] = 'Delete cookies';
+$lang['cvsiskbdz'] = 'Please select a country or countries that will get the task.';
+$lang['cvksbdk'] = 'Please select a status that will get the task.';
+$lang['cnb'] = 'New bot';
+$lang['czb'] = 'Registered bot';
+$lang['alls'] = 'All';
+$lang['ogpk'] = 'Limit by quantity';
+$lang['cvkddkpk'] = 'How many bots will get the task.';
+$lang['cogdz'] = 'Is limited to the task';
+$lang['cdoldzeo'] = 'If enabled, after this task bots will not get more tasks.';
+$lang['cvoinp'] = 'Please select a one or more prefixes.';
+$lang['clinks'] = 'Link';
+$lang['napsil'] = 'Write the URL (separate by space if the type is Multi) if it is needed for the task.';
+$lang['addcmd'] = 'Add task';
+
+$lang['editcmd'] = 'Edit task';
+$lang['dateadd'] = 'Date of adding';
+$lang['infob'] = 'Information about the bot';
+$lang['slejzb'] = 'Tracking bot';
+$lang['date'] = 'Date';
+
+$lang['rehash'] = 'Re-cipher';
+
+$lang['zvl'] = 'With logs in';
+
+$lang['admin'] = 'Rights admin';
+
+
+?>

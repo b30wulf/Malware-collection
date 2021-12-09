@@ -1,0 +1,40 @@
+bin/
+tmp/
+*.idea/
+*.pydevproject
+*.pyd
+*.pyc
+.DS_Store
+__pycache__
+sql/
+*.Cache
+Thumbs.db
+$RECYCLE.BIN/
+Desktop.ini
+conf/eula_run.conf
+.git/
+dev_zone/
+
+# Egg
+logo/
+venv/*
+
+
+*.py[co]
+# Packages
+*.egg
+*.egg-info
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+
+# Installer logs
+pip-log.txt
+
+imports/*.pyd
+imports/*.pyc

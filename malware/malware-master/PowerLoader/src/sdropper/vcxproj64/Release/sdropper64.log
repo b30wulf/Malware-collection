@@ -1,0 +1,47 @@
+﻿Построение начато 16.10.2012 18:12:19.
+     1>Проект "C:\_Work\Projects\_power_ldr\_tbh\power_ldr_SRC\sdropper\vcxproj64\sdropper64.vcxproj" в узле 2 (целевые объекты rebuild).
+     1>_PrepareForClean:
+         Файл "Release\sdropper64.lastbuildstate" удаляется.
+       InitializeBuildStatus:
+         Обращение к "Release\sdropper64.unsuccessfulbuild".
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I..\..\share /Zi /nologo /W3 /WX- /Ox /Ob1 /Oi /Os /GL /D WIN64 /D _WIN64 /D NDEBUG /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm- /MT /GS- /Gy /fp:precise /Zc:wchar_t /Zc:forScope /GR- /Fo"Release\\" /Fd"Release\vc100.pdb" /Gz /TP /errorReport:prompt ..\..\share\cfgini.cpp ..\..\share\peldr.cpp ..\..\share\seccfg.cpp ..\..\share\utils.cpp ..\config.cpp ..\dropper.cpp ..\inject.cpp ..\protect.cpp ..\server.cpp /MP 
+         cfgini.cpp
+         peldr.cpp
+         seccfg.cpp
+         utils.cpp
+         config.cpp
+         dropper.cpp
+         inject.cpp
+         protect.cpp
+         server.cpp
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\_out\Release\sdropper64.exe" /INCREMENTAL:NO /NOLOGO ntdll64.lib shlwapi.lib wsock32.lib wininet.lib rpcrt4.lib imagehlp.lib psapi.lib Urlmon.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST:NO /PDB:"C:\_Work\Projects\_power_ldr\_tbh\power_ldr_SRC\_out\Release\sdropper64.pdb" /MAP /MAPINFO:EXPORTS /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /ENTRY:"Entry" /RELEASE /DYNAMICBASE /FIXED:NO /NXCOMPAT /IMPLIB:"C:\_Work\Projects\_power_ldr\_tbh\power_ldr_SRC\_vcxproj\..\_out\Release\sdropper64.lib" /MACHINE:X64 Release\cfgini.obj
+         Release\peldr.obj
+         Release\seccfg.obj
+         Release\utils.obj
+         Release\config.obj
+         Release\dropper.obj
+         Release\inject.obj
+         Release\protect.obj
+         Release\server.obj 
+         /export:InjectNormalRoutine
+         /export:InjectApcRoutine
+         /export:DownloadRunExeUrl
+         /export:DownloadRunExeId
+         /export:DownloadUpdateMain
+         /export:WriteConfigString
+         /export:SendLogs
+          
+            Создается библиотека C:\_Work\Projects\_power_ldr\_tbh\power_ldr_SRC\_vcxproj\..\_out\Release\sdropper64.lib и объект C:\_Work\Projects\_power_ldr\_tbh\power_ldr_SRC\_vcxproj\..\_out\Release\sdropper64.exp
+         Создание кода
+         Создание кода завершено
+         sdropper64.vcxproj -> C:\_Work\Projects\_power_ldr\_tbh\power_ldr_SRC\_vcxproj\..\_out\Release\sdropper64.exe
+       FinalizeBuildStatus:
+         Файл "Release\sdropper64.unsuccessfulbuild" удаляется.
+         Обращение к "Release\sdropper64.lastbuildstate".
+     1>Построение проекта "C:\_Work\Projects\_power_ldr\_tbh\power_ldr_SRC\sdropper\vcxproj64\sdropper64.vcxproj" завершено (целевые объекты rebuild).
+
+Построение успешно завершено.
+
+Затраченное время: 00:00:02.19

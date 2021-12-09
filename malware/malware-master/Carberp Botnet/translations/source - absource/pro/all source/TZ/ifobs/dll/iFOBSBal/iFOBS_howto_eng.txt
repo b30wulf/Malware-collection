@@ -1,0 +1,12 @@
+The system has two parts - bot (iFOBS.cpp, iFOBS.h files) and DLL (iFOBS.dll) modules written in Delphi
+
+The bot sets hooks on VistaDB_D7.dll->@Vdbdirect@TVDBDirect@GetCurrency$qqr17System@AnsiString
+and loads iFOBS.dll into iFOBSClient.exe process
+Test bot takes DLL file from C:\iFOBS.dll
+
+bot's functionality had to be expanded for that: GetApi.cpp->GetProcAddressEx, by adding vistadbd7_dll library name into it.
+Hooks loading and setup process is outputted into debug log.
+
+After iFOBSClient.exe is injected it waits until the client is logged on, DB is decrypted and when the balance is calculeted by the program it intercepts the balance value in UAH currency and outputs it into debug log.
+
+This solution will work with any iFOBS version.

@@ -1,0 +1,80 @@
+.top_menu {
+	position: relative;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: middle;
+}
+
+.top_menu_left {
+	position:absolute;
+	left: 0px;
+	top: 0px;
+}
+
+.top_menu_right {
+	position:absolute;
+	right: 0px;
+	top: 0px;
+	text-align: right;
+}
+
+.top_menu a {
+	border: 1px solid #000;
+	padding: 5px;
+	text-decoration: none;
+	color:#000;
+	background-color: #7190aa;
+}
+
+.top_menu a:hover {
+	color: #FFF;
+	background-color: #42576a;
+}
+
+
+.user {
+	width: 100%;
+}
+
+.input_obligatory {
+	border: 1px #333 dashed;
+	width: 588px;
+	padding-left: 12px;
+	background-image: url(../images/obligatory16.jpg);
+	background-position: left;
+	background-repeat: no-repeat;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+}
+
+.inputs {
+	border: 1px #333 dashed;
+	width: 588px;
+	padding-left: 12px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+}
+
+.labels {
+	width: 40px;
+	height: 20px;
+	float:left;
+	text-align: center;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.l1 {
+	background-color: #fff1c0;
+	border: 2px solid #d9c419;
+}
+
+.l2 {
+	background-color: #c0daff;
+	border: 2px solid #196cd9;
+}
+
+.l3 {
+	background-color: #ecc6c4;
+	border: 2px solid #a60b10;
+}

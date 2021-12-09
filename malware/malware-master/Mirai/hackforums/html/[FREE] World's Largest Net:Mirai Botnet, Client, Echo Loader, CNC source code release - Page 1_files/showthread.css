@@ -1,0 +1,52 @@
+ul.thread_tools, ul.thread_tools li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+ul.thread_tools li {
+	padding-left: 26px;
+	padding-bottom: 4px;
+	margin-bottom: 3px;
+	font-size: 11px;
+}
+
+ul.thread_tools li.printable {
+	background: url(http://hackforums.net/images/printable.gif) no-repeat 0px 0px;
+}
+
+ul.thread_tools li.pdf {
+	background: url(http://hackforums.net/images/pdf.gif) no-repeat 0px 0px;
+}
+
+ul.thread_tools li.sendthread {
+	background: url(http://hackforums.net/images/send.gif) no-repeat 0px 0px;
+}
+
+ul.thread_tools li.subscription_add {
+	background: url(http://hackforums.net/images/subscribe.gif) no-repeat 0px 0px;
+}
+
+ul.thread_tools li.subscription_remove {
+	background: url(http://hackforums.net/images/unsubscribe.gif) no-repeat 0px 0px;
+}
+
+.thread_options a:link {
+    color: #499FED;
+    text-decoration: none;
+    border-bottom: 1px solid #000;
+}
+
+.thread_options a:visited {
+    color: #499FED;
+    text-decoration: none;
+    border-bottom: 1px solid #000;
+}
+
+.thread_options a:hover, a:active {
+    color: #393939;
+    text-decoration: underline;
+}
+
+
+		

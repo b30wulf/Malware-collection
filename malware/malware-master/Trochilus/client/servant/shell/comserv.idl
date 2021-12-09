@@ -1,0 +1,14 @@
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(C6274545-B0E5-4F20-818F-F0493EFC93E4),
+	version(1.0),
+	helpstring("comserv 1.0 Type Library")
+]
+library COMSERVLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+};

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\share\utils.cpp">
+      <Filter>share</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\share\peldr.cpp">
+      <Filter>share</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\share\seccfg.cpp">
+      <Filter>share</Filter>
+    </ClCompile>
+    <ClCompile Include="..\server.cpp">
+      <Filter>sdropper64</Filter>
+    </ClCompile>
+    <ClCompile Include="..\dropper.cpp">
+      <Filter>sdropper64</Filter>
+    </ClCompile>
+    <ClCompile Include="..\inject.cpp">
+      <Filter>sdropper64</Filter>
+    </ClCompile>
+    <ClCompile Include="..\protect.cpp">
+      <Filter>sdropper64</Filter>
+    </ClCompile>
+    <ClCompile Include="..\config.cpp">
+      <Filter>sdropper64</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\share\cfgini.cpp">
+      <Filter>share</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\share\utils.h">
+      <Filter>share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\share\peldr.h">
+      <Filter>share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\share\seccfg.h">
+      <Filter>share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\dropper.h">
+      <Filter>sdropper64</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inject.h">
+      <Filter>sdropper64</Filter>
+    </ClInclude>
+    <ClInclude Include="..\protect.h">
+      <Filter>sdropper64</Filter>
+    </ClInclude>
+    <ClInclude Include="..\server.h">
+      <Filter>sdropper64</Filter>
+    </ClInclude>
+    <ClInclude Include="..\config.h">
+      <Filter>sdropper64</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\share\cfgini.h">
+      <Filter>share</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="share">
+      <UniqueIdentifier>{7fe81df2-45ab-40b2-a9f1-027b9f18d180}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdropper64">
+      <UniqueIdentifier>{5b4e0dae-5a54-4da4-a14a-53711ef32aa3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

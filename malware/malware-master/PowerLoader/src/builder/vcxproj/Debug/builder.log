@@ -1,0 +1,33 @@
+﻿Построение начато 07.09.2012 20:00:31.
+     1>Проект "C:\_Work\Projects\_power_ldr\power_ldr\builder\vcxproj\builder.vcxproj" в узле 3 (целевые объекты rebuild).
+     1>_PrepareForClean:
+         Файл "Debug\builder.lastbuildstate" удаляется.
+       InitializeBuildStatus:
+         Создание "Debug\builder.unsuccessfulbuild", так как было задано "AlwaysCreate".
+       PreBuildEvent:
+         ..\..\tools\bin2hex.exe ..\..\_out\Debug\sdropper32.exe ..\..\binhex\Debug\sdropper32-hex.h
+         ..\..\tools\bin2hex.exe ..\..\_out\Debug\sdropper64.exe ..\..\binhex\Debug\sdropper64-hex.h
+         :VCEnd
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I..\..\share /I..\..\binhex\Debug /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WIN32 /D _DEBUG /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D _BUILDER /D _MBCS /Gm- /MTd /GS- /fp:precise /Zc:wchar_t /Zc:forScope /GR- /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gz /TP /analyze- /errorReport:prompt ..\..\share\peldr.cpp ..\..\share\seccfg.cpp ..\..\share\utils.cpp ..\builder.cpp /MP 
+         peldr.cpp
+         seccfg.cpp
+         utils.cpp
+         builder.cpp
+       ResourceCompile:
+         c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /l"0x0409" /nologo /fo"Debug\builder.res" builder.rc 
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\_out\builder_Debug.exe" /INCREMENTAL:NO /NOLOGO ntdll32.lib shlwapi.lib wsock32.lib wininet.lib rpcrt4.lib imagehlp.lib psapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST:NO /DEBUG /PDB:"C:\_Work\Projects\_power_ldr\power_ldr\_out\builder_Debug.pdb" /MAP /MAPINFO:EXPORTS /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"Entry" /DYNAMICBASE:NO /FIXED /NXCOMPAT /IMPLIB:"C:\_Work\Projects\_power_ldr\power_ldr\_vcxproj\..\_out\builder_Debug.lib" /MACHINE:X86 Debug\builder.res
+         Debug\peldr.obj
+         Debug\seccfg.obj
+         Debug\utils.obj
+         Debug\builder.obj
+         builder.vcxproj -> C:\_Work\Projects\_power_ldr\power_ldr\_vcxproj\..\_out\builder_Debug.exe
+       FinalizeBuildStatus:
+         Файл "Debug\builder.unsuccessfulbuild" удаляется.
+         Обращение к "Debug\builder.lastbuildstate".
+     1>Построение проекта "C:\_Work\Projects\_power_ldr\power_ldr\builder\vcxproj\builder.vcxproj" завершено (целевые объекты rebuild).
+
+Построение успешно завершено.
+
+Затраченное время: 00:00:00.87

@@ -1,0 +1,951 @@
+body {
+	background: #072948 url(http://www.hackforums.net/images/modern_bl/mosaic_bl.png) fixed;
+	color: #ccc;
+	text-align: center;
+	line-height: 1.4;
+	font-family: Verdana, Arial, Sans-Serif;
+	font-size: 14px;
+	font-style: normal;
+}
+
+a:link {
+	color: #FFF;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #FFF;
+	text-decoration: none;
+}
+
+a:hover, a:active {
+	color: #499FED;
+	text-decoration: none;
+}
+
+#container {
+	width: 95%;
+	color: #cccccc;
+	border: 0px solid #072948;
+	margin: auto auto;
+	padding: 0 10px;
+	text-align: left;
+}
+
+#content {
+	color: #cccccc;
+	width: auto !important;
+}
+
+.menu ul {
+	background: #072948;
+	color: #499FED;
+     -moz-border-radius:5px 5px 0 0;
+     border-radius:5px 5px 0 0;
+              height: 20px;
+	font-weight: bold;
+              padding: 0;
+	text-align: center;
+}
+
+.menu ul a:link {
+	color: #CCCCCC;
+	text-decoration: none;
+}
+
+.menu ul a:visited {
+	color: #cccccc;
+	text-decoration: none;
+}
+
+.menu ul a:hover, .menu ul a:active {
+	color: #499FED;
+	text-decoration: none;
+}
+
+#panel {
+	background: #333333;
+	color: #cccccc;
+	font-size: 13px;
+	border: 1px solid #072948;
+	padding: 6px;
+     -moz-border-radius: 0 05px 5px;
+     border-radius: 0 0 5px 5px;
+}
+
+table {
+	color: #cccccc;
+	font-family: Verdana, Arial, Sans-Serif;
+	font-size: 14px;
+}
+
+.tborder {
+	background: #072948;
+	width: 100%;
+	margin: auto auto;
+	border: 1px solid #333333;
+}
+
+.thead {
+	background: #072948;
+	color: #cccccc;
+}
+
+.thead a:link {
+	text-decoration: none;
+}
+
+.thead a:visited {
+	text-decoration: none;
+}
+
+.thead a:hover, .thead a:active {
+	text-decoration: none;
+}
+
+.tcat {
+	background: #393939;
+	color: #ccc;
+	line-height: 1.2em;
+	font-size: 12px;
+}
+
+.tcat a:link {
+	color: #efefef;
+}
+
+.tcat a:visited {
+	color: #efefef;
+}
+
+.tcat a:hover, .tcat a:active {
+	color: #499FED;
+}
+
+
+.trow1 {
+	background: #333333;
+}
+
+.trow2 {
+	background: #333333;
+}
+
+.trow_shaded {
+	background: #999999;
+            color: #000000;
+}
+
+.trow_sep {
+	background: #000000;
+	color: #cccccc;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.tfoot {
+	background: #072948;
+	color: #cccccc;
+}
+
+.tfoot a:link {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.tfoot a:visited {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.tfoot a:hover, .tfoot a:active {
+	color: #499FED;
+	text-decoration: none;
+}
+
+.bottommenu {
+	background: #333333;
+	color: #cccccc;
+	border: 1px solid #072948;
+	padding: 4px;
+	text-align: center;
+}
+
+.navigation {
+	color: #ccc;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.navigation a:link {
+	color: #ccc;
+	text-decoration: none;
+}
+
+.navigation a:visited {
+	color: #ccc;
+	text-decoration: none;
+}
+
+.navigation a:hover, .navigation a:active {
+	color: #499FED;
+	text-decoration: none;
+}
+
+.navigation .active {
+	color: #efefef;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.smalltext {
+	font-size: 12px;
+}
+
+.largetext {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+input.textbox {
+	background: #cccccc;
+	color: #000000;
+	border: 1px solid #0f5c8e;
+	padding: 1px;
+}
+
+textarea {
+	background: #cccccc;
+	color: #000000;
+	border: 1px solid #0f5c8e;
+	padding: 2px;
+	font-family: Verdana, Arial, Sans-Serif;
+	line-height: 1.4;
+	font-size: 14px;
+}
+
+select {
+	background: #cccccc;
+	border: 1px solid #072948;
+}
+
+.editor {
+	background: #f1f1f1;
+	border: 1px solid #ccc;
+}
+
+.editor_control_bar {
+	background: #cccccc;
+	border: 1px solid #072948;
+}
+
+.autocomplete {
+	background: #cccccc;
+	border: 1px solid #000;
+	color: black;
+}
+
+.autocomplete_selected {
+	background: #adcee7;
+	color: #000;
+}
+
+.popup_menu {
+	background: #0F5799;
+	border: 1px solid #333333;
+}
+
+.popup_menu .popup_item {
+	background: #0F5799;
+	color: #fff;
+}
+
+.popup_menu .popup_item:hover {
+	background: #0F5799;
+	color: #fff;
+}
+
+.trow_reputation_positive {
+	background: #333333;
+}
+
+.trow_reputation_neutral {
+	background: #333333;
+
+}
+
+.trow_reputation_negative {
+	background: #333333;
+
+}
+.reputation_positive {
+	color: #32CD32;
+}
+
+.reputation_neutral {
+	color: #666666;
+}
+
+.reputation_negative {
+	color: #CC3333;
+	font-weight:bold;
+}
+
+img {
+	border: none;
+}
+
+.clear {
+	clear: both;
+}
+
+.hidden {
+	display: none;
+	float: none;
+	width: 1%;
+}
+
+.float_left {
+	float: left;
+}
+
+.float_right {
+	float: right;
+}
+
+.menu ul {
+	list-style: none;
+	margin: 0;
+}
+
+.menu li {
+	display: inline;
+	padding-left: 5px;
+}
+
+.menu img {
+	padding-right: 5px;
+	vertical-align: top;
+}
+
+#panel .links {
+	margin: 0;
+	float: right;
+}
+
+.expcolimage {
+	float: right;
+	width: auto;
+	vertical-align: middle;
+	margin-top: 2px;
+}
+
+img.attachment {
+	border: 1px solid #E9E5D7;
+	padding: 2px;
+}
+
+hr {
+	background-color: #000000;
+	color: #000000;
+	height: 1px;
+	border: 0px;
+}
+
+#copyright {
+	font: 11px Verdana, Arial, Sans-Serif;
+	margin: 0;
+	padding: 10px 0 0 0;
+}
+
+#debug {
+	float: right;
+	text-align: right;
+	margin-top: 0;
+}
+
+.subforumicon {
+	border: 0;
+	vertical-align: middle;
+}
+
+.separator {
+	margin: 5px;
+	padding: 0;
+	height: 0px;
+	font-size: 1px;
+	list-style-type: none;
+}
+
+form {
+	margin: 0;
+	padding: 0;
+}
+
+.popup_menu .popup_item_container {
+	margin: 1px;
+	text-align: left;
+}
+
+.popup_menu .popup_item {
+	display: block;
+	padding: 3px;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.popup_menu a.popup_item:hover {
+	text-decoration: none;
+}
+
+.autocomplete {
+	text-align: left;
+}
+
+.logo {
+	text-align: center;
+              padding-bottom: 5px;
+}
+
+.trow_selected td {
+	background: #999999;
+            color: #000000;
+}
+
+blockquote {
+	border: 1px dashed #ccc;
+            color: #ccc;
+	margin: 0;
+	background: #777777;
+	padding: 4px;
+}
+
+blockquote cite {
+	font-weight: bold;
+	border-bottom: 1px dashed #ccc;
+	font-style: normal;
+	display: block;
+	margin: 4px 0;
+}
+
+blockquote cite span {
+	float: right;
+	font-weight: normal;
+}
+
+.codeblock {
+	border: 1px dashed #ccc;
+            color: #ccc;
+	margin: 0;
+	background: #777777;
+	padding: 4px;
+}
+
+.codeblock .title {
+	border-bottom: 1px solid #ccc;
+	font-weight: bold;
+	margin: 4px 0;
+}
+
+.codeblock code {
+	overflow: auto;
+	height: auto;
+	max-height: 200px;
+	display: block;
+	font-family: Monaco, Consolas, Courier, monospace;
+	font-size: 14px;
+}
+
+.subject_new, a.subject_new {
+	color: #cccccc;
+	font-weight: bold;
+}
+
+a.subject_new:hover {
+	color: #499FED;
+}
+
+.highlight {
+	border: 1px solid #FF00FF;
+	padding: 2px;
+}
+
+.pm_alert {
+	background: #333333;
+	border-top: 1px solid #499FED;
+	border-bottom: 1px solid #499FED;
+	text-align: center;
+	padding: 5px 20px;
+	font-size: 13px;
+	margin-bottom: 15px;
+}
+
+.red_alert {
+	background: #FBE3E4;
+	color: #A5161A;
+	padding: 5px 20px;
+	border: 1px solid #A5161A;
+	text-align: center;
+	font-size: 13px;
+	margin-bottom: 15px;
+}
+
+.high_warning {
+	color: #F3611B;
+}
+
+.moderate_warning {
+	color: #CC0000;
+}
+
+.low_warning {
+	color: #FF0000;
+}
+
+div.error {
+	padding: 5px 10px;
+	border-top: 2px solid #00ff00;
+	border-bottom: 2px solid #00ff00;
+	background: #777777;
+            color: #00ff00;
+	font-size: 14px;
+}
+
+div.error p {
+	margin: 0;
+	color: #00ff00;
+	font-weight: normal;
+}
+
+div.error p em {
+	font-style: normal;
+	font-weight: bold;
+	padding-left: 24px;
+	display: block;
+	color: #00ff00;
+	background: url(http://www.hackforums.net/images/error.gif) no-repeat 0;
+}
+
+div.error.ul {
+	margin-left: 24px;
+}
+
+.online {
+	color: #00FF00;
+}
+
+.offline {
+	color: #666666;
+}
+
+.pagination {
+	font-size: 13px;
+	padding-top: 10px;
+	margin-bottom: 5px;
+}
+
+.tfoot .pagination, .tcat .pagination {
+	padding-top: 0;
+}
+
+.pagination .pages {
+	font-weight: bold;
+}
+
+.pagination .pagination_current, .pagination a {
+	padding: 2px 6px;
+	margin-bottom: 3px;
+}
+
+.pagination a {
+	border: 1px solid #292929;
+               background-color: #072948;
+}
+
+.pagination .pagination_current {
+	background: #0F5799;
+	font-weight: bold;
+}
+
+.pagination a:hover {
+	background: #0F5799;
+	color: #499FED;
+	text-decoration: none;
+}
+
+.thread_legend, .thread_legend dd {
+	margin: 0;
+	padding: 0;
+}
+
+.thread_legend dd {
+	padding-bottom: 4px;
+	margin-right: 15px;
+}
+
+.thread_legend img {
+	margin-right: 4px;
+	vertical-align: bottom;
+}
+
+.forum_legend, .forum_legend dt, .forum_legend dd {
+	margin: 0;
+	padding: 0;
+}
+
+.forum_legend dd {
+	float: left;
+	margin-right: 10px;
+}
+
+.forum_legend dt {
+	margin-right: 10px;
+	float: left;
+}
+
+.success_message {
+	color: #00b200;
+	font-weight: bold;
+	font-size: 12px;
+	margin-bottom: 10px;
+}
+
+.error_message {
+	color: #C00;
+	font-weight: bold;
+	font-size: 12px;
+	margin-bottom: 10px;
+}
+
+.post_body {
+	padding: 5px;
+}
+
+.post_content {
+	padding: 5px 10px;
+}
+
+.invalid_field {
+	border: 1px solid #f30;
+	color: #f30;
+}
+
+.valid_field {
+	border: 1px solid #0c0;
+}
+
+.validation_error {
+	background: url(http://www.hackforums.net/images/modern_bl/invalid.gif) no-repeat center left;
+	color: #f30;
+	margin: 5px 0;
+	padding: 5px;
+	font-weight: bold;
+	font-size: 13px;
+	padding-left: 22px;
+}
+
+.validation_success {
+	background: url(http://www.hackforums.net/images/modern_bl/valid.gif) no-repeat center left;
+	color: #00b200;
+	margin: 5px 0;
+	padding: 5px;
+	font-weight: bold;
+	font-size: 13px;
+	padding-left: 22px;
+}
+
+.validation_loading {
+	background: url(http://hackforums.net/images/modern_bl/spinner.gif) no-repeat center left;
+	color: #555555;
+	margin: 5px 0;
+	padding: 5px;
+	font-weight: bold;
+	font-size: 13px;
+	padding-left: 22px;
+}
+
+.quick_jump, a.quick_jump {
+	color: #0F5799;
+	text-decoration: none;
+	font-size: 18px;
+	width: 13px;
+	height: 13px;
+	padding-left: 3px; 
+	vertical-align: middle;
+	border: none;
+}
+
+#panel .remember_me input {
+	vertical-align: middle;
+	margin-top: -1px;
+}
+
+.hiddenrow {
+	display: none;
+}
+
+.selectall {
+	background-color: #000;
+	font-weight: bold;
+	text-align: center;
+}
+
+.repbox {
+	background-color: #393939;
+	font-size:17px;
+	font-weight: bold;
+	padding:5px 7px;
+}
+
+._neutral {
+	color: #666666;
+	border:1px solid #666666;
+}
+
+._minus {
+	color: #FF0000;
+	border:1px solid #FF0000;
+}
+
+._plus {
+	color: #00FF00;
+	border:1px solid #00FF00;
+}
+
+.pagination_breadcrumb {
+	background-color: #f5f5f5;
+	border: 1px solid #fff;
+	outline: 1px solid #ccc;
+	padding: 5px;
+	margin-top: 5px;
+	font-weight: normal;
+}
+
+.pagination_breadcrumb_link {
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+
+.author_buttons, .post_management_buttons {
+padding:2px 0;
+}
+
+.prefix {
+	color: #1683E4;
+	font-weight: bold;
+}
+
+.forumdisplay_regular:hover, .forumdisplay_sticky:hover {
+	background-color: #454545;
+}
+
+.group2 {
+	color: #efefef;
+	text-decoration: none;
+}
+
+.group3 {
+	color: #9999FF;
+	font-weight:bold;
+	text-decoration: none;
+}
+
+.group4 {
+	color: #FF66FF;
+	font-weight:bold;
+	text-decoration: none;
+}
+
+.group6 {
+	color: #AAAAFF;
+	font-weight:bold;
+	text-decoration: none;
+}
+
+.group7 {
+	color: #000;
+	text-decoration: none;
+}
+
+.group9 {
+	color: #99FF00;
+	text-decoration: none;
+}
+
+.group29 {
+	color: #00AAFF;
+           text-shadow: 0px 2px #000;
+	text-decoration: none;
+}
+
+.group0 {
+	color: #FFF;
+	text-decoration: none;
+}
+
+.group36 {
+	color: #efefef;
+	font-weight:bold;
+	text-shadow: 0px 2px 3px #000;
+	text-decoration: none;
+}
+
+
+.userstars {
+	background: #333333 url(http://www.hackforums.net/images/modern_bl/star_bg.png) left no-repeat;
+display:block;
+width: 122px;
+height: 14px
+}
+
+.repvote {
+list-style:none;
+margin:0;
+padding:2px;
+}
+
+.repvoteleft {
+float: left;
+width: 180px;
+display:inline;
+}
+
+.repvotemid {
+float: left;
+width: 60%;
+display:inline;
+}
+
+.repvoteright {
+float: right;
+width: 200px;
+text-align:right;
+display:inline;
+}
+
+.button {
+	color: #efefef;
+	background-color: #072948;
+	border: 1px solid #000 !important;
+	box-shadow: 0 1px 0 0 #0F5799 inset !important;
+           -moz-border-radius: 3px;
+           border-radius: 3px;
+	padding: 3px 6px;
+	text-shadow: 1px 1px 0px #000;
+	text-decoration: none;
+	font-family: arial;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.button:hover {
+	color: #499FED;
+	text-decoration:none;
+}
+
+
+.bitButton {
+	color: #efefef;
+	background-color: #072948;
+	border: 1px solid #000 !important;
+	box-shadow: 0 1px 0 0 #0F5799 inset !important;
+	padding: 3px 6px;
+           -moz-border-radius: 3px;
+           border-radius: 3px;
+	text-shadow: 1px 1px 0px #000;
+	text-decoration: none;
+	font-family: arial;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.bitButton:hover {
+	color: #499FED;
+	text-decoration:none;
+}
+
+
+.navButton {
+	color: #efefef;
+	padding: 1px 4px;
+	text-shadow: 1px 1px 0px #000;
+	text-decoration: none;
+	font-family: verdana;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.navButton:hover {
+	color: #499FED;
+	border-top: 1px solid #499FED;
+              background: #0F5799;
+	text-decoration:none;
+}
+
+/* Use a find and replace to change the amount of border-radius you want to use */
+thead tr:only-child td:first-child,
+ tr:first-child td:first-child {
+     -moz-border-radius:5px 0 0 0;
+     border-radius:5px 0 0 0;
+}
+
+thead tr:only-child td:last-child,
+ tr:first-child td:last-child {
+     -moz-border-radius:0 5px 0 0;
+     border-radius:0 5px 0 0;
+}
+
+tr:last-child td:last-child {
+     -moz-border-radius:0 0 5px 0;
+     border-radius:0 0 5px 0;
+}
+
+tr:last-child td:first-child {
+     -moz-border-radius:0 0 0 5px;
+     border-radius:0 0 0 5px;
+}
+
+tr:only-child td:first-child {
+     -moz-border-radius:5px 0 0 5px;
+     border-radius:5px 0 0 5px;
+}
+
+tr:only-child td:last-child {
+     -moz-border-radius:0 5px 5px 0;
+     border-radius:0 5px 5px 0;
+}
+
+.tborder,
+ tr:only-child td:only-child {
+     -moz-border-radius:5px;
+     border-radius:5px;
+}
+
+tr:last-child td:only-child,
+ thead ~ tbody tr:only-child td,
+ #posts .tborder[style*="border-top-width"],
+ .tborder[style*="border-top-width"],
+ .tborder[style*="border-top-width"] tbody tr td.tfoot {
+     -moz-border-radius:0 0 5px 5px;
+     border-radius:0 0 5px 5px;
+}
+
+tr:first-child td:only-child,
+ thead tr:only-child td:only-child,
+ .tborder[style*="border-bottom-width"],
+ .tborder[style*="border-bottom-width"] tbody tr td,
+ #posts .tborder[style*="top: 5"]:last-child {
+     -moz-border-radius:5px 5px 0 0;
+     border-radius:5px 5px 0 0;
+}
+
+thead ~ tbody tr:first-child td:only-child,
+ thead ~ tbody tr:first-child td:first-child,
+ thead ~ tbody tr:first-child td:last-child,
+ #posts .tborder[style*="border-top-width"] tbody tr:first-child td:only-child,
+ #posts .tborder[style*="top: 5"] tbody tr:last-child td:only-child {
+     -moz-border-radius:0;
+     border-radius:0;
+}
+		

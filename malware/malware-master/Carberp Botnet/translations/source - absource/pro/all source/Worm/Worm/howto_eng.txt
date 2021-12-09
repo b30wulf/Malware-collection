@@ -1,0 +1,18 @@
+
+Compilation :
+	z d	
+	z z
+
+More details.
+
+Compiler - LCC-win32, install in C:\LCC.
+
+Compilation scripts - 2 batch files :
+z.bat and _infect1\!doexe.bat.
+
+Main settings :
+
+in kkqvx.h :
+	#define dbgdbg - debug mode
+
+in z.bat :

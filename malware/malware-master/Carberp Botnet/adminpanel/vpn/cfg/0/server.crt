@@ -1,0 +1,96 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 1 (0x1)
+        Signature Algorithm: sha1WithRSAEncryption
+        Issuer: C=XX, ST=XX, L=XX, O=VPNSERVER, OU=176099797, CN=VPNSERVER CA/name=XX/emailAddress=mail@host.domain
+        Validity
+            Not Before: Nov 28 15:22:18 2011 GMT
+            Not After : Nov 25 15:22:18 2021 GMT
+        Subject: C=XX, ST=XX, L=XX, O=VPNSERVER, OU=176099797, CN=server/name=XX/emailAddress=mail@host.domain
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:b8:84:b4:60:cd:5a:48:73:0f:74:24:6c:32:b8:
+                    5d:97:65:a6:a1:00:b0:8e:be:af:57:73:27:60:b3:
+                    19:30:d1:04:59:62:90:58:df:16:e0:7a:4f:85:b0:
+                    26:e5:4b:12:4f:2e:a6:66:47:d4:2a:20:cd:94:4e:
+                    56:b2:bc:44:1a:fb:26:50:2b:37:ce:a7:92:6f:a7:
+                    87:bb:53:be:01:40:35:0d:74:e8:7a:71:28:68:59:
+                    3f:15:bc:68:17:b6:1b:41:11:17:37:56:04:bf:91:
+                    fe:bf:d9:85:61:a5:c2:be:0b:b6:d8:45:c9:20:2c:
+                    8b:70:49:61:ea:9d:ed:7a:73:03:a0:fd:59:66:70:
+                    fc:a5:5a:d0:58:bb:d8:22:5f:04:a5:d3:7a:a9:8f:
+                    d4:04:20:d4:a0:76:3f:9e:14:1a:6a:12:2a:fd:66:
+                    b9:b0:9c:1f:35:ad:64:c2:50:2a:06:c1:b4:55:e4:
+                    02:34:02:23:7d:03:7a:12:a4:67:32:7e:2b:9d:62:
+                    20:9b:92:0d:7b:ba:df:75:65:72:81:58:e3:11:f1:
+                    c7:3a:c9:f6:7f:ea:00:6a:f3:8f:18:11:5e:61:1e:
+                    e7:fc:a8:c8:65:82:cd:3b:46:e4:6d:be:54:6f:f7:
+                    4c:a4:20:65:ee:8d:2e:43:25:4b:0b:eb:97:46:42:
+                    8d:49
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints: 
+                CA:FALSE
+            Netscape Cert Type: 
+                SSL Server
+            Netscape Comment: 
+                Easy-RSA Generated Server Certificate
+            X509v3 Subject Key Identifier: 
+                A7:00:66:3B:6E:8A:82:CC:CE:55:70:89:7F:73:9E:FE:32:3A:0C:61
+            X509v3 Authority Key Identifier: 
+                keyid:46:37:60:E5:DC:91:DA:5B:E2:34:D6:F7:A7:8E:A4:C9:EC:8D:62:1C
+                DirName:/C=XX/ST=XX/L=XX/O=VPNSERVER/OU=176099797/CN=VPNSERVER CA/name=XX/emailAddress=mail@host.domain
+                serial:85:4D:EC:87:33:51:7B:A3
+
+            X509v3 Extended Key Usage: 
+                TLS Web Server Authentication
+            X509v3 Key Usage: 
+                Digital Signature, Key Encipherment
+    Signature Algorithm: sha1WithRSAEncryption
+        95:b6:53:5e:92:4d:cc:31:22:ee:71:6b:93:35:a5:d3:c8:40:
+        74:9c:1e:ae:2d:79:25:a1:b7:c1:01:23:0d:fa:1c:69:c4:1f:
+        47:0b:08:78:bf:b8:fb:02:d2:62:71:6f:ca:6f:03:d5:3e:2f:
+        6c:07:b4:4c:75:4d:90:fd:2a:f8:48:ae:d4:b2:02:94:a1:28:
+        4d:f4:36:f1:25:38:a0:ee:50:89:de:11:40:60:02:81:19:7f:
+        ce:7c:8d:45:a9:fa:26:b2:41:ab:7a:f6:4b:a7:46:75:3e:0c:
+        ed:ae:e3:d9:59:9c:bc:7e:de:97:72:d2:6f:0b:75:85:b0:b9:
+        2e:e7:45:8a:c8:f5:b8:69:7e:9b:ae:8d:b7:8c:16:ff:e0:ee:
+        20:4b:91:a2:4c:46:4b:58:7c:73:3d:3a:ad:79:88:15:d5:21:
+        b1:23:11:83:58:89:c2:15:65:90:b1:87:85:d3:32:7e:90:06:
+        da:50:6e:51:06:9b:de:42:eb:ea:cd:43:9b:c6:46:ca:2c:35:
+        74:d9:dc:a6:be:b3:94:ce:08:32:de:26:cb:8f:df:90:6d:bd:
+        ac:11:84:e4:b5:75:87:b0:81:44:29:af:24:00:92:00:ed:d0:
+        3d:91:f7:56:12:36:53:ca:45:ae:0d:4e:39:42:93:71:97:4b:
+        59:87:b1:49
+-----BEGIN CERTIFICATE-----
+MIIFBjCCA+6gAwIBAgIBATANBgkqhkiG9w0BAQUFADCBlDELMAkGA1UEBhMCWFgx
+CzAJBgNVBAgTAlhYMQswCQYDVQQHEwJYWDESMBAGA1UEChMJVlBOU0VSVkVSMRIw
+EAYDVQQLEwkxNzYwOTk3OTcxFTATBgNVBAMTDFZQTlNFUlZFUiBDQTELMAkGA1UE
+KRMCWFgxHzAdBgkqhkiG9w0BCQEWEG1haWxAaG9zdC5kb21haW4wHhcNMTExMTI4
+MTUyMjE4WhcNMjExMTI1MTUyMjE4WjCBjjELMAkGA1UEBhMCWFgxCzAJBgNVBAgT
+AlhYMQswCQYDVQQHEwJYWDESMBAGA1UEChMJVlBOU0VSVkVSMRIwEAYDVQQLEwkx
+NzYwOTk3OTcxDzANBgNVBAMTBnNlcnZlcjELMAkGA1UEKRMCWFgxHzAdBgkqhkiG
+9w0BCQEWEG1haWxAaG9zdC5kb21haW4wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw
+ggEKAoIBAQC4hLRgzVpIcw90JGwyuF2XZaahALCOvq9Xcydgsxkw0QRZYpBY3xbg
+ek+FsCblSxJPLqZmR9QqIM2UTlayvEQa+yZQKzfOp5Jvp4e7U74BQDUNdOh6cSho
+WT8VvGgXthtBERc3VgS/kf6/2YVhpcK+C7bYRckgLItwSWHqne16cwOg/VlmcPyl
+WtBYu9giXwSl03qpj9QEINSgdj+eFBpqEir9ZrmwnB81rWTCUCoGwbRV5AI0AiN9
+A3oSpGcyfiudYiCbkg17ut91ZXKBWOMR8cc6yfZ/6gBq848YEV5hHuf8qMhlgs07
+RuRtvlRv90ykIGXujS5DJUsL65dGQo1JAgMBAAGjggFlMIIBYTAJBgNVHRMEAjAA
+MBEGCWCGSAGG+EIBAQQEAwIGQDA0BglghkgBhvhCAQ0EJxYlRWFzeS1SU0EgR2Vu
+ZXJhdGVkIFNlcnZlciBDZXJ0aWZpY2F0ZTAdBgNVHQ4EFgQUpwBmO26KgszOVXCJ
+f3Oe/jI6DGEwgckGA1UdIwSBwTCBvoAURjdg5dyR2lviNNb3p46kyeyNYhyhgZqk
+gZcwgZQxCzAJBgNVBAYTAlhYMQswCQYDVQQIEwJYWDELMAkGA1UEBxMCWFgxEjAQ
+BgNVBAoTCVZQTlNFUlZFUjESMBAGA1UECxMJMTc2MDk5Nzk3MRUwEwYDVQQDEwxW
+UE5TRVJWRVIgQ0ExCzAJBgNVBCkTAlhYMR8wHQYJKoZIhvcNAQkBFhBtYWlsQGhv
+c3QuZG9tYWluggkAhU3shzNRe6MwEwYDVR0lBAwwCgYIKwYBBQUHAwEwCwYDVR0P
+BAQDAgWgMA0GCSqGSIb3DQEBBQUAA4IBAQCVtlNekk3MMSLucWuTNaXTyEB0nB6u
+LXklobfBASMN+hxpxB9HCwh4v7j7AtJicW/KbwPVPi9sB7RMdU2Q/Sr4SK7UsgKU
+oShN9DbxJTig7lCJ3hFAYAKBGX/OfI1FqfomskGrevZLp0Z1PgztruPZWZy8ft6X
+ctJvC3WFsLku50WKyPW4aX6bro23jBb/4O4gS5GiTEZLWHxzPTqteYgV1SGxIxGD
+WInCFWWQsYeF0zJ+kAbaUG5RBpveQuvqzUObxkbKLDV02dymvrOUzggy3ibLj9+Q
+bb2sEYTktXWHsIFEKa8kAJIA7dA9kfdWEjZTykWuDU45QpNxl0tZh7FJ
+-----END CERTIFICATE-----

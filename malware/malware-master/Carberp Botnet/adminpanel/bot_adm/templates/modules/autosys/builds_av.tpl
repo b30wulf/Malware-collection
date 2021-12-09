@@ -1,0 +1,1 @@
+<textarea style="width:99%; height:100%; min-height: 400px" readonly="readonly">{$text}</textarea>

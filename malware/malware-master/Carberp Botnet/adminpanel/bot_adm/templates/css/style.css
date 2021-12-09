@@ -1,0 +1,268 @@
+@charset "utf-8";
+
+html, body {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	margin: 0;
+	padding: 0;
+	background-color: #7d7e7d;
+	background-image: url("/images/background.png");
+	background-position: top left;
+	background-repeat: repeat-x;
+	min-width: 999px;
+}
+
+a{
+	color: #00F;
+	text-decoration: none;
+	cursor:pointer;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+img {
+	border: 0px;
+}
+
+#all {
+	margin: auto;
+	width: 999px;
+}
+
+#logo {
+	height: 110px;
+	display: block;
+	position: relative;
+	font-size: 11px;
+}
+
+#logo a{
+	color: #EFEFEF;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+#logo a:hover{
+	font-weight: bold;
+	text-decoration: none;
+}
+
+
+#account_top {
+	color: #FFF;
+	position: absolute;
+	right: 120px;
+	top: 20px;
+	width: 180px;
+	vertical-align: top;
+}
+
+#account_avatar {
+	position: absolute;
+	right: 20px;
+	top: 5px;
+	width: 100px;
+	height: 100px;
+	border: 1px #000 solid;
+}
+
+.account_autorize {
+	height: 15px;
+	vertical-align: middle;
+	background-image: url("/images/bg_autorize.jpg");
+	background-position: top left;
+	background-repeat: repeat-x;
+	border: #000 solid 1px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#login {
+	width: 95px;
+	padding-left: 5px;
+}
+
+#pass {
+	width: 95px;
+	padding-left: 5px;
+}
+
+#submit_autorize {
+	font-family: Arial, Helvetica, sans-serif;
+	border: #000 solid 1px;
+	width: 101px;
+}
+
+#menu {
+	height: 20px;
+	display: block;
+	position: relative;
+	background-color: #f5edbe;
+	border: #000 solid 1px;
+	margin: 0px;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 0px;
+}
+
+#menu a{
+	line-height: 20px;
+	font-weight: bold;
+	text-decoration: none;
+	padding-right: 8px;
+	padding-left: 8px;
+	color: #000;
+	height: 20px;
+	display: inline-block;
+	border-left: #f5edbe 1px solid;
+	border-right: #f5edbe 1px solid;
+}
+
+#menu a:hover{
+	font-weight: bold;
+	background-color: #f2ed99;
+	border-left: #000 1px solid;
+	border-right: #000 1px solid;
+}
+
+#menu_account {
+	display: inline-block;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+
+#position {
+	height: 20px;
+	line-height: 20px;
+	display: block;
+	margin: 0px;
+	margin-left: 15px;
+	margin-right: 10px;
+	padding: 0px;
+	color: #CCC;
+	font-size: 10px;
+	position:relative;
+}
+
+#position a {
+	color: #CCC;
+	text-decoration: none;
+}
+
+#content {
+	height: auto;
+	background-color: #FFF;
+	border: #000 solid 1px;
+	padding: 10px;
+	position: relative;
+	min-height: 50px;
+	display:block;
+	clear:both;
+}
+
+#banner {
+	text-align: center;
+	position:relative;
+}
+
+#fullajax {
+	position: absolute;
+	right: 2px;
+	top: -79px;
+}
+
+#banner_line {
+	opacity: 0.5;
+}
+
+#footer {
+	text-align: center;
+	position: relative;
+}
+
+hr{
+	border:0;
+	border-top:1px dotted #ccc;
+	height:1px;
+}
+
+h1 {
+	font-size:210%;
+	color:#333;
+}
+
+h2 {
+	color:#556;
+	font-size:
+	160%;
+}
+
+h3 {
+	margin-top:0;
+	font-size:114%;
+	color:#F18523;
+	font-style:italic;
+}
+
+.left {
+	position: absolute;
+	left: 10px;
+}
+
+.right {
+	position: absolute;
+	right: 10px;
+}
+
+
+input {
+	border: 1px #333 solid;
+}
+
+.bg1 { background-color: #fff; }
+.bg2 { background-color: #efefef; }
+.bg3 { background-color: #253338; color: #FFF }
+.bg4 { background-color: #eef2f8; }
+
+.bg1 th { padding: 5px; }
+.bg2 th { padding: 5px; }
+.bg3 th { padding: 5px; }
+.bg4 th { padding: 5px; }
+
+#bg4 { background-color: #eef2f8; }
+
+.bgp1 { background-color: #fff;  }
+.bgp2 {	background-color: #efefef; }
+.bgp3 { background-color: #253338; color: #FFF }
+.bgp4 {	background-color: #eef2f8; }
+
+.bgp1 td { border-top: 1px solid #CCC }
+.bgp2 td { border-top: 1px solid #CCC }
+
+.bgp1 th { padding: 5px; border-top: 1px solid #CCC }
+.bgp2 th { padding: 5px; border-top: 1px solid #CCC }
+.bgp3 th { padding: 5px; border-top: 1px solid #CCC }
+.bgp4 th { padding: 5px; border-top: 1px solid #CCC }
+
+#noscript {
+	position:fixed;
+	z-index:1;
+	text-align: center;
+	font-size:18px;
+	font-weight:bold;
+	color:#F00;
+	width: 100%;
+	height:100%;
+	padding-top: 100px;
+	background-color: #7190aa;
+	background-image: url("/images/background.jpg");
+	background-position: top left;
+	background-repeat: repeat-x;
+}

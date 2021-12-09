@@ -1,0 +1,104 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "minirtl", "minirtl", "{ED3257FC-CB8E-4406-8BCE-F3E5500B41F8}"
+	ProjectSection(SolutionItems) = preProject
+		minirtl\_filename.c = minirtl\_filename.c
+		minirtl\_filename.h = minirtl\_filename.h
+		minirtl\_strcat.c = minirtl\_strcat.c
+		minirtl\_strcmp.c = minirtl\_strcmp.c
+		minirtl\_strcmpi.c = minirtl\_strcmpi.c
+		minirtl\_strcpy.c = minirtl\_strcpy.c
+		minirtl\_strend.c = minirtl\_strend.c
+		minirtl\_strlen.c = minirtl\_strlen.c
+		minirtl\_strncmp.c = minirtl\_strncmp.c
+		minirtl\_strncmpi.c = minirtl\_strncmpi.c
+		minirtl\_strncpy.c = minirtl\_strncpy.c
+		minirtl\_strstr.c = minirtl\_strstr.c
+		minirtl\_strstri.c = minirtl\_strstri.c
+		minirtl\cmdline.c = minirtl\cmdline.c
+		..\minirtl\cmdline.h = ..\minirtl\cmdline.h
+		minirtl\cmdline.h = minirtl\cmdline.h
+		minirtl\hextou64.c = minirtl\hextou64.c
+		minirtl\hextoul.c = minirtl\hextoul.c
+		minirtl\i64tostr.c = minirtl\i64tostr.c
+		minirtl\itostr.c = minirtl\itostr.c
+		..\minirtl\minirtl.h = ..\minirtl\minirtl.h
+		minirtl\minirtl.h = minirtl\minirtl.h
+		..\minirtl\rtltypes.h = ..\minirtl\rtltypes.h
+		minirtl\rtltypes.h = minirtl\rtltypes.h
+		minirtl\strtoi.c = minirtl\strtoi.c
+		minirtl\strtoi64.c = minirtl\strtoi64.c
+		minirtl\strtou64.c = minirtl\strtou64.c
+		minirtl\strtoul.c = minirtl\strtoul.c
+		minirtl\u64tohex.c = minirtl\u64tohex.c
+		minirtl\u64tostr.c = minirtl\u64tostr.c
+		minirtl\ultohex.c = minirtl\ultohex.c
+		minirtl\ultostr.c = minirtl\ultostr.c
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Umikaze", "Umikaze\Umikaze.vcxproj", "{06E37BF4-003C-43F6-B0D5-6B9DAE05D4F7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shigure", "Shigure\Shigure.vcxproj", "{77AD1A3E-BA02-4376-976D-BA356F98F32F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Harusame", "Harusame\Harusame.vcxproj", "{169C0A78-64AD-4862-A6B6-17E7A3CA9AE3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Yuudachi", "Yuudachi\Yuudachi.vcxproj", "{14358883-8E74-44F5-BCC4-C32D41A3A662}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Murasame", "Murasame\Murasame.vcxproj", "{37B4EC5C-3DEA-49A2-9461-DD33E7D55ED6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06E37BF4-003C-43F6-B0D5-6B9DAE05D4F7}.Debug|x64.ActiveCfg = Debug|x64
+		{06E37BF4-003C-43F6-B0D5-6B9DAE05D4F7}.Debug|x64.Build.0 = Debug|x64
+		{06E37BF4-003C-43F6-B0D5-6B9DAE05D4F7}.Debug|x86.ActiveCfg = Debug|Win32
+		{06E37BF4-003C-43F6-B0D5-6B9DAE05D4F7}.Debug|x86.Build.0 = Debug|Win32
+		{06E37BF4-003C-43F6-B0D5-6B9DAE05D4F7}.Release|x64.ActiveCfg = Release|x64
+		{06E37BF4-003C-43F6-B0D5-6B9DAE05D4F7}.Release|x64.Build.0 = Release|x64
+		{06E37BF4-003C-43F6-B0D5-6B9DAE05D4F7}.Release|x86.ActiveCfg = Release|Win32
+		{06E37BF4-003C-43F6-B0D5-6B9DAE05D4F7}.Release|x86.Build.0 = Release|Win32
+		{77AD1A3E-BA02-4376-976D-BA356F98F32F}.Debug|x64.ActiveCfg = Debug|x64
+		{77AD1A3E-BA02-4376-976D-BA356F98F32F}.Debug|x64.Build.0 = Debug|x64
+		{77AD1A3E-BA02-4376-976D-BA356F98F32F}.Debug|x86.ActiveCfg = Debug|Win32
+		{77AD1A3E-BA02-4376-976D-BA356F98F32F}.Debug|x86.Build.0 = Debug|Win32
+		{77AD1A3E-BA02-4376-976D-BA356F98F32F}.Release|x64.ActiveCfg = Release|x64
+		{77AD1A3E-BA02-4376-976D-BA356F98F32F}.Release|x64.Build.0 = Release|x64
+		{77AD1A3E-BA02-4376-976D-BA356F98F32F}.Release|x86.ActiveCfg = Release|Win32
+		{77AD1A3E-BA02-4376-976D-BA356F98F32F}.Release|x86.Build.0 = Release|Win32
+		{169C0A78-64AD-4862-A6B6-17E7A3CA9AE3}.Debug|x64.ActiveCfg = Debug|x64
+		{169C0A78-64AD-4862-A6B6-17E7A3CA9AE3}.Debug|x64.Build.0 = Debug|x64
+		{169C0A78-64AD-4862-A6B6-17E7A3CA9AE3}.Debug|x86.ActiveCfg = Debug|Win32
+		{169C0A78-64AD-4862-A6B6-17E7A3CA9AE3}.Debug|x86.Build.0 = Debug|Win32
+		{169C0A78-64AD-4862-A6B6-17E7A3CA9AE3}.Release|x64.ActiveCfg = Release|x64
+		{169C0A78-64AD-4862-A6B6-17E7A3CA9AE3}.Release|x64.Build.0 = Release|x64
+		{169C0A78-64AD-4862-A6B6-17E7A3CA9AE3}.Release|x86.ActiveCfg = Release|Win32
+		{169C0A78-64AD-4862-A6B6-17E7A3CA9AE3}.Release|x86.Build.0 = Release|Win32
+		{14358883-8E74-44F5-BCC4-C32D41A3A662}.Debug|x64.ActiveCfg = Debug|x64
+		{14358883-8E74-44F5-BCC4-C32D41A3A662}.Debug|x64.Build.0 = Debug|x64
+		{14358883-8E74-44F5-BCC4-C32D41A3A662}.Debug|x86.ActiveCfg = Debug|Win32
+		{14358883-8E74-44F5-BCC4-C32D41A3A662}.Debug|x86.Build.0 = Debug|Win32
+		{14358883-8E74-44F5-BCC4-C32D41A3A662}.Release|x64.ActiveCfg = Release|x64
+		{14358883-8E74-44F5-BCC4-C32D41A3A662}.Release|x64.Build.0 = Release|x64
+		{14358883-8E74-44F5-BCC4-C32D41A3A662}.Release|x86.ActiveCfg = Release|Win32
+		{14358883-8E74-44F5-BCC4-C32D41A3A662}.Release|x86.Build.0 = Release|Win32
+		{37B4EC5C-3DEA-49A2-9461-DD33E7D55ED6}.Debug|x64.ActiveCfg = Debug|x64
+		{37B4EC5C-3DEA-49A2-9461-DD33E7D55ED6}.Debug|x64.Build.0 = Debug|x64
+		{37B4EC5C-3DEA-49A2-9461-DD33E7D55ED6}.Debug|x86.ActiveCfg = Debug|Win32
+		{37B4EC5C-3DEA-49A2-9461-DD33E7D55ED6}.Debug|x86.Build.0 = Debug|Win32
+		{37B4EC5C-3DEA-49A2-9461-DD33E7D55ED6}.Release|x64.ActiveCfg = Release|x64
+		{37B4EC5C-3DEA-49A2-9461-DD33E7D55ED6}.Release|x64.Build.0 = Release|x64
+		{37B4EC5C-3DEA-49A2-9461-DD33E7D55ED6}.Release|x86.ActiveCfg = Release|Win32
+		{37B4EC5C-3DEA-49A2-9461-DD33E7D55ED6}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

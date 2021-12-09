@@ -1,0 +1,14 @@
+#!/bin/bash
+
+iptables -F -t nat
+iptables -F -t mangle
+iptables -F
+
+ip ro flush table 100
+ip ru del fwmark 100
+
+iptables -A POSTROUTING -t nat -o tun0 -j MASQUERADE
+iptables -A POSTROUTING -t nat -s {NIP}/255.255.255.0 -o eth0 -j MASQUERADE
+
+ip rule add from {IP} table
+ip route add table 100 via {IP} dev eth0

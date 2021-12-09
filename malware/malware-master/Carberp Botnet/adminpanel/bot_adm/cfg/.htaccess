@@ -1,0 +1,4 @@
+<Files "*.plug">
+ Order allow,deny
+ Deny from all
+</Files>

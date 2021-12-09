@@ -1,0 +1,19 @@
+message FileTransferInfo          // 自定义（大）文件传输协议
+{
+  enum Command {
+	A_NONE = 0x0;
+    A_HEAD = 0xa;
+    A_BODY = 0xb;
+    A_TAIL = 0xc;
+    A_OK   = 0xd;
+  }
+  required string clientid = 1;   // 客户端ID，唯一标识
+  required string fileid = 2;     // 文件ID，唯一标识
+  required Command cmd = 3;       // 文件命令类型
+  optional int32 crc = 4;         // CRC校验
+  optional int64 offset = 5;      // 文件偏移量
+  optional string name = 6;       // 文件名称
+  optional int64 size = 7;        // 文件大小
+  optional bytes data = 8;        // 文件块数据
+  optional int32 len = 9;         // 文件块大小  （压缩前）
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>supercharge - BOT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', filename='cp.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="barnav">
+            <a class="active" href="cp"><img src="{{ url_for('static', filename='supercharge.png') }}" width="90px" height="70px"></a>
+            <a  href="bots"><i class="fa fa-fw fa-user"></i> BOTS</a>
+            <a href="settings"><i class="fa fa-cogs"></i> Settings</a>
+            <a href="about"><i class="fa fa-question"></i> About</a>
+      </div>
+    <br><br>
+    <div class="info"> 
+        <img src="{{ url_for('static', filename='windowsxp.png') }}" width="150px" height="150px">
+        <h1>{{ botname }}</h1>
+        <p>
+            {% for i in info %}
+                {{ i }}<br><br>
+            {% endfor %}
+        </p>
+    </div>
+</body>
+</html>

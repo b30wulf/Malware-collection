@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="源文件\资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="base64">
+      <UniqueIdentifier>{3074df7b-e84e-4af2-8857-da231035ffb8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\packet.nsi" />
+    <None Include="res\rc_nsi2.bin">
+      <Filter>源文件\资源文件</Filter>
+    </None>
+    <None Include="res\bin1231.bin">
+      <Filter>源文件\资源文件</Filter>
+    </None>
+    <None Include="res\RsTray.exe" />
+    <None Include="res\comserv.dll" />
+    <None Include="res\rc_nsi3.bin">
+      <Filter>源文件\资源文件</Filter>
+    </None>
+    <None Include="res\RsTray.bin">
+      <Filter>源文件\资源文件</Filter>
+    </None>
+    <None Include="res\comserv.bin">
+      <Filter>源文件\资源文件</Filter>
+    </None>
+    <None Include="res\Generator.ico">
+      <Filter>源文件\资源文件</Filter>
+    </None>
+    <None Include="res\Generator.rc2">
+      <Filter>源文件\资源文件</Filter>
+    </None>
+    <None Include="res\Generate_bin.ico">
+      <Filter>源文件\资源文件</Filter>
+    </None>
+    <None Include="res\passUac.nsi" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pub\ConfigInfo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratorDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Generator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Generator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratorDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Generator.rc">
+      <Filter>源文件\资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

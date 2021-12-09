@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>supercharge - Server</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', filename='cp.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="barnav">
+        <a class="active" href="cp"><img src="{{ url_for('static', filename='supercharge.png') }}" width="90px" height="70px"></a>
+        <a href="bots"><i class="fa fa-fw fa-user"></i> BOTS</a>
+        <a href="settings"><i class="fa fa-cogs"></i> Settings</a>
+      </div>
+    <br><br>
+    <div class="box"> 
+        <h1><i class="fa fa-terminal"></i> Change Host and Port</h1>
+        <form action="changesuccess" method="POST">
+            <div class="box">
+                <p>
+                    <strong>Host : </strong> <input type="text" name="newhost" class="inputs"><br><br><br>
+                    <strong>Port : </strong> <input type="text" name="newport" class="inputs"><br><br><br>
+                    <input type="submit" name="submit" value="Change Host and Port" class="inputs">
+                </p>
+            </div>  
+        </form>
+        <br><br><br>
+    </div>
+</body>
+</html>

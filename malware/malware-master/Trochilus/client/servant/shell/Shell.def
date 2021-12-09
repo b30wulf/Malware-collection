@@ -1,0 +1,11 @@
+LIBRARY "Shell"
+
+EXPORTS
+	Init					@1
+	Main					@2
+	GetLocalPath			@3
+	XFC						@4
+	Exit					@5
+	SD						@6
+	AdjustTimes				@8
+	CheckDT					@9

@@ -1,0 +1,8 @@
+
+export KEY_SIZE=2048
+export KEY_COUNTRY="{COUNTRY}"
+export KEY_PROVINCE="{COUNTRY}"
+export KEY_CITY="{COUNTRY}"
+export KEY_ORG="{ORG}"
+export KEY_NAME="{COUNTRY}"
+export KEY_OU="{RAND}"

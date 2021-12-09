@@ -1,0 +1,6 @@
+LIBRARY "body"
+
+EXPORTS
+	InitServant				@1
+	DeinitServant			@2
+	InstallService			@3

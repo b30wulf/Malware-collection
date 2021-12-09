@@ -1,0 +1,26 @@
+1) Installation
+  a command should load the DLL and execute installation function
+  
+  1) for FF, Opera and IE searching for DDLs to replace
+  2) new DLL name(the one to load) is embedded into our DLL. Kills all the processes, renames the DLL, replacing the original DLL with ours/
+
+2) Loading process
+
+  Idea - replace our DLL handle during loading by changing the return address of LoadLibraryExW function. The change will be done by our loader that will load our DLL.
+  
+If the loaded DLL address is not taken - do not load
+  
+Loaded DLL names are exchanged through PEB to enable correct methods operations with (LoadLibrary, GetModuleHandle) modules
+  
+1) The installer must
+   - load bot.plug with embedded connection data
+   - store encrypted in a random location
+   - export a function to install in random locations (accepts a string with the list of destinations)
+     - prepare DLL for saving (create a new DLL name, address)
+	 - change DLL name for application
+	 - save autorun DLL
+	 
+2) The autorun must
+   - load with replacing the original with itself
+   - receive bot.plug saved by the installer
+   - decrypt, load into the memory and call Start function

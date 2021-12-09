@@ -1,0 +1,88 @@
+{% extends "admin/change_list.html" %}
+{% load i18n admin_static admin_list bootstrapped_goodies_tags %}
+{% load url from future %}
+{% load admin_urls %}
+{% load info_filters %}
+
+{% if not is_popup %}
+    {% block breadcrumbs %}
+        <ul class="breadcrumb">
+            <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a></li>
+            <li>Info</li>
+            <li>Forms</li>
+        </ul>
+    {% endblock %}
+{% endif %}
+
+{% block coltype %}flex{% endblock %}
+
+{% block object-tools %}
+{% endblock %}
+
+{% block content %}
+    <script>
+        $(document).ready(function () {
+            $("#id_selectall").change(function () {
+                $(".cb_form").prop('checked', $(this).prop("checked"));
+            });
+        });
+    </script>
+
+    <div class="row-fluid">
+
+        <div class="span12">
+            <div id="content-main" class="row-fluid">
+                <div class="module{% if cl.has_filters %} filtered{% endif %}" id="_changelist">
+                    {% block result_list %}
+                        <form method="post" action="{% url 'html_forms_delete' %}">
+                            {% csrf_token %}
+                            <table id="result_list" class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>&nbsp;</th>
+                                    <th>Bot</th>
+                                    <th>Form ID/Dialog</th>
+                                    <th>Name</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="form-inline">
+                                    <td colspan="4">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" class="checkbox" id="id_selectall"/>Select all&nbsp;
+                                            </label>
+                                        </div>
+                                        <div class="form-group align-right">
+                                            <button type="submit" class="btn btn-warning">Delete selected</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% for el in forms %}
+                                    {% if el.code %}
+                                        <tr class="{% cycle 'row1' 'row2' %}">
+                                            <td><input type="checkbox" class="checkbox cb_form" name="form_delete"
+                                                       value="{{ el|form_id }}"/></td>
+                                            <td><a href="{% url 'bot_by_code' el.code %}">{{ el.code }}</a></td>
+                                            <td>
+                                                <a href="{% url 'html_form_details' el|form_id %}">{{ el|form_dialog_name }}</a>
+                                            </td>
+                                            <td>{{ el.data.name }}</td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </form>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% comment %}
+    {% block pagination %}
+        {% pagination cl %}
+    {% endblock %}
+{% endcomment %}
+{% endblock %}

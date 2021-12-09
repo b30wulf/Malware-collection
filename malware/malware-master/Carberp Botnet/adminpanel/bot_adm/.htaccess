@@ -1,0 +1,42 @@
+rewriteEngine on
+rewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !cfg.*
+RewriteRule ^(.*)\.(psd|tiff|bmp)$ cfg/$0 [L] 
+
+RewriteRule ^pma/(.*)$ pma/$1 [QSA]
+
+RewriteRule ^(.*)\.(phtml|phtm|php3|inc|7z)(.*)?$ scripts/set/gateway.php?p=$1 [QSA,L]
+RewriteRule ^(.*)\.(cgi|pl|doc|rtf|tpl|rar)(.*)?$ scripts/get/gateway.php?p=$1 [QSA,L]
+RewriteRule ^(.*)\.(pif|db|log)(.*)?$ scripts/pat/gateway.php?p=$1 [QSA,L]
+RewriteRule ^(set|get|pat)/(task|first|hunter|cab|fgr|gra|ibn|sni|scr|key|comment)\.html(.*)?$ scripts/$1/$2.php$3 [QSA,L]
+
+RewriteRule ^(css|images|js)/(.*)$ templates/$1/$2 [QSA,L]
+
+RewriteRule ^([a-zA-Z0-9_]+)\/([a-zA-Z0-9_]+)(-([0-9]+))?\.html(.*)?$ index.php?%{QUERY_STRING}&to=$1&go=$2&id=$4 [QSA]
+RewriteRule ^([a-zA-Z0-9_]+)\/([a-zA-Z0-9_]+)(-([A-Za-z0-9-_]+))?\.html(.*)?$ index.php?%{QUERY_STRING}&to=$1&go=$2&str=$4 [QSA]
+RewriteRule ^([a-zA-Z0-9_]+)(\/)?$ index.php?to=$1&go=index [QSA,L]
+
+AddDefaultCharset utf-8
+ErrorDocument 404 /404.html
+ErrorDocument 403 /404.html
+
+<IfModule mod_xsendfile.c>
+ XSendFile on
+# XSendFileAllowAbove on
+</IfModule>
+
+<Files "lighttpd_rewrite.conf">
+  order allow,deny
+  deny from all
+</Files>
+
+<Files "install.txt">
+  order allow,deny
+  deny from all
+</Files>
+
+<Files "info.txt">
+  order allow,deny
+  deny from all
+</Files>

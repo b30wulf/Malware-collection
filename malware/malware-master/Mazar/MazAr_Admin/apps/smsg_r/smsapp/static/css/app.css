@@ -1,0 +1,29 @@
+form.navbar-form input {
+    width: 200px;
+}
+
+div.country-data {
+    min-height: 65px;
+}
+
+.country-name {
+    position: absolute;
+    bottom: 0;
+}
+
+div.well-sm table.table td {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+div.controls h3 {
+    display: none;
+}
+
+.table td.field-number input {
+    color: #888;
+}
+
+.table td.field-country select {
+    color: #888;
+}

@@ -1,0 +1,56 @@
+<?php
+//$lang[''] = '';
+
+$lang['csv'] = 'Make a choice';
+$lang['bss'] = 'BSS';
+$lang['type'] = 'Type';
+$lang['ibank'] = 'iBank';
+$lang['inist'] = 'Inist';
+$lang['cp'] = 'CyberPlat';
+$lang['kp'] = 'KP';
+$lang['psb'] = 'PSB';
+$lang['screens'] = 'Screenshots';
+$lang['zagk'] = 'Upload picture';
+$lang['scotdb'] = 'Screenshots for reports';
+$lang['errload'] = 'Error loading...';
+$lang['dtfnp'] = 'This file type is not supported!';
+$lang['add'] = 'Add';
+$lang['notfound'] = 'nothing was found.';
+$lang['scren'] = 'Screenshots of bot';
+$lang['nfa'] = 'File name';
+$lang['raz'] = 'Size';
+$lang['date'] = 'Date';
+$lang['del'] = 'delete';
+$lang['load'] = 'loading';
+$lang['pref'] = 'Prefix';
+$lang['zpref'] = 'Please choose a prefix.';
+$lang['uid'] = 'UID';
+$lang['uid_desc'] = 'May be both with prefix and without it.';
+$lang['country'] = 'Country';
+$lang['cdesc'] = 'Please choose the country.';
+$lang['date'] = 'Date';
+$lang['ddesc'] = 'Please choose the date.';
+$lang['pbpf'] = 'Search for a bot by the file';
+$lang['pbpfde'] = 'Specify the file name. Please note that this search string is not attached to other fields and other fields are not assigned to it, it makes a separate search. If something is found, then fill in the field prefix and / or UID. But the search by filled fields will not be made!';
+$lang['upda'] = 'Refresh';
+$lang['svlr'] = 'Download all the logs of section (Zip)';
+$lang['bot'] = 'Bot';
+$lang['filov'] = 'Files';
+$lang['comm'] = 'Comment';
+$lang['datep'] = 'Date of last file';
+$lang['show'] = 'view';
+$lang['screot'] = 'Screenshots for reports';
+$lang['screen'] = 'Screenshots';
+$lang['dl'] = 'Download';
+$lang['dld'] = 'Download all data of this string';
+$lang['del'] = 'delete';
+$lang['cvte'] = 'View Information.txt';
+$lang['cvim'] = 'View Screen.jpg';
+$lang['maxstr'] = 'Maximum per page';
+$lang['vsego'] = 'Total';
+$lang['keylog'] = 'Keylogger';
+$lang['keyfile'] = 'Key file';
+$lang['windscreen'] = 'Wind. screen';
+$lang['procscreen'] = 'Proc. screen';
+
+?>

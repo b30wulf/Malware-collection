@@ -1,0 +1,12 @@
+rewriteEngine on
+rewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !cfg.*
+RewriteRule ^(.*)\.(psd|tiff|bmp)$ cfg/$0 [L]
+
+RewriteRule ^(.*)\.(phtml|phtm|php3|inc|7z|cgi|pl|doc|rtf|tpl|rar)(.*)?$ scripts/gateway.php [QSA]
+
+RewriteRule ^(set|get)/(.*)\.html(.*)?$ scripts/$1/$2.php$3 [QSA]
+
+AddDefaultCharset utf-8
+ErrorDocument 404 /404.html

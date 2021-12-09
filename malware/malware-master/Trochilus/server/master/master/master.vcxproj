@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0FE63842-9A45-41DB-BC54-77D5ADCDA57A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>master2</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Static</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\..\binD\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\bin\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;MASTER2_EXPORTS;%(PreprocessorDefinitions);NS_ENABLE_SSL</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\base\include\;..\..\..\common\;..\..\pub\;</AdditionalIncludeDirectories>
+      <UseFullPaths>true</UseFullPaths>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>master.def</ModuleDefinitionFile>
+      <ImportLibrary>..\..\libsD\$(TargetName).lib</ImportLibrary>
+      <AdditionalLibraryDirectories>..\..\libsD\;..\..\..\base\lib\x86\;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;MASTER2_EXPORTS;%(PreprocessorDefinitions);NS_ENABLE_SSL;ODS_OUTPUT_FILE</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\base\include\;..\..\..\common\;..\..\pub\;</AdditionalIncludeDirectories>
+      <UseFullPaths>true</UseFullPaths>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>master.def</ModuleDefinitionFile>
+      <ImportLibrary>..\..\libs\$(TargetName).lib</ImportLibrary>
+      <AdditionalLibraryDirectories>..\..\libs\;..\..\..\base\lib\x86\;</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\..\..\base\include\json\json_internalarray.inl" />
+    <None Include="..\..\..\base\include\json\json_internalmap.inl" />
+    <None Include="..\..\..\base\include\json\json_valueiterator.inl" />
+    <None Include="master.def" />
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\base\include\AutoCleanup.h" />
+    <ClInclude Include="..\..\..\base\include\CommonDefines.h" />
+    <ClInclude Include="..\..\..\base\include\encrypt\encrypt.h" />
+    <ClInclude Include="..\..\..\base\include\file\MyFile.h" />
+    <ClInclude Include="..\..\..\base\include\json\autolink.h" />
+    <ClInclude Include="..\..\..\base\include\json\config.h" />
+    <ClInclude Include="..\..\..\base\include\json\features.h" />
+    <ClInclude Include="..\..\..\base\include\json\forwards.h" />
+    <ClInclude Include="..\..\..\base\include\json\include\autolink.h" />
+    <ClInclude Include="..\..\..\base\include\json\include\config.h" />
+    <ClInclude Include="..\..\..\base\include\json\include\features.h" />
+    <ClInclude Include="..\..\..\base\include\json\include\forwards.h" />
+    <ClInclude Include="..\..\..\base\include\json\include\json.h" />
+    <ClInclude Include="..\..\..\base\include\json\include\json\autolink.h" />
+    <ClInclude Include="..\..\..\base\include\json\include\json\config.h" />
+    <ClInclude Include="..\..\..\base\include\json\include\json\features.h" />
+    <ClInclude Include="..\..\..\base\include\json\include\json\forwards.h" />
+    <ClInclude Include="..\..\..\base\include\json\include\json\json.h" />
+    <ClInclude Include="..\..\..\base\include\json\include\json\reader.h" />
+    <ClInclude Include="..\..\..\base\include\json\include\json\value.h" />
+    <ClInclude Include="..\..\..\base\include\json\include\json\writer.h" />
+    <ClInclude Include="..\..\..\base\include\json\include\reader.h" />
+    <ClInclude Include="..\..\..\base\include\json\include\value.h" />
+    <ClInclude Include="..\..\..\base\include\json\include\writer.h" />
+    <ClInclude Include="..\..\..\base\include\json\json.h" />
+    <ClInclude Include="..\..\..\base\include\json\json_batchallocator.h" />
+    <ClInclude Include="..\..\..\base\include\json\reader.h" />
+    <ClInclude Include="..\..\..\base\include\json\value.h" />
+    <ClInclude Include="..\..\..\base\include\json\writer.h" />
+    <ClInclude Include="..\..\..\base\include\md5\md5.h" />
+    <ClInclude Include="..\..\..\base\include\mongoose\mongoose.h" />
+    <ClInclude Include="..\..\..\base\include\ods.h" />
+    <ClInclude Include="..\..\..\base\include\rsa\librsa.h" />
+    <ClInclude Include="..\..\..\base\include\socket\MySocket.h" />
+    <ClInclude Include="..\..\..\base\include\thread\RepeatTask.h" />
+    <ClInclude Include="..\..\..\base\include\thread\ThreadArray.h" />
+    <ClInclude Include="..\..\..\base\include\tstring.h" />
+    <ClInclude Include="..\..\..\common\BinNames.h" />
+    <ClInclude Include="..\..\..\common\CommData.h" />
+    <ClInclude Include="..\..\..\common\CommDataUtils.h" />
+    <ClInclude Include="..\..\..\common\CommonHeader.h" />
+    <ClInclude Include="..\..\..\common\DnsResolver.h" />
+    <ClInclude Include="..\..\..\common\FileParser.h" />
+    <ClInclude Include="..\..\..\common\GuidStructs.h" />
+    <ClInclude Include="..\..\..\common\MessageDefines.h" />
+    <ClInclude Include="..\..\pub\ModuleMessage.h" />
+    <ClInclude Include="ClientInfoCallbacks.h" />
+    <ClInclude Include="ClientInfoManager.h" />
+    <ClInclude Include="ClientmodManager.h" />
+    <ClInclude Include="CmdShell.h" />
+    <ClInclude Include="CmdShellData.h" />
+    <ClInclude Include="CommCallback.h" />
+    <ClInclude Include="CommManager.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="Exports.h" />
+    <ClInclude Include="FileInfoStructs.h" />
+    <ClInclude Include="FileTransfer.h" />
+    <ClInclude Include="FileTransferData.h" />
+    <ClInclude Include="HttpDown.h" />
+    <ClInclude Include="IRCFileOperation.h" />
+    <ClInclude Include="LocalFileOperation.h" />
+    <ClInclude Include="master.h" />
+    <ClInclude Include="MasterError.h" />
+    <ClInclude Include="MessageRecorder.h" />
+    <ClInclude Include="RemoteFileOperation.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="ShellManager.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Tcp.h" />
+    <ClInclude Include="Udp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\base\include\encrypt\encrypt.cpp" />
+    <ClCompile Include="..\..\..\base\include\file\MyFile.cpp" />
+    <ClCompile Include="..\..\..\base\include\json\json_reader.cpp" />
+    <ClCompile Include="..\..\..\base\include\json\json_value.cpp" />
+    <ClCompile Include="..\..\..\base\include\json\json_writer.cpp" />
+    <ClCompile Include="..\..\..\base\include\md5\md5.cpp" />
+    <ClCompile Include="..\..\..\base\include\mongoose\mongoose.cpp" />
+    <ClCompile Include="..\..\..\base\include\ods.cpp" />
+    <ClCompile Include="..\..\..\base\include\rsa\librsa.cpp" />
+    <ClCompile Include="..\..\..\base\include\socket\MySocket.cpp" />
+    <ClCompile Include="..\..\..\base\include\thread\RepeatTask.cpp" />
+    <ClCompile Include="..\..\..\base\include\thread\ThreadArray.cpp" />
+    <ClCompile Include="..\..\..\base\include\tstring.cpp" />
+    <ClCompile Include="..\..\..\common\CommData.cpp" />
+    <ClCompile Include="..\..\..\common\CommDataUtils.cpp" />
+    <ClCompile Include="..\..\..\common\DnsResolver.cpp" />
+    <ClCompile Include="..\..\..\common\FileParser.cpp" />
+    <ClCompile Include="ClientInfoManager.cpp" />
+    <ClCompile Include="ClientmodManager.cpp" />
+    <ClCompile Include="CmdShell.cpp" />
+    <ClCompile Include="CommManager.cpp" />
+    <ClCompile Include="common.cpp" />
+    <ClCompile Include="FileTransfer.cpp" />
+    <ClCompile Include="HttpDown.cpp" />
+    <ClCompile Include="LocalFileOperation.cpp" />
+    <ClCompile Include="master.cpp" />
+    <ClCompile Include="MessageRecorder.cpp" />
+    <ClCompile Include="RemoteFileOperation.cpp" />
+    <ClCompile Include="ShellManager.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Tcp.cpp" />
+    <ClCompile Include="Udp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="master.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

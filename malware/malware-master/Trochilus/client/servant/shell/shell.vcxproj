@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{69CBFC59-4424-4CA8-A667-83D08DEAC46B}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>servantshell</RootNamespace>
+    <ProjectName>Shell</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\..\binD\</OutDir>
+    <TargetName>$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\bin\</OutDir>
+    <TargetName>$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SERVANTSHELL_EXPORTS;%(PreprocessorDefinitions);OUTPUT_LOG</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\base\include\;..\..\..\common\;..\..\pub\</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>..\..\libsD\$(TargetName).lib</ImportLibrary>
+      <ModuleDefinitionFile>Shell.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MinSpace</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;SERVANTSHELL_EXPORTS;%(PreprocessorDefinitions);OUTPUT_LOG</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\base\include\;..\..\..\common\;..\..\pub\</AdditionalIncludeDirectories>
+      <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <ExceptionHandling>false</ExceptionHandling>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ImportLibrary>..\..\libs\$(TargetName).lib</ImportLibrary>
+      <ModuleDefinitionFile>Shell.def</ModuleDefinitionFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="Shell.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\base\include\AutoCleanup.h" />
+    <ClInclude Include="..\..\..\base\include\CommonDefines.h" />
+    <ClInclude Include="..\..\..\base\include\destruction\SelfDestruction.h" />
+    <ClInclude Include="..\..\..\base\include\env\Wow64.h" />
+    <ClInclude Include="..\..\..\base\include\file\MyFile.h" />
+    <ClInclude Include="..\..\..\base\include\memdll\MemLoadDll.h" />
+    <ClInclude Include="..\..\..\base\include\ods.h" />
+    <ClInclude Include="..\..\..\base\include\peutils\peutils.h" />
+    <ClInclude Include="..\..\..\base\include\thread\RepeatTask.h" />
+    <ClInclude Include="..\..\..\base\include\tstring.h" />
+    <ClInclude Include="..\..\..\common\BinNames.h" />
+    <ClInclude Include="..\..\..\common\CommNames.h" />
+    <ClInclude Include="..\..\..\common\CommonHeader.h" />
+    <ClInclude Include="..\..\pub\ConfigInfo.h" />
+    <ClInclude Include="..\..\pub\ShellInclude.h" />
+    <ClInclude Include="Chameleon.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="Exports.h" />
+    <ClInclude Include="resource1.h" />
+    <ClInclude Include="SvtShell.h" />
+    <ClInclude Include="Shell.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\base\include\destruction\SelfDestruction.cpp" />
+    <ClCompile Include="..\..\..\base\include\file\MyFile.cpp" />
+    <ClCompile Include="..\..\..\base\include\memdll\MemLoadDll.cpp" />
+    <ClCompile Include="..\..\..\base\include\ods.cpp" />
+    <ClCompile Include="..\..\..\base\include\peutils\peutils.cpp" />
+    <ClCompile Include="..\..\..\base\include\thread\RepeatTask.cpp" />
+    <ClCompile Include="..\..\..\base\include\tstring.cpp" />
+    <ClCompile Include="Chameleon.cpp" />
+    <ClCompile Include="common.cpp" />
+    <ClCompile Include="Exports.cpp" />
+    <ClCompile Include="SvtShell.cpp" />
+    <ClCompile Include="Shell.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="shell1.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,283 @@
+/* ----------LINK STYLES---------- */
+a { cursor: pointer; outline: none; }
+a:link { color: #ffffff; text-decoration: none; }
+a:visited { color: #ffffff; text-decoration: none; }
+a:hover { color: #00ccff; text-decoration: none; }
+a img { border: none;}
+
+body, html {
+	background-color: #000000;
+	text-align: center;
+	font: 12px "verdana";
+	margin: 0px 0px 0px 0px;
+	color: white;
+}
+
+#wrapper {
+	width: 1024px;
+	margin: 0 auto;
+	border: 1px solid #282828;
+	background-color: #000;
+	padding-bottom: 5px;
+}
+
+#main-header {
+	width: 100%;
+}
+
+#main-header-banner {
+	width: 100%;
+	float: left;
+	background-image: url(../images/logo.png);
+	background-repeat: no-repeat;
+	height: 152px;
+	margin-left: 25px;
+}
+
+#main-body {
+	width: 100%;
+	float: left;
+	margin-bottom: 40px;
+}
+
+#main-body-top {
+	width: 100%;
+	float: left;
+	border-left: 1px solid #101010;
+	margin-top: 40px;
+}
+
+#main-body-referrer {
+	width: 100%;
+	float: left;
+	border-left: 1px solid #101010;
+	margin-top: 10px;
+}
+
+.referrer-box {
+	font: 12px "verdana";
+	margin-left: 25px; 
+	float: left;
+	width: 94%;
+	border: 1px solid #3d0d0d;
+	background:#1F1F1F;
+	text-align: left;
+	padding: 2px 2px 2px 2px;
+}
+
+.referrer-box table {
+	font: 12px "verdana";
+	float: left;
+	width: 90%;
+	margin-left: 25px; 
+}
+
+.referrer-box td {
+	height: 30px;
+}
+
+.referrer-box-title {
+	font: 15px "verdana";
+	text-align: center;
+	border-bottom: 1px solid #282828;
+}
+
+#main-body-login {
+	width: 100%;
+	float: left;
+	border-left: 1px solid #101010;
+	margin-top: 40px;
+}
+
+.login-box {
+	font: 12px "verdana";
+	margin-left: 290px; 
+	float: left;
+	width: 40%;
+	border: 1px solid #3d0d0d;
+	background:#1F1F1F;
+	text-align: left;
+	padding: 2px 2px 2px 2px;
+}
+
+.login-box table {
+	font: 12px "verdana";
+	float: left;
+	width: 90%;
+	margin-left: 25px; 
+}
+
+.login-box td {
+	height: 30px;
+}
+
+.login-box-title {
+	font: 15px "verdana";
+	text-align: center;
+	border-bottom: 1px solid #282828;
+}
+
+.top-box {
+	font: 12px "verdana";
+	margin-left: 25px; 
+	float: left;
+	width: 94%;
+	border: 1px solid #3d0d0d;
+	background:#1F1F1F;
+	text-align: left;
+	padding: 2px 2px 2px 2px;
+}
+
+.top-box table {
+	font: 12px "verdana";
+	float: left;
+	width: 90%;
+	margin-left: 25px; 
+}
+
+.top-box td {
+	height: 30px;
+}
+
+.top-box-title {
+	font: 15px "verdana";
+	text-align: center;
+	border-bottom: 1px solid #282828;
+}
+
+#main-body-left {
+	background: #000000;
+	width: 50%;
+	float: left;
+	margin-top: 10px;
+}
+
+#main-body-left table {
+	float: left;
+	width: 90%;
+	margin-left: 25px;
+}
+
+#main-body-left td.header {
+	border: 1px solid #1c4a14;
+}
+
+#main-body-right {
+	width: 49%;
+	float: left;
+	border-left: 1px solid #101010;
+	margin-top: 10px;
+}
+
+.content-box {
+	font: 12px "verdana";
+	margin-left: 25px; 
+	float: left;
+	width: 90%;
+	border: 1px solid #3d0d0d;
+	background:#1F1F1F;
+	text-align: left;
+	padding: 2px 2px 2px 2px;
+}
+
+.content-box table {
+	font: 12px "verdana";
+	float: left;
+	width: 90%;
+	margin-left: 25px; 
+}
+
+.content-box td {
+	height: 30px;
+}
+
+.content-box-title {
+	font: 15px "verdana";
+	text-align: center;
+	border-bottom: 1px solid #282828;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.clearfix {
+	display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}
+
+
+/* ----------NAVIGATION STYLES---------- */
+.navigation { 
+	float: left;
+	width: 1300px;
+	height: 50px;
+	margin-top: -9px;
+	margin-left: -40px;
+}
+.nav-links li { 
+	list-style-type: none; 
+	float: left;
+}
+.nav-links li a { 
+	height: 47px;
+	width: 160px;
+	text-indent: -9999px;
+	display: block;
+}
+li.spacer {
+	background:url(../images/spacer.png) repeat-x;
+	height: 51px;
+	width: 115px;
+}
+li.spacer1 {
+	background:url(../images/spacer.png) repeat-x;
+	height: 51px;
+	width: 95px;
+}
+li.spacer2 {
+	background:url(../images/spacer2.png) repeat-x;
+	height: 51px;
+	width: 20px;
+}
+li.clear {
+	background:url(../images/clear.png) no-repeat;
+	height: 51px;
+	width: 127px;
+}
+li.logout {
+	background:url(../images/logout.png) no-repeat;
+	height: 51px;
+	width: 128px;
+}
+li.middlebar {
+	background:url(../images/middlebar.png) no-repeat;
+	height: 69px;
+	width: 309px;
+}
+
+
+li.clear a:hover {
+	background:url(../images/clear_hover.png) no-repeat;
+	height: 51px;
+	width: 127px;
+}
+li.logout a:hover {
+	background:url(../images/logout_hover.png) no-repeat;
+	height: 51px;
+	width: 128px;
+}

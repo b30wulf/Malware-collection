@@ -1,0 +1,2 @@
+* * * * * scl enable python27 “halockrun -cn /home/admin/apps/cron/1.lock /home/admin/apps/cron/1.sh &> /home/admin/apps/logs/1.log ”
+5,35 * * * * scl enable python27 “halockrun -cn /home/admin/apps/cron/30.lock /home/admin/apps/cron/30.sh &> /home/admin/apps/logs/30.log”

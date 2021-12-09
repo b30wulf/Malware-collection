@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{f29e9ffb-ca75-456e-b03c-2450a78e509b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="comm">
+      <UniqueIdentifier>{1257f4b8-72d9-4377-b68e-39ba58f5ca1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\socket">
+      <UniqueIdentifier>{e35646f8-aee0-46b7-94b8-61c22833f3e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="global_common">
+      <UniqueIdentifier>{b6323c43-ffd5-4765-8570-e1257b4e5d2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{02ca761a-7d7a-4c2d-b811-6fe8d0716183}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\file">
+      <UniqueIdentifier>{3aedda5c-193e-4898-ab97-abb45592264a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\dns">
+      <UniqueIdentifier>{87b4cc5e-b486-4957-8a97-738b86cf3c9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="main">
+      <UniqueIdentifier>{9773ecc9-8aca-44e3-b9fd-5d31ba1e1aea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="clientinfo">
+      <UniqueIdentifier>{2d791252-6b6e-4938-9295-1930d261f502}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\thread">
+      <UniqueIdentifier>{d45348ea-5aa6-48ae-aac5-27c4f42b7151}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="filecollector">
+      <UniqueIdentifier>{7ebe7dbe-23e3-4d76-a2d3-7648e5390660}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="clientmods">
+      <UniqueIdentifier>{f55cc2de-c9dc-423d-9ff2-b498c41ea3a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shell">
+      <UniqueIdentifier>{409213b6-c08c-4dda-a393-1f672c5e5e0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{4a715a43-2379-4f0a-abd7-411bfa0d685c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\json">
+      <UniqueIdentifier>{972518fb-fd25-4113-9dac-dba69ddfe848}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\encrypt">
+      <UniqueIdentifier>{2aed51c6-448a-4fe0-b700-b0e71d0db70d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="download">
+      <UniqueIdentifier>{d9d0561e-f460-416c-ae36-6044403a32c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\mongoose">
+      <UniqueIdentifier>{a937e001-c3a5-446e-bd28-6c42d7d263f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\rsa">
+      <UniqueIdentifier>{fa7e5943-1059-41c7-a0b9-41c99b75dd49}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="..\..\..\base\include\json\json_internalarray.inl">
+      <Filter>common\json</Filter>
+    </None>
+    <None Include="..\..\..\base\include\json\json_internalmap.inl">
+      <Filter>common\json</Filter>
+    </None>
+    <None Include="..\..\..\base\include\json\json_valueiterator.inl">
+      <Filter>common\json</Filter>
+    </None>
+    <None Include="master.def">
+      <Filter>main</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\tstring.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\CommonDefines.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\AutoCleanup.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="CommManager.h">
+      <Filter>comm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\socket\MySocket.h">
+      <Filter>include\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\CommData.h">
+      <Filter>global_common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\MessageDefines.h">
+      <Filter>global_common</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\file\MyFile.h">
+      <Filter>include\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\DnsResolver.h">
+      <Filter>include\dns</Filter>
+    </ClInclude>
+    <ClInclude Include="MasterError.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientInfoManager.h">
+      <Filter>clientinfo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\thread\RepeatTask.h">
+      <Filter>include\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientInfoCallbacks.h">
+      <Filter>clientinfo</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientmodManager.h">
+      <Filter>clientmods</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\BinNames.h">
+      <Filter>global_common</Filter>
+    </ClInclude>
+    <ClInclude Include="CommCallback.h">
+      <Filter>comm</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageRecorder.h">
+      <Filter>comm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\CommonHeader.h">
+      <Filter>global_common</Filter>
+    </ClInclude>
+    <ClInclude Include="CmdShell.h">
+      <Filter>shell</Filter>
+    </ClInclude>
+    <ClInclude Include="CmdShellData.h">
+      <Filter>shell</Filter>
+    </ClInclude>
+    <ClInclude Include="ShellManager.h">
+      <Filter>shell</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalFileOperation.h">
+      <Filter>filecollector</Filter>
+    </ClInclude>
+    <ClInclude Include="FileInfoStructs.h">
+      <Filter>filecollector</Filter>
+    </ClInclude>
+    <ClInclude Include="IRCFileOperation.h">
+      <Filter>filecollector</Filter>
+    </ClInclude>
+    <ClInclude Include="RemoteFileOperation.h">
+      <Filter>filecollector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\CommDataUtils.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\autolink.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\config.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\features.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\forwards.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\autolink.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\config.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\features.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\forwards.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\json\autolink.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\json\config.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\json\features.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\json\forwards.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\json\json.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\json\reader.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\json\value.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\json\writer.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\json.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\reader.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\value.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\writer.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\json.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\json_batchallocator.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\reader.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\value.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\writer.h">
+      <Filter>common\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pub\ModuleMessage.h">
+      <Filter>clientinfo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\FileParser.h">
+      <Filter>filecollector</Filter>
+    </ClInclude>
+    <ClInclude Include="FileTransfer.h">
+      <Filter>filecollector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\md5\md5.h">
+      <Filter>include\encrypt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\encrypt\encrypt.h">
+      <Filter>include\encrypt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\thread\ThreadArray.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="FileTransferData.h">
+      <Filter>filecollector</Filter>
+    </ClInclude>
+    <ClInclude Include="Exports.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="master.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpDown.h">
+      <Filter>download</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\ods.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\mongoose\mongoose.h">
+      <Filter>include\mongoose</Filter>
+    </ClInclude>
+    <ClInclude Include="Tcp.h">
+      <Filter>comm</Filter>
+    </ClInclude>
+    <ClInclude Include="Udp.h">
+      <Filter>comm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\rsa\librsa.h">
+      <Filter>include\rsa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\GuidStructs.h">
+      <Filter>global_common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\tstring.cpp">
+      <Filter>include</Filter>
+    </ClCompile>
+    <ClCompile Include="CommManager.cpp">
+      <Filter>comm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\socket\MySocket.cpp">
+      <Filter>include\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\CommData.cpp">
+      <Filter>global_common</Filter>
+    </ClCompile>
+    <ClCompile Include="common.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\file\MyFile.cpp">
+      <Filter>include\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\DnsResolver.cpp">
+      <Filter>include\dns</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientInfoManager.cpp">
+      <Filter>clientinfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\thread\RepeatTask.cpp">
+      <Filter>include\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientmodManager.cpp">
+      <Filter>clientmods</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageRecorder.cpp">
+      <Filter>comm</Filter>
+    </ClCompile>
+    <ClCompile Include="CmdShell.cpp">
+      <Filter>shell</Filter>
+    </ClCompile>
+    <ClCompile Include="ShellManager.cpp">
+      <Filter>shell</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalFileOperation.cpp">
+      <Filter>filecollector</Filter>
+    </ClCompile>
+    <ClCompile Include="RemoteFileOperation.cpp">
+      <Filter>filecollector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\CommDataUtils.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\json\json_reader.cpp">
+      <Filter>common\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\json\json_value.cpp">
+      <Filter>common\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\json\json_writer.cpp">
+      <Filter>common\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\FileParser.cpp">
+      <Filter>filecollector</Filter>
+    </ClCompile>
+    <ClCompile Include="FileTransfer.cpp">
+      <Filter>filecollector</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\md5\md5.cpp">
+      <Filter>include\encrypt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\encrypt\encrypt.cpp">
+      <Filter>include\encrypt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\thread\ThreadArray.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="master.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpDown.cpp">
+      <Filter>download</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\ods.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\mongoose\mongoose.cpp">
+      <Filter>include\mongoose</Filter>
+    </ClCompile>
+    <ClCompile Include="Tcp.cpp">
+      <Filter>comm</Filter>
+    </ClCompile>
+    <ClCompile Include="Udp.cpp">
+      <Filter>comm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\rsa\librsa.cpp">
+      <Filter>include\rsa</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="master.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+.top_menu {
+	position: relative;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: middle;
+}
+
+.top_menu_left {
+	position:absolute;
+	left: 0px;
+}
+
+.top_menu_right {
+	position:absolute;
+	right: 0px;
+	text-align: right;
+}
+
+.top_menu a {
+	border: 1px solid #000;
+	padding: 5px;
+	text-decoration: none;
+	color:#000;
+	background-color: #7190aa;
+}
+
+.top_menu a:hover {
+	color: #FFF;
+	background-color: #42576a;
+}
+
+.user {
+	width: 100%;
+}

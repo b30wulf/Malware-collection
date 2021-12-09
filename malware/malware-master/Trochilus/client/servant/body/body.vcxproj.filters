@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{8a90bbb2-333d-42ec-b761-c21d6f849140}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="main">
+      <UniqueIdentifier>{5dcfcf1c-9be9-482b-a17f-914f3fe4805f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="comm">
+      <UniqueIdentifier>{03723959-fce7-408b-91a5-f62328fb7681}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{a85322f9-ceed-41e7-88c0-4ee270e95b9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="comm\http">
+      <UniqueIdentifier>{60dd0ce9-2ec6-4d46-a40d-69346d849108}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pub">
+      <UniqueIdentifier>{fcc7f08f-b64d-4a9b-b9e6-85c45a347c48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\socket">
+      <UniqueIdentifier>{cccc6ec4-ff51-47df-8de6-9656b5fc7fc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="global_common">
+      <UniqueIdentifier>{5dc9e099-b5ac-4fcf-976a-2916ea2a85f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\file">
+      <UniqueIdentifier>{d8c67109-8143-4e5f-bfe5-3908ad9321d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\env">
+      <UniqueIdentifier>{311df556-d564-4f07-8efd-9c0fe2904986}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="redirect">
+      <UniqueIdentifier>{80804ad6-4320-4508-a2d8-b0574f512220}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\memdll">
+      <UniqueIdentifier>{b6608943-77b2-4072-b1ff-174a91d43a38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\destruction">
+      <UniqueIdentifier>{f1afe914-d003-43cd-b79c-37048e4d47a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rpc_servies">
+      <UniqueIdentifier>{c43c1469-5431-4c0e-8dc6-d37d48f8ec76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\md5">
+      <UniqueIdentifier>{249006f4-44bf-4877-9e19-21acca826129}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="comm\tcp">
+      <UniqueIdentifier>{eba6ed8f-e10d-4396-8492-251f66aabc0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="comm\udp">
+      <UniqueIdentifier>{733f9141-9f46-4a37-9272-b68b1dfec55e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\rsa">
+      <UniqueIdentifier>{85040103-af49-463f-ad4b-d6be372c78f1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="body.def">
+      <Filter>main</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\tstring.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\ods.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="CommManager.h">
+      <Filter>comm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\CommonDefines.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="IComm.h">
+      <Filter>comm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\AutoCleanup.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pub\ModuleInterface.h">
+      <Filter>pub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\socket\MySocket.h">
+      <Filter>include\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpComm.h">
+      <Filter>comm\http</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\CommData.h">
+      <Filter>global_common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\MessageDefines.h">
+      <Filter>global_common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\file\MyFile.h">
+      <Filter>include\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\CommonHeader.h">
+      <Filter>global_common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\BinNames.h">
+      <Filter>global_common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\CommNames.h">
+      <Filter>global_common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\env\Wow64.h">
+      <Filter>include\env</Filter>
+    </ClInclude>
+    <ClInclude Include="Redirector.h">
+      <Filter>redirect</Filter>
+    </ClInclude>
+    <ClInclude Include="CmdRedirector.h">
+      <Filter>redirect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\memdll\MemLoadDll.h">
+      <Filter>include\memdll</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pub\ConfigInfo.h">
+      <Filter>pub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\destruction\SelfDestruction.h">
+      <Filter>include\destruction</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceManager.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="rpc\advapi32.h">
+      <Filter>rpc_servies</Filter>
+    </ClInclude>
+    <ClInclude Include="rpc\RpcServiceManager.h">
+      <Filter>rpc_servies</Filter>
+    </ClInclude>
+    <ClInclude Include="rpc\services.h">
+      <Filter>rpc_servies</Filter>
+    </ClInclude>
+    <ClInclude Include="rpc\svcctl_h.h">
+      <Filter>rpc_servies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\FileParser.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\md5\md5.h">
+      <Filter>include\md5</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\encrypt\encrypt.h">
+      <Filter>include\md5</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="bodyInclude.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="TcpComm.h">
+      <Filter>comm\tcp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\winhttp\http.h">
+      <Filter>comm\http</Filter>
+    </ClInclude>
+    <ClInclude Include="UdpComm.h">
+      <Filter>comm\udp</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="VtcpBinary.h">
+      <Filter>comm\udp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\rsa\librsa.h">
+      <Filter>include\rsa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\GuidStructs.h">
+      <Filter>global_common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\tstring.cpp">
+      <Filter>include</Filter>
+    </ClCompile>
+    <ClCompile Include="common.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\ods.cpp">
+      <Filter>include</Filter>
+    </ClCompile>
+    <ClCompile Include="CommManager.cpp">
+      <Filter>comm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\socket\MySocket.cpp">
+      <Filter>include\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpComm.cpp">
+      <Filter>comm\http</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\CommData.cpp">
+      <Filter>global_common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\file\MyFile.cpp">
+      <Filter>include\file</Filter>
+    </ClCompile>
+    <ClCompile Include="Redirector.cpp">
+      <Filter>redirect</Filter>
+    </ClCompile>
+    <ClCompile Include="CmdRedirector.cpp">
+      <Filter>redirect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\memdll\MemLoadDll.cpp">
+      <Filter>include\memdll</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\destruction\SelfDestruction.cpp">
+      <Filter>include\destruction</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceManager.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="rpc\scm.cpp">
+      <Filter>rpc_servies</Filter>
+    </ClCompile>
+    <ClCompile Include="rpc\sctrl.cpp">
+      <Filter>rpc_servies</Filter>
+    </ClCompile>
+    <ClCompile Include="rpc\svcctl_c.cpp">
+      <Filter>rpc_servies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\FileParser.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\md5\md5.cpp">
+      <Filter>include\md5</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\encrypt\encrypt.cpp">
+      <Filter>include\md5</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpComm.cpp">
+      <Filter>comm\tcp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\winhttp\http.cpp">
+      <Filter>comm\http</Filter>
+    </ClCompile>
+    <ClCompile Include="UdpComm.cpp">
+      <Filter>comm\udp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\rsa\librsa.cpp">
+      <Filter>include\rsa</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

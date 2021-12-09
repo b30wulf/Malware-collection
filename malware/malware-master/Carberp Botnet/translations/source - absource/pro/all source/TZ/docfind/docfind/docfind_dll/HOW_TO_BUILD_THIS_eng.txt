@@ -1,0 +1,12 @@
+How to build this. Notes.
+
+Important note on the steps for build process. Since we recently added build_dll project that requires a DLL assembled in
+docfind_dll project, the projects have to be built in the following order:
+
+Step one.
+Build -> Batch build -> select all, except these two: build_dll DEBUG and build_dll RELEASE.
+
+Step two.
+The same thing, but reverse the selection - nothing except these to build_dll DEBUG and build_dll RELEASE.
+
+6:59 PM 5/3/2012

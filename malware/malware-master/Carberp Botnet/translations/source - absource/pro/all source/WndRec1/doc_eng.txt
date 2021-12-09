@@ -1,0 +1,26 @@
+The following functions are used to start the recording:
+
+StartRecHwnd( char* uid, HWND wnd, char* ip, int port ) //recording using window's HWND
+StartRecPid( char* uid, DWOD pid, char* ip, int port )  //recording using process' PID
+
+To stop the recording:
+
+StopRec()
+
+Use record2.bat arg1,arg2 command for testing.
+where arg1 - window name or process PID
+      arg2 - name of the file to store the recording in or ip:port
+
+file transfer prototype:
+
+#define EXPORT_API __declspec(dllexport) __stdcall
+
+void EXPORT_API StartSend( char* uid, char* path, const char* ip1, int port1, const char* ip2, int port2 )
+
+The server will store it in RecvFiles folder
+
+analysis of graphic file stored in All users\scr folder
+
+void EXPORT_API StartFindFields() //to start the analysis, dll starts a separate thread
+void EXPORT_API StopFindFields() //to stop the analysis
+in this mode, DLL monitors All users\scr folder for new BMP files, analyses them and creates 1.ini file. BMP files are then deleted.

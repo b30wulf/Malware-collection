@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+body{
+    background-color: #23272A;
+    font-family: 'Roboto Mono', monospace;  
+    text-align: center;
+    color: white;
+}
+
+.barnav {
+    background-color: #23272A;
+    overflow: hidden;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+}
+
+.inputs{
+    border: 2px solid transparent;
+    border-radius: 4px;
+    width: 300px;
+    padding: 12px 20px;
+    font-family: 'Roboto Mono', monospace;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    color: white;
+    background-color: #2C2F33;
+}
+
+.inputs:focus{
+    border: 2px solid transparent;
+    color: white;
+}
+
+.inputs:hover{
+    border: 2px solid transparent;
+    color: dodgerblue;
+}
+
+.barnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.barnav a:hover {
+    background-color: transparent;
+    color: white;
+    border: 2px solid dodgerblue;
+    border-radius: 5px;
+    text-shadow: 1px 1px 2px dodgerblue, 0 0 25px dodgerblue, 0 0 5px dodgerblue;
+}
+
+.barnav a.active {
+    background-color: transparent;
+    color: white;
+}
+
+.box
+{
+    padding: 15px 30px;
+    border: 2px solid #046CCF;
+    -webkit-box-shadow: 2px 2px 16px 0px #000000; 
+    box-shadow: 2px 2px 16px 0px #000000;
+}
+
+.info
+{
+    /*width: 500px;*/
+    font-size: 15px;
+    position: center;
+    text-align: center;
+    padding: 10px 20px;
+    border: 2px solid #046CCF;
+    -webkit-box-shadow: 2px 2px 16px 0px #000000; 
+    box-shadow: 2px 2px 16px 0px #000000;
+}

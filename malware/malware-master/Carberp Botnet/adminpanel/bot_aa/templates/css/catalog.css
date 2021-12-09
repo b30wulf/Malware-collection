@@ -1,0 +1,89 @@
+@charset "utf-8";
+
+.top_menu {
+	position: relative;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: middle;
+}
+
+.top_menu_left {
+	position:absolute;
+	left: 0px;
+}
+
+.top_menu_right {
+	position:absolute;
+	right: 0px;
+	text-align: right;
+}
+
+.top_menu_left a {
+	border: 1px solid #000;
+	padding: 5px;
+	text-decoration: none;
+	color:#000;
+	background-color: #7190aa;
+}
+
+.top_menu_left a:hover {
+	color: #FFF;
+	background-color: #42576a;
+}
+
+.user {
+	width: 100%;
+}
+
+.treeview, .treeview ul { 
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.treeview ul {
+	background-color: white;
+	margin-top: 10px;
+}
+
+.treeview .hitarea {
+	background: url(/images/modules/logs/treeview-default.gif) -64px -25px no-repeat;
+	height: 16px;
+	width: 16px;
+	margin-left: -16px;
+	float: left;
+	cursor: pointer;
+}
+/* fix for IE6 */
+* html .hitarea {
+	display: inline;
+	float:none;
+}
+
+.treeview li { 
+	margin: 0;
+	padding: 3px 0pt 3px 16px;
+}
+
+.treeview a.selected {
+	background-color: #eee;
+}
+
+.treeview .hover { color: red; cursor: pointer; }
+
+.treeview li { background: url(/images/modules/logs/treeview-default-line.gif) 0 0 no-repeat; }
+.treeview li.collapsable, .treeview li.expandable { background-position: 0 -176px; }
+
+.treeview .expandable-hitarea { background-position: -80px -3px; }
+
+.treeview li.last { background-position: 0 -1766px }
+.treeview li.lastCollapsable { background-image: url(/images/modules/logs/treeview-default.gif); background-position: 0 -111px }  
+.treeview li.lastExpandable { background-image: url(/images/modules/logs/treeview-default.gif); background-position: -32px -67px }  
+
+.treeview div.lastCollapsable-hitarea, .treeview div.lastExpandable-hitarea { background-position: 0; }
+
+.filetree li { padding: 3px 0 2px 16px; }
+.filetree span.folder, .filetree span.file { padding: 1px 0 1px 16px; display: inline-block; vertical-align: middle;}
+.filetree span.folder { background: url(/images/modules/logs/folder.gif) 0 0 no-repeat; }
+.filetree li.expandable span.folder { background: url(/images/modules/logs/folder-closed.gif) 0 0 no-repeat; }
+.filetree span.file { background: url(/images/modules/logs/file.gif) 0 0 no-repeat;}

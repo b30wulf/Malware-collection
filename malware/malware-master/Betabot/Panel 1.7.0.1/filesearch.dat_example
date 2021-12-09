@@ -1,0 +1,26 @@
+##################################
+#Extensions to use (Separate with commas. Example: ext=doc, docx)
+##################################
+
+ext=txt, pdf, doc, docx, rtf, cpp
+
+##################################
+#Search terms (Example: term=find me)
+##################################
+
+term=password
+term=email
+
+##################################
+#Specific file names to capture
+#In-string case-insensitive search!
+##################################
+
+filename=bitcoins.dat
+
+##################################
+#Exclude folders
+#In-string case-insensitive search!
+##################################
+
+exclude=\Program Files

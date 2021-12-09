@@ -1,0 +1,12 @@
+**/__pycache__
+**/local_settings.py
+.idea/
+**.iml
+**.db
+**.db-journal
+**/build/
+media
+**.pyc
+install/
+install_s/
+out/

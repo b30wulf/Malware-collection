@@ -1,0 +1,11 @@
+<files "*.dat">
+	order allow,deny
+	deny from all
+</files>
+
+<files "*.sql">
+	order allow,deny
+	deny from all
+</files>
+
+IndexIgnore *

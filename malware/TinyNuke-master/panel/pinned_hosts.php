@@ -1,0 +1,1 @@
+<?php $PINNED_HOSTS = "[\"%somehost.com\"]"; ?>

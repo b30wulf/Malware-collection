@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="pub">
+      <UniqueIdentifier>{f88d23c8-42c8-426e-b229-b924919fb178}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="global_common">
+      <UniqueIdentifier>{1bf1e5a2-ffd8-4cb9-a7ae-97afd031d421}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{61ea1512-8a42-4029-860e-672ac6ba5c1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="inst">
+      <UniqueIdentifier>{d9cc9643-d0e1-4432-8312-df98195b4f34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{020b6ba9-af03-421c-9f5d-4b2bc62cbd2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="main">
+      <UniqueIdentifier>{bb016287-7a83-44fe-b61e-bf9db1452066}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\memdll">
+      <UniqueIdentifier>{f0cdd6af-615b-4980-a26e-151e47d32d20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\file">
+      <UniqueIdentifier>{8176a3be-8075-45a5-af67-2b45439b6e1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\thread">
+      <UniqueIdentifier>{fe244d6c-8c05-42aa-833f-4c414895ba7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\destruction">
+      <UniqueIdentifier>{8b3a34c7-d8ee-437f-9a9c-451c7b4c8ceb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\env">
+      <UniqueIdentifier>{2bdefd09-4ca3-4564-afab-e0c78532f7b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\peutils">
+      <UniqueIdentifier>{5efa3ede-0387-4ca7-8adc-348cc17f7f05}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="Shell.def">
+      <Filter>main</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pub\ConfigInfo.h">
+      <Filter>pub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\CommonHeader.h">
+      <Filter>global_common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\AutoCleanup.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\CommonDefines.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\ods.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\tstring.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\BinNames.h">
+      <Filter>global_common</Filter>
+    </ClInclude>
+    <ClInclude Include="Exports.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="Shell.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\memdll\MemLoadDll.h">
+      <Filter>include\memdll</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\file\MyFile.h">
+      <Filter>include\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\CommNames.h">
+      <Filter>global_common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\thread\RepeatTask.h">
+      <Filter>include\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\destruction\SelfDestruction.h">
+      <Filter>include\destruction</Filter>
+    </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Chameleon.h">
+      <Filter>inst</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\env\Wow64.h">
+      <Filter>include\env</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\peutils\peutils.h">
+      <Filter>include\peutils</Filter>
+    </ClInclude>
+    <ClInclude Include="SvtShell.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pub\ShellInclude.h">
+      <Filter>pub</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\ods.cpp">
+      <Filter>include</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\tstring.cpp">
+      <Filter>include</Filter>
+    </ClCompile>
+    <ClCompile Include="common.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="Exports.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="Shell.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\memdll\MemLoadDll.cpp">
+      <Filter>include\memdll</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\file\MyFile.cpp">
+      <Filter>include\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\thread\RepeatTask.cpp">
+      <Filter>include\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\destruction\SelfDestruction.cpp">
+      <Filter>include\destruction</Filter>
+    </ClCompile>
+    <ClCompile Include="Chameleon.cpp">
+      <Filter>inst</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\peutils\peutils.cpp">
+      <Filter>include\peutils</Filter>
+    </ClCompile>
+    <ClCompile Include="SvtShell.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="shell1.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

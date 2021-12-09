@@ -1,0 +1,10 @@
+rewriteEngine on 
+rewriteBase /
+
+RewriteRule ^(css|images|js)/(.*)$ templates/$1/$2 [QSA]
+RewriteRule ^([a-zA-Z0-9_]+)\/([a-zA-Z0-9_]+)(-([0-9]+))?\.html(.*)?$ index.php?%{QUERY_STRING}&to=$1&go=$2&id=$4 [QSA]
+RewriteRule ^([a-zA-Z0-9_]+)\/([a-zA-Z0-9_]+)(-([A-Za-z0-9-_]+))?\.html(.*)?$ index.php?%{QUERY_STRING}&to=$1&go=$2&str=$4 [QSA]
+RewriteRule ^([a-zA-Z0-9_]+)(\/)?$ index.php?to=$1&go=index [QSA]
+
+AddDefaultCharset utf-8
+

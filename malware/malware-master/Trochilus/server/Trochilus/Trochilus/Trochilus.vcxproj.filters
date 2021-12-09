@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="dlg">
+      <UniqueIdentifier>{234f74c5-a1f3-4d7f-a758-00e75e1c9b58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{34d3621f-35b9-4216-8182-e388dd993d2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="json">
+      <UniqueIdentifier>{c8272719-369b-4e57-963f-71176e197b2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="list">
+      <UniqueIdentifier>{50650c99-64a8-410e-89e9-00a515d33779}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="control">
+      <UniqueIdentifier>{c31efa01-a8b4-4103-925e-e2de450c3ae5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mdoule">
+      <UniqueIdentifier>{f2322673-d3b1-4a89-9669-190fc98a2e4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resize">
+      <UniqueIdentifier>{68ee89f2-6263-4a5a-9729-22a073bbe566}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Trochilus.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\Trochilus.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\online.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\1.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\2.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\..\..\base\include\json\json_internalarray.inl">
+      <Filter>json</Filter>
+    </None>
+    <None Include="..\..\..\base\include\json\json_internalmap.inl">
+      <Filter>json</Filter>
+    </None>
+    <None Include="..\..\..\base\include\json\json_valueiterator.inl">
+      <Filter>json</Filter>
+    </None>
+    <None Include="res\Closed Folder.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\Hard Drive.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\Removable Drive.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\About.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\icon4.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\process.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\notify.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Trochilus.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TrochilusDlg.h">
+      <Filter>dlg</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\autolink.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\config.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\features.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\forwards.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\autolink.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\config.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\features.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\forwards.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\json\autolink.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\json\config.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\json\features.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\json\forwards.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\json\json.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\json\reader.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\json\value.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\json\writer.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\json.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\reader.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\value.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\include\writer.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\json.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\json_batchallocator.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\reader.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\value.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\json\writer.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\tstring.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\thread\ThreadArray.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\thread\RepeatTask.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ReportCtrl.h">
+      <Filter>list</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorProgressCtrl.h">
+      <Filter>list</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgressListCtrl.h">
+      <Filter>list</Filter>
+    </ClInclude>
+    <ClInclude Include="HostDlg.h">
+      <Filter>dlg</Filter>
+    </ClInclude>
+    <ClInclude Include="ListenDlg.h">
+      <Filter>dlg</Filter>
+    </ClInclude>
+    <ClInclude Include="CmdDlg.h">
+      <Filter>mdoule</Filter>
+    </ClInclude>
+    <ClInclude Include="FileMgrDlg.h">
+      <Filter>mdoule</Filter>
+    </ClInclude>
+    <ClInclude Include="TransferDlg.h">
+      <Filter>mdoule</Filter>
+    </ClInclude>
+    <ClInclude Include="IconLoader.h">
+      <Filter>control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pub\IModule.h">
+      <Filter>control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pub\ModuleMessage.h">
+      <Filter>control</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\mfcresize\Resizer.h">
+      <Filter>resize</Filter>
+    </ClInclude>
+    <ClInclude Include="DownDlg.h">
+      <Filter>dlg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\base\include\ods.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="FilePanelDlg.h">
+      <Filter>mdoule</Filter>
+    </ClInclude>
+    <ClInclude Include="HostList.h">
+      <Filter>list</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Trochilus.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TrochilusDlg.cpp">
+      <Filter>dlg</Filter>
+    </ClCompile>
+    <ClCompile Include="common.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\json\json_reader.cpp">
+      <Filter>json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\json\json_value.cpp">
+      <Filter>json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\json\json_writer.cpp">
+      <Filter>json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\tstring.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\thread\ThreadArray.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\thread\RepeatTask.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="ReportCtrl.cpp">
+      <Filter>list</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorProgressCtrl.cpp">
+      <Filter>list</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgressListCtrl.cpp">
+      <Filter>list</Filter>
+    </ClCompile>
+    <ClCompile Include="HostDlg.cpp">
+      <Filter>dlg</Filter>
+    </ClCompile>
+    <ClCompile Include="ListenDlg.cpp">
+      <Filter>dlg</Filter>
+    </ClCompile>
+    <ClCompile Include="CmdDlg.cpp">
+      <Filter>mdoule</Filter>
+    </ClCompile>
+    <ClCompile Include="FileMgrDlg.cpp">
+      <Filter>mdoule</Filter>
+    </ClCompile>
+    <ClCompile Include="TransferDlg.cpp">
+      <Filter>mdoule</Filter>
+    </ClCompile>
+    <ClCompile Include="IconLoader.cpp">
+      <Filter>control</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\mfcresize\Resizer.cpp">
+      <Filter>resize</Filter>
+    </ClCompile>
+    <ClCompile Include="DownDlg.cpp">
+      <Filter>dlg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\base\include\ods.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="FilePanelDlg.cpp">
+      <Filter>mdoule</Filter>
+    </ClCompile>
+    <ClCompile Include="HostList.cpp">
+      <Filter>list</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Trochilus.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
