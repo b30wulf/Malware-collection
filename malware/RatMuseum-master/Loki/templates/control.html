@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+		{% block links %}
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/control.css') }}">
+		<script type="text/javascript" src="{{ url_for('static', filename='js/control.js') }}"></script>
+		{% endblock %}
+	
+	{% block title %} Control {% endblock %}
+			
+		{% block content %}
+		<div id="display"></div>			
+		{% endblock %}

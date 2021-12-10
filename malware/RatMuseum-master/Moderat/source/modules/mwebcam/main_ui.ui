@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>557</width>
+    <height>404</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Remote Camera Preview</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../res.qrc">
+    <normaloff>:/icons/assets/logo.png</normaloff>:/icons/assets/logo.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #2c3e50;
+color: #bdc3c7;</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="cameraButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>28</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>28</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#cameraButton {
+			border: none;
+			border-radius: none;
+			padding: 5px;
+            background-color: #2c3e50;
+            }
+
+QPushButton#cameraButton:pressed {
+            background-color: #34495e;
+            }</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../../res.qrc">
+           <normaloff>:/icons/assets/webcam.png</normaloff>:/icons/assets/webcam.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="saveButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>28</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>28</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#saveButton {
+			border: none;
+			border-radius: none;
+			padding: 5px;
+            background-color: #2c3e50;
+            }
+
+QPushButton#saveButton:pressed {
+            background-color: #34495e;
+            }</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../../res.qrc">
+           <normaloff>:/icons/assets/save_as.png</normaloff>:/icons/assets/save_as.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="clearButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>28</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>28</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton#clearButton {
+			border: none;
+			border-radius: none;
+			padding: 5px;
+            background-color: #2c3e50;
+            }
+
+QPushButton#clearButton:pressed {
+            background-color: #34495e;
+            }</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../../res.qrc">
+           <normaloff>:/icons/assets/trash.png</normaloff>:/icons/assets/trash.png</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="alwaysTopButton">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton#alwaysTopButton {
+			border: none;
+			border-radius: none;
+			padding: 5px;
+            background-color: #2c3e50;
+            }
+
+QPushButton#alwaysTopButton:checked {
+			border: 1px ridge #c792ea;
+            }</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="../../res.qrc">
+         <normaloff>:/icons/assets/pin.png</normaloff>:/icons/assets/pin.png</iconset>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="cameraLabel">
+     <property name="styleSheet">
+      <string notr="true">background: none;
+background-color: #34495e;
+color: grey;</string>
+     </property>
+     <property name="text">
+      <string>Desktop Preview</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../../res.qrc"/>
+ </resources>
+ <connections/>
+</ui>

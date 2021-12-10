@@ -1,0 +1,44 @@
+def hide_all_windows(h=1):
+
+	if h == 1:
+
+		try:
+
+			import win32console, win32gui
+			window = win32console.GetConsoleWindow()
+			win32gui.ShowWindow(window, 0)
+
+			return True
+
+		except:
+			return False
+
+	else:
+
+		print("WARNING: windows are showen.")
+
+
+
+def run_as_admin(argv=None, debug=False):
+
+	shell32 = windll.shell32
+
+	if argv is None and shell32.IsUserAnAdmin():
+		return True
+
+	if argv is None:
+		argv = sys.argv
+
+	if hasattr(sys, '_MEIPASS'):
+		arguments = map(unicode, argv[1:])
+	else:
+		arguments = map(unicode, argv)
+
+	argument_line = u' '.join(arguments)
+	executable    = unicode(sys.executable)
+	result_code   = shell32.ShellExecuteW(None, u"runas", executable, argument_line, None, 1)
+
+	if int(result_code) <= 32:
+		return False
+
+	return None

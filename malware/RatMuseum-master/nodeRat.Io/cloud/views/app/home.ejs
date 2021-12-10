@@ -1,0 +1,108 @@
+<html>
+<head>
+  <base href="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../app/">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>nodeRat.io</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="css/sweetalert.css.min.css">
+	<link rel="stylesheet" href="css/slidebars.css">
+  <link rel="stylesheet" href="assets/dataTables/media/css/jquery.dataTables.css">
+	<link rel="stylesheet" href="assets/dataTables/media/css/dataTables.bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+	<div class="sb-slidebar sb-left sb-style-overlay sb-width-thin">
+	  <!-- Your left Slidebar content. -->
+	</div>
+
+	<div class="sb-slidebar sb-right sb-style-overlay sb-width-thin">
+	  <!-- Your right Slidebar content. -->
+	</div>
+
+	<div id="sb-site">
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-12 header">
+          <img src="img/logo.png" alt="" class="logo">
+					<h3 class="tagline">Full nodejs Remote Administration Tools with socket.io</h3>
+				</div>
+      </div>
+
+      <% include includes/menu %>
+
+      <% if(section == "client_listing"){ %>   <% include includes/pages/client_listing %>   <% } %>
+      <% if(section == "client_dashboard"){ %> <% include includes/pages/client_dashboard %> <% } %>
+      <% if(section == "client_remote_shell"){ %> <% include includes/pages/client_remote_shell %> <% } %>
+      <% if(section == "config"){ %>           <% include includes/pages/config %>           <% } %>
+
+      <% include includes/footer %>
+
+		</div>
+
+	</div>
+
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/jquery-migrate-1.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/sweetalert.min.js"></script>
+	<script src="js/slidebars.js"></script>
+	<script src="js/jquery.nicescroll.js"></script>
+  <script src="assets/dataTables/media/js/jquery.dataTables.js"></script>
+  <script src="assets/dataTables/media/js/dataTables.bootstrap.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+
+	<script>
+
+	    $(document).ready(function() {
+
+        var socket = io.connect('http://<%= config_ip_server %>:<%= config_port_server %>/webAdmin');  // Connexion au socket
+        var admin  = { "admin_mail": "<%= admin.admin_mail %>", "admin_password": "<%= admin.admin_password %>" }
+
+  			socket.emit('initWebAdmin', admin);
+
+        socket.on('adminInittSuccess', function (data) {
+
+          socket.emit('getNodeClientOnline');
+
+          socket.on('nodeClientOnline', function (data) {
+           $("#client_"+data).attr("src","img/icons/online.png");
+          });
+
+          socket.on('nodeClientOffline', function (data) {
+           $("#client_"+data).attr("src","img/icons/offline.png");
+          });
+
+          <% if(section == "client_listing"){ %>
+            init_client_listing(socket, data);
+          <% } %>
+
+          <% if(section == "client_dashboard"){ %>
+            init_client_dashboard(socket, data);
+          <% } %>
+
+          <% if(section == "client_remote_shell"){ %>
+            init_client_remote_shell(socket, data);
+          <% } %>
+
+          <% if(section == "config"){ %>
+            init_config(socket, data);
+          <% } %>
+
+        });
+
+	    });
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E238E94A-960A-44A9-A0DC-19A23C442EAB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>uRAT.ManagersClientPlugin</RootNamespace>
+    <AssemblyName>uRAT.ManagersClientPlugin</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\build\Client\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\build\Server\plugins\client\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ManagersPluginHost.cs" />
+    <Compile Include="ProcessManager\Operations\ProcessManagerOperation.cs" />
+    <Compile Include="ProcessManager\Packets\KillProcessPacket.cs" />
+    <Compile Include="ProcessManager\Packets\ProcessInformationPacket.cs" />
+    <Compile Include="ProcessManager\Packets\RefreshProcessesPacket.cs" />
+    <Compile Include="ProcessManager\Packets\RefreshServicesPacket.cs" />
+    <Compile Include="ProcessManager\Packets\ServiceInformationPacket.cs" />
+    <Compile Include="ProcessManager\Packets\StartProcessPacket.cs" />
+    <Compile Include="ProcessManager\ProcessManagerPlugin.cs" />
+    <Compile Include="ProcessManager\Tools\ProcessesHelper.cs" />
+    <Compile Include="ProcessManager\Tools\ServicesHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\uNet2\uNet2.csproj">
+      <Project>{FDFC8179-FEEA-42D0-ADD9-D31017C71414}</Project>
+      <Name>uNet2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\uRAT.Client\uRAT.Client.csproj">
+      <Project>{EB02E8F6-6D38-44E3-AC2D-34792A538267}</Project>
+      <Name>uRAT.Client</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,23 @@
+theme: jekyll-theme-slate
+title: Pinky - The PHP mini RAT
+
+author: davidtavarez
+email: david@punksec.com
+
+twitter_username: davidtavarez
+github_username:  davidtavarez
+linkedin_username: davidtavarez
+
+minima:
+  date_format: "%b %-d, %Y"
+
+description: > 
+  Pinky is a command line web shell designed for remote administration and pentesting.
+  
+plugins:
+ - jekyll-seo-tag
+ 
+exclude:
+ - obfuscator
+ - output/
+ 

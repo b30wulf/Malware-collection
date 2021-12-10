@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master", "Master\Master.csproj", "{9FDAE122-CD1E-467D-A6FA-A98C26E76348}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slave", "Slave\Slave.csproj", "{B3DE9A4F-07E0-4DA1-BD06-D4A86878182C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{982DC5B6-1123-428A-83DD-D212490C859F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Botnet", "Botnet", "{C5E80805-32C5-47F6-83EC-2AE39AA7F08B}"
+	ProjectSection(SolutionItems) = preProject
+		Botnet\backnet.sql = Botnet\backnet.sql
+		Botnet\db-co.php = Botnet\db-co.php
+		Botnet\functions.php = Botnet\functions.php
+		Botnet\index.php = Botnet\index.php
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{2014E48D-734F-4C9D-9066-DF9C2059C3AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webcam_master", "Plugins\Webcam_master\Webcam_master.csproj", "{A7301384-7354-47FD-A4C5-65B74E0BBB46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webcam_slave", "Plugins\Webcam_slave\Webcam_slave.csproj", "{243C279E-33A6-46A1-BEAB-2864CC7A499F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9FDAE122-CD1E-467D-A6FA-A98C26E76348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FDAE122-CD1E-467D-A6FA-A98C26E76348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FDAE122-CD1E-467D-A6FA-A98C26E76348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FDAE122-CD1E-467D-A6FA-A98C26E76348}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3DE9A4F-07E0-4DA1-BD06-D4A86878182C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3DE9A4F-07E0-4DA1-BD06-D4A86878182C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3DE9A4F-07E0-4DA1-BD06-D4A86878182C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3DE9A4F-07E0-4DA1-BD06-D4A86878182C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{982DC5B6-1123-428A-83DD-D212490C859F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{982DC5B6-1123-428A-83DD-D212490C859F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{982DC5B6-1123-428A-83DD-D212490C859F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{982DC5B6-1123-428A-83DD-D212490C859F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7301384-7354-47FD-A4C5-65B74E0BBB46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7301384-7354-47FD-A4C5-65B74E0BBB46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7301384-7354-47FD-A4C5-65B74E0BBB46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7301384-7354-47FD-A4C5-65B74E0BBB46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{243C279E-33A6-46A1-BEAB-2864CC7A499F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{243C279E-33A6-46A1-BEAB-2864CC7A499F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{243C279E-33A6-46A1-BEAB-2864CC7A499F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{243C279E-33A6-46A1-BEAB-2864CC7A499F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A7301384-7354-47FD-A4C5-65B74E0BBB46} = {2014E48D-734F-4C9D-9066-DF9C2059C3AB}
+		{243C279E-33A6-46A1-BEAB-2864CC7A499F} = {2014E48D-734F-4C9D-9066-DF9C2059C3AB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7A9BC93C-00B1-46A5-827A-54875BBC8BAC}
+	EndGlobalSection
+EndGlobal

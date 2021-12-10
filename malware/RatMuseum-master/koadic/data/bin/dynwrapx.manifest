@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+	<assemblyIdentity type="win32" name="dynwrapx" version="2.2.0.0"/>
+	<file name="dynwrapx.dll">
+    	<comClass
+        	description="DynamicWrapperX Class"
+        	clsid="{89565276-A714-4a43-912E-978B935EDCCC}"
+        	threadingModel="Both"
+        	progid="DynamicWrapperX"/>
+	</file>
+</assembly>

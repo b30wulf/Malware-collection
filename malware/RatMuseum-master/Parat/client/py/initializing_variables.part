@@ -1,0 +1,116 @@
+
+
+
+# define variables
+
+IP           = '192.168.1.38'
+PORT         = 4444
+
+PLATFORM     = 'windows'
+ARCHITECTUE  = 'x86'
+
+PORTS = [
+			21, 22, 23, 25, 43, 45, 53, 80, 110, 111, 135, 139, 143, 179, 443,
+			445, 514, 993, 995, 1723, 3306, 3389, 5900, 8000, 8080, 8443, 8888
+		]
+
+SERVICE_NAME = "parat"
+RST_FLAG     = False
+
+if getattr(sys, 'frozen', False):
+	EXECUTABLE_PATH = sys.executable
+elif __file__:
+	EXECUTABLE_PATH = __file__
+else:
+	EXECUTABLE_PATH = ''
+
+EXECUTABLE_NAME = os.path.basename(EXECUTABLE_PATH)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

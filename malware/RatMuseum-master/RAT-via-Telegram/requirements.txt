@@ -1,0 +1,11 @@
+telepot
+requests
+image
+winshell
+tendo
+pypiwin32
+pyinstaller
+psutil
+pillow
+opencv-python
+console-tools

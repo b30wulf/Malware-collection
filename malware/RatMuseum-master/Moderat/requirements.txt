@@ -1,0 +1,10 @@
+coloredlogs
+twisted
+pillow
+matplotlib
+qt4reactor
+pycrypto
+selenium
+requests
+pyqode.python
+pyaudio

@@ -1,0 +1,102 @@
+﻿<src:SlaveWindow x:Class="BlackHole.Master.FileManagerWindow"
+        xmlns:src="clr-namespace:BlackHole.Master"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlackHole.Master"
+        mc:Ignorable="d"
+        Title="File Manager" Height="800" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <GroupBox Header="Current directory" Grid.Row="0" Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="600" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBox Name="TxtBoxDirectory" Text=".." Grid.Column="0" KeyDown="TxtBoxDirectory_KeyDown" />
+                <Button Name="BtnNavigate" Content="Navigate" Click="OnNavigate" Grid.Column="1" />
+                <Button Name="BtnGoToDrives" Content="Drives" Click="OnGoToDrives" Grid.Column="2" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Upload file to current directory" Grid.Row="1" Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="600" />
+                    <ColumnDefinition Width="5" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBox Name="TxtBoxUpload" Text="http://example.com/script.bat" Grid.Column="0" KeyDown="TxtBoxUpload_KeyDown" />
+                <Button Name="BtnUpload" Content="Upload" Click="OnUpload" Grid.Column="2" />
+            </Grid>
+        </GroupBox>
+        <ListView Grid.Row="2" Name="FilesList" ItemsSource="{Binding Items}" Margin="10" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+            <ListView.Resources>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Type}" Value="Folder">
+                            <Setter Property="Foreground" Value="DarkGreen" />
+                        </DataTrigger>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard Storyboard="{StaticResource HighlightEffect}" />
+                        </EventTrigger>
+                    </Style.Triggers>
+                    <EventSetter Event="MouseDoubleClick" Handler="OnFolderDoubleClick" />
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="400" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Size" Width="100" DisplayMemberBinding="{Binding Size}" />
+                </GridView>
+            </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Download file" Click="OnDownloadFile" Icon="{StaticResource DownloadFileIcon}" />
+                    <MenuItem Header="Execute file" Click="OnExecuteFile" Icon="{StaticResource ExecuteFileIcon}" />
+                    <MenuItem Header="Deleted file" Click="OnDeleteFile" Icon="{StaticResource DeleteFileIcon}" />
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+        <ListView Grid.Row="3" Name="FileTransactionsList" Height="200" ItemsSource="{Binding Items}" Margin="10" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+            <ListView.Resources>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                            <BeginStoryboard Storyboard="{StaticResource HighlightEffect}" />
+                        </EventTrigger>
+                    </Style.Triggers>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="Command" Width="150" DisplayMemberBinding="{Binding HeaderText}" />
+                    <GridViewColumn Header="Target" Width="250" DisplayMemberBinding="{Binding TargetText}" />
+                    <GridViewColumn Header="Progession" Width="400">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ProgressBar Maximum="100" Foreground="{Binding ProgressColor}" Value="{Binding Progress}" Height="18" Margin="5"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Cancel transaction" Click="OnCancelTransaction" Icon="{StaticResource CancelTransactionIcon}" />
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+        <ContentPresenter  Grid.Row="4"  Name="TargetStatusPresenter" ContentTemplate="{StaticResource TargetSlaveStatusBar}" />
+    </Grid>
+</src:SlaveWindow>

@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>659</width>
+    <height>398</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Client Information</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="htmleditor.qrc">
+    <normaloff>:/image/images/logo.png</normaloff>:/image/images/logo.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QWebView" name="webView">
+      <property name="url">
+       <url>
+        <string>about:blank</string>
+       </url>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>659</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="standardToolBar">
+   <property name="windowTitle">
+    <string>Standard</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionSave"/>
+   <addaction name="separator"/>
+   <addaction name="actionEditUndo"/>
+   <addaction name="actionEditRedo"/>
+   <addaction name="separator"/>
+   <addaction name="actionEditCut"/>
+   <addaction name="actionEditCopy"/>
+   <addaction name="actionEditPaste"/>
+   <addaction name="separator"/>
+   <addaction name="actionZoomOut"/>
+   <addaction name="actionZoomIn"/>
+  </widget>
+  <widget class="QToolBar" name="formatToolBar">
+   <property name="windowTitle">
+    <string>Formatting</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>true</bool>
+   </attribute>
+   <addaction name="actionFormatBold"/>
+   <addaction name="actionFormatItalic"/>
+   <addaction name="actionFormatUnderline"/>
+   <addaction name="actionFormatStrikethrough"/>
+   <addaction name="separator"/>
+   <addaction name="actionFormatFontSize"/>
+   <addaction name="actionFormatTextColor"/>
+   <addaction name="actionFormatBackgroundColor"/>
+   <addaction name="separator"/>
+   <addaction name="actionFormatAlignLeft"/>
+   <addaction name="actionFormatAlignCenter"/>
+   <addaction name="actionFormatAlignRight"/>
+   <addaction name="actionFormatAlignJustify"/>
+   <addaction name="separator"/>
+   <addaction name="actionFormatDecreaseIndent"/>
+   <addaction name="actionFormatIncreaseIndent"/>
+   <addaction name="separator"/>
+   <addaction name="actionFormatNumberedList"/>
+   <addaction name="actionFormatBulletedList"/>
+  </widget>
+  <action name="actionSave">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/save.png</normaloff>:/image/images/save.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionEditUndo">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/edit-undo.png</normaloff>:/image/images/edit-undo.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Undo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="actionEditRedo">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/edit-redo.png</normaloff>:/image/images/edit-redo.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Redo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Y</string>
+   </property>
+  </action>
+  <action name="actionEditCut">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/edit-cut.png</normaloff>:/image/images/edit-cut.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cu&amp;t</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="actionEditCopy">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/edit-copy.png</normaloff>:/image/images/edit-copy.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Copy</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actionEditPaste">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/edit-paste.png</normaloff>:/image/images/edit-paste.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Paste</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="actionEditSelectAll">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/edit-select-all.png</normaloff>:/images/edit-select-all.png</iconset>
+   </property>
+   <property name="text">
+    <string>Select A&amp;ll</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="actionFormatBold">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/format-text-bold.png</normaloff>:/image/images/format-text-bold.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Bold</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
+   </property>
+  </action>
+  <action name="actionFormatItalic">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/format-text-italic.png</normaloff>:/image/images/format-text-italic.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Italic</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionFormatUnderline">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/format-text-underline.png</normaloff>:/image/images/format-text-underline.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Underline</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+U</string>
+   </property>
+  </action>
+  <action name="actionFormatStrikethrough">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/format-text-strikethrough.png</normaloff>:/image/images/format-text-strikethrough.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Strikethrough</string>
+   </property>
+  </action>
+  <action name="actionFormatFontSize">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/text-size.png</normaloff>:/image/images/text-size.png</iconset>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </action>
+  <action name="actionFormatTextColor">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/text-color.png</normaloff>:/image/images/text-color.png</iconset>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </action>
+  <action name="actionFormatBackgroundColor">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/background-color.png</normaloff>:/image/images/background-color.png</iconset>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </action>
+  <action name="actionFormatAlignLeft">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/format-justify-left.png</normaloff>:/image/images/format-justify-left.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align &amp;Left</string>
+   </property>
+  </action>
+  <action name="actionFormatAlignCenter">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/format-justify-center.png</normaloff>:/image/images/format-justify-center.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align &amp;Center</string>
+   </property>
+  </action>
+  <action name="actionFormatAlignRight">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/format-justify-right.png</normaloff>:/image/images/format-justify-right.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align &amp;Right</string>
+   </property>
+  </action>
+  <action name="actionFormatAlignJustify">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/format-justify-fill.png</normaloff>:/image/images/format-justify-fill.png</iconset>
+   </property>
+   <property name="text">
+    <string>Align &amp;Justify</string>
+   </property>
+  </action>
+  <action name="actionFormatIncreaseIndent">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/format-indent-more.png</normaloff>:/image/images/format-indent-more.png</iconset>
+   </property>
+   <property name="text">
+    <string>I&amp;ncrease Indent</string>
+   </property>
+  </action>
+  <action name="actionFormatDecreaseIndent">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/format-indent-less.png</normaloff>:/image/images/format-indent-less.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Decrease Indent</string>
+   </property>
+  </action>
+  <action name="actionFormatBulletedList">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/bulleted-list.png</normaloff>:/image/images/bulleted-list.png</iconset>
+   </property>
+   <property name="text">
+    <string>Bulle&amp;ted List</string>
+   </property>
+  </action>
+  <action name="actionFormatNumberedList">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/numbered-list.png</normaloff>:/image/images/numbered-list.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Numbered List</string>
+   </property>
+  </action>
+  <action name="actionZoomOut">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/list-remove.png</normaloff>:/image/images/list-remove.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom Out</string>
+   </property>
+  </action>
+  <action name="actionZoomIn">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/list-add.png</normaloff>:/image/images/list-add.png</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom In</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>E&amp;xit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionStyleParagraph">
+   <property name="text">
+    <string>&amp;Paragraph</string>
+   </property>
+  </action>
+  <action name="actionStyleHeading1">
+   <property name="text">
+    <string>Heading &amp;1</string>
+   </property>
+  </action>
+  <action name="actionStyleHeading2">
+   <property name="text">
+    <string>Heading &amp;2</string>
+   </property>
+  </action>
+  <action name="actionStyleHeading3">
+   <property name="text">
+    <string>Heading &amp;3</string>
+   </property>
+  </action>
+  <action name="actionStyleHeading4">
+   <property name="text">
+    <string>Heading &amp;4</string>
+   </property>
+  </action>
+  <action name="actionStyleHeading5">
+   <property name="text">
+    <string>Heading &amp;5</string>
+   </property>
+  </action>
+  <action name="actionStyleHeading6">
+   <property name="text">
+    <string>Heading &amp;6</string>
+   </property>
+  </action>
+  <action name="actionStylePreformatted">
+   <property name="text">
+    <string>Pre&amp;formatted</string>
+   </property>
+  </action>
+  <action name="actionStyleAddress">
+   <property name="text">
+    <string>&amp;Address</string>
+   </property>
+  </action>
+  <action name="actionFormatFontName">
+   <property name="text">
+    <string>&amp;Font Name...</string>
+   </property>
+  </action>
+  <action name="actionFormatTextColor">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/text-color.png</normaloff>:/image/images/text-color.png</iconset>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="iconText">
+    <string/>
+   </property>
+  </action>
+  <action name="actionFormatBackgroundColor">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/background-color.png</normaloff>:/image/images/background-color.png</iconset>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </action>
+  <action name="actionFormatFontSize">
+   <property name="icon">
+    <iconset resource="htmleditor.qrc">
+     <normaloff>:/image/images/text-size.png</normaloff>:/image/images/text-size.png</iconset>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWebView</class>
+   <extends>QWidget</extends>
+   <header>QtWebKit/QWebView</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="htmleditor.qrc"/>
+ </resources>
+ <connections/>
+</ui>

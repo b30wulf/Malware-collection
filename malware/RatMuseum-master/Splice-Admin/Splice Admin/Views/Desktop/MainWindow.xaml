@@ -1,0 +1,221 @@
+﻿<Window x:Class="Splice_Admin.Views.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Splice Admin" Height="475" Width="930" MinHeight="425" MinWidth="700"
+        xmlns:local="clr-namespace:Splice_Admin.Classes"
+        Background="#f3f3f3"
+        UseLayoutRounding="True" SnapsToDevicePixels="True">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="local:CustomCommands.Enter" CanExecute="EnterCommand_CanExecute" Executed="EnterCommand_Executed" />
+    </Window.CommandBindings>
+
+    <Window.Resources>
+        <Style x:Key="ListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        </Style>
+
+        <!-- Button Template -->
+        <ControlTemplate TargetType="Button" x:Key="ButtonTemplate">
+            <Border Name="button_Border"
+                    BorderThickness="0" Padding="5,2"
+                    Background="Transparent">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <TextBlock Text="{TemplateBinding Content}" VerticalAlignment="Center" Name="button_Text"
+                               FontSize="16" FontWeight="Normal" Foreground="{TemplateBinding Foreground}" />
+                </StackPanel>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="button_Text" Property="Foreground" Value="#859900" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="button_Text" Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="0.95" ScaleY="0.95" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+
+
+    <!-- Main Grid -->
+    <Grid Background="#303b46">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- TextBox Grid -->
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Target Computer TextBox -->
+            <TextBox Name="txtTargetComputer"
+                     FontSize="18" Height="32" VerticalContentAlignment="Center"
+                     MaxLength="64"
+                     Margin="0,15,30,15"
+                     PreviewKeyDown="txtTargetComputer_PreviewKeyDown"
+                     CharacterCasing="Upper">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="local:CustomCommands.Enter" />
+                </TextBox.InputBindings>
+            </TextBox>
+
+
+            <!-- Selected Item / Target Computer Section -->
+            <Border Grid.Column="1" BorderThickness="0,0,0,0" BorderBrush="#586e75">
+                <StackPanel Grid.Column="1" VerticalAlignment="Center" Width="180" Margin="0,0,15,0">
+                    <TextBlock Name="SelectedItem"
+                           FontSize="26"
+                           Foreground="#98aeb5"
+                           HorizontalAlignment="Right"
+                           Text="" />
+                    <TextBlock Name="SelectedTarget"
+                           FontSize="12"
+                           Foreground="#ccc"
+                           HorizontalAlignment="Right"
+                           Text="" />
+                </StackPanel>
+            </Border>
+            <!--<Button Grid.Column="1" Content="Credentials" Click="Button_Click" />-->
+        </Grid>
+
+
+        <!-- Button Panel [Left Column] -->
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <!-- System Info Button -->
+            <Button Click="MenuButton_Click"
+                    Name="btnSystemInfo"
+                    Template="{StaticResource ResourceKey=ButtonTemplate}"
+                    Width="Auto" Margin="10,0"
+                    IsTabStop="False"
+                    FocusVisualStyle="{x:Null}"
+                    Foreground="#a5abb3"
+                    Content="System Info" />
+
+            <!-- Processes Button -->
+            <Button Click="MenuButton_Click"
+                    Name="btnProcesses"
+                    Template="{StaticResource ResourceKey=ButtonTemplate}"
+                    Margin="10,10,10,0"
+                    IsTabStop="False"
+                    FocusVisualStyle="{x:Null}"
+                    Foreground="#a5abb3"
+                    Content="Processes" />
+
+            <!-- Services Button -->
+            <Button Click="MenuButton_Click"
+                    Name="btnServices"
+                    Width="Auto" Margin="10,10,10,0"
+                    Template="{StaticResource ResourceKey=ButtonTemplate}"
+                    IsTabStop="False"
+                    FocusVisualStyle="{x:Null}"
+                    Foreground="#a5abb3"
+                    Content="Services" />
+
+            <!-- Networking Button -->
+            <Button Click="MenuButton_Click"
+                    Name="btnNetworking"
+                    Template="{StaticResource ResourceKey=ButtonTemplate}"
+                    Width="Auto" Margin="10,10,10,0"
+                    IsTabStop="False"
+                    FocusVisualStyle="{x:Null}"
+                    Foreground="#a5abb3"
+                    Content="Networking" />
+            
+            <!-- Storage Button -->
+            <Button Click="MenuButton_Click"
+                    Name="btnStorage"
+                    Template="{StaticResource ResourceKey=ButtonTemplate}"
+                    Width="Auto" Margin="10,10,10,0"
+                    IsTabStop="False"
+                    FocusVisualStyle="{x:Null}"
+                    Foreground="#a5abb3"
+                    Content="Storage" />
+
+            <!-- Applications Button -->
+            <Button Click="MenuButton_Click"
+                    Name="btnApplications"
+                    Template="{StaticResource ResourceKey=ButtonTemplate}"
+                    Width="Auto" Margin="10,10,10,0"
+                    IsTabStop="False"
+                    FocusVisualStyle="{x:Null}"
+                    Foreground="#a5abb3"
+                    Content="Applications" />
+
+            <!-- Updates Button -->
+            <Button Click="MenuButton_Click"
+                    Name="btnUpdates"
+                    Template="{StaticResource ResourceKey=ButtonTemplate}"
+                    Width="Auto" Margin="10,10,10,0"
+                    IsTabStop="False"
+                    FocusVisualStyle="{x:Null}"
+                    Foreground="#a5abb3"
+                    Content="Updates" />
+
+            <!-- Users Button -->
+            <Button Click="MenuButton_Click"
+                    Name="btnUsers"
+                    Template="{StaticResource ResourceKey=ButtonTemplate}"
+                    Width="Auto" Margin="10,10,10,0"
+                    IsTabStop="False"
+                    FocusVisualStyle="{x:Null}"
+                    Foreground="#a5abb3"
+                    Content="Users" />
+
+            <!-- Tasks Button -->
+            <Button Click="MenuButton_Click"
+                    Name="btnTasks"
+                    Template="{StaticResource ResourceKey=ButtonTemplate}"
+                    Width="Auto" Margin="10,10,10,0"
+                    IsTabStop="False"
+                    FocusVisualStyle="{x:Null}"
+                    Foreground="#a5abb3"
+                    Content="Tasks" />
+            
+            <!-- Separator bar -->
+            <Border Background="#202b36" Height="2" Margin="0,10,0,0" />
+
+            <!-- Bulk Query Button -->
+            <Button Click="MenuButton_Click"
+                    Name="btnBulkQuery"
+                    Template="{StaticResource ResourceKey=ButtonTemplate}"
+                    Width="Auto" Margin="10,5,10,0"
+                    IsTabStop="False"
+                    FocusVisualStyle="{x:Null}"
+                    Foreground="#a5abb3"
+                    Content="Bulk Query" />
+        </StackPanel>
+
+
+
+        <!-- Main Data Section -->
+        <Border Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="6,4,0,0" Background="White">
+            <Grid>
+                <!-- ContentControl -->
+                <ContentControl Name="contentControl" FocusVisualStyle="{x:Null}" />
+            </Grid>
+        </Border>
+        
+        <!-- Suggestion ListBox -->
+        <ListBox Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
+                 ItemContainerStyle="{StaticResource ResourceKey=ListBoxItemStyle}"
+                 Name="lbSuggestion"
+                 MouseLeftButtonUp="lbSuggestion_MouseLeftButtonUp"
+                 PreviewKeyDown="lbSuggestion_PreviewKeyDown"
+                 Background="#fdf6e3" Visibility="Collapsed"
+                 Width="325" MaxHeight="300"
+                 HorizontalAlignment="Left" VerticalAlignment="Top">
+        </ListBox>
+    </Grid>
+</Window>

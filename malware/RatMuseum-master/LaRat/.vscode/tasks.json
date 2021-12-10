@@ -1,0 +1,9 @@
+{
+	"version": "0.1.0",
+
+	// The command is tsc. Assumes that tsc has been installed using npm install -g typescript
+	"command": "laratinit",
+
+	// The command is a shell script
+	"isShellCommand": true
+}

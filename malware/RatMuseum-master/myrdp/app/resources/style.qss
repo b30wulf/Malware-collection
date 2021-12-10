@@ -1,0 +1,6 @@
+.group-title {
+    background-color: #272822;
+    color: #EFB571;
+    qproperty-alignment: AlignCenter;
+    font-weight: bold;
+}

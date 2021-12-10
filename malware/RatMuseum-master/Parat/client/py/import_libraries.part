@@ -1,0 +1,44 @@
+#!/usr/bin/env python2
+
+from __future__ import print_function
+
+import os
+import sys
+import re
+import platform
+import threading
+import socket
+import urllib
+import urllib2
+import ctypes.wintypes
+import sqlite3
+import win32crypt
+import win32gui
+import win32ui
+import win32con
+import win32api
+import win32file
+
+from ConfigParser import ConfigParser
+from subprocess import PIPE, Popen, check_output, call
+from zipfile import is_zipfile, ZipFile, BadZipfile, LargeZipFile
+from datetime import datetime
+from ctypes import *
+from ctypes.wintypes import *
+from time import sleep
+from tempfile import gettempdir
+from random import _urandom, randrange
+from shutil import copyfile, copy2, rmtree
+from getpass import getuser
+from uuid import getnode
+from json import load
+
+from ctypes import (
+	byref, memset, pointer, sizeof, windll,
+	c_void_p as LPRECT,
+	c_void_p as LPVOID,
+	create_string_buffer,
+	Structure,
+	POINTER,
+	WINFUNCTYPE,
+)

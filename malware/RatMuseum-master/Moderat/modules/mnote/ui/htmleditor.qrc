@@ -1,0 +1,32 @@
+<RCC>
+  <qresource prefix="image">
+    <file>images/background-color.png</file>
+    <file>images/bg.png</file>
+    <file>images/bulleted-list.png</file>
+    <file>images/document-new.png</file>
+    <file>images/edit-copy.png</file>
+    <file>images/edit-cut.png</file>
+    <file>images/edit-paste.png</file>
+    <file>images/edit-redo.png</file>
+    <file>images/edit-undo.png</file>
+    <file>images/format-indent-less.png</file>
+    <file>images/format-indent-more.png</file>
+    <file>images/format-justify-center.png</file>
+    <file>images/format-justify-fill.png</file>
+    <file>images/format-justify-left.png</file>
+    <file>images/format-justify-right.png</file>
+    <file>images/format-text-bold.png</file>
+    <file>images/format-text-italic.png</file>
+    <file>images/format-text-strikethrough.png</file>
+    <file>images/format-text-underline.png</file>
+    <file>images/insert-html.png</file>
+    <file>images/list-add.png</file>
+    <file>images/list-remove.png</file>
+    <file>images/logo.png</file>
+    <file>images/numbered-list.png</file>
+    <file>images/save.png</file>
+    <file>images/text-color.png</file>
+    <file>images/text-html.png</file>
+    <file>images/text-size.png</file>
+  </qresource>
+</RCC>

@@ -1,0 +1,4 @@
+#<Hostname|IP>:<port>:<username>:<password>
+#Example:
+#192.168.1.254:22:root:password
+

@@ -1,0 +1,4 @@
+file_client: local
+file_roots:
+  base:
+    - /home/vagrant/myrdp/salt/states

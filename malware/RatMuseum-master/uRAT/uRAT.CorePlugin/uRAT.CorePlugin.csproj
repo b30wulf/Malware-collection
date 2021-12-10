@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EE0AE586-D963-4126-B2D4-13CDA12FFE66}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>uRAT.CorePlugin</RootNamespace>
+    <AssemblyName>uRAT.CorePlugin</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\build\Server\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\build\Server\plugins\server\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BasicSystemInformation\BasicSystemInformationPlugin.cs" />
+    <Compile Include="BasicSystemInformation\Operations\BasicSystemInformationOperation.cs" />
+    <Compile Include="BasicSystemInformation\Packets\SystemInformationInitPacket.cs" />
+    <Compile Include="BasicSystemInformation\Packets\SystemInformationPacket.cs" />
+    <Compile Include="ConnectionManagement\ConnectionAction.cs" />
+    <Compile Include="ConnectionManagement\ConnectionManagementPlugin.cs" />
+    <Compile Include="ConnectionManagement\Packets\ConnectionManagementPacket.cs" />
+    <Compile Include="ConnectionPing\ConnectionPingPlugin.cs" />
+    <Compile Include="ConnectionPing\Packets\ConnectionPingPacket.cs" />
+    <Compile Include="CorePluginHost.cs" />
+    <Compile Include="ExtendedSystemInformation\ExtendedSystemInformationPlugin.cs" />
+    <Compile Include="ExtendedSystemInformation\Forms\ExtendedInformationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtendedSystemInformation\Forms\ExtendedInformationForm.Designer.cs">
+      <DependentUpon>ExtendedInformationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExtendedSystemInformation\Operations\ExtendedInformationOperation.cs" />
+    <Compile Include="ExtendedSystemInformation\Packets\FetchExtendedInformationPacket.cs" />
+    <Compile Include="ExtendedSystemInformation\Tools\WMIHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\uNet2\uNet2.csproj">
+      <Project>{FDFC8179-FEEA-42D0-ADD9-D31017C71414}</Project>
+      <Name>uNet2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\uRAT.Client\uRAT.Client.csproj">
+      <Project>{eb02e8f6-6d38-44e3-ac2d-34792a538267}</Project>
+      <Name>uRAT.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\uRAT.Server\uRAT.Server.csproj">
+      <Project>{338cbedf-2675-4240-9d69-ec6aea95fe95}</Project>
+      <Name>uRAT.Server</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="ExtendedSystemInformation\Forms\ExtendedInformationForm.resx">
+      <DependentUpon>ExtendedInformationForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

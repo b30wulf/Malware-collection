@@ -1,0 +1,24 @@
+<RCC>
+  <qresource prefix="ico">
+    <file>copy.svg</file>
+    <file>key.svg</file>
+    <file>add.svg</file>
+    <file>clear.svg</file>
+    <file>cancel.svg</file>
+    <file>detach.svg</file>
+    <file>eye.svg</file>
+    <file>edit.svg</file>
+    <file>frameless.svg</file>
+    <file>ok.svg</file>
+    <file>menu.svg</file>
+    <file>myrdp.svg</file>
+    <file>refresh.svg</file>
+    <file>remove.svg</file>
+    <file>settings.svg</file>
+    <file>open.svg</file>
+    <file>tab_menu.png</file>
+  </qresource>
+  <qresource prefix="style">
+    <file>style.qss</file>
+  </qresource>
+</RCC>

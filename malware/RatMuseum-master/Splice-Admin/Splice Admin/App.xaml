@@ -1,0 +1,26 @@
+﻿<Application x:Class="Splice_Admin.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="Views\Desktop\MainWindow.xaml"
+             ShutdownMode="OnMainWindowClose">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+                <!-- Styles -->
+                <!--<ResourceDictionary Source="ResourceDictionaries\Styles\BorderStyles.xaml" />-->
+                <!--<ResourceDictionary Source="ResourceDictionaries\Styles\ButtonStyles.xaml" />-->
+                <ResourceDictionary Source="ResourceDictionaries\Styles\FadeStyles.xaml" />
+                <!--<ResourceDictionary Source="ResourceDictionaries\Styles\TextBlockStyles.xaml" />-->
+
+                <!-- Control Templates -->
+                <!--<ResourceDictionary Source="ResourceDictionaries\ControlTemplates\ButtonTemplates.xaml" />-->
+                <!--<ResourceDictionary Source="ResourceDictionaries\ControlTemplates\TextBoxTemplates.xaml" />-->
+
+                <!-- Brushes -->
+                <!--<ResourceDictionary Source="ResourceDictionaries\Brushes\Colors.xaml" />-->
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

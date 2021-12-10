@@ -1,0 +1,304 @@
+﻿<UserControl x:Class="Splice_Admin.Views.Desktop.ServicesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:Splice_Admin.Controls"
+             xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+             mc:Ignorable="d"
+             Background="White"
+             d:DesignHeight="250" d:DesignWidth="350">
+
+    <UserControl.Resources>
+        <ControlTemplate x:Key="TextBoxTemplate" TargetType="{x:Type TextBox}">
+            <Grid>
+                <Border x:Name="border"
+                        BorderBrush="#4285F4"
+                        BorderThickness="1"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="4"
+                        Padding="4,2"
+                        SnapsToDevicePixels="True">
+                    <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                </Border>
+                <TextBlock Text="Filter..."
+                           Visibility="Hidden"
+                           FontSize="13"
+                           FontStyle="Italic"
+                           Opacity="0.5"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Padding="10,0,0,0"
+                           IsHitTestVisible="False"
+                           x:Name="UserMessage"/>
+                <Button HorizontalAlignment="Right" Margin="0,0,7,0" Click="filterClear_Click">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Border Background="Transparent" VerticalAlignment="Center">
+                                <Border.Style>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="Opacity" Value="0.4" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Opacity" Value="0.9" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <Image Source="/Resources/cancel-24.png" Width="13" Height="13"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                </Trigger>
+                <Trigger Property="Text" Value="">
+                    <Setter Property="Visibility" TargetName="UserMessage" Value="Visible"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="0"
+                  Name="dgServices"
+                  Margin="0"
+                  BorderBrush="#AAA" BorderThickness="0,0,0,1"
+                  IsReadOnly="True"
+                  AutoGenerateColumns="False"
+                  SelectionMode="Single" SelectionUnit="FullRow"
+                  CanUserAddRows="False" CanUserDeleteRows="False"
+                  CanUserReorderColumns="False" CanUserResizeColumns="True"
+                  CanUserResizeRows="False" CanUserSortColumns="True"
+                  HeadersVisibility="Column"
+                  Background="White" Foreground="#222"
+                  RowBackground="#FEFEFE"
+                  AlternatingRowBackground="#F9F9F9"
+                  HorizontalGridLinesBrush="#CCC" VerticalGridLinesBrush="#CCC"
+                  FontSize="13"
+                  IsTabStop="False">
+            <DataGrid.Resources>
+                <Style x:Key="ColumnHeaderGripperStyle" TargetType="{x:Type Thumb}">
+                    <Setter Property="Width" Value="8"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Cursor" Value="SizeWE"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Thumb}">
+                                <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}"/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FontSize" Value="12" />
+                    <Setter Property="FontWeight"  Value="Bold" />
+                    <Setter Property="Background" Value="#BBB" />
+                    <Setter Property="Foreground" Value="#333" />
+                    <Setter Property="BorderThickness" Value="3,3,1,3" />
+                    <Setter Property="BorderBrush" Value="#DDD" />
+                    <Setter Property="Padding" Value="5,0,0,0" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
+                                <Grid>
+                                    <Themes:DataGridHeaderBorder BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" IsClickable="{TemplateBinding CanUserSort}" IsPressed="{TemplateBinding IsPressed}" IsHovered="{TemplateBinding IsMouseOver}" Padding="{TemplateBinding Padding}" SortDirection="{TemplateBinding SortDirection}" SeparatorBrush="{TemplateBinding SeparatorBrush}" SeparatorVisibility="{TemplateBinding SeparatorVisibility}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <ContentPresenter Grid.Column="0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                            <Path x:Name="SortArrow"
+                                                  Grid.Column="1"
+                                                  HorizontalAlignment="Right" VerticalAlignment="Center"                                           
+                                                  Width="8" Height="6" Margin="2,0,5,0"
+                                                  Stretch="Fill" Opacity="0.5" Fill="White"
+                                                  RenderTransformOrigin="0.5,0.4"
+                                                  Visibility="Collapsed"
+                                                  Data="M0,0 L1,0 0.5,1 z" />
+                                        </Grid>
+                                    </Themes:DataGridHeaderBorder>
+                                    <Thumb x:Name="PART_LeftHeaderGripper" HorizontalAlignment="Left" Style="{StaticResource ColumnHeaderGripperStyle}"/>
+                                    <Thumb x:Name="PART_RightHeaderGripper" HorizontalAlignment="Right" Style="{StaticResource ColumnHeaderGripperStyle}"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="SortDirection" Value="Ascending">
+                                        <Setter TargetName="SortArrow" Property="Visibility" Value="Visible" />
+                                        <Setter TargetName="SortArrow" Property="RenderTransform">
+                                            <Setter.Value>
+                                                <RotateTransform Angle="180" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                    <Trigger Property="SortDirection" Value="Descending">
+                                        <Setter TargetName="SortArrow" Property="Visibility" Value="Visible" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Start Service" Click="MenuStartService_Click" />
+                    <MenuItem Header="Stop Service" Click="MenuStopService_Click" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="{x:Static SystemColors.HighlightBrush}" />
+                            <Setter Property="Foreground" Value="{x:Static SystemColors.HighlightTextBrush}" />
+                        </Trigger>
+                    </Style.Triggers>
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                    <Setter Property="IsTabStop" Value="False" />
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding DisplayName}" Header="Name" Width="*" >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Padding" Value="7,2,10,2" />
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSelected, RelativeSource= {RelativeSource AncestorType={x:Type DataGridRow}}}" Value="True">
+                                    <Setter Property="Foreground" Value="White" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding State}" Value="Running">
+                                    <Setter Property="FontWeight" Value="SemiBold" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Binding="{Binding State}" Header="Status" Width="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Padding" Value="7,2,10,2" />
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding State}" Value="Stopped">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding State}" Value="Running">
+                                    <Setter Property="Foreground" Value="#6c71c4" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsSelected, RelativeSource= {RelativeSource AncestorType={x:Type DataGridRow}}}" Value="True">
+                                    <Setter Property="Foreground" Value="White" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Binding="{Binding StartupType}" Header="Startup Type" Width="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Padding" Value="7,2,10,2" />
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding StartupType}" Value="Auto">
+                                    <Setter Property="Foreground" Value="#cb4b16" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding StartupType}" Value="Manual">
+                                    <Setter Property="Foreground" Value="#2aa198" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding StartupType}" Value="Disabled">
+                                    <Setter Property="Foreground" Value="#b58900" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsSelected, RelativeSource= {RelativeSource AncestorType={x:Type DataGridRow}}}" Value="True">
+                                    <Setter Property="Foreground" Value="White" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Binding="{Binding LogOnAs}" Header="Log On As" Width=".5*">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSelected, RelativeSource= {RelativeSource AncestorType={x:Type DataGridRow}}}" Value="True">
+                                    <Setter Property="Foreground" Value="White" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                            <Setter Property="Padding" Value="7,2,10,2" />
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="1" Background="#f9f9f9">
+            <TextBox Name="txtFilter"
+                     HorizontalAlignment="Left"
+                     Width="225"
+                     Margin="15,3,0,2"
+                     Padding="0,0,20,0"
+                     FontSize="12"
+                     KeyUp="txtFilter_KeyUp"
+                     Template="{StaticResource TextBoxTemplate}" />
+        </Grid>
+        
+        <!-- Loading Overlay -->
+        <Grid Name="gridLoading" Background="#FAFAFA" Visibility="Collapsed" Grid.RowSpan="2">
+            <controls:CircularProgressBar Style="{DynamicResource ProgressBarFadeInAnimation}"
+                                          Visibility="{Binding ElementName=gridLoading,Path=Visibility}"
+                                          HorizontalAlignment="Center" VerticalAlignment="Center"
+                                          SnapsToDevicePixels="False" UseLayoutRounding="False" />
+        </Grid>
+
+        <!-- Error Overlay -->
+        <Grid Name="gridError" Background="White" Visibility="Collapsed" Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Source="/Resources/error-64.png" Width="64" Height="64" Margin="0,0,30,0" />
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center"
+                           FontSize="35" Foreground="#3c4194"
+                           Text="Error">
+                    </TextBlock>
+                    <TextBlock FontSize="18" Text="Could not retrieve data." />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <!-- Additional Loading Overlay -->
+        <Grid Name="gridOverlay" Grid.RowSpan="2" Visibility="Collapsed">
+            <Border HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Background="White"
+                    Opacity=".8" />
+            <Grid Width="300" Margin="10" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <controls:CircularProgressBar Style="{DynamicResource ProgressBarFadeInAnimation}"
+                                              Visibility="{Binding ElementName=gridOverlay,Path=Visibility}"
+                                              HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              SnapsToDevicePixels="False" UseLayoutRounding="False" />
+                <TextBlock Grid.Row="1" Name="tbOverlay"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                           TextWrapping="Wrap"
+                           Padding="0,15,0,0"
+                           FontSize="16"
+                           Text="Starting..." />
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

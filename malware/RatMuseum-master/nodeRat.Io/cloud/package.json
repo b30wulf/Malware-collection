@@ -1,0 +1,33 @@
+{
+  "name": "noderat.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "client-sessions": "^0.7.0",
+    "colors": "^1.1.2",
+    "crypto": "^0.0.3",
+    "ejs": "^2.5.5",
+    "escape-html": "^1.0.3",
+    "exec": "^0.2.1",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "fs-extra": "^2.0.0",
+    "gm": "^1.23.0",
+    "moment": "^2.17.1",
+    "multer": "^1.2.1",
+    "passport": "^0.3.2",
+    "promise-mysql": "^3.0.0",
+    "socket.io": "^1.7.2",
+    "utils-merge": "^1.0.0",
+    "validator": "^6.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "author": "Maxime Westhoven (www.mwesto.be)",
+  "license": "ISC"
+}

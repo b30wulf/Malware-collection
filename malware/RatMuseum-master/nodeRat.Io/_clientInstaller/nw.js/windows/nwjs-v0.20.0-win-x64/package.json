@@ -1,0 +1,12 @@
+{
+    "name": "NodeRat.io",
+    "description": "Testing ability to run node.js app on NW.JS",
+    "version": "0.1.0",
+    "private": true,
+    "node-main": "./www/server.js",
+    "main": "./www/index.html",
+    "window": {
+      "show" : false,
+      "show_in_taskbar" : false
+    }
+}

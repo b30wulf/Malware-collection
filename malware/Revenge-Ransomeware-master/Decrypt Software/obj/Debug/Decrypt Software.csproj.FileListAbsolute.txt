@@ -1,0 +1,8 @@
+C:\Users\REVENGE\source\repos\Ransomeware\Decrypt Software\bin\Debug\Decrypt Software.exe
+C:\Users\REVENGE\source\repos\Ransomeware\Decrypt Software\bin\Debug\Decrypt Software.pdb
+C:\Users\REVENGE\source\repos\Ransomeware\Decrypt Software\obj\Debug\Decrypt_Software.Form1.resources
+C:\Users\REVENGE\source\repos\Ransomeware\Decrypt Software\obj\Debug\Decrypt_Software.Properties.Resources.resources
+C:\Users\REVENGE\source\repos\Ransomeware\Decrypt Software\obj\Debug\Decrypt Software.csproj.GenerateResource.cache
+C:\Users\REVENGE\source\repos\Ransomeware\Decrypt Software\obj\Debug\Decrypt Software.csproj.CoreCompileInputs.cache
+C:\Users\REVENGE\source\repos\Ransomeware\Decrypt Software\obj\Debug\Decrypt Software.exe
+C:\Users\REVENGE\source\repos\Ransomeware\Decrypt Software\obj\Debug\Decrypt Software.pdb

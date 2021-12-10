@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="Splice_Admin.Views.Desktop.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <Grid Background="White">
+        <Grid Margin="0,-40,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image Source="/Resources/briefcaseBlue-64.png" Width="64" Height="64" Margin="0,0,0,7" />
+            <StackPanel Grid.Column="1" Margin="20,0,0,0" VerticalAlignment="Center">
+                <TextBlock FontSize="38" FontWeight="Normal"
+                       Foreground="#586e75"
+                       Text="Splice Admin">
+                    <TextBlock.Effect>
+                        <DropShadowEffect ShadowDepth="3" Direction="330" Color="Black" Opacity="0.2" BlurRadius="5" />
+                    </TextBlock.Effect>
+                </TextBlock>
+
+            </StackPanel>
+            <TextBlock Grid.Row="1" Grid.ColumnSpan="2" FontSize="15" Foreground="#777" HorizontalAlignment="Center" Text="[A remote Windows administration tool]" />
+        </Grid>
+
+        <Grid VerticalAlignment="Bottom">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock HorizontalAlignment="Center">
+                <Hyperlink NavigateUri="https://www.github.com/R-Smith/Splice-Admin"
+                           RequestNavigate="Hyperlink_RequestNavigate"
+                           TextDecorations="None"
+                           FontSize="13"
+                           Foreground="#6c71c4">
+                    https://www.github.com/R-Smith/Splice-Admin
+                </Hyperlink>
+            </TextBlock>
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="0,9,0,10">
+                <TextBlock Name="tbVersion"
+                       Text="Build: XXXX.XXXX"
+                       FontSize="14" Foreground="#BBD" />
+                <TextBlock Name="tbChangeLog"
+                       Text="Change Log"
+                       FontSize="14" Foreground="#CAA"
+                       Margin="20,0,0,0"
+                       Cursor="Hand"
+                       MouseDown="tbChangeLog_MouseDown" />
+            </StackPanel>
+        </Grid>
+        
+    </Grid>
+</UserControl>

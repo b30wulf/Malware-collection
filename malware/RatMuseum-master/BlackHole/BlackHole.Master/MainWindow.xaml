@@ -1,0 +1,56 @@
+﻿<Window x:Class="BlackHole.Master.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlackHole.Master"
+        mc:Ignorable="d"
+        Title="BlackHole Master" Height="700" Width="1000"
+        Loaded="OnLoaded"
+        Closing="OnClosing">
+    
+    <Grid Background="Linen">
+        <StackPanel>
+            <ListView Name="SlavesList" ItemsSource="{Binding Items}"  Margin="10" Height="350" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Id" Width="100" DisplayMemberBinding="{Binding Id}" />
+                        <GridViewColumn Header="Ip" Width="100" DisplayMemberBinding="{Binding Ip}" />
+                        <GridViewColumn Header="OperatingSystem" Width="300" DisplayMemberBinding="{Binding OperatingSystem}" />
+                        <GridViewColumn Header="MachineName" Width="150" DisplayMemberBinding="{Binding MachineName}" />
+                        <GridViewColumn Header="UserName" Width="150" DisplayMemberBinding="{Binding UserName}" />
+                    </GridView>
+                </ListView.View>
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="File Manager" Click="OpenFileManager" Icon="{StaticResource FileManagerIcon}" />
+                        <MenuItem Header="Remote Desktop" Click="OpenRemoteDesktop" Icon="{StaticResource RemoteDesktopIcon}" />
+                        <MenuItem Header="Credentials" Click="OpenCredentialsWindow" />
+                        <MenuItem Header="Webcam" Click="OpenWebcamWindow" />
+                    </ContextMenu>
+                </ListView.ContextMenu>
+            </ListView>
+            <RichTextBox Name="Console" Margin="10 0 10 0" IsReadOnly="True" Height="240" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+            <StatusBar Name="SlaveStatusBar" Margin="10" BorderThickness="1" BorderBrush="Black" Background="White">
+                <StatusBar.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ItemsPanelTemplate>
+                </StatusBar.ItemsPanel>
+                <StatusBarItem Grid.Column="0">
+                    <Label Name="ListeningStateLbl" Content="{Binding ListeningState}" Foreground="Black" />
+                </StatusBarItem>
+                <Separator Grid.Column="1" />
+                <StatusBarItem Grid.Column="2">
+                    <Label Name="OnlineUsersLbl" Content="{Binding OnlineSlaves}" FontWeight="Bold" Foreground="DarkGreen" />
+                </StatusBarItem>
+            </StatusBar>
+        </StackPanel>
+    </Grid>
+</Window>

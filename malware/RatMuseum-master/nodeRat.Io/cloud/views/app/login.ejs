@@ -1,0 +1,157 @@
+<html>
+<head>
+  <base href="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../app/">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>nodeRat.io</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<!-- Sweet alert theme -->
+	<link rel="stylesheet" href="css/sweetalert.css.min.css">
+	<!-- SideBar -->
+	<link rel="stylesheet" href="css/slidebars.css">
+
+	<style type="text/css">
+
+		@font-face {
+		    font-family: Homenaje;
+		    src: url(fonts/Homenaje-Regular.ttf);
+		}
+
+		html, body, #sb-site {
+			font-family: Homenaje;
+      background: url(img/background.jpg) no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      color:#3498db;
+		}
+
+		.header{
+			text-align: center;
+			margin: 0px 0px 20px 0px;
+		}
+
+		.mainMenu{
+			margin: 0px 0px 20px 0px;
+		}
+
+		.menuLabel{
+			font-size: 16px;
+      background: #141414;
+		}
+
+		.logo{
+			width: 300px;
+      margin: 75px 0px -10px 0px;
+		}
+
+    h1{
+      color:white;
+      margin:0px 0px 25px 0px;
+    }
+
+		.tagline{
+			color: white;
+		}
+
+		.textCentred{
+			text-align: center;
+		}
+
+    .loginBox{
+      border:1px solid #3498db;
+      background: #141414;
+      margin-top:50px;
+      margin-bottom:50px;
+      padding: 25px;
+    }
+
+	</style>
+
+</head>
+<body>
+
+	<div class="sb-slidebar sb-left sb-style-overlay sb-width-thin">
+	  <!-- Your left Slidebar content. -->
+	</div>
+
+	<div class="sb-slidebar sb-right sb-style-overlay sb-width-thin">
+	  <!-- Your right Slidebar content. -->
+	</div>
+
+
+
+	<div id="sb-site">
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-12 header">
+          <img src="img/logo.png" alt="" class="logo">
+					<h3 class="tagline">Full nodejs Remote Administration Tools with socket.io</h3>
+				</div>
+      </div>
+
+      <div class="row ">
+        <div class="col-sm-4 col-sm-offset-4 textCentred loginBox">
+          <h1>Administrator identification</h1>
+      		<form class="form-signin" action="" method="post">
+      			<input name="mail" type="text" class="form-control" placeholder="Login" autofocus><br>
+      			<input name="password" type="password" class="form-control" placeholder="Password">
+      			<br>
+      			<button class="btn btn-lg btn-login btn-block" type="submit" style='color:black;'>Identification</button>
+      		</form>
+        </div>
+      </div>
+
+
+
+		</div>
+
+	</div>
+
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/jquery-migrate-1.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/sweetalert.min.js"></script>
+	<script src="js/slidebars.js"></script>
+	<script src="js/jquery.nicescroll.js"></script>
+
+	<script>
+
+	    $(document).ready(function() {
+
+			$(".clientListing").niceScroll({cursorcolor:"#3498db"});
+			$(".consoleLogs").niceScroll({cursorcolor:"#3498db"});
+
+			$.slidebars({
+				siteClose: true, // true or false
+				disableOver: false, // integer or false
+				hideControlClasses: false, // true or false
+				scrollLock: true // true or false
+			});
+
+      <% if (typeof error_msg != "undefined") { %>
+        swal({
+          title: "Error!",
+          text: "<%= error_msg %>",
+          type: "error",
+          confirmButtonText: "Cool"
+        });
+      <% } %>
+
+	    });
+
+	</script>
+
+</body>
+</html>

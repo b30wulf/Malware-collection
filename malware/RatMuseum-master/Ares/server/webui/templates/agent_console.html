@@ -1,0 +1,8 @@
+<pre id="termtext" style="width:80%">
+{% if agent.output %}
+{{ agent.output | safe }}
+{% endif %}
+{% for cmd in agent.commands %}
+Pending: {{ cmd.cmdline }}
+{% endfor %}
+</pre>

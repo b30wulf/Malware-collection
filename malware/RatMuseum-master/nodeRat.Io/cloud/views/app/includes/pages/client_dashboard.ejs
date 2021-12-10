@@ -1,0 +1,128 @@
+
+<% include ../menu_client %>
+
+<form class="" action="" method="post">
+  <div class="defaultContainer">
+
+    <h2>DASHBOARD</h2>
+    <hr>
+    <div class="row">
+      <div class="col-md-2">
+        <h4>SERIAL:</h4>
+      </div>
+      <div class="col-md-4">
+        <input type="text" name="serial" value="<%= client.client_serial %>" class="form-control">
+      </div>
+      <div class="col-md-2">
+        <h4>KEY:</h4>
+      </div>
+      <div class="col-md-4">
+        <input type="text" name="key" value="<%= client.client_key %>" class="form-control">
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-2">
+        <h4>HOSTNAME:</h4>
+      </div>
+      <div class="col-md-4">
+        <h4><%= client.client_hostname %></h4>
+      </div>
+      <div class="col-md-2">
+        <h4>IP ADDRESS:</h4>
+      </div>
+      <div class="col-md-4">
+        <h4><%= client.client_ip %></h4>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-2">
+        <h4>OS SYSTEM:</h4>
+      </div>
+      <div class="col-md-4">
+        <h4><%= client.client_os %></h4>
+      </div>
+      <div class="col-md-2">
+        <h4>ARCH OS SYSTEM:</h4>
+      </div>
+      <div class="col-md-4">
+        <h4><%= client.client_os_version %></h4>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-2">
+        <h4>CLIENT VERSION:</h4>
+      </div>
+      <div class="col-md-4">
+        <h4><%= client.client_version %></h4>
+      </div>
+      <div class="col-md-2">
+        <h4>COUNTRY:</h4>
+      </div>
+      <div class="col-md-4">
+        <h4><%= client.client_country %></h4>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-2">
+        <h4>PRIVILEBE ACCESS:</h4>
+      </div>
+      <div class="col-md-4">
+        <h4><%= client.client_privilege_access %></h4>
+      </div>
+      <div class="col-md-2">
+        <h4>SOCKET:</h4>
+      </div>
+      <div class="col-md-4">
+        <h4><%= client.client_socket %></h4>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-2">
+        <h4>ONLINE:</h4>
+      </div>
+      <div class="col-md-4">
+        <img src="img/icons/offline.png" class="iconOnline" id='client_<%= client.client_id %>'>
+      </div>
+      <div class="col-md-2">
+        <h4>Active:</h4>
+      </div>
+      <div class="col-md-4">
+        <select class="form-control" name="active">
+          <option value="0" <% if(client.client_active == 0) { %> selected <% } %>>NO</option>
+          <option value="1" <% if(client.client_active == 1) { %> selected <% } %>>YES</option>
+        </select>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-12">
+        <br>
+        <input type="submit" class="form-control btn-success" name="" value="Update">
+        <br>
+        <a href="../client_delete/<%= client.client_id %>"><delete type="submit" class="form-control btn-danger" name="" value="Delete"  style="width:55px;float:right;" onclick="return(confirm('Are you sure ?'));">Delete</delete></a>
+      </div>
+    </div>
+  </div>
+</form>
+
+<script>
+
+  function init_client_dashboard(socket, data){
+
+    /* ---------- FRONTEND ---------- */
+
+    $.slidebars({
+    siteClose: true, // true or false
+    disableOver: false, // integer or false
+    hideControlClasses: false, // true or false
+    scrollLock: true // true or false
+    });
+
+  }
+
+</script>

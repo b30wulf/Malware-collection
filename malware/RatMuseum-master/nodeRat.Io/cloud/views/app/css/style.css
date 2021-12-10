@@ -1,0 +1,144 @@
+@font-face {
+    font-family: Homenaje;
+    src: url(../fonts/Homenaje-Regular.ttf);
+}
+
+html, body, #sb-site {
+  font-family: Homenaje;
+  background: url(../img/background.jpg) no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color:#3498db;
+}
+
+.header{
+  text-align: center;
+  margin: 0px 0px 20px 0px;
+}
+
+.footer{
+  border:1px solid #3498db;
+  margin: 20px 0px 20px 0px;
+  padding: 5px;
+  background: #141414;
+}
+
+.mainMenu{
+  margin: 0px 0px 20px 0px;
+}
+
+.menuLabel{
+  font-size: 16px;
+  background: #141414;
+}
+
+.logo{
+  width: 300px;
+  margin: 20px 0px -10px 0px;
+}
+
+.tagline{
+  color: white;
+}
+
+.clientListing{
+  border:1px solid #3498db;
+  background: #141414;
+  margin:0px 0px 20px 0px;
+  padding: 10px;
+}
+
+.clientListingHeader{
+  overflow: auto;
+  border:1px solid #3498db;
+  font-size:20px;
+  color:white;
+  background: #000;
+  padding:10px;
+}
+
+.clientListingRow{
+  font-size:16px;
+  border-bottom: 1px solid #3498db;
+  padding: 8px 0px 8px 0px;
+  color:white;
+}
+
+.iconOnline{
+  height: 22px;
+  width: 22px;
+}
+
+.textCentred{
+  text-align: center;
+}
+
+.consoleLogs{
+  border:1px solid #3498db;
+  background: #141414;
+  margin:0px 0px 20px 0px;
+  padding: 10px;
+}
+
+.consoleLogsHeader{
+  overflow: auto;
+  border:1px solid #3498db;
+  font-size:20px;
+  color:white;
+  background: #000;
+  padding:10px;
+}
+
+.remoteShell{
+  overflow: auto;
+  height: 345px;
+  border:1px solid #3498db;
+  padding: 5px;
+  background: #000;
+  font-size: 12px;
+}
+
+.liveLogs{
+  overflow: auto;
+  height: 400px;
+  border:1px solid #3498db;
+  padding: 5px;
+  background: #000;
+  font-size: 16px;
+}
+
+.defaultContainer{
+  border:1px solid #3498db;
+  padding: 5px;
+  background: #141414;
+  padding:15px;
+}
+
+.logs-success{
+  color:#2ecc71 !important;
+}
+
+.logs-info{
+  color:#3498db !important;
+}
+
+.logs-warning{
+  color:#e67e22 !important;
+}
+
+.logs-danger{
+  color:#e74c3c !important;
+}
+
+.glyphLeft{
+  float:left;
+  margin-top:2px;
+}
+
+.disabled{
+  cursor: not-allowed;
+}

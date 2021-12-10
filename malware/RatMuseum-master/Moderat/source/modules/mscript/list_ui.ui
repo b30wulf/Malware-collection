@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>721</width>
+    <height>442</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Plugins List</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../res.qrc">
+    <normaloff>:/icons/assets/logo.png</normaloff>:/icons/assets/logo.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+background-color: #2c3e50;
+color: #c9f5f7;
+}
+
+QScrollBar:vertical {
+     border: 1px outset;
+     border-color: #0F2D40;
+     width: 10px;
+     margin: 22px 0 22px 0;
+ }
+ QScrollBar::handle:vertical {
+     background: #95a5a6;
+     min-height: 20px;
+ }
+ QScrollBar::add-line:vertical {
+     border: 1px outset;
+     border-color: #0F2D40;
+     background: #95a5a6;
+     height: 16px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::sub-line:vertical {
+     border: 1px outset;
+     border-color: #0F2D40;
+     background: #95a5a6;
+     height: 16px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+     width: 3px;
+     height: 3px;
+     background: white;
+ }
+
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+     background: none;
+ }
+
+ QScrollBar:horizontal {
+border: 1px outset;
+     border-color: #0F2D40;
+     height: 10px;
+     margin: 0px 40px 0 0px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #95a5a6;
+    min-width: 20px;
+}
+
+QScrollBar::add-line:horizontal {
+    border: 1px outset;
+    border-color: #0F2D40;
+    background: #95a5a6;
+    width: 16px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal {
+    border: 1px outset;
+    border-color: #0F2D40;
+    background: #95a5a6;
+    width: 16px;
+    subcontrol-position: top right;
+    subcontrol-origin: margin;
+    position: absolute;
+    right: 20px;
+}
+
+QScrollBar:left-arrow:horizontal, QScrollBar::right-arrow:horizontal {
+    width: 3px;
+    height: 3px;
+    background: white;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="maximumSize">
+      <size>
+       <width>250</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #34495e;
+border: 1px solid #2c3e50;
+padding: -5px;</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="searchButton">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>28</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>28</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: #455F7A;
+padding: 5px;
+border-right: none;</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../res.qrc">
+              <normaloff>:/icons/assets/search.png</normaloff>:/icons/assets/search.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="searchLine">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>28</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>28</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: #455F7A;
+padding: 5px;
+border-left: none;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QListWidget" name="pluginsList">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="contextMenuPolicy">
+           <enum>Qt::DefaultContextMenu</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QListWidget#pluginsList {
+    show-decoration-selected: 1; /* make the selection span the entire width of the view */
+	background-color: #455F7A;
+	padding: 2px;
+	color: #cff7f8;
+	font: 75 11px &quot;MS Shell Dlg 2&quot;;
+	border: 1px solid;
+	border-color: #34495e;
+}
+
+QListWidget#pluginsList::item:selected {
+    border: 1px solid #1abc9c;
+	color: #cff7f8;
+}
+
+QListWidget#pluginsList::item:hover {
+    background: #517091;
+}</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QTextEdit" name="detailsText">
+     <property name="styleSheet">
+      <string notr="true">background-color: #2c3e50;
+padding: 2px;
+color: #cff7f8;
+font: 75 12px &quot;MS Shell Dlg 2&quot;;
+border: 1px ridge;
+border-color: #34495e;
+
+background-image: url(assets/bg.png);
+background-repeat: no-repeat;</string>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="textInteractionFlags">
+      <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../../res.qrc"/>
+ </resources>
+ <connections/>
+</ui>

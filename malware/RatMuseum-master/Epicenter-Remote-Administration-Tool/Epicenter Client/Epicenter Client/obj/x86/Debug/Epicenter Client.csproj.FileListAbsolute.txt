@@ -1,0 +1,10 @@
+c:\users\main\documents\visual studio 2010\Projects\Epicenter Client\Epicenter Client\bin\Debug\Epicenter Client.exe.config
+c:\users\main\documents\visual studio 2010\Projects\Epicenter Client\Epicenter Client\bin\Debug\Epicenter Client.exe
+c:\users\main\documents\visual studio 2010\Projects\Epicenter Client\Epicenter Client\bin\Debug\Epicenter Client.pdb
+c:\users\main\documents\visual studio 2010\Projects\Epicenter Client\Epicenter Client\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\main\documents\visual studio 2010\Projects\Epicenter Client\Epicenter Client\obj\x86\Debug\Epicenter_Client.Properties.Resources.resources
+c:\users\main\documents\visual studio 2010\Projects\Epicenter Client\Epicenter Client\obj\x86\Debug\ResGen.read.1.tlog
+c:\users\main\documents\visual studio 2010\Projects\Epicenter Client\Epicenter Client\obj\x86\Debug\ResGen.write.1.tlog
+c:\users\main\documents\visual studio 2010\Projects\Epicenter Client\Epicenter Client\obj\x86\Debug\Epicenter Client.exe
+c:\users\main\documents\visual studio 2010\Projects\Epicenter Client\Epicenter Client\obj\x86\Debug\Epicenter Client.pdb
+C:\Users\Main\Documents\Visual Studio 2010\Projects\Epicenter Client\Epicenter Client\obj\x86\Debug\Epicenter_Client.Resources.resources

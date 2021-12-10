@@ -1,0 +1,119 @@
+[class*="col-"] {
+    max-height: 600px;
+}
+
+.client {
+  padding: 5px;
+}
+
+.client:hover {
+  background-color: #F3F3F3;
+}
+
+.larat-button {
+    -webkit-box-shadow: inset 0px 34px 0px -15px #3dc21b;
+    background-color: #44c767;
+    border: 1px solid #18ab29;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0px -1px 0px #2f6627;
+}
+
+.fullwidth {
+  text-align: center;
+  width: 98%;
+}
+
+.halfwidth {
+  text-align: center;
+  width: 48%;
+}
+
+.third {
+  width: 30%;
+  text-align: center;
+}
+
+.message-hl {
+  background-color: #f3f3f3;
+  border-radius: 5px;
+  height: auto;
+  max-height: 40px;
+  margin-top: 5px;
+  overflow-y: scroll;
+  text-align: center;
+  color: #3399ff;
+  text-decoration: none;
+  width: auto;
+}
+
+.message-hl:hover {
+  color: #336699;
+  cursor: pointer;
+  text-decoration: underline
+}
+
+.message-text {
+  background-color: #f3f3f3;
+  border-radius: 5px;
+  height: auto;
+  max-height: 40px;
+  margin-top: 5px;
+  overflow-y: scroll;
+  text-align: center;
+  width: auto;
+}
+
+.notification:hover {
+  background-color: #F3F3F3;
+}
+
+.reload-button {
+  width: 200px;
+  margin: 0 auto;
+}
+
+.well {
+  height: 20 px;
+  margin: 5px;
+  padding: 0px;
+  overflow-y: scroll;
+}
+
+#client_container {
+  margin-top: 10px;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+#client_id {
+  color: #336633;
+  font-weight: bold;
+}
+
+#client_number {
+
+}
+
+#client_provider {
+
+}
+
+#command-table td {
+  padding: 2px 2px 2px 2px;
+  text-align: center;
+}
+
+#notification-center {
+  overflow-y: scroll;
+  height: 375px;
+}
+
+#screen-on {
+  width: 100%;
+  margin: 10px 0px;
+}

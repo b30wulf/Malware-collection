@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{398ADEC4-0CCE-4239-886C-D5BAEC55A47B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Splice_Admin</RootNamespace>
+    <AssemblyName>SpliceAdm</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>briefcaseBlue.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Classes\RemoteBulkQuery.cs" />
+    <Compile Include="Classes\RemoteRegistry.cs" />
+    <Compile Include="Classes\SelfElevation\ElevationHelper.cs" />
+    <Compile Include="Classes\SelfElevation\NativeMethods.cs" />
+    <Compile Include="Classes\ValueConverters.cs" />
+    <Compile Include="Controls\CircularProgressBar.xaml.cs">
+      <DependentUpon>CircularProgressBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\GlobalVar.cs" />
+    <Compile Include="Classes\RemoteTask.cs" />
+    <Compile Include="Classes\UserImpersonation.cs" />
+    <Compile Include="Controls\ListBoxBehavior.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Desktop\AlternateCredentialsView.xaml.cs">
+      <DependentUpon>AlternateCredentialsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Desktop\BulkQueryView.xaml.cs">
+      <DependentUpon>BulkQueryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Desktop\BulkQueryWindow.xaml.cs">
+      <DependentUpon>BulkQueryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Desktop\ChangeLogWindow.xaml.cs">
+      <DependentUpon>ChangeLogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Desktop\Dialog\DialogWindow.xaml.cs">
+      <DependentUpon>DialogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\CustomCommands.cs" />
+    <Compile Include="Classes\DialogResult.cs" />
+    <Compile Include="Classes\DriveTypeToVisibilityConverter.cs" />
+    <Compile Include="Classes\RemoteApplication.cs" />
+    <Compile Include="Classes\RemoteStorage.cs" />
+    <Compile Include="Classes\RemoteLogonHistory.cs" />
+    <Compile Include="Classes\RemoteLogonSession.cs" />
+    <Compile Include="Classes\RemoteMemoryModule.cs" />
+    <Compile Include="Classes\RemoteNetworkAdapter.cs" />
+    <Compile Include="Classes\RemoteOdbc.cs" />
+    <Compile Include="Classes\RemoteOdbcValue.cs" />
+    <Compile Include="Classes\RemoteProcess.cs" />
+    <Compile Include="Classes\RemoteService.cs" />
+    <Compile Include="Classes\RemoteSystemInfo.cs" />
+    <Compile Include="Classes\RemoteSystemSpecs.cs" />
+    <Compile Include="Classes\RemoteUpdate.cs" />
+    <Compile Include="Classes\RemoteUpdateConfiguration.cs" />
+    <Compile Include="Classes\RemoteUsbDevice.cs" />
+    <Compile Include="Classes\StringWrapper.cs" />
+    <Compile Include="Classes\TaskResult.cs" />
+    <Compile Include="Views\Desktop\Dialog\OdbcEditWindow.xaml.cs">
+      <DependentUpon>OdbcEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\RemoteAdmin.cs" />
+    <Compile Include="Views\Desktop\Dialog\RemoteCommandWindow.xaml.cs">
+      <DependentUpon>RemoteCommandWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\RemoteDesktopServicesAPI.cs" />
+    <Compile Include="Views\Desktop\Dialog\SendMessageWindow.xaml.cs">
+      <DependentUpon>SendMessageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Desktop\Dialog\UserDetailsWindow.xaml.cs">
+      <DependentUpon>UserDetailsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Desktop\ApplicationsView.xaml.cs">
+      <DependentUpon>ApplicationsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Desktop\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Desktop\LogonSessionsView.xaml.cs">
+      <DependentUpon>LogonSessionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Desktop\NetworkingView.xaml.cs">
+      <DependentUpon>NetworkingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Desktop\ProcessesView.xaml.cs">
+      <DependentUpon>ProcessesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Desktop\ServicesView.xaml.cs">
+      <DependentUpon>ServicesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Desktop\StorageView.xaml.cs">
+      <DependentUpon>StorageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Desktop\SystemInfoView.xaml.cs">
+      <DependentUpon>SystemInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Desktop\TasksView.xaml.cs">
+      <DependentUpon>TasksView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Desktop\UpdatesView.xaml.cs">
+      <DependentUpon>UpdatesView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Controls\CircularProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResourceDictionaries\Styles\FadeStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Desktop\AlternateCredentialsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Desktop\BulkQueryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Desktop\BulkQueryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Desktop\ChangeLogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Desktop\Dialog\DialogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Desktop\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Desktop\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Desktop\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\Desktop\Dialog\OdbcEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Desktop\Dialog\RemoteCommandWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Desktop\Dialog\SendMessageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Desktop\Dialog\UserDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Desktop\ApplicationsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Desktop\LogonSessionsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Desktop\NetworkingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Desktop\ProcessesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Desktop\ServicesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Desktop\StorageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Desktop\SystemInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Desktop\TasksView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Desktop\UpdatesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ResourceDictionaries\Brushes\" />
+    <Folder Include="ResourceDictionaries\ControlTemplates\" />
+    <Folder Include="Views\Mobile\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\caution-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\terminal-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\success-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\error-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\error-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\chatBubble-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\cancel-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\cancelRed-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\checkmark-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\arrowBack-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\person-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\briefcaseBlue-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="briefcaseBlue.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\questionMark-16.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

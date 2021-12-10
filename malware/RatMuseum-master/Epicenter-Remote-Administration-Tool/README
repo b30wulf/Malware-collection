@@ -1,0 +1,18 @@
+I've started working on Epicenter merely to kill some time. However,
+after some point, it has become one of the most enjoyable projects that
+I've worked on.
+
+Epicenter is a complete remote administration tool which
+supports transferring files and folders, editing registry entries, watching
+and controlling the remote display, turning off and rebooting the remote station,
+locking and unlocking any form of user input (keyboard etc.) and many more.
+
+In order for the client to work behind firewalls, Epicenter establishes a
+reverse connection and is fully undetected by anti-virus software.
+The client doesn't have to be compiled for every target computer since it
+uses the end-of-file data to initialize some of it's customizable variables
+such as the reverse connection interval and IP.
+
+I am putting it on GitHub so that people who are interested in concepts
+like reverse connection or file transfer can look at the code for reference.
+However, since this was a personal project, it may lack some useful commenting.

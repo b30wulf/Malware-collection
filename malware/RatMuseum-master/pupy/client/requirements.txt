@@ -1,0 +1,10 @@
+rpyc==3.4.4
+pycryptodome==3.7.0
+psutil
+rsa
+netaddr
+tinyec
+poster
+u-msgpack-python
+win_inet_pton
+dnslib

@@ -1,0 +1,891 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{338CBEDF-2675-4240-9D69-EC6AEA95FE95}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>uRAT.Server</RootNamespace>
+    <AssemblyName>uRAT.Server</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\build\Server\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\build\Server\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\ConnectionListItem.cs" />
+    <Compile Include="Forms\AddSocketForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddSocketForm.Designer.cs">
+      <DependentUpon>AddSocketForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PluginManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PluginManagerForm.Designer.cs">
+      <DependentUpon>PluginManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SocketManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SocketManagerForm.Designer.cs">
+      <DependentUpon>SocketManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Globals.cs" />
+    <Compile Include="Plugin\RemotePluginHandler.cs" />
+    <Compile Include="Plugin\SocketService\ISocketService.cs" />
+    <Compile Include="Plugin\SocketService\SocketServiceProvider.cs" />
+    <Compile Include="Plugin\Synchronization\Packets\FetchPluginMetadataPacket.cs" />
+    <Compile Include="Plugin\Synchronization\Packets\PluginActionPacket.cs" />
+    <Compile Include="Plugin\Synchronization\Packets\SynchronizationFinalizationPacket.cs" />
+    <Compile Include="Plugin\Synchronization\PluginIntegrityPair.cs" />
+    <Compile Include="Plugin\Synchronization\PluginSynchronizationOperation.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="StandardPacketProcessor.cs" />
+    <Compile Include="Plugin\Server\IServerPlugin.cs" />
+    <Compile Include="Plugin\Server\IServerPluginHost.cs" />
+    <Compile Include="Plugin\PluginAggregator.cs" />
+    <Compile Include="Plugin\UIService\IUiService.cs" />
+    <Compile Include="Plugin\UIService\Services\ConnectionListServiceProvider.cs" />
+    <Compile Include="Plugin\UIService\UiServiceProvider.cs" />
+    <Compile Include="Tools\Extensions\MiscExtensions.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\HashHelper.cs" />
+    <Compile Include="Tools\ServerPool.cs" />
+    <Compile Include="Tools\SettingsHelper.cs" />
+    <EmbeddedResource Include="Forms\AddSocketForm.resx">
+      <DependentUpon>AddSocketForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PluginManagerForm.resx">
+      <DependentUpon>PluginManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SocketManagerForm.resx">
+      <DependentUpon>SocketManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="bin\Debug\resources\icons\flags\.DS_Store" />
+    <None Include="bin\Release\resources\icons\flags\.DS_Store" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Plugin\SocketService\Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\resources\icons\flags\ad.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ae.png" />
+    <Content Include="bin\Debug\resources\icons\flags\af.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ag.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ai.png" />
+    <Content Include="bin\Debug\resources\icons\flags\al.png" />
+    <Content Include="bin\Debug\resources\icons\flags\am.png" />
+    <Content Include="bin\Debug\resources\icons\flags\an.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ao.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ar.png" />
+    <Content Include="bin\Debug\resources\icons\flags\as.png" />
+    <Content Include="bin\Debug\resources\icons\flags\at.png" />
+    <Content Include="bin\Debug\resources\icons\flags\au.png" />
+    <Content Include="bin\Debug\resources\icons\flags\aw.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ax.png" />
+    <Content Include="bin\Debug\resources\icons\flags\az.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ba.png" />
+    <Content Include="bin\Debug\resources\icons\flags\bb.png" />
+    <Content Include="bin\Debug\resources\icons\flags\bd.png" />
+    <Content Include="bin\Debug\resources\icons\flags\be.png" />
+    <Content Include="bin\Debug\resources\icons\flags\bf.png" />
+    <Content Include="bin\Debug\resources\icons\flags\bg.png" />
+    <Content Include="bin\Debug\resources\icons\flags\bh.png" />
+    <Content Include="bin\Debug\resources\icons\flags\bi.png" />
+    <Content Include="bin\Debug\resources\icons\flags\bj.png" />
+    <Content Include="bin\Debug\resources\icons\flags\bm.png" />
+    <Content Include="bin\Debug\resources\icons\flags\bn.png" />
+    <Content Include="bin\Debug\resources\icons\flags\bo.png" />
+    <Content Include="bin\Debug\resources\icons\flags\br.png" />
+    <Content Include="bin\Debug\resources\icons\flags\bs.png" />
+    <Content Include="bin\Debug\resources\icons\flags\bt.png" />
+    <Content Include="bin\Debug\resources\icons\flags\bv.png" />
+    <Content Include="bin\Debug\resources\icons\flags\bw.png" />
+    <Content Include="bin\Debug\resources\icons\flags\by.png" />
+    <Content Include="bin\Debug\resources\icons\flags\bz.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ca.png" />
+    <Content Include="bin\Debug\resources\icons\flags\catalonia.png" />
+    <Content Include="bin\Debug\resources\icons\flags\cc.png" />
+    <Content Include="bin\Debug\resources\icons\flags\cd.png" />
+    <Content Include="bin\Debug\resources\icons\flags\cf.png" />
+    <Content Include="bin\Debug\resources\icons\flags\cg.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ch.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ci.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ck.png" />
+    <Content Include="bin\Debug\resources\icons\flags\cl.png" />
+    <Content Include="bin\Debug\resources\icons\flags\cm.png" />
+    <Content Include="bin\Debug\resources\icons\flags\cn.png" />
+    <Content Include="bin\Debug\resources\icons\flags\co.png" />
+    <Content Include="bin\Debug\resources\icons\flags\cr.png" />
+    <Content Include="bin\Debug\resources\icons\flags\cs.png" />
+    <Content Include="bin\Debug\resources\icons\flags\cu.png" />
+    <Content Include="bin\Debug\resources\icons\flags\cv.png" />
+    <Content Include="bin\Debug\resources\icons\flags\cx.png" />
+    <Content Include="bin\Debug\resources\icons\flags\cy.png" />
+    <Content Include="bin\Debug\resources\icons\flags\cz.png" />
+    <Content Include="bin\Debug\resources\icons\flags\de.png" />
+    <Content Include="bin\Debug\resources\icons\flags\dj.png" />
+    <Content Include="bin\Debug\resources\icons\flags\dk.png" />
+    <Content Include="bin\Debug\resources\icons\flags\dm.png" />
+    <Content Include="bin\Debug\resources\icons\flags\do.png" />
+    <Content Include="bin\Debug\resources\icons\flags\dz.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ec.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ee.png" />
+    <Content Include="bin\Debug\resources\icons\flags\eg.png" />
+    <Content Include="bin\Debug\resources\icons\flags\eh.png" />
+    <Content Include="bin\Debug\resources\icons\flags\england.png" />
+    <Content Include="bin\Debug\resources\icons\flags\er.png" />
+    <Content Include="bin\Debug\resources\icons\flags\es.png" />
+    <Content Include="bin\Debug\resources\icons\flags\et.png" />
+    <Content Include="bin\Debug\resources\icons\flags\europeanunion.png" />
+    <Content Include="bin\Debug\resources\icons\flags\fam.png" />
+    <Content Include="bin\Debug\resources\icons\flags\fi.png" />
+    <Content Include="bin\Debug\resources\icons\flags\fj.png" />
+    <Content Include="bin\Debug\resources\icons\flags\fk.png" />
+    <Content Include="bin\Debug\resources\icons\flags\fm.png" />
+    <Content Include="bin\Debug\resources\icons\flags\fo.png" />
+    <Content Include="bin\Debug\resources\icons\flags\fr.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ga.png" />
+    <Content Include="bin\Debug\resources\icons\flags\gb.png" />
+    <Content Include="bin\Debug\resources\icons\flags\gd.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ge.png" />
+    <Content Include="bin\Debug\resources\icons\flags\gf.png" />
+    <Content Include="bin\Debug\resources\icons\flags\gh.png" />
+    <Content Include="bin\Debug\resources\icons\flags\gi.png" />
+    <Content Include="bin\Debug\resources\icons\flags\gl.png" />
+    <Content Include="bin\Debug\resources\icons\flags\gm.png" />
+    <Content Include="bin\Debug\resources\icons\flags\gn.png" />
+    <Content Include="bin\Debug\resources\icons\flags\gp.png" />
+    <Content Include="bin\Debug\resources\icons\flags\gq.png" />
+    <Content Include="bin\Debug\resources\icons\flags\gr.png" />
+    <Content Include="bin\Debug\resources\icons\flags\gs.png" />
+    <Content Include="bin\Debug\resources\icons\flags\gt.png" />
+    <Content Include="bin\Debug\resources\icons\flags\gu.png" />
+    <Content Include="bin\Debug\resources\icons\flags\gw.png" />
+    <Content Include="bin\Debug\resources\icons\flags\gy.png" />
+    <Content Include="bin\Debug\resources\icons\flags\hk.png" />
+    <Content Include="bin\Debug\resources\icons\flags\hm.png" />
+    <Content Include="bin\Debug\resources\icons\flags\hn.png" />
+    <Content Include="bin\Debug\resources\icons\flags\hr.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ht.png" />
+    <Content Include="bin\Debug\resources\icons\flags\hu.png" />
+    <Content Include="bin\Debug\resources\icons\flags\id.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ie.png" />
+    <Content Include="bin\Debug\resources\icons\flags\il.png" />
+    <Content Include="bin\Debug\resources\icons\flags\in.png" />
+    <Content Include="bin\Debug\resources\icons\flags\io.png" />
+    <Content Include="bin\Debug\resources\icons\flags\iq.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ir.png" />
+    <Content Include="bin\Debug\resources\icons\flags\is.png" />
+    <Content Include="bin\Debug\resources\icons\flags\it.png" />
+    <Content Include="bin\Debug\resources\icons\flags\jm.png" />
+    <Content Include="bin\Debug\resources\icons\flags\jo.png" />
+    <Content Include="bin\Debug\resources\icons\flags\jp.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ke.png" />
+    <Content Include="bin\Debug\resources\icons\flags\kg.png" />
+    <Content Include="bin\Debug\resources\icons\flags\kh.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ki.png" />
+    <Content Include="bin\Debug\resources\icons\flags\km.png" />
+    <Content Include="bin\Debug\resources\icons\flags\kn.png" />
+    <Content Include="bin\Debug\resources\icons\flags\kp.png" />
+    <Content Include="bin\Debug\resources\icons\flags\kr.png" />
+    <Content Include="bin\Debug\resources\icons\flags\kw.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ky.png" />
+    <Content Include="bin\Debug\resources\icons\flags\kz.png" />
+    <Content Include="bin\Debug\resources\icons\flags\la.png" />
+    <Content Include="bin\Debug\resources\icons\flags\lb.png" />
+    <Content Include="bin\Debug\resources\icons\flags\lc.png" />
+    <Content Include="bin\Debug\resources\icons\flags\li.png" />
+    <Content Include="bin\Debug\resources\icons\flags\lk.png" />
+    <Content Include="bin\Debug\resources\icons\flags\lr.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ls.png" />
+    <Content Include="bin\Debug\resources\icons\flags\lt.png" />
+    <Content Include="bin\Debug\resources\icons\flags\lu.png" />
+    <Content Include="bin\Debug\resources\icons\flags\lv.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ly.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ma.png" />
+    <Content Include="bin\Debug\resources\icons\flags\mc.png" />
+    <Content Include="bin\Debug\resources\icons\flags\md.png" />
+    <Content Include="bin\Debug\resources\icons\flags\me.png" />
+    <Content Include="bin\Debug\resources\icons\flags\mg.png" />
+    <Content Include="bin\Debug\resources\icons\flags\mh.png" />
+    <Content Include="bin\Debug\resources\icons\flags\mk.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ml.png" />
+    <Content Include="bin\Debug\resources\icons\flags\mm.png" />
+    <Content Include="bin\Debug\resources\icons\flags\mn.png" />
+    <Content Include="bin\Debug\resources\icons\flags\mo.png" />
+    <Content Include="bin\Debug\resources\icons\flags\mp.png" />
+    <Content Include="bin\Debug\resources\icons\flags\mq.png" />
+    <Content Include="bin\Debug\resources\icons\flags\mr.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ms.png" />
+    <Content Include="bin\Debug\resources\icons\flags\mt.png" />
+    <Content Include="bin\Debug\resources\icons\flags\mu.png" />
+    <Content Include="bin\Debug\resources\icons\flags\mv.png" />
+    <Content Include="bin\Debug\resources\icons\flags\mw.png" />
+    <Content Include="bin\Debug\resources\icons\flags\mx.png" />
+    <Content Include="bin\Debug\resources\icons\flags\my.png" />
+    <Content Include="bin\Debug\resources\icons\flags\mz.png" />
+    <Content Include="bin\Debug\resources\icons\flags\na.png" />
+    <Content Include="bin\Debug\resources\icons\flags\nc.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ne.png" />
+    <Content Include="bin\Debug\resources\icons\flags\nf.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ng.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ni.png" />
+    <Content Include="bin\Debug\resources\icons\flags\nl.png" />
+    <Content Include="bin\Debug\resources\icons\flags\no.png" />
+    <Content Include="bin\Debug\resources\icons\flags\np.png" />
+    <Content Include="bin\Debug\resources\icons\flags\nr.png" />
+    <Content Include="bin\Debug\resources\icons\flags\nu.png" />
+    <Content Include="bin\Debug\resources\icons\flags\nz.png" />
+    <Content Include="bin\Debug\resources\icons\flags\om.png" />
+    <Content Include="bin\Debug\resources\icons\flags\pa.png" />
+    <Content Include="bin\Debug\resources\icons\flags\pe.png" />
+    <Content Include="bin\Debug\resources\icons\flags\pf.png" />
+    <Content Include="bin\Debug\resources\icons\flags\pg.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ph.png" />
+    <Content Include="bin\Debug\resources\icons\flags\pk.png" />
+    <Content Include="bin\Debug\resources\icons\flags\pl.png" />
+    <Content Include="bin\Debug\resources\icons\flags\pm.png" />
+    <Content Include="bin\Debug\resources\icons\flags\pn.png" />
+    <Content Include="bin\Debug\resources\icons\flags\pr.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ps.png" />
+    <Content Include="bin\Debug\resources\icons\flags\pt.png" />
+    <Content Include="bin\Debug\resources\icons\flags\pw.png" />
+    <Content Include="bin\Debug\resources\icons\flags\py.png" />
+    <Content Include="bin\Debug\resources\icons\flags\qa.png" />
+    <Content Include="bin\Debug\resources\icons\flags\re.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ro.png" />
+    <Content Include="bin\Debug\resources\icons\flags\rs.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ru.png" />
+    <Content Include="bin\Debug\resources\icons\flags\rw.png" />
+    <Content Include="bin\Debug\resources\icons\flags\sa.png" />
+    <Content Include="bin\Debug\resources\icons\flags\sb.png" />
+    <Content Include="bin\Debug\resources\icons\flags\sc.png" />
+    <Content Include="bin\Debug\resources\icons\flags\scotland.png" />
+    <Content Include="bin\Debug\resources\icons\flags\sd.png" />
+    <Content Include="bin\Debug\resources\icons\flags\se.png" />
+    <Content Include="bin\Debug\resources\icons\flags\sg.png" />
+    <Content Include="bin\Debug\resources\icons\flags\sh.png" />
+    <Content Include="bin\Debug\resources\icons\flags\si.png" />
+    <Content Include="bin\Debug\resources\icons\flags\sj.png" />
+    <Content Include="bin\Debug\resources\icons\flags\sk.png" />
+    <Content Include="bin\Debug\resources\icons\flags\sl.png" />
+    <Content Include="bin\Debug\resources\icons\flags\sm.png" />
+    <Content Include="bin\Debug\resources\icons\flags\sn.png" />
+    <Content Include="bin\Debug\resources\icons\flags\so.png" />
+    <Content Include="bin\Debug\resources\icons\flags\sr.png" />
+    <Content Include="bin\Debug\resources\icons\flags\st.png" />
+    <Content Include="bin\Debug\resources\icons\flags\sv.png" />
+    <Content Include="bin\Debug\resources\icons\flags\sy.png" />
+    <Content Include="bin\Debug\resources\icons\flags\sz.png" />
+    <Content Include="bin\Debug\resources\icons\flags\tc.png" />
+    <Content Include="bin\Debug\resources\icons\flags\td.png" />
+    <Content Include="bin\Debug\resources\icons\flags\tf.png" />
+    <Content Include="bin\Debug\resources\icons\flags\tg.png" />
+    <Content Include="bin\Debug\resources\icons\flags\th.png" />
+    <Content Include="bin\Debug\resources\icons\flags\tj.png" />
+    <Content Include="bin\Debug\resources\icons\flags\tk.png" />
+    <Content Include="bin\Debug\resources\icons\flags\tl.png" />
+    <Content Include="bin\Debug\resources\icons\flags\tm.png" />
+    <Content Include="bin\Debug\resources\icons\flags\tn.png" />
+    <Content Include="bin\Debug\resources\icons\flags\to.png" />
+    <Content Include="bin\Debug\resources\icons\flags\tr.png" />
+    <Content Include="bin\Debug\resources\icons\flags\tt.png" />
+    <Content Include="bin\Debug\resources\icons\flags\tv.png" />
+    <Content Include="bin\Debug\resources\icons\flags\tw.png" />
+    <Content Include="bin\Debug\resources\icons\flags\tz.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ua.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ug.png" />
+    <Content Include="bin\Debug\resources\icons\flags\um.png" />
+    <Content Include="bin\Debug\resources\icons\flags\us.png" />
+    <Content Include="bin\Debug\resources\icons\flags\uy.png" />
+    <Content Include="bin\Debug\resources\icons\flags\uz.png" />
+    <Content Include="bin\Debug\resources\icons\flags\va.png" />
+    <Content Include="bin\Debug\resources\icons\flags\vc.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ve.png" />
+    <Content Include="bin\Debug\resources\icons\flags\vg.png" />
+    <Content Include="bin\Debug\resources\icons\flags\vi.png" />
+    <Content Include="bin\Debug\resources\icons\flags\vn.png" />
+    <Content Include="bin\Debug\resources\icons\flags\vu.png" />
+    <Content Include="bin\Debug\resources\icons\flags\wales.png" />
+    <Content Include="bin\Debug\resources\icons\flags\wf.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ws.png" />
+    <Content Include="bin\Debug\resources\icons\flags\ye.png" />
+    <Content Include="bin\Debug\resources\icons\flags\yt.png" />
+    <Content Include="bin\Debug\resources\icons\flags\za.png" />
+    <Content Include="bin\Debug\resources\icons\flags\zm.png" />
+    <Content Include="bin\Debug\resources\icons\flags\zw.png" />
+    <Content Include="bin\Release\resources\icons\flags\ad.png" />
+    <Content Include="bin\Release\resources\icons\flags\ae.png" />
+    <Content Include="bin\Release\resources\icons\flags\af.png" />
+    <Content Include="bin\Release\resources\icons\flags\ag.png" />
+    <Content Include="bin\Release\resources\icons\flags\ai.png" />
+    <Content Include="bin\Release\resources\icons\flags\al.png" />
+    <Content Include="bin\Release\resources\icons\flags\am.png" />
+    <Content Include="bin\Release\resources\icons\flags\an.png" />
+    <Content Include="bin\Release\resources\icons\flags\ao.png" />
+    <Content Include="bin\Release\resources\icons\flags\ar.png" />
+    <Content Include="bin\Release\resources\icons\flags\as.png" />
+    <Content Include="bin\Release\resources\icons\flags\at.png" />
+    <Content Include="bin\Release\resources\icons\flags\au.png" />
+    <Content Include="bin\Release\resources\icons\flags\aw.png" />
+    <Content Include="bin\Release\resources\icons\flags\ax.png" />
+    <Content Include="bin\Release\resources\icons\flags\az.png" />
+    <Content Include="bin\Release\resources\icons\flags\ba.png" />
+    <Content Include="bin\Release\resources\icons\flags\bb.png" />
+    <Content Include="bin\Release\resources\icons\flags\bd.png" />
+    <Content Include="bin\Release\resources\icons\flags\be.png" />
+    <Content Include="bin\Release\resources\icons\flags\bf.png" />
+    <Content Include="bin\Release\resources\icons\flags\bg.png" />
+    <Content Include="bin\Release\resources\icons\flags\bh.png" />
+    <Content Include="bin\Release\resources\icons\flags\bi.png" />
+    <Content Include="bin\Release\resources\icons\flags\bj.png" />
+    <Content Include="bin\Release\resources\icons\flags\bm.png" />
+    <Content Include="bin\Release\resources\icons\flags\bn.png" />
+    <Content Include="bin\Release\resources\icons\flags\bo.png" />
+    <Content Include="bin\Release\resources\icons\flags\br.png" />
+    <Content Include="bin\Release\resources\icons\flags\bs.png" />
+    <Content Include="bin\Release\resources\icons\flags\bt.png" />
+    <Content Include="bin\Release\resources\icons\flags\bv.png" />
+    <Content Include="bin\Release\resources\icons\flags\bw.png" />
+    <Content Include="bin\Release\resources\icons\flags\by.png" />
+    <Content Include="bin\Release\resources\icons\flags\bz.png" />
+    <Content Include="bin\Release\resources\icons\flags\ca.png" />
+    <Content Include="bin\Release\resources\icons\flags\catalonia.png" />
+    <Content Include="bin\Release\resources\icons\flags\cc.png" />
+    <Content Include="bin\Release\resources\icons\flags\cd.png" />
+    <Content Include="bin\Release\resources\icons\flags\cf.png" />
+    <Content Include="bin\Release\resources\icons\flags\cg.png" />
+    <Content Include="bin\Release\resources\icons\flags\ch.png" />
+    <Content Include="bin\Release\resources\icons\flags\ci.png" />
+    <Content Include="bin\Release\resources\icons\flags\ck.png" />
+    <Content Include="bin\Release\resources\icons\flags\cl.png" />
+    <Content Include="bin\Release\resources\icons\flags\cm.png" />
+    <Content Include="bin\Release\resources\icons\flags\cn.png" />
+    <Content Include="bin\Release\resources\icons\flags\co.png" />
+    <Content Include="bin\Release\resources\icons\flags\cr.png" />
+    <Content Include="bin\Release\resources\icons\flags\cs.png" />
+    <Content Include="bin\Release\resources\icons\flags\cu.png" />
+    <Content Include="bin\Release\resources\icons\flags\cv.png" />
+    <Content Include="bin\Release\resources\icons\flags\cx.png" />
+    <Content Include="bin\Release\resources\icons\flags\cy.png" />
+    <Content Include="bin\Release\resources\icons\flags\cz.png" />
+    <Content Include="bin\Release\resources\icons\flags\de.png" />
+    <Content Include="bin\Release\resources\icons\flags\dj.png" />
+    <Content Include="bin\Release\resources\icons\flags\dk.png" />
+    <Content Include="bin\Release\resources\icons\flags\dm.png" />
+    <Content Include="bin\Release\resources\icons\flags\do.png" />
+    <Content Include="bin\Release\resources\icons\flags\dz.png" />
+    <Content Include="bin\Release\resources\icons\flags\ec.png" />
+    <Content Include="bin\Release\resources\icons\flags\ee.png" />
+    <Content Include="bin\Release\resources\icons\flags\eg.png" />
+    <Content Include="bin\Release\resources\icons\flags\eh.png" />
+    <Content Include="bin\Release\resources\icons\flags\england.png" />
+    <Content Include="bin\Release\resources\icons\flags\er.png" />
+    <Content Include="bin\Release\resources\icons\flags\es.png" />
+    <Content Include="bin\Release\resources\icons\flags\et.png" />
+    <Content Include="bin\Release\resources\icons\flags\europeanunion.png" />
+    <Content Include="bin\Release\resources\icons\flags\fam.png" />
+    <Content Include="bin\Release\resources\icons\flags\fi.png" />
+    <Content Include="bin\Release\resources\icons\flags\fj.png" />
+    <Content Include="bin\Release\resources\icons\flags\fk.png" />
+    <Content Include="bin\Release\resources\icons\flags\fm.png" />
+    <Content Include="bin\Release\resources\icons\flags\fo.png" />
+    <Content Include="bin\Release\resources\icons\flags\fr.png" />
+    <Content Include="bin\Release\resources\icons\flags\ga.png" />
+    <Content Include="bin\Release\resources\icons\flags\gb.png" />
+    <Content Include="bin\Release\resources\icons\flags\gd.png" />
+    <Content Include="bin\Release\resources\icons\flags\ge.png" />
+    <Content Include="bin\Release\resources\icons\flags\gf.png" />
+    <Content Include="bin\Release\resources\icons\flags\gh.png" />
+    <Content Include="bin\Release\resources\icons\flags\gi.png" />
+    <Content Include="bin\Release\resources\icons\flags\gl.png" />
+    <Content Include="bin\Release\resources\icons\flags\gm.png" />
+    <Content Include="bin\Release\resources\icons\flags\gn.png" />
+    <Content Include="bin\Release\resources\icons\flags\gp.png" />
+    <Content Include="bin\Release\resources\icons\flags\gq.png" />
+    <Content Include="bin\Release\resources\icons\flags\gr.png" />
+    <Content Include="bin\Release\resources\icons\flags\gs.png" />
+    <Content Include="bin\Release\resources\icons\flags\gt.png" />
+    <Content Include="bin\Release\resources\icons\flags\gu.png" />
+    <Content Include="bin\Release\resources\icons\flags\gw.png" />
+    <Content Include="bin\Release\resources\icons\flags\gy.png" />
+    <Content Include="bin\Release\resources\icons\flags\hk.png" />
+    <Content Include="bin\Release\resources\icons\flags\hm.png" />
+    <Content Include="bin\Release\resources\icons\flags\hn.png" />
+    <Content Include="bin\Release\resources\icons\flags\hr.png" />
+    <Content Include="bin\Release\resources\icons\flags\ht.png" />
+    <Content Include="bin\Release\resources\icons\flags\hu.png" />
+    <Content Include="bin\Release\resources\icons\flags\id.png" />
+    <Content Include="bin\Release\resources\icons\flags\ie.png" />
+    <Content Include="bin\Release\resources\icons\flags\il.png" />
+    <Content Include="bin\Release\resources\icons\flags\in.png" />
+    <Content Include="bin\Release\resources\icons\flags\io.png" />
+    <Content Include="bin\Release\resources\icons\flags\iq.png" />
+    <Content Include="bin\Release\resources\icons\flags\ir.png" />
+    <Content Include="bin\Release\resources\icons\flags\is.png" />
+    <Content Include="bin\Release\resources\icons\flags\it.png" />
+    <Content Include="bin\Release\resources\icons\flags\jm.png" />
+    <Content Include="bin\Release\resources\icons\flags\jo.png" />
+    <Content Include="bin\Release\resources\icons\flags\jp.png" />
+    <Content Include="bin\Release\resources\icons\flags\ke.png" />
+    <Content Include="bin\Release\resources\icons\flags\kg.png" />
+    <Content Include="bin\Release\resources\icons\flags\kh.png" />
+    <Content Include="bin\Release\resources\icons\flags\ki.png" />
+    <Content Include="bin\Release\resources\icons\flags\km.png" />
+    <Content Include="bin\Release\resources\icons\flags\kn.png" />
+    <Content Include="bin\Release\resources\icons\flags\kp.png" />
+    <Content Include="bin\Release\resources\icons\flags\kr.png" />
+    <Content Include="bin\Release\resources\icons\flags\kw.png" />
+    <Content Include="bin\Release\resources\icons\flags\ky.png" />
+    <Content Include="bin\Release\resources\icons\flags\kz.png" />
+    <Content Include="bin\Release\resources\icons\flags\la.png" />
+    <Content Include="bin\Release\resources\icons\flags\lb.png" />
+    <Content Include="bin\Release\resources\icons\flags\lc.png" />
+    <Content Include="bin\Release\resources\icons\flags\li.png" />
+    <Content Include="bin\Release\resources\icons\flags\lk.png" />
+    <Content Include="bin\Release\resources\icons\flags\lr.png" />
+    <Content Include="bin\Release\resources\icons\flags\ls.png" />
+    <Content Include="bin\Release\resources\icons\flags\lt.png" />
+    <Content Include="bin\Release\resources\icons\flags\lu.png" />
+    <Content Include="bin\Release\resources\icons\flags\lv.png" />
+    <Content Include="bin\Release\resources\icons\flags\ly.png" />
+    <Content Include="bin\Release\resources\icons\flags\ma.png" />
+    <Content Include="bin\Release\resources\icons\flags\mc.png" />
+    <Content Include="bin\Release\resources\icons\flags\md.png" />
+    <Content Include="bin\Release\resources\icons\flags\me.png" />
+    <Content Include="bin\Release\resources\icons\flags\mg.png" />
+    <Content Include="bin\Release\resources\icons\flags\mh.png" />
+    <Content Include="bin\Release\resources\icons\flags\mk.png" />
+    <Content Include="bin\Release\resources\icons\flags\ml.png" />
+    <Content Include="bin\Release\resources\icons\flags\mm.png" />
+    <Content Include="bin\Release\resources\icons\flags\mn.png" />
+    <Content Include="bin\Release\resources\icons\flags\mo.png" />
+    <Content Include="bin\Release\resources\icons\flags\mp.png" />
+    <Content Include="bin\Release\resources\icons\flags\mq.png" />
+    <Content Include="bin\Release\resources\icons\flags\mr.png" />
+    <Content Include="bin\Release\resources\icons\flags\ms.png" />
+    <Content Include="bin\Release\resources\icons\flags\mt.png" />
+    <Content Include="bin\Release\resources\icons\flags\mu.png" />
+    <Content Include="bin\Release\resources\icons\flags\mv.png" />
+    <Content Include="bin\Release\resources\icons\flags\mw.png" />
+    <Content Include="bin\Release\resources\icons\flags\mx.png" />
+    <Content Include="bin\Release\resources\icons\flags\my.png" />
+    <Content Include="bin\Release\resources\icons\flags\mz.png" />
+    <Content Include="bin\Release\resources\icons\flags\na.png" />
+    <Content Include="bin\Release\resources\icons\flags\nc.png" />
+    <Content Include="bin\Release\resources\icons\flags\ne.png" />
+    <Content Include="bin\Release\resources\icons\flags\nf.png" />
+    <Content Include="bin\Release\resources\icons\flags\ng.png" />
+    <Content Include="bin\Release\resources\icons\flags\ni.png" />
+    <Content Include="bin\Release\resources\icons\flags\nl.png" />
+    <Content Include="bin\Release\resources\icons\flags\no.png" />
+    <Content Include="bin\Release\resources\icons\flags\np.png" />
+    <Content Include="bin\Release\resources\icons\flags\nr.png" />
+    <Content Include="bin\Release\resources\icons\flags\nu.png" />
+    <Content Include="bin\Release\resources\icons\flags\nz.png" />
+    <Content Include="bin\Release\resources\icons\flags\om.png" />
+    <Content Include="bin\Release\resources\icons\flags\pa.png" />
+    <Content Include="bin\Release\resources\icons\flags\pe.png" />
+    <Content Include="bin\Release\resources\icons\flags\pf.png" />
+    <Content Include="bin\Release\resources\icons\flags\pg.png" />
+    <Content Include="bin\Release\resources\icons\flags\ph.png" />
+    <Content Include="bin\Release\resources\icons\flags\pk.png" />
+    <Content Include="bin\Release\resources\icons\flags\pl.png" />
+    <Content Include="bin\Release\resources\icons\flags\pm.png" />
+    <Content Include="bin\Release\resources\icons\flags\pn.png" />
+    <Content Include="bin\Release\resources\icons\flags\pr.png" />
+    <Content Include="bin\Release\resources\icons\flags\ps.png" />
+    <Content Include="bin\Release\resources\icons\flags\pt.png" />
+    <Content Include="bin\Release\resources\icons\flags\pw.png" />
+    <Content Include="bin\Release\resources\icons\flags\py.png" />
+    <Content Include="bin\Release\resources\icons\flags\qa.png" />
+    <Content Include="bin\Release\resources\icons\flags\re.png" />
+    <Content Include="bin\Release\resources\icons\flags\ro.png" />
+    <Content Include="bin\Release\resources\icons\flags\rs.png" />
+    <Content Include="bin\Release\resources\icons\flags\ru.png" />
+    <Content Include="bin\Release\resources\icons\flags\rw.png" />
+    <Content Include="bin\Release\resources\icons\flags\sa.png" />
+    <Content Include="bin\Release\resources\icons\flags\sb.png" />
+    <Content Include="bin\Release\resources\icons\flags\sc.png" />
+    <Content Include="bin\Release\resources\icons\flags\scotland.png" />
+    <Content Include="bin\Release\resources\icons\flags\sd.png" />
+    <Content Include="bin\Release\resources\icons\flags\se.png" />
+    <Content Include="bin\Release\resources\icons\flags\sg.png" />
+    <Content Include="bin\Release\resources\icons\flags\sh.png" />
+    <Content Include="bin\Release\resources\icons\flags\si.png" />
+    <Content Include="bin\Release\resources\icons\flags\sj.png" />
+    <Content Include="bin\Release\resources\icons\flags\sk.png" />
+    <Content Include="bin\Release\resources\icons\flags\sl.png" />
+    <Content Include="bin\Release\resources\icons\flags\sm.png" />
+    <Content Include="bin\Release\resources\icons\flags\sn.png" />
+    <Content Include="bin\Release\resources\icons\flags\so.png" />
+    <Content Include="bin\Release\resources\icons\flags\sr.png" />
+    <Content Include="bin\Release\resources\icons\flags\st.png" />
+    <Content Include="bin\Release\resources\icons\flags\sv.png" />
+    <Content Include="bin\Release\resources\icons\flags\sy.png" />
+    <Content Include="bin\Release\resources\icons\flags\sz.png" />
+    <Content Include="bin\Release\resources\icons\flags\tc.png" />
+    <Content Include="bin\Release\resources\icons\flags\td.png" />
+    <Content Include="bin\Release\resources\icons\flags\tf.png" />
+    <Content Include="bin\Release\resources\icons\flags\tg.png" />
+    <Content Include="bin\Release\resources\icons\flags\th.png" />
+    <Content Include="bin\Release\resources\icons\flags\tj.png" />
+    <Content Include="bin\Release\resources\icons\flags\tk.png" />
+    <Content Include="bin\Release\resources\icons\flags\tl.png" />
+    <Content Include="bin\Release\resources\icons\flags\tm.png" />
+    <Content Include="bin\Release\resources\icons\flags\tn.png" />
+    <Content Include="bin\Release\resources\icons\flags\to.png" />
+    <Content Include="bin\Release\resources\icons\flags\tr.png" />
+    <Content Include="bin\Release\resources\icons\flags\tt.png" />
+    <Content Include="bin\Release\resources\icons\flags\tv.png" />
+    <Content Include="bin\Release\resources\icons\flags\tw.png" />
+    <Content Include="bin\Release\resources\icons\flags\tz.png" />
+    <Content Include="bin\Release\resources\icons\flags\ua.png" />
+    <Content Include="bin\Release\resources\icons\flags\ug.png" />
+    <Content Include="bin\Release\resources\icons\flags\um.png" />
+    <Content Include="bin\Release\resources\icons\flags\us.png" />
+    <Content Include="bin\Release\resources\icons\flags\uy.png" />
+    <Content Include="bin\Release\resources\icons\flags\uz.png" />
+    <Content Include="bin\Release\resources\icons\flags\va.png" />
+    <Content Include="bin\Release\resources\icons\flags\vc.png" />
+    <Content Include="bin\Release\resources\icons\flags\ve.png" />
+    <Content Include="bin\Release\resources\icons\flags\vg.png" />
+    <Content Include="bin\Release\resources\icons\flags\vi.png" />
+    <Content Include="bin\Release\resources\icons\flags\vn.png" />
+    <Content Include="bin\Release\resources\icons\flags\vu.png" />
+    <Content Include="bin\Release\resources\icons\flags\wales.png" />
+    <Content Include="bin\Release\resources\icons\flags\wf.png" />
+    <Content Include="bin\Release\resources\icons\flags\ws.png" />
+    <Content Include="bin\Release\resources\icons\flags\ye.png" />
+    <Content Include="bin\Release\resources\icons\flags\yt.png" />
+    <Content Include="bin\Release\resources\icons\flags\za.png" />
+    <Content Include="bin\Release\resources\icons\flags\zm.png" />
+    <Content Include="bin\Release\resources\icons\flags\zw.png" />
+    <None Include="resources\icons\flags\zw.png" />
+    <None Include="resources\icons\flags\zm.png" />
+    <None Include="resources\icons\flags\za.png" />
+    <None Include="resources\icons\flags\yt.png" />
+    <None Include="resources\icons\flags\ye.png" />
+    <None Include="resources\icons\flags\vu.png" />
+    <None Include="resources\icons\flags\ws.png" />
+    <None Include="resources\icons\flags\vn.png" />
+    <None Include="resources\icons\flags\vi.png" />
+    <None Include="resources\icons\flags\vg.png" />
+    <None Include="resources\icons\flags\wf.png" />
+    <None Include="resources\icons\flags\ve.png" />
+    <None Include="resources\icons\flags\vc.png" />
+    <None Include="resources\icons\flags\wales.png" />
+    <None Include="resources\icons\flags\va.png" />
+    <None Include="resources\icons\flags\uz.png" />
+    <None Include="resources\icons\flags\uy.png" />
+    <None Include="resources\icons\flags\us.png" />
+    <None Include="resources\icons\flags\um.png" />
+    <None Include="resources\icons\flags\ug.png" />
+    <None Include="resources\icons\flags\ua.png" />
+    <None Include="resources\icons\flags\tz.png" />
+    <None Include="resources\icons\flags\tw.png" />
+    <None Include="resources\icons\flags\tv.png" />
+    <None Include="resources\icons\flags\tt.png" />
+    <None Include="resources\icons\flags\tr.png" />
+    <None Include="resources\icons\flags\to.png" />
+    <None Include="resources\icons\flags\tn.png" />
+    <None Include="resources\icons\flags\tm.png" />
+    <None Include="resources\icons\flags\tl.png" />
+    <None Include="resources\icons\flags\tk.png" />
+    <None Include="resources\icons\flags\tj.png" />
+    <None Include="resources\icons\flags\th.png" />
+    <None Include="resources\icons\flags\tg.png" />
+    <None Include="resources\icons\flags\tf.png" />
+    <None Include="resources\icons\flags\td.png" />
+    <None Include="resources\icons\flags\tc.png" />
+    <None Include="resources\icons\flags\sz.png" />
+    <None Include="resources\icons\flags\sy.png" />
+    <None Include="resources\icons\flags\sv.png" />
+    <None Include="resources\icons\flags\st.png" />
+    <None Include="resources\icons\flags\sr.png" />
+    <None Include="resources\icons\flags\so.png" />
+    <None Include="resources\icons\flags\sn.png" />
+    <None Include="resources\icons\flags\sm.png" />
+    <None Include="resources\icons\flags\sl.png" />
+    <None Include="resources\icons\flags\sk.png" />
+    <None Include="resources\icons\flags\sj.png" />
+    <None Include="resources\icons\flags\si.png" />
+    <None Include="resources\icons\flags\sh.png" />
+    <None Include="resources\icons\flags\sg.png" />
+    <None Include="resources\icons\flags\se.png" />
+    <None Include="resources\icons\flags\sd.png" />
+    <None Include="resources\icons\flags\scotland.png" />
+    <None Include="resources\icons\flags\sc.png" />
+    <None Include="resources\icons\flags\sb.png" />
+    <None Include="resources\icons\flags\sa.png" />
+    <None Include="resources\icons\flags\rw.png" />
+    <None Include="resources\icons\flags\ru.png" />
+    <None Include="resources\icons\flags\rs.png" />
+    <None Include="resources\icons\flags\ro.png" />
+    <None Include="resources\icons\flags\re.png" />
+    <None Include="resources\icons\flags\qa.png" />
+    <None Include="resources\icons\flags\py.png" />
+    <None Include="resources\icons\flags\pw.png" />
+    <None Include="resources\icons\flags\pt.png" />
+    <None Include="resources\icons\flags\ps.png" />
+    <None Include="resources\icons\flags\pr.png" />
+    <None Include="resources\icons\flags\pn.png" />
+    <None Include="resources\icons\flags\pm.png" />
+    <None Include="resources\icons\flags\pl.png" />
+    <None Include="resources\icons\flags\pk.png" />
+    <None Include="resources\icons\flags\ph.png" />
+    <None Include="resources\icons\flags\pg.png" />
+    <None Include="resources\icons\flags\pf.png" />
+    <None Include="resources\icons\flags\pe.png" />
+    <None Include="resources\icons\flags\pa.png" />
+    <None Include="resources\icons\flags\om.png" />
+    <None Include="resources\icons\flags\nz.png" />
+    <None Include="resources\icons\flags\nu.png" />
+    <None Include="resources\icons\flags\nr.png" />
+    <None Include="resources\icons\flags\np.png" />
+    <None Include="resources\icons\flags\no.png" />
+    <None Include="resources\icons\flags\nl.png" />
+    <None Include="resources\icons\flags\ni.png" />
+    <None Include="resources\icons\flags\ng.png" />
+    <None Include="resources\icons\flags\nf.png" />
+    <None Include="resources\icons\flags\ne.png" />
+    <None Include="resources\icons\flags\nc.png" />
+    <None Include="resources\icons\flags\na.png" />
+    <None Include="resources\icons\flags\mz.png" />
+    <None Include="resources\icons\flags\my.png" />
+    <None Include="resources\icons\flags\mx.png" />
+    <None Include="resources\icons\flags\mw.png" />
+    <None Include="resources\icons\flags\mv.png" />
+    <None Include="resources\icons\flags\mu.png" />
+    <None Include="resources\icons\flags\mt.png" />
+    <None Include="resources\icons\flags\ms.png" />
+    <None Include="resources\icons\flags\mr.png" />
+    <None Include="resources\icons\flags\mq.png" />
+    <None Include="resources\icons\flags\mp.png" />
+    <None Include="resources\icons\flags\mo.png" />
+    <None Include="resources\icons\flags\mn.png" />
+    <None Include="resources\icons\flags\mm.png" />
+    <None Include="resources\icons\flags\ml.png" />
+    <None Include="resources\icons\flags\mk.png" />
+    <None Include="resources\icons\flags\mh.png" />
+    <None Include="resources\icons\flags\mg.png" />
+    <None Include="resources\icons\flags\me.png" />
+    <None Include="resources\icons\flags\md.png" />
+    <None Include="resources\icons\flags\mc.png" />
+    <None Include="resources\icons\flags\ma.png" />
+    <None Include="resources\icons\flags\ly.png" />
+    <None Include="resources\icons\flags\lv.png" />
+    <None Include="resources\icons\flags\lu.png" />
+    <None Include="resources\icons\flags\lt.png" />
+    <None Include="resources\icons\flags\ls.png" />
+    <None Include="resources\icons\flags\lr.png" />
+    <None Include="resources\icons\flags\lk.png" />
+    <None Include="resources\icons\flags\li.png" />
+    <None Include="resources\icons\flags\lc.png" />
+    <None Include="resources\icons\flags\lb.png" />
+    <None Include="resources\icons\flags\la.png" />
+    <None Include="resources\icons\flags\kz.png" />
+    <None Include="resources\icons\flags\ky.png" />
+    <None Include="resources\icons\flags\kw.png" />
+    <None Include="resources\icons\flags\kr.png" />
+    <None Include="resources\icons\flags\kp.png" />
+    <None Include="resources\icons\flags\kn.png" />
+    <None Include="resources\icons\flags\km.png" />
+    <None Include="resources\icons\flags\ki.png" />
+    <None Include="resources\icons\flags\kh.png" />
+    <None Include="resources\icons\flags\kg.png" />
+    <None Include="resources\icons\flags\ke.png" />
+    <None Include="resources\icons\flags\jp.png" />
+    <None Include="resources\icons\flags\jo.png" />
+    <None Include="resources\icons\flags\jm.png" />
+    <None Include="resources\icons\flags\it.png" />
+    <None Include="resources\icons\flags\is.png" />
+    <None Include="resources\icons\flags\ir.png" />
+    <None Include="resources\icons\flags\iq.png" />
+    <None Include="resources\icons\flags\io.png" />
+    <None Include="resources\icons\flags\in.png" />
+    <None Include="resources\icons\flags\il.png" />
+    <None Include="resources\icons\flags\ie.png" />
+    <None Include="resources\icons\flags\id.png" />
+    <None Include="resources\icons\flags\hu.png" />
+    <None Include="resources\icons\flags\ht.png" />
+    <None Include="resources\icons\flags\hr.png" />
+    <None Include="resources\icons\flags\hn.png" />
+    <None Include="resources\icons\flags\hm.png" />
+    <None Include="resources\icons\flags\hk.png" />
+    <None Include="resources\icons\flags\gy.png" />
+    <None Include="resources\icons\flags\gw.png" />
+    <None Include="resources\icons\flags\gu.png" />
+    <None Include="resources\icons\flags\gt.png" />
+    <None Include="resources\icons\flags\gs.png" />
+    <None Include="resources\icons\flags\gr.png" />
+    <None Include="resources\icons\flags\gq.png" />
+    <None Include="resources\icons\flags\gp.png" />
+    <None Include="resources\icons\flags\gn.png" />
+    <None Include="resources\icons\flags\gm.png" />
+    <None Include="resources\icons\flags\gl.png" />
+    <None Include="resources\icons\flags\gi.png" />
+    <None Include="resources\icons\flags\gh.png" />
+    <None Include="resources\icons\flags\gf.png" />
+    <None Include="resources\icons\flags\ge.png" />
+    <None Include="resources\icons\flags\gd.png" />
+    <None Include="resources\icons\flags\gb.png" />
+    <None Include="resources\icons\flags\ga.png" />
+    <None Include="resources\icons\flags\fr.png" />
+    <None Include="resources\icons\flags\fo.png" />
+    <None Include="resources\icons\flags\fm.png" />
+    <None Include="resources\icons\flags\fk.png" />
+    <None Include="resources\icons\flags\fj.png" />
+    <None Include="resources\icons\flags\fi.png" />
+    <None Include="resources\icons\flags\fam.png" />
+    <None Include="resources\icons\flags\europeanunion.png" />
+    <None Include="resources\icons\flags\et.png" />
+    <None Include="resources\icons\flags\es.png" />
+    <None Include="resources\icons\flags\er.png" />
+    <None Include="resources\icons\flags\england.png" />
+    <None Include="resources\icons\flags\eh.png" />
+    <None Include="resources\icons\flags\eg.png" />
+    <None Include="resources\icons\flags\ee.png" />
+    <None Include="resources\icons\flags\ec.png" />
+    <None Include="resources\icons\flags\dz.png" />
+    <None Include="resources\icons\flags\do.png" />
+    <None Include="resources\icons\flags\dm.png" />
+    <None Include="resources\icons\flags\dk.png" />
+    <None Include="resources\icons\flags\dj.png" />
+    <None Include="resources\icons\flags\de.png" />
+    <None Include="resources\icons\flags\cz.png" />
+    <None Include="resources\icons\flags\cy.png" />
+    <None Include="resources\icons\flags\cx.png" />
+    <None Include="resources\icons\flags\cv.png" />
+    <None Include="resources\icons\flags\cu.png" />
+    <None Include="resources\icons\flags\cs.png" />
+    <None Include="resources\icons\flags\cr.png" />
+    <None Include="resources\icons\flags\co.png" />
+    <None Include="resources\icons\flags\cn.png" />
+    <None Include="resources\icons\flags\cm.png" />
+    <None Include="resources\icons\flags\cl.png" />
+    <None Include="resources\icons\flags\ck.png" />
+    <None Include="resources\icons\flags\ci.png" />
+    <None Include="resources\icons\flags\ch.png" />
+    <None Include="resources\icons\flags\cg.png" />
+    <None Include="resources\icons\flags\cf.png" />
+    <None Include="resources\icons\flags\cd.png" />
+    <None Include="resources\icons\flags\cc.png" />
+    <None Include="resources\icons\flags\catalonia.png" />
+    <None Include="resources\icons\flags\ca.png" />
+    <None Include="resources\icons\flags\bz.png" />
+    <None Include="resources\icons\flags\by.png" />
+    <None Include="resources\icons\flags\bw.png" />
+    <None Include="resources\icons\flags\bv.png" />
+    <None Include="resources\icons\flags\bt.png" />
+    <None Include="resources\icons\flags\bs.png" />
+    <None Include="resources\icons\flags\br.png" />
+    <None Include="resources\icons\flags\bo.png" />
+    <None Include="resources\icons\flags\bn.png" />
+    <None Include="resources\icons\flags\bm.png" />
+    <None Include="resources\icons\flags\bj.png" />
+    <None Include="resources\icons\flags\bi.png" />
+    <None Include="resources\icons\flags\bh.png" />
+    <None Include="resources\icons\flags\bg.png" />
+    <None Include="resources\icons\flags\bf.png" />
+    <None Include="resources\icons\flags\be.png" />
+    <None Include="resources\icons\flags\bd.png" />
+    <None Include="resources\icons\flags\bb.png" />
+    <None Include="resources\icons\flags\ba.png" />
+    <None Include="resources\icons\flags\az.png" />
+    <None Include="resources\icons\flags\ax.png" />
+    <None Include="resources\icons\flags\aw.png" />
+    <None Include="resources\icons\flags\au.png" />
+    <None Include="resources\icons\flags\at.png" />
+    <None Include="resources\icons\flags\as.png" />
+    <None Include="resources\icons\flags\ar.png" />
+    <None Include="resources\icons\flags\ao.png" />
+    <None Include="resources\icons\flags\an.png" />
+    <None Include="resources\icons\flags\am.png" />
+    <None Include="resources\icons\flags\al.png" />
+    <None Include="resources\icons\flags\ai.png" />
+    <None Include="resources\icons\flags\ag.png" />
+    <None Include="resources\icons\flags\af.png" />
+    <None Include="resources\icons\flags\ae.png" />
+    <None Include="resources\icons\flags\ad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\uNet2\uNet2.csproj">
+      <Project>{fdfc8179-feea-42d0-add9-d31017c71414}</Project>
+      <Name>uNet2</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

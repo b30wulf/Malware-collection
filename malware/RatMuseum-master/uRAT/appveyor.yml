@@ -1,0 +1,16 @@
+version: 1.0.{build}
+build:
+  verbosity: detailed
+install:
+  git submodule update --init --recursive
+build_script: C:\projects\urat\uRAT.sln
+deploy:
+  - provider: GitHub
+    artifact: C:\projects\urat\build
+    draft: false
+    prerelease: true
+    auth_token:
+      secure: BcgGhxVt2MxGMNGb1MpEbg+kSd2GhEPFnnYBVOrgXq0vsgSPbSclIpxSDG9DnPsy
+    on:
+      branch: master
+      appveyor_repo_tag: true

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>388</width>
+    <height>255</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Moderat Log Settings</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../res.qrc">
+    <normaloff>:/icons/assets/logo.png</normaloff>:/icons/assets/logo.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #2c3e50;
+color: #c9f5f7;</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="keyloggerGroup">
+     <property name="styleSheet">
+      <string notr="true">background-color: #34495e;
+border: 1px solid #2c3e50;
+border-radius: 5px;
+padding-top: 10px;</string>
+     </property>
+     <property name="title">
+      <string>Keylogger</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="kTimerLabel">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: none;padding: 1px;</string>
+          </property>
+          <property name="text">
+           <string>Upload Timer:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="kTimerLine">
+          <property name="styleSheet">
+           <string notr="true">background-color: #182733; 
+border: none;
+border: 1px ridge;
+border-color: #2c3e50;
+border-radius: none;
+padding: 3px;</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QGroupBox" name="screenshotsGroup">
+     <property name="styleSheet">
+      <string notr="true">background-color: #34495e;
+border: 1px solid #2c3e50;
+border-radius: 5px;
+padding-top: 10px;</string>
+     </property>
+     <property name="title">
+      <string>Screenshot</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="0" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLabel" name="sTimerLabel">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: none;padding: 1px;</string>
+          </property>
+          <property name="text">
+           <string>Upload Timer:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="sTimerLine">
+          <property name="styleSheet">
+           <string notr="true">background-color: #182733; 
+border: none;
+border: 1px ridge;
+border-color: #2c3e50;
+border-radius: none;
+padding: 3px;</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QLabel" name="sDelayLabel">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: none;padding: 1px;</string>
+          </property>
+          <property name="text">
+           <string>Screenshot Delay: </string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="sDelayLine">
+          <property name="styleSheet">
+           <string notr="true">background-color: #182733; 
+border: none;
+border: 1px ridge;
+border-color: #2c3e50;
+border-radius: none;
+padding: 3px;</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="audioGroup">
+     <property name="styleSheet">
+      <string notr="true">background-color: #34495e;
+border: 1px solid #2c3e50;
+border-radius: 5px;
+padding-top: 10px;</string>
+     </property>
+     <property name="title">
+      <string>Audio</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLabel" name="aTimerLabel">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border: none;padding: 1px;</string>
+          </property>
+          <property name="text">
+           <string>Upload Timer:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="aTimerLine">
+          <property name="styleSheet">
+           <string notr="true">background-color: #182733; 
+border: none;
+border: 1px ridge;
+border-color: #2c3e50;
+border-radius: none;
+padding: 3px;</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QPushButton" name="setButton">
+     <property name="styleSheet">
+      <string notr="true">QPushButton#setButton {
+			border: 1px ridge;
+            border-color: #2c3e50;
+			padding: 2px;
+            background-color: #34495e;
+			border-left: none;
+            }
+
+QPushButton#setButton:pressed {
+            background-color: #2c3e50;
+            }</string>
+     </property>
+     <property name="text">
+      <string>SET</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../res.qrc"/>
+ </resources>
+ <connections/>
+</ui>

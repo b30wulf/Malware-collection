@@ -1,0 +1,7 @@
+# this is a comment
+# you can invoke this file with: ./koadic --autorun autorun.example
+
+set SRVPORT 9001
+set ENDPOINT test123  # this will be the URL: /test123
+
+run

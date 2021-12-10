@@ -1,0 +1,5 @@
+urwid
+pycryptodomex
+pyside2
+future
+typing

@@ -1,0 +1,18 @@
+C:\Users\Main\Documents\Visual Studio 2010\Projects\Epicenter SERVER\Epicenter SERVER\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Main\Documents\Visual Studio 2010\Projects\Epicenter SERVER\Epicenter SERVER\obj\x86\Debug\Epicenter_SERVER.administrate.resources
+C:\Users\Main\Documents\Visual Studio 2010\Projects\Epicenter SERVER\Epicenter SERVER\obj\x86\Debug\Epicenter_SERVER.CreateClient.resources
+C:\Users\Main\Documents\Visual Studio 2010\Projects\Epicenter SERVER\Epicenter SERVER\obj\x86\Debug\Epicenter_SERVER.DisplayScreen.resources
+C:\Users\Main\Documents\Visual Studio 2010\Projects\Epicenter SERVER\Epicenter SERVER\obj\x86\Debug\Epicenter_SERVER.FileUploadDisplay.resources
+C:\Users\Main\Documents\Visual Studio 2010\Projects\Epicenter SERVER\Epicenter SERVER\obj\x86\Debug\Epicenter_SERVER.Form1.resources
+C:\Users\Main\Documents\Visual Studio 2010\Projects\Epicenter SERVER\Epicenter SERVER\obj\x86\Debug\Epicenter_SERVER.Properties.Resources.resources
+C:\Users\Main\Documents\Visual Studio 2010\Projects\Epicenter SERVER\Epicenter SERVER\obj\x86\Debug\Epicenter_SERVER.Resource.resources
+C:\Users\Main\Documents\Visual Studio 2010\Projects\Epicenter SERVER\Epicenter SERVER\obj\x86\Debug\ResGen.read.1.tlog
+C:\Users\Main\Documents\Visual Studio 2010\Projects\Epicenter SERVER\Epicenter SERVER\obj\x86\Debug\ResGen.write.1.tlog
+C:\Users\Main\Documents\Visual Studio 2010\Projects\Epicenter SERVER\Epicenter SERVER\bin\Debug\Epicenter SERVER.exe.config
+C:\Users\Main\Documents\Visual Studio 2010\Projects\Epicenter SERVER\Epicenter SERVER\bin\Debug\Epicenter SERVER.exe
+C:\Users\Main\Documents\Visual Studio 2010\Projects\Epicenter SERVER\Epicenter SERVER\bin\Debug\Epicenter SERVER.pdb
+C:\Users\Main\Documents\Visual Studio 2010\Projects\Epicenter SERVER\Epicenter SERVER\obj\x86\Debug\Epicenter SERVER.exe
+C:\Users\Main\Documents\Visual Studio 2010\Projects\Epicenter SERVER\Epicenter SERVER\obj\x86\Debug\Epicenter SERVER.pdb
+C:\Users\Maın\Dropbox\Epicenter SERVER\Epicenter SERVER\bin\Debug\Epicenter SERVER.exe.config
+C:\Users\Maın\Dropbox\Epicenter SERVER\Epicenter SERVER\obj\x86\Debug\Epicenter SERVER.exe
+C:\Users\Maın\Dropbox\Epicenter SERVER\Epicenter SERVER\obj\x86\Debug\Epicenter SERVER.pdb

@@ -1,0 +1,8 @@
+{
+  "key": "[KEY_HERE]",
+  "url": "[URL_HERE]",
+  "login": {
+    "username": "[LOGIN_HERE]",
+    "password": "[PASSWORD_HERE]"
+  }
+}

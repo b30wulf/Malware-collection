@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9DAD6F54-9111-4BF4-88CC-93376B408F39}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DarkAgent_Client</RootNamespace>
+    <AssemblyName>DarkAgent Client</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>
+    </StartupObject>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>none</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <FileAlignment>512</FileAlignment>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>none</ErrorReport>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <Compile Include="Program.cs">
+    </Compile>
+    <Compile Include="src\Engines\CryptEngine.cs" />
+    <Compile Include="src\Engines\WMI.cs" />
+    <Compile Include="src\Features\AntiDebug.cs" />
+    <Compile Include="src\Features\Keylogger.cs" />
+    <Compile Include="src\Features\MsgBox.cs" />
+    <Compile Include="src\Features\Spreaders\UsbSpread.cs" />
+    <Compile Include="src\Features\Stealers\Firefox\Firefox.cs" />
+    <Compile Include="src\Features\Stealers\Firefox\SQLiteBase.cs" />
+    <Compile Include="src\Features\SysMutex.cs" />
+    <Compile Include="src\Features\SystemProcess.cs" />
+    <Compile Include="src\Network\DataNetwork\ClientConnect.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\ClientPacketProcessor.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\ReceiveBasePacket.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_CopyFily.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_CreateFile.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_DeleteFile.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_FileMgrGetDrives.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_FileMgrGetFiles.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_GetClipboard.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_GetCpuInfo.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_GetPasswords.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_GetProcessDLLs.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_GetProcesses.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_GetProcessThreads.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_KeyStrokes.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_KillProcess.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_MessageBox.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_CursorPosition.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_ProcessModThread.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_ProcessWindowtext.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_RemoteKeyboard.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_ResumeProcess.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_SetClipboard.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_SetWallpaper.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_StartProcess.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Receive\R_SuspendProcess.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\SendBasePacket.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_FileMgrGetDrives.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_FileMgrGetFiles.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_FileMgrGetFolders.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_GetClipboard.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_GetCpuInfo.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_GetProcessDLLs.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_GetProcesses.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_GetProcessThreads.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_KeyStrokes.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_NewClient.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_Password.cs" />
+    <Compile Include="src\Network\DataNetwork\Packets\Send\S_RemoteIP.cs" />
+    <Compile Include="src\Network\FileNetwork\FileTransferConnect.cs" />
+    <Compile Include="src\Network\FileNetwork\Packets\FileClientPacketProcessor.cs" />
+    <Compile Include="src\Network\FileNetwork\Packets\ReceiveBasePacket.cs" />
+    <Compile Include="src\Network\FileNetwork\Packets\Receive\R_FileTransferBegin.cs" />
+    <Compile Include="src\Network\FileNetwork\Packets\Receive\R_FileTransferEnd.cs" />
+    <Compile Include="src\Network\FileNetwork\Packets\Receive\R_FileTransferSend.cs" />
+    <Compile Include="src\Network\FileNetwork\Packets\Receive\R_RemoteControlScreen.cs" />
+    <Compile Include="src\Network\FileNetwork\Packets\Receive\R_RemoteIP.cs" />
+    <Compile Include="src\Network\FileNetwork\Packets\SendBasePacket.cs" />
+    <Compile Include="src\Network\FileNetwork\Packets\Send\S_FileTransferSend.cs" />
+    <Compile Include="src\Network\FileNetwork\Packets\Send\S_FileTransferSendBegin.cs" />
+    <Compile Include="src\Network\FileNetwork\Packets\Send\S_FileTransferSendComplete.cs" />
+    <Compile Include="src\Network\FileNetwork\Packets\Send\S_RemoteControlScreen.cs" />
+    <Compile Include="src\Objects\APIs.cs" />
+    <Compile Include="src\Objects\FileMgrDirInfo.cs" />
+    <Compile Include="src\Objects\FileMgrDrives.cs" />
+    <Compile Include="src\Objects\FileMgrFileInfo.cs" />
+    <Compile Include="src\Objects\FileTransfer.cs" />
+    <Compile Include="src\Objects\PasswordInfo.cs" />
+    <Compile Include="src\Objects\ProcessDllInfo.cs" />
+    <Compile Include="src\Objects\ProcessInfo.cs" />
+    <Compile Include="src\Objects\ProcessThreadInfo.cs" />
+    <Compile Include="src\Objects\ScreenCapture.cs" />
+    <Compile Include="src\Utils\GetCountry.cs" />
+    <Compile Include="src\Utils\LoadFeatures.cs" />
+    <Compile Include="src\Utils\Settings.cs" />
+    <Compile Include="src\Utils\WinSerial.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <PostBuildEvent>C:\Windows\Microsoft.NET\Framework\v2.0.50727\ngen.exe install "$(TargetPath)"
+</PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+</Project>

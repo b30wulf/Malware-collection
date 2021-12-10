@@ -1,0 +1,37 @@
+def pencode(str):
+
+	try:
+
+		str = unicode(str, errors='ignore')
+		cipher = ""
+
+		for i in range(len(str)):
+			cipher += chr(ord(str[i])^(ord("P")))
+
+		return cipher.encode('rot13').encode('hex')
+
+
+	except Exception as e:
+
+		return str(e)
+
+
+
+def pdecode(hex):
+
+	try:
+
+		hex = hex[:-1]
+		hex = unicode(hex, errors='ignore')
+		plain = ""
+		cipher = hex.decode('hex').decode('rot13')
+
+		for i in range(len(cipher)):
+			plain += chr(ord(cipher[i])^(ord("P")))
+
+		return plain
+
+
+	except Exception as e:
+
+		return str(e)

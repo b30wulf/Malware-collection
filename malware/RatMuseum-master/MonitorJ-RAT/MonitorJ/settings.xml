@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sockets>
+  <socket>
+    <name>Socket 1</name>
+    <port>1725</port>
+    <desc>Main employee computer socket</desc>
+  </socket>
+  <socket>
+    <name>Socket 1</name>
+    <port>1726</port>
+    <desc>Main employee computer socket</desc>
+  </socket>
+</sockets>

@@ -1,0 +1,168 @@
+<html>
+<head>
+	<base href="../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../app/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title><%= title %></title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<!-- Sweet alert theme -->
+	<link rel="stylesheet" href="css/sweetalert.css.min.css">
+	<!-- SideBar -->
+	<link rel="stylesheet" href="css/slidebars.css">
+
+	<style type="text/css">
+
+		@font-face {
+		    font-family: Homenaje;
+		    src: url(fonts/Homenaje-Regular.ttf);
+		}
+
+		html, body, #sb-site {
+			height:100%;
+			width:100%;
+			font-family: Homenaje;
+		}
+
+		.top {
+			height:20%;
+			width:100%;
+			background: #f4f6f6;
+		}
+		.bot {
+			min-height:80%;
+			width:100%;
+			background: #21242b;
+		}
+
+		#divLeftPanel{
+			text-align:center;
+			padding:15px;
+			color:white;
+		}
+
+	</style>
+
+
+</head>
+<body>
+
+	<div class="sb-slidebar sb-left sb-style-overlay" id='divLeftPanel'>
+		<div style=''>
+		<h2>Login system</h2>
+		<form class="form-signin" action="" method="post">
+			<input name="mail" type="text" class="form-control" placeholder="User ID" autofocus>
+			<input name="password" type="password" class="form-control" placeholder="Password">
+			<br>
+			<button class="btn btn-lg btn-login btn-block" type="submit" style='color:black;'>Sign in</button>
+		</form>
+		<br><br>
+		<h3>Login: demo@demo.com</h3>
+		<h3>Password: 123456</h3>
+		</div>
+	</div>
+
+	<div id="sb-site">
+
+		<div class="top">
+
+			<div class="container">
+
+				<div class="row">
+
+					<div class="col-xs-12" style="text-align:center;">
+
+						<h1>Base example Nodejs Web Apps</h1>
+						<h3>Created by Maxime Westhoven (<a href='https://www.mwesto.be/' target='_blank'>www.mwesto.be</a>)</h3>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="bot">
+			<center>
+				<br>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6 col-sm-offset-3">
+
+							<button class="btn sb-toggle-left">Open panel left (login system)</button><br>
+							<br>
+							<button class="btn sendSocketExample">Send a socket to server example</button>
+
+							<h1 style="color:white;">APP INDEX</h1>
+							<h2 style="color:white;">title: <%= title %></h2>
+							<h2 style="color:white;">section: <%= section %></h2>
+							<% if (typeof error_msg != "undefined") { %>
+								<h2 style="color:white;">serverSide error: <%= error_msg %></h2>
+							<% } %>
+
+						</div>
+
+					</div>
+				</div>
+
+			</center>
+
+		</div>
+
+	</div>
+
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/jquery-migrate-1.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/sweetalert.min.js"></script>
+	<script src="js/slidebars.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+
+	<script>
+
+			var socket = io.connect('http://<%= config_ip_server %>:<%= config_port_server %>/appWeb');  // Connexion au socket
+
+	    $(document).ready(function() {
+
+			$.slidebars({
+				siteClose: true, // true or false
+				disableOver: false, // integer or false
+				hideControlClasses: false, // true or false
+				scrollLock: true // true or false
+			});
+
+			$(".sendSocketExample").on("click", function(){
+				socket.emit('socketExample', 'Hi server!');
+			})
+
+			socket.on('socketExampleResponse', function(data) {
+				swal({
+					title: "socketExampleResponse",
+					text: "Client say to the server: " + data,
+					type: "success",
+					confirmButtonText: "Cool"
+				});
+     	});
+
+			socket.on('membreAppWebOnline', function(data) {
+				swal({
+					title: "membreAppWebOnline",
+					text: "The client : " + data + " is connected !",
+					type: "success",
+					confirmButtonText: "Cool"
+				});
+     	});
+
+	    });
+
+	</script>
+
+</body>
+</html>

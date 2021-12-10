@@ -1,0 +1,240 @@
+﻿<Window x:Class="Splice_Admin.Views.Desktop.ChangeLogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Splice_Admin.Views.Desktop"
+        mc:Ignorable="d"
+        Title="Splice Admin - Change Log" Height="600" Width="500">
+
+    <Window.Resources>
+        <ControlTemplate TargetType="{x:Type ContentControl}" x:Key="BulletTemplate">
+            <BulletDecorator>
+                <BulletDecorator.Bullet>
+                    <Ellipse Height="3" Width="3" Fill="Black" />
+                </BulletDecorator.Bullet>
+                <ContentPresenter Margin="5,0,0,0"/>
+            </BulletDecorator>
+        </ControlTemplate>
+
+        <Style TargetType="TextBlock" x:Key="HeaderText">
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Margin" Value="0,10,0,0" />
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="MainText">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Foreground" Value="#555" />
+        </Style>
+        <Style TargetType="TextBlock" x:Key="NewFeature" BasedOn="{StaticResource MainText}">
+            <Setter Property="Foreground" Value="Green" />
+            <Setter Property="Margin" Value="0,0,10,0" />
+        </Style>
+        <Style TargetType="TextBlock" x:Key="BugFix" BasedOn="{StaticResource MainText}">
+            <Setter Property="Foreground" Value="Red" />
+            <Setter Property="Margin" Value="0,0,10,0" />
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <ScrollViewer Padding="10">
+            <StackPanel>
+                <TextBlock Style="{StaticResource HeaderText}" Text="2017.1213" />
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="New section: Networking.  This section includes a new remote netstat feature which gives the ability to view all TCP/UDP listening and established connections on the target computer." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Details for network adapters was moved from the System Info section to the new Networking section." />
+                </ContentControl>
+                
+                <TextBlock Style="{StaticResource HeaderText}" Text="2017.1107" />
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Tasks -> Group Policy Update: GPupdate was only updating the computer policy on remote computers.  It now updates the user policy as well.  To achieve this, Splice Admin does several tricks.  1) Create a temporary .VBS file to run gpupdate.exe in a hidden window.  2) Get a list of logged in users.  3) For each user, create a scheduled task that executes the .VBS script (this will execute in the context of each logged in user).  4)  Run the task and then remove the temporary file and task." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Bulk Query:  You can now use wildcards when searching for files.   For example: C:\Windows\*.exe" />
+                </ContentControl>
+                
+                <TextBlock Style="{StaticResource HeaderText}" Text="2017.0821" />
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Bug fix: Corrected LDAP queries used in the Bulk Query view when selecting the pre-defined target groups." />
+                </ContentControl>
+                
+                <TextBlock Style="{StaticResource HeaderText}" Text="2017.0802" />
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="The Processes, Services, and Applications views now include a filter feature.  Type in a search phrase and the results are automatically filtered as you type." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Bug fix: In the Bulk Query view, targeting 'All domain computers' no longer causes a crash." />
+                </ContentControl>
+                
+                <TextBlock Style="{StaticResource HeaderText}" Text="2017.0104" />
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Bulk query:  Added the ability to search for registry values.  You can either retrieve a specific value, or you can search for a key and all values within that key will be returned.  For example, searching for hklm\software\microsoft\windows\currentversion\run, would return all startup applications for every computer in your target list.  Target operating system must be Vista/2008 or higher at this time." />
+                </ContentControl>
+                
+                <TextBlock Style="{StaticResource HeaderText}" Text="2017.0101" />
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Completely revamped the bulk query feature.  Rather than a simple 'match' or 'no match', searches now include detailed results.  For example, if searching for installed applications and your search phrase is 'adobe', you will get a list which includes the full title of every application with 'adobe' in the name, as well as the version number, for every computer in your target list.   When searching services, search results will include the startup type and the current status of the service." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Bulk query:  The pre-defined target computer groups now exclude disabled computers." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Bulk query:  New option to only include computers that have been active in the past 30 days." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Bulk query:  Added the ability to search for running processes." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Applications:  Remote applications were previously retrieved through the Remote Registry service.  The registry values are now retrieved through WMI which results in faster data retrieval.  The application will fall back to using the Remote Registry service if the target OS does not support the WMI registry provider." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Bulk query:  Searching for applications now also goes through the WMI registry provider with a fallback to remote registry.  This results in faster application searches." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Added: Tasks -> Windows Remote Assistance.  A shortcut to connect to the target computer using the Windows Remote Assistance tool.  This will only work if your environment is configured to allow unsolicited remote assistance." />
+                </ContentControl>
+                
+                <TextBlock Style="{StaticResource HeaderText}" Text="2016.1229" />
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="New bulk query feature.  Perform various types of searches across multiple computers in your environment.  You can currently search for files, installed applications, logged on users, and installed services.  The target computers can be entered in a comma-separated list, or choose one of the pre-set options (all domain computers, all workstations, or all servers)." />
+                </ContentControl>
+                
+                <TextBlock Style="{StaticResource HeaderText}" Text="2016.1203" />
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="The application no longer requires elevated permissions to run.  There are currently two instances where it will request elevation: 1) Selecting the 'Processes' tab when your local computer is the target.  2) Selecting the 'Logon History' tab when your local computer is the target." />
+                </ContentControl>
+                
+                <TextBlock Style="{StaticResource HeaderText}" Text="2016.1201" />
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Initial public release!" />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Added: System Info -> Networking.  Retrieve detailed network connection details for all installed network adapters." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Behind the scenes, some remote registry routines now retrieve values through WMI rather than remote registry.  Remote registry is included as a fallback because WMI registry routines only work on Vista/2008 and higher." />
+                </ContentControl>
+                
+                <TextBlock Style="{StaticResource HeaderText}" Text="2016.0817" />
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Added Internet Explorer and its version number to the Applications tab." />
+                </ContentControl>
+                
+                <TextBlock Style="{StaticResource HeaderText}" Text="2016.0418" />
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Changed all static loading images to loading animations." />
+                </ContentControl>
+
+                <TextBlock Style="{StaticResource HeaderText}" Text="2016.0201" />
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Fixed an issue where percentage bars were not being displayed correctly on the Storage tab." />
+                </ContentControl>
+
+                <TextBlock Style="{StaticResource HeaderText}" Text="2015.0820" />
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Added: System Info -> ODBC DSN.  Retrieve system DSNs.  Right-click to edit a value." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Added: Tasks -> Services Console.  Launch Microsoft's Services MMC and connect it to the target computer." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Fixed an issue where retrieving logon history from a Server 2003 system would sometimes cause the application to crash." />
+                </ContentControl>
+
+                <TextBlock Style="{StaticResource HeaderText}" Text="2015.0721" />
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Users -> Logon History.  Now shows logoff events (if available in the event log)." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Users -> Logon History.  You can now retrieve user AD details by right-clicking and selecting Show User Details." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Added: Tasks -> Computer Management.  Launch Microsoft's Computer Managment MMC and connect it to the target computer." />
+                </ContentControl>
+
+                <TextBlock Style="{StaticResource HeaderText}" Text="2015.0716" />
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Added: Users -> Logon History.  Retrieves the available history of interactive logons (Console/RDP/LANDesk) on the target computer." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Added: Tasks -> Execute Remote Command.  Run any executable on the target computer." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Added: Users -> Right-Click [User] -> Show User Details.  Retrieves information about the user from Active Directory." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Added: System Info -> Description.  If the target computer has a description set, it is retrieved and displayed." />
+                </ContentControl>
+
+                <TextBlock Style="{StaticResource HeaderText}" Text="2015.0713" />
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Added: System Info -> CPU / RAM.  Retrieves detailed information about the CPU and RAM on the target computer." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Added: System Info -> USB Devices.  Retrieves USB devices connected to the target computer." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Fixed an issue where sometimes a PC configured for automatic updates would report as configured for manual updates." />
+                </ContentControl>
+
+                <TextBlock Style="{StaticResource HeaderText}" Text="2015.0706" />
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Added: Auto-suggest target computer names as you type.  A list of names is retrieved at startup from Active Directory." />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Added: Tasks -> Registry Editor" />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Added: Tasks -> Event Log Viewer" />
+                </ContentControl>
+                <ContentControl Template="{StaticResource BulletTemplate}">
+                    <TextBlock Style="{StaticResource MainText}"
+                               Text="Added: Command line arguments.  Usage: SpliceAdm.exe [target_computer]" />
+                </ContentControl>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

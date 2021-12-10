@@ -1,0 +1,44 @@
+<div class="defaultContainer">
+  <h2>CONFIGURATION</h2>
+  <hr>
+
+  <form class="" action="" method="post">
+
+    <div class="row">
+      <div class="col-md-2">
+        <h4>Cloud Mode:</h4>
+      </div>
+      <div class="col-md-4">
+        <select name="mode" class="form-control">
+          <option value="close" <% if(config.config_mode == "close") { %> selected <% } %>>Closed</option>
+          <option value="open" <% if(config.config_mode == "open") { %> selected <% } %>>Open</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <h4><h4>Cloud Password:</h4></h4>
+      </div>
+      <div class="col-md-4">
+        <input type="password" name="password" value="" class="form-control">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <br>
+        <input type="submit" class="form-control btn-success" name="" value="Update">
+      </div>
+    </div>
+
+  </form>
+
+</div>
+
+<script>
+
+  function init_config(socket, data){
+
+    //...
+
+  }
+
+</script>

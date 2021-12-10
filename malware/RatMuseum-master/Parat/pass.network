@@ -1,0 +1,23 @@
+import os
+from time import sleep
+from lib.GetIP import get_lan_ip
+
+
+try:
+
+    # network connection check
+    connection = get_lan_ip()
+    while connection.startswith('127.0.'):
+        connection = get_lan_ip()
+        print "Trying to connect internet..."
+        sleep(3)
+
+    print "Connected: " + connection
+    sleep(3)
+
+    os.system('python telegram.service &')
+
+
+except:
+    print "\n\n\n"
+    exit(0)

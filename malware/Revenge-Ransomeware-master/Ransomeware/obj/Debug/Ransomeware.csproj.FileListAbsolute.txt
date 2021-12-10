@@ -1,0 +1,9 @@
+C:\Users\REVENGE\source\repos\Ransomeware\Ransomeware\bin\Debug\Ransomeware.exe
+C:\Users\REVENGE\source\repos\Ransomeware\Ransomeware\bin\Debug\Ransomeware.pdb
+C:\Users\REVENGE\source\repos\Ransomeware\Ransomeware\obj\Debug\Ransomeware.csprojAssemblyReference.cache
+C:\Users\REVENGE\source\repos\Ransomeware\Ransomeware\obj\Debug\Ransomeware.Form1.resources
+C:\Users\REVENGE\source\repos\Ransomeware\Ransomeware\obj\Debug\Ransomeware.Properties.Resources.resources
+C:\Users\REVENGE\source\repos\Ransomeware\Ransomeware\obj\Debug\Ransomeware.csproj.GenerateResource.cache
+C:\Users\REVENGE\source\repos\Ransomeware\Ransomeware\obj\Debug\Ransomeware.csproj.CoreCompileInputs.cache
+C:\Users\REVENGE\source\repos\Ransomeware\Ransomeware\obj\Debug\Ransomeware.exe
+C:\Users\REVENGE\source\repos\Ransomeware\Ransomeware\obj\Debug\Ransomeware.pdb

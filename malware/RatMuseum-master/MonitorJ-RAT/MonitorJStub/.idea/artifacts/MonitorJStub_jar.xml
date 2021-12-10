@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MonitorJStub:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MonitorJStub_jar</output-path>
+    <root id="archive" name="MonitorJStub.jar">
+      <element id="module-output" name="MonitorJStub" />
+    </root>
+  </artifact>
+</component>

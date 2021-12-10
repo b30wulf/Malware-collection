@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8218C0DD-EAF1-445F-A502-250F62F50839}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>uRAT.CoreClientPlugin</RootNamespace>
+    <AssemblyName>uRAT.CoreClientPlugin</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\build\Client\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\build\Server\plugins\client\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BasicSystemInformation\BasicSystemInformationClientPlugin.cs" />
+    <Compile Include="BasicSystemInformation\Operations\BasicSystemInformationOperation.cs" />
+    <Compile Include="BasicSystemInformation\Packets\SystemInformationInitPacket.cs" />
+    <Compile Include="BasicSystemInformation\Packets\SystemInformationPacket.cs" />
+    <Compile Include="ConnectionManagement\ConnectionAction.cs" />
+    <Compile Include="ConnectionManagement\ConnectionManagementPlugin.cs" />
+    <Compile Include="ConnectionManagement\Packets\ConnectionManagementPacket.cs" />
+    <Compile Include="ConnectionPing\ConnectionPingPlugin.cs" />
+    <Compile Include="ConnectionPing\Packets\ConnectionPingPacket.cs" />
+    <Compile Include="CorePluginHost.cs" />
+    <Compile Include="ExtendedSystemInformation\ExtendedSystemInformationPlugin.cs" />
+    <Compile Include="ExtendedSystemInformation\Operations\ExtendedInformationOperation.cs" />
+    <Compile Include="ExtendedSystemInformation\Packets\FetchExtendedInformationPacket.cs" />
+    <Compile Include="Tools\GeoIpHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\SystemInformationHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\uNet2\uNet2.csproj">
+      <Project>{FDFC8179-FEEA-42D0-ADD9-D31017C71414}</Project>
+      <Name>uNet2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\uRAT.Client\uRAT.Client.csproj">
+      <Project>{EB02E8F6-6D38-44E3-AC2D-34792A538267}</Project>
+      <Name>uRAT.Client</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
